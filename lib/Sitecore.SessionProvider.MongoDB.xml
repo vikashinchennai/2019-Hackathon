@@ -1,0 +1,599 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.SessionProvider.MongoDB</name>
+    </assembly>
+    <members>
+        <member name="M:Sitecore.SessionProvider.MongoDB.IMongoSessionStateStore.GetItemExclusive(System.String,System.String,Sitecore.SessionProvider.SessionStateLockCookie,System.Int32@)">
+            <summary>
+              Attempts to lock and load the session state store item with the specified identifier.
+            </summary>
+            <param name="application">
+              The name of the application.
+            </param>
+            <param name="id">
+              The unique identifier of the session state store entry to lock.
+            </param>
+            <param name="lockCookie">
+              A <see cref="T:Sitecore.SessionProvider.SessionStateLockCookie"/> object that is the lock to set.
+            </param>
+            <returns>
+              A <see cref="T:System.Web.SessionState.SessionStateStoreData"/> object loaded from the database if the session state store entry was
+              found and successfully locked; otherwise, <c>null</c>.
+            </returns>
+            <remarks>
+              This method returns <c>null</c> if the session state entry does not exist or if the entry is already locked.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.IMongoSessionStateStore.GetExpiredItemExclusive(System.String,System.DateTime,Sitecore.SessionProvider.SessionStateLockCookie,System.String@)">
+            <summary>
+              Attempts to lock and load an expired session state store item.
+            </summary>
+            <param name="application">
+              The name of the application.
+            </param>
+            <param name="signalTime">
+              The date and time the signal for processing expired sessions was generated, expressed as UTC.
+            </param>
+            <param name="lockCookie">
+              A <see cref="T:Sitecore.SessionProvider.SessionStateLockCookie"/> object that is the lock to set.
+            </param>
+            <returns>
+              A <see cref="T:System.Web.SessionState.SessionStateStoreData"/> object loaded from the database if the session state store entry was
+              found and successfully locked; otherwise, <c>null</c>.
+            </returns>
+            <remarks>
+              This method returns <c>null</c> if the session state entry does not exist or if the entry is already locked.
+            </remarks>
+            <remarks><c>DateTime.Kind</c> should be <c>DateTimeKind.Utc</c>.</remarks>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.IMongoSessionStateStore.GetItemLock(System.String,System.String)">
+            <summary>
+              Gets the <see cref="T:Sitecore.SessionProvider.SessionStateLockCookie"/> from the session state entry with the specified unique
+              identifier.
+            </summary>
+            <param name="application">
+              The name of the application.
+            </param>
+            <param name="id">
+              The unique identifier of the session state store entry.
+            </param>
+            <returns>
+              The <see cref="T:Sitecore.SessionProvider.SessionStateLockCookie"/> object containing the lock state of the session state store entry with
+              the specified unique identifier; or <c>null</c> if the session state store entry does not exist.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.IMongoSessionStateStore.UpdateAndReleaseItem(System.String,System.String,System.String,System.Web.SessionState.SessionStateActions,System.Web.SessionState.SessionStateStoreData)">
+            <summary>
+              Updates a locked session state store item and releases the lock.
+            </summary>
+            <param name="application">
+              The name of the application.
+            </param>
+            <param name="id">
+              The session state store item to update.
+            </param>
+            <param name="lockCookie">
+              The identifier of the lock currently held.
+            </param>
+            <param name="action">
+              A <see cref="T:System.Web.SessionState.SessionStateActions"/> value
+            </param>
+            <param name="sessionState">
+              A <see cref="T:System.Web.SessionState.SessionStateStoreData"/> that represents the session data.
+            </param>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.IMongoSessionStateStore.ReleaseItem(System.String,System.String,System.String)">
+            <summary>
+              Releases a locked session state store item.
+            </summary>
+            <param name="application">
+              The name of the application.
+            </param>
+            <param name="id">
+              The session state store item to release.
+            </param>
+            <param name="lockCookie">
+              The identifier of the lock currently held.
+            </param>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.IMongoSessionStateStore.RemoveItem(System.String,System.String,System.String)">
+            <summary>
+              Removes a locked session state store item from the database.
+            </summary>
+            <param name="application">
+              The name of the application.
+            </param>
+            <param name="id">
+              The session state store item to release.
+            </param>
+            <param name="lockCookie">
+              The identifier of the lock currently held.
+            </param>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.IMongoSessionStateStore.InsertItem(System.String,System.String,System.Int32,System.Web.SessionState.SessionStateStoreData)">
+            <summary>
+              Inserts a new session state store item into the sessions collection in the Mongo database.
+            </summary>
+            <param name="application">
+              The name of the application.
+            </param>
+            <param name="id">
+              The unique identifier of the session state store item.
+            </param>
+            <param name="flags">
+              An <see cref="T:System.Int32"/> value that is a set of flags stored together with the session state store item.
+            </param>
+            <param name="sessionState">
+              A <see cref="T:System.Web.SessionState.SessionStateStoreData"/> object that represents the session state.
+            </param>
+            <remarks>
+              This method insert a new document into the sessions collection. The expiration field is set to the current
+              timestamp incremented by the timeout value specified in the session state. The new session state store 
+              item is not locked.
+            </remarks>
+            <exception cref="T:MongoDB.Driver.MongoException">
+              A session state store item with the specified identifier already exists.
+            </exception>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.IMongoSessionStateStore.UpdateItemExpiration(System.String,System.String)">
+            <summary>
+              Updates the expiration time of session state store item.
+            </summary>
+            <param name="application">
+              The name of the application.
+            </param>
+            <param name="id">
+              The unique identifier of the session state store item to update.
+            </param>
+            <remarks>
+              This method loads the timeout value of the specified session state store item and updates the expiration time
+              field to the current time incremented by the retrieved timeout value.
+            </remarks>
+        </member>
+        <member name="T:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider">
+            <summary>
+              ASP.NET Session State Provider with Session End support for MongoDB.
+            </summary>
+            <remarks>
+            <para>
+            Some Notes: According to the Microsoft official recommendations, a Session-State Store Provider should implement a 
+            mechanism to delete expired session data. The class Sitecore.SessionProvider.SitecoreSessionStateStoreProvider (it's 
+            a base abstract class for the actual provider type) maintains a timer (System.Timers.Timer) to delete that expired session data. 
+            By default, each 2 seconds the timer runs a special handler OnProcessExpiredItems to clean up the expired session data. 
+            The handler, in turn, executes the SQL stored procedure GetExpiredItemExclusive against the session database. And 
+            everything goes smoothly until you have only one instance of the Session-State Store Provider. However, as you 
+            probably know, ASP.NET may create additional workers when the existing ones are not enough to handle the incoming requests. 
+            For each separate worker, the SessionStateModule initializes a separate instance of  Session-State Store Provider. 
+            At some point, a number of such providers execute the stored procedure in a number of concurrent transactions in separate SQL connections. 
+            As a result, you get a high number of connections and heavy load on your database server.
+            </para>
+            <para>
+            In order to prevent multiple executions of the OnProcessExpiredItems handler we have maintained a static list of all 
+            the instances and used dependency injection (CanStartTimer delegate) to control the start of the timer inside the base
+            class from the child class and a graceful Dispose method to sync timers from multiple instances. The main idea is to 
+            guarantee that only one instance of the session state provider may execute the handler at any particular point in time.
+            And while one handler works another can't be executed.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.MongoSessionStateProvidersList">
+            <summary>
+            List to store all the instances of this class
+            </summary>
+        </member>
+        <member name="F:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.ListSyncRoot">
+            <summary>
+            Lock object
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.Store">
+            <summary>
+              Gets a <see cref="T:Sitecore.SessionProvider.MongoDB.IMongoSessionStateStore"/> object that provides methods for accessing the session database.
+            </summary>
+            <value>
+              A <see cref="T:Sitecore.SessionProvider.MongoDB.IMongoSessionStateStore"/> object that provides methods for accessing the session database.
+            </value>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+              Initializes the current provider.
+            </summary>
+            <param name="name">
+              The friendly name of the provider.
+            </param>
+            <param name="config">
+              A collection of the name/value pairs representing the provider-specific attributes specified in the
+              configuration for this provider.
+            </param>
+            <exception cref="T:Sitecore.Exceptions.ConfigurationException">The polling interval specified is too small or too high.</exception>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.Dispose">
+            <summary>
+            Releases managed and unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.CreateUninitializedItem(System.Web.HttpContext,System.String,System.Int32)">
+            <summary>
+              Adds a new session-state item to the data store.
+            </summary>
+            <param name="context">
+              The <see cref="T:System.Web.HttpContext"/> for the current request.
+            </param>
+            <param name="id">
+              The unique identifier of session the new state store item represents.
+            </param>
+            <param name="timeout">
+              The session timeout, in minutes, for the current request.
+            </param>
+            <remarks>
+              <para>
+                The <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.CreateUninitializedItem(System.Web.HttpContext,System.String,System.Int32)"/> method is used with sessions when the
+                <i>cookieless</i> and <i>regenerateExpiredSessionId</i> attributes are both <c>true</c>. Having the
+                <i>regenerateExpiredSessionId</i> attribute set to <c>true</c> causes the <see cref="T:System.Web.SessionState.SessionStateModule"/>
+                object to generate a new session ID value when an expired session ID value is encountered.
+              </para>
+              <para>
+                The process of generating a new session ID value requires redirecting the browser to a URL that contains
+                the newly generated session ID value. The <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.CreateUninitializedItem(System.Web.HttpContext,System.String,System.Int32)"/>
+                method is called during the initial request that contains an expired session ID value. After the
+                <see cref="T:System.Web.SessionState.SessionStateModule"/> object acquires a new session ID value to replace the expired value, it
+                calls the <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.CreateUninitializedItem(System.Web.HttpContext,System.String,System.Int32)"/> method to add an uninitialized
+                entry to the session-state data store. The browser is then redirected to the URL containing the newly
+                generated session ID value. The existence of the uninitialized entry in the session data store ensures that
+                the redirected request that includes the newly generated session ID value is not mistaken for a request for
+                an expired session and is, instead, treated as a new session. 
+              </para>
+              <para>
+                The uninitialized entry in the session data store is associated with the newly generated session ID value
+                and contains only default values, including an expiration date and time and a value that corresponds to the
+                action flags parameter of the <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.GetItem(System.Web.HttpContext,System.String,System.Boolean@,System.TimeSpan@,System.Object@,System.Web.SessionState.SessionStateActions@)"/> and <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.GetItemExclusive(System.Web.HttpContext,System.String,System.Boolean@,System.TimeSpan@,System.Object@,System.Web.SessionState.SessionStateActions@)"/> methods. The
+                uninitialized entry in the session-state store should include an action flags value equal to the
+                <see cref="F:System.Web.SessionState.SessionStateActions.InitializeItem"/> enumeration value. This value is passed to the
+                <see cref="T:System.Web.SessionState.SessionStateModule"/> object by the <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.GetItem(System.Web.HttpContext,System.String,System.Boolean@,System.TimeSpan@,System.Object@,System.Web.SessionState.SessionStateActions@)"/> and <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.GetItemExclusive(System.Web.HttpContext,System.String,System.Boolean@,System.TimeSpan@,System.Object@,System.Web.SessionState.SessionStateActions@)"/>
+                methods, and informs the <see cref="T:System.Web.SessionState.SessionStateModule"/> object that the current session is a new but
+                uninitialized session. The <see cref="T:System.Web.SessionState.SessionStateModule"/> object will then initialize the new session and
+                raise the <c>Session_OnStart</c> event.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.GetItem(System.Web.HttpContext,System.String,System.Boolean@,System.TimeSpan@,System.Object@,System.Web.SessionState.SessionStateActions@)">
+            <summary>
+              Returns read-only session-state data from the session data store.
+            </summary>
+            <param name="context">
+              The <see cref="T:System.Web.HttpContext"/> for the current request.
+            </param>
+            <param name="id">
+              The session ID for the current request.
+            </param>
+            <param name="locked">
+              When this method returns, contains a <see cref="T:System.Boolean"/> value that is set to <c>true</c> if the requested
+              session item is locked at the session data store; otherwise, <c>false</c>.
+            </param>
+            <param name="lockAge">
+              When this method returns, contains a <see cref="T:System.TimeSpan"/> value that is set to the amount of time that the
+              item in the session data store has been locked or an <see cref="F:System.TimeSpan.Zero"/> if the item is not locked.
+            </param>
+            <param name="lockId">
+              When this method returns, contains an object that is lock identifier set on the item or <c>null</c> if the
+              item is not locked.
+            </param>
+            <param name="actions">
+              When this method returns, contains one of the <see cref="T:System.Web.SessionState.SessionStateActions"/> values, indicating whether
+              the current session is an uninitialized, cookieless session.
+            </param>
+            <returns>
+              A <see cref="T:System.Web.SessionState.SessionStateStoreData"/> object containing the requested session state data or <c>null</c> if
+              the item does not exist.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.GetItemExclusive(System.Web.HttpContext,System.String,System.Boolean@,System.TimeSpan@,System.Object@,System.Web.SessionState.SessionStateActions@)">
+            <summary>
+              Locks and returns session state data from the session data store.
+            </summary>
+            <param name="context">
+              The <see cref="T:System.Web.HttpContext"/> for the current request.
+            </param>
+            <param name="id">
+              The session ID for the current request.
+            </param>
+            <param name="locked">
+              When this method returns, contains a <see cref="T:System.Boolean"/> value that is set to <c>true</c> if a lock is
+              successfully obtained; otherwise, <c>false</c>.
+            </param>
+            <param name="lockAge">
+              When this method returns, contains a <see cref="T:System.TimeSpan"/> value that is set to the amount of time that the
+              item in the session data store has been locked or an <see cref="F:System.TimeSpan.Zero"/> if the lock was obtained in
+              the current call.
+            </param>
+            <param name="lockId">
+              When this method returns, contains an object that is set to the lock identifier for the current request.
+            </param>
+            <param name="actions">
+              When this method returns, contains one of the <see cref="T:System.Web.SessionState.SessionStateActions"/> values, indicating whether
+              the current session is an uninitialized, cookieless session.
+            </param>
+            <returns>
+              A <see cref="T:System.Web.SessionState.SessionStateStoreData"/> object containing the session state data if the requested session state
+              store item was succefull locked; otherwise, <c>null</c>.
+            </returns>
+            <remarks>
+              More information can be found <see cref="M:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive(System.Web.HttpContext,System.String,System.Boolean@,System.TimeSpan@,System.Object@,System.Web.SessionState.SessionStateActions@)">here</see> and
+              <see href="http://msdn.microsoft.com/en-us/library/dd941992.aspx">here</see>.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.SetAndReleaseItemExclusive(System.Web.HttpContext,System.String,System.Web.SessionState.SessionStateStoreData,System.Object,System.Boolean)">
+            <summary>
+              Updates the session-item information in the session-state data store with values from the current request,
+              and clears the lock on the data.
+            </summary>
+            <param name="context">
+              The <see cref="T:System.Web.HttpContext"/> for the current request.
+            </param>
+            <param name="id">
+              The session ID for the current request.
+            </param>
+            <param name="sessionState">
+              The <see cref="T:System.Web.SessionState.SessionStateStoreData"/> object that contains the current session values to be stored.
+            </param>
+            <param name="lockId">
+              The lock identifier for the current request.
+            </param>
+            <param name="newItem">
+              <c>true</c> to identify the session item as a new item; otherwise, <c>false</c>.
+            </param>
+            <remarks>
+              <para>
+                The <see cref="T:System.Web.SessionState.SessionStateModule"/> object calls the SetAndReleaseItemExclusive method at the end of a
+                request, during the <see cref="E:System.Web.HttpApplication.ReleaseRequestState"/> event, to insert current session-
+                item information into the data store or update existing session-item information in the data store with
+                current values, to update the expiration time on the item, and to release the lock on the data. Only
+                session data for the current application that matches the supplied session id and lock id values is
+                updated.
+              </para>
+              <para>
+                If the session values for the current request have not been modified, the
+                <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.SetAndReleaseItemExclusive(System.Web.HttpContext,System.String,System.Web.SessionState.SessionStateStoreData,System.Object,System.Boolean)"/> method is not called. Instead, the
+                <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.ReleaseItemExclusive(System.Web.HttpContext,System.String,System.Object)"/> method is called.
+              </para>
+              <para>
+                If the <see cref="M:System.Web.SessionState.HttpSessionState.Abandon"/> method has been called, the
+                <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.SetAndReleaseItemExclusive(System.Web.HttpContext,System.String,System.Web.SessionState.SessionStateStoreData,System.Object,System.Boolean)"/> method is not called. Instead, the
+                <see cref="T:System.Web.SessionState.SessionStateModule"/> object calls the <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.RemoveItem(System.Web.HttpContext,System.String,System.Object,System.Web.SessionState.SessionStateStoreData)"/> method to delete session-item
+                data from the data source.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.ReleaseItemExclusive(System.Web.HttpContext,System.String,System.Object)">
+            <summary>
+              Releases a lock on an item in the session data store.
+            </summary>
+            <param name="context">
+              The <see cref="T:System.Web.HttpContext"/> for the current request.
+            </param>
+            <param name="id">
+              The session ID for the current request.
+            </param>
+            <param name="lockId">
+              The lock identifier for the current request.
+            </param>
+            <remarks>
+              <para>
+                The <see cref="T:System.Web.SessionState.SessionStateModule"/> object calls the <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.ReleaseItemExclusive(System.Web.HttpContext,System.String,System.Object)"/> method to update
+                the expiration date and release a lock on an item in the session data store. It is called at the end of a
+                request, during the <see cref="E:System.Web.HttpApplication.ReleaseRequestState"/> event, if session values are
+                unchanged. If session values have been modified, the <see cref="T:System.Web.SessionState.SessionStateModule"/> object instead calls
+                the <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.SetAndReleaseItemExclusive(System.Web.HttpContext,System.String,System.Web.SessionState.SessionStateStoreData,System.Object,System.Boolean)"/> method.
+              </para>
+              <para>
+                The <see cref="T:System.Web.SessionState.SessionStateModule"/> object also calls the <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.ReleaseItemExclusive(System.Web.HttpContext,System.String,System.Object)"/> method when a
+                lock on an item in the session data store has exceeded the <see cref="P:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout"/>
+                value. For more information about locking and details about the lock identifier, see "Locking Session-Store
+                Data" in the <see cref="T:System.Web.SessionState.SessionStateStoreProviderBase"/> class overview.
+              </para>
+              <para>
+                The <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.ReleaseItemExclusive(System.Web.HttpContext,System.String,System.Object)"/> method only removes the lock from an item in the session data store
+                for the current application that matches the supplied session id and lock id values. If the lock id does not
+                match the one in the data store, the <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.ReleaseItemExclusive(System.Web.HttpContext,System.String,System.Object)"/> method does nothing.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.ResetItemTimeout(System.Web.HttpContext,System.String)">
+            <summary>
+              Updates the expiration date and time of an item in the session data store.
+            </summary>
+            <param name="context">
+              The <see cref="T:System.Web.HttpContext"/> for the current request.
+            </param>
+            <param name="id">
+              The session ID for the current request.
+            </param>
+            <remarks>
+              The <see cref="T:System.Web.SessionState.SessionStateModule"/> object calls the <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.ResetItemTimeout(System.Web.HttpContext,System.String)"/> method to update the
+              expiration date and time for a session to the current date and time plus the session
+              <see cref="P:System.Web.SessionState.HttpSessionState.Timeout"/> value.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.RemoveItem(System.Web.HttpContext,System.String,System.Object,System.Web.SessionState.SessionStateStoreData)">
+            <summary>
+              Deletes item data from the session data store.
+            </summary>
+            <param name="context">
+              The <see cref="T:System.Web.HttpContext"/> for the current request.
+            </param>
+            <param name="id">
+              The session ID for the current request.
+            </param>
+            <param name="lockId">
+              The lock identifier for the current request.
+            </param>
+            <param name="item">
+              The <see cref="T:System.Web.SessionState.SessionStateStoreData"/> that represents the item to delete from the data store.
+            </param>
+            <remarks>
+              <para>
+                The <see cref="T:System.Web.SessionState.SessionStateModule"/> object calls the <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.RemoveItem(System.Web.HttpContext,System.String,System.Object,System.Web.SessionState.SessionStateStoreData)"/> method at the end of a
+                request, during the <see cref="!:ReleaseRequestState"/> event, to delete the data for a session item from
+                the session data store if the <see cref="M:System.Web.SessionState.HttpSessionState.Abandon"/> method has been called. Only session
+                data for the current application that matches the supplied session id and lock id values is deleted. For
+                more information about locking and details about the lock identifier, see "Locking Session-Store Data" in
+                the <see cref="T:System.Web.SessionState.SessionStateStoreProviderBase"/> class overview.
+              </para>
+            </remarks>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.GetExpiredItemExclusive(System.DateTime,Sitecore.SessionProvider.SessionStateLockCookie,System.String@)">
+            <summary>
+            The get expired item exclusive.
+            </summary>
+            <param name="signalTime">
+            The signal time.
+            </param>
+            <param name="lockCookie">
+            The lock cookie.
+            </param>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            Returns Session State object with exclusive lock<see cref="T:System.Web.SessionState.SessionStateStoreData"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.RemoveItem(System.String,System.String)">
+            <summary>
+            The remove item.
+            </summary>
+            <param name="id">
+            The id.
+            </param>
+            <param name="lockCookie">
+            The lock cookie identifier.
+            </param>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateProvider.IsTimerOffForAllInstance">
+            <summary>
+            Check whether the timer is off for all instance
+            </summary>
+            <returns>True if timer is off otherwise False</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateStore.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Sitecore.SessionProvider.MongoDB.MongoSessionStateStore"/> class. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateStore.GetItemExclusive(System.String,System.String,Sitecore.SessionProvider.SessionStateLockCookie,System.Int32@)">
+            <summary>
+            Locks the item in the store and extends its time.
+            </summary>
+            <param name="application">
+            The application.
+            </param>
+            <param name="id">
+            The id.
+            </param>
+            <param name="lockCookie">
+            The lock cookie.
+            </param>
+            <param name="flags">
+            The flags.
+            </param>
+            <returns>
+            The <see cref="T:System.Web.SessionState.SessionStateStoreData"/>, or null if it couldn't be locked.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateStore.GetSessionEndCandidates(System.String,System.DateTime,System.Int32,System.Collections.Generic.IList{Sitecore.SessionProvider.MongoDB.MongoSessionStateStore.SessionEndCandidate})">
+            <summary>
+              Returns session end candidates.
+            </summary>
+            <param name="application">
+              The name of the application.
+            </param>
+            <param name="signalTime">
+              The date and time the signal for processing expired sessions was generated, expressed as UTC.
+              <c>DateTime.Kind</c> should be <c>DateTimeKind.Utc</c>.
+            </param>
+            <param name="limit">
+              The limit of candidates.
+            </param>
+            <param name="candidates">
+              The collection of session end candidates.
+            </param>
+            <returns>
+              The number of session end candidates.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateStore.GetExpiredItemExclusive(System.String,Sitecore.SessionProvider.MongoDB.MongoSessionStateStore.SessionEndCandidate,Sitecore.SessionProvider.SessionStateLockCookie)">
+            <summary>
+            Locks and returns an expired session item, if it has not been locked by a request or another session expiration handler.
+            </summary>
+            <param name="application">Application identifier for the item.</param>
+            <param name="candidate">Descriptor for the session item.</param>
+            <param name="lockCookie">Lock cookie to use when locking the item.</param>
+            <returns>An instance of <see cref="T:System.Web.SessionState.SessionStateStoreData"/> if the method succeeds, <c>null</c> if the item has been removed or already locked by another party.</returns>
+        </member>
+        <member name="T:Sitecore.SessionProvider.MongoDB.MongoSessionStateStore.SessionEndCandidate">
+            <summary>
+            Contains information about a candidate for session expiration handler.
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.MongoDB.MongoSessionStateStore.SessionEndCandidate.Id">
+            <summary>
+            Gets or sets the unique identifier of the session item.
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.MongoDB.MongoSessionStateStore.SessionEndCandidate.Expiration">
+            <summary>
+            Gets or sets the current time of item expiration, as read by <see cref="M:Sitecore.SessionProvider.MongoDB.MongoSessionStateStore.GetSessionEndCandidates(System.String,System.DateTime,System.Int32,System.Collections.Generic.IList{Sitecore.SessionProvider.MongoDB.MongoSessionStateStore.SessionEndCandidate})"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.PartitionedMongoSessionStateStore.GetExpiredItemExclusive(System.String,System.DateTime,Sitecore.SessionProvider.SessionStateLockCookie,System.String@)">
+            <summary>
+              Attempts to lock and load an expired session state store item.
+            </summary>
+            <param name="application">
+              The name of the application.
+            </param>
+            <param name="signalTime">
+              The date and time the signal for processing expired sessions was generated, expressed as UTC.
+              <c>DateTime.Kind</c> should be <c>DateTimeKind.Utc</c>.
+            </param>
+            <param name="lockCookie">
+              A <see cref="T:Sitecore.SessionProvider.SessionStateLockCookie"/> object that is the lock to set.
+            </param>
+            <returns>
+              A <see cref="T:System.Web.SessionState.SessionStateStoreData"/> object loaded from the database if the session state store entry was
+              found and successfully locked; otherwise, <c>null</c>.
+            </returns>
+            <remarks>
+              This method returns <c>null</c> if the session state entry does not exist or if the entry is already locked.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.SessionProvider.MongoDB.SimpleMongoSessionStateStore.GetExpiredItemExclusive(System.String,System.DateTime,Sitecore.SessionProvider.SessionStateLockCookie,System.String@)">
+            <summary>
+              Attempts to lock and load an expired session state store item.
+            </summary>
+            <param name="application">
+              The name of the application.
+            </param>
+            <param name="signalTime">
+              The date and time the signal for processing expired sessions was generated, expressed as UTC.
+              <c>DateTime.Kind</c> should be <c>DateTimeKind.Utc</c>.
+            </param>
+            <param name="lockCookie">
+              A <see cref="T:Sitecore.SessionProvider.SessionStateLockCookie"/> object that is the lock to set.
+            </param>
+            <returns>
+              A <see cref="T:System.Web.SessionState.SessionStateStoreData"/> object loaded from the database if the session state store entry was
+              found and successfully locked; otherwise, <c>null</c>.
+            </returns>
+            <remarks>
+              This method returns <c>null</c> if the session state entry does not exist or if the entry is already locked.
+            </remarks>
+        </member>
+    </members>
+</doc>

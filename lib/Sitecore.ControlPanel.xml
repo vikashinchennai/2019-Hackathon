@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.ControlPanel</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.ControlPanel.Texts">
+            <summary>
+            Class Texts
+            </summary>
+        </member>
+        <member name="F:Sitecore.ControlPanel.Texts.NoOptionsAvailable">
+            <summary>
+            The NoOptionsAvailable.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ControlPanel.Texts.Huge">
+            <summary>
+            The huge
+            </summary>
+        </member>
+        <member name="F:Sitecore.ControlPanel.Texts.Medium">
+            <summary>
+            The medium
+            </summary>
+        </member>
+        <member name="F:Sitecore.ControlPanel.Texts.Large">
+            <summary>
+            The large
+            </summary>
+        </member>
+        <member name="F:Sitecore.ControlPanel.Texts.Jpeg">
+            <summary>
+            The JPEG
+            </summary>
+        </member>
+        <member name="F:Sitecore.ControlPanel.Texts.Image">
+            <summary>
+            The image
+            </summary>
+        </member>
+    </members>
+</doc>

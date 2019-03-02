@@ -1,0 +1,563 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.ContentTagging.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.ContentTagging.Core.Comparers.TagNameComparer">
+            <summary>
+            Equality comparer for TagData which compares objects by TagName
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Comparers.TagNameComparer.Equals(Sitecore.ContentTagging.Core.Models.TagData,Sitecore.ContentTagging.Core.Models.TagData)">
+            <summary>
+            Checks if x equals y
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Comparers.TagNameComparer.GetHashCode(Sitecore.ContentTagging.Core.Models.TagData)">
+            <summary>
+            Gets hash code for TagData object
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Configuration.ContentTaggingProvidersConfigurationService">
+            <summary>
+            Service for reading content tagging providers configuration from sitecore web config
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Core.Configuration.ContentTaggingProvidersConfigurationService.ProviderCategories">
+            <summary>
+            List of provider categories
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Core.Configuration.ContentTaggingProvidersConfigurationService.ProvidersConfiguration">
+            <summary>
+            Providers configuration
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Core.Configuration.ContentTaggingProvidersConfigurationService.ConfigurationFactory">
+            <summary>
+            Base configuration factory
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Configuration.ContentTaggingProvidersConfigurationService.#ctor(Sitecore.Abstractions.BaseFactory)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configurationFactory">Base factory</param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Configuration.ContentTaggingProvidersConfigurationService.GetProviderTypeByName(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="providerName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Configuration.ContentTaggingProvidersConfigurationService.ReadProvidersConfiguration">
+            <summary>
+            Reads content tagging configuration from sitecore web config
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Configuration.ContentTaggingProvidersConfigurationService.GetProviderType(System.Xml.XmlNode)">
+            <summary>
+            Returns an instance of the provider from the configuration node.
+            </summary>
+            <param name="configNode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Configuration.IContentTaggingProvidersConfigurationService">
+            <summary>
+            Read provider type by name from configuration
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Configuration.IContentTaggingProvidersConfigurationService.GetProviderTypeByName(System.String)">
+            <summary>
+            Read provider type by name from configuration
+            </summary>
+            <param name="providerName">Provider name</param>
+            <returns>Provider type</returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Factories.ContentTaggingProviderFactory">
+            <summary>
+            Content tagging providers factory
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Core.Factories.ContentTaggingProviderFactory.ContentTaggingProvidersConfigurationService">
+            <summary>
+            Providers Configuration Service
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Factories.ContentTaggingProviderFactory.#ctor(Sitecore.ContentTagging.Core.Configuration.IContentTaggingProvidersConfigurationService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contentTaggingProvidersConfigurationService"></param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Factories.ContentTaggingProviderFactory.CreateContentProvider``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Factories.ContentTaggingProviderFactory.CreateDiscoveryProvider(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Factories.ContentTaggingProviderFactory.CreateTaxonomyProvider(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Factories.ContentTaggingProviderFactory.CreateTagger``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Factories.ContentTaggingProviderFactory.GetProvider``1(System.String)">
+            <summary>
+            Returns an instance of the provider from the configuration node.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="providerName">Name of registered provider</param>
+            <returns>Provider instance</returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Factories.HttpClientFactory">
+            <summary>
+            Http client factory implemntation
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Factories.HttpClientFactory.CreateHttpClient">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Factories.IContentTaggingProviderFactory">
+            <summary>
+            Content tagging providers factory
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Factories.IContentTaggingProviderFactory.CreateContentProvider``1(System.String)">
+            <summary>
+            Create content provider instance
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="providerName"></param>
+            <returns>Content provider instance</returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Factories.IContentTaggingProviderFactory.CreateDiscoveryProvider(System.String)">
+            <summary>
+            Creates discovery provider instance
+            </summary>
+            <param name="providerName"></param>
+            <returns>Discovery provider instance</returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Factories.IContentTaggingProviderFactory.CreateTaxonomyProvider(System.String)">
+            <summary>
+            Creates taxonomy provider instance
+            </summary>
+            <param name="providerName"></param>
+            <returns>Taxonomy provider instance</returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Factories.IContentTaggingProviderFactory.CreateTagger``1(System.String)">
+            <summary>
+            Create tagger provider instance
+            </summary>
+            <param name="providerName"></param>
+            <returns>Tagger provider instance</returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Factories.IHttpClientFactory">
+            <summary>
+            Http Client Factory
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Factories.IHttpClientFactory.CreateHttpClient">
+            <summary>
+            Craetes instance of HttpClient
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Messaging.IMessageBusFactory">
+            <summary>
+            Message bus factory abstraction
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Messaging.IMessageBusFactory.Create">
+            <summary>
+            Creates instance of Message bus
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Messaging.IMessageHandler">
+            <summary>
+            Message handler abstraction
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Messaging.IMessageHandler.HandleMessage(Sitecore.ContentTagging.Core.Messaging.Message)">
+            <summary>
+            Handle message
+            </summary>
+            <param name="message">Message to handle</param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Messaging.IMessageSource">
+            <summary>
+            Interface for message source to inject message bus
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Messaging.IMessageSource.SetMessageBus(Sitecore.ContentTagging.Core.Messaging.MessageBus)">
+            <summary>
+            Set message bus 
+            </summary>
+            <param name="messageBus"></param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Messaging.Message">
+            <summary>
+            Message type
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Messaging.Message.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Messaging.Message.Body">
+            <summary>
+            Body of the message
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Messaging.Message.Level">
+            <summary>
+            Level of the message
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Messaging.MessageBus">
+            <summary>
+            Message bus
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Messaging.MessageBus.ReceivedMessages">
+            <summary>
+            List of messages which were received by message handler
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Core.Messaging.MessageBus.Hanlders">
+            <summary>
+            List of handlers to process messages
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Messaging.MessageBus.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Messaging.MessageBus.Subscribe(Sitecore.ContentTagging.Core.Messaging.IMessageHandler)">
+            <summary>
+            Adds handler to collection to allow it receive and process messages from the bus
+            </summary>
+            <param name="handler">Message handler</param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Messaging.MessageBus.SendMessage(Sitecore.ContentTagging.Core.Messaging.Message)">
+            <summary>
+            Send message to all subscribed handlers
+            </summary>
+            <param name="message">Message</param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Messaging.MessageBusFactory">
+            <summary>
+            Messaging factory
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Messaging.MessageBusFactory.Create">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Messaging.MessageLevel">
+            <summary>
+            Message level enum
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Core.Messaging.MessageLevel.Error">
+            <summary>
+            Error level
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Core.Messaging.MessageLevel.Warning">
+            <summary>
+            Warning level
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Core.Messaging.MessageLevel.Info">
+            <summary>
+            Information level
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Messaging.MessageSource">
+            <summary>
+            Base IMessage source for IMessage source
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Messaging.MessageSource.MessageBus">
+            <summary>
+            Message bus
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Messaging.MessageSource.SetMessageBus(Sitecore.ContentTagging.Core.Messaging.MessageBus)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Models.MediaContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Models.MediaContent.Content">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Models.StringContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Models.StringContent.Content">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Models.ConntentTaggingStringExtensions">
+            <summary>
+            String extensions
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Models.ConntentTaggingStringExtensions.TryConvertToFloatInvariantCulture(System.String,System.Single@)">
+            <summary>
+            Try to parse string to float value regardless of culture. 
+            </summary>
+            <param name="input">input string</param>
+            <param name="result">out result</param>
+            <returns>Parsed value if success, 0 when could not parse</returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Models.Tag">
+            <summary>
+            Defines tag type
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Models.Tag.TaxonomyProviderId">
+            <summary>
+            Taxonomy provider id
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Models.Tag.TagName">
+            <summary>
+            Tag name
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Models.Tag.ID">
+            <summary>
+            Tag identifier
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Models.Tag.Data">
+            <summary>
+            Tag data
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Models.TagData">
+            <summary>
+            Defines tag data type
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Models.TagData.#ctor">
+            <summary>
+            TagData
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Models.TagData.#ctor(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            TagData
+            </summary>
+            <param name="properties"></param>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Models.TagData.TagName">
+            <summary>
+            Tag name
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Models.TagData.Relevance">
+            <summary>
+            Tag relevance
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Models.TagData.ForEndUserDisplay">
+            <summary>
+            For EndUser Display
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Models.TagData.Children">
+            <summary>
+            Tag children
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Models.TagData.Properties">
+            <summary>
+            Tag properties
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Models.TaggableContent">
+            <summary>
+            Defines type for taggable content
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Providers.DefaultContentProvider">
+            <summary>
+            Defines default implementation of content provider. Retrieve content from all fields.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.DefaultContentProvider.GetContent(Sitecore.Data.Items.Item)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Providers.DefaultTagger">
+            <summary>
+            Defines default tager implementation type. Save tags to semantic field.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.DefaultTagger.TagContent(Sitecore.Data.Items.Item,System.Collections.Generic.IEnumerable{Sitecore.ContentTagging.Core.Models.Tag})">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Providers.DefaultTaxonomyProvider">
+            <summary>
+            Defines defailt implementation of taxonomy provider. Operates with default Sitecore tags repositoty.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Core.Providers.DefaultTaxonomyProvider.TagRepository">
+            <summary>
+            Tag repository
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Providers.DefaultTaxonomyProvider.Database">
+            <summary>
+            Database
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Providers.DefaultTaxonomyProvider.ProviderId">
+            <summary>
+            Provider id
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.DefaultTaxonomyProvider.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.DefaultTaxonomyProvider.CreateTags(System.Collections.Generic.IEnumerable{Sitecore.ContentTagging.Core.Models.TagData})">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.DefaultTaxonomyProvider.CreateTag(Sitecore.ContentTagging.Core.Models.TagData)">
+            <summary>
+            Create tag in tag storage from given TagData
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.DefaultTaxonomyProvider.GetTag(System.String)">
+            <summary>
+            Return tag by tag id
+            </summary>
+            <param name="tagId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.DefaultTaxonomyProvider.GetParent(System.String)">
+            <summary>
+            Returns tag's parent
+            </summary>
+            <param name="tagId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.DefaultTaxonomyProvider.GetChildren(System.String)">
+            <summary>
+            Returns tag's children
+            </summary>
+            <param name="tagId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.DefaultTaxonomyProvider.RemoveDiacritics(System.String)">
+            <summary>
+            Replaces forbiden by Sitecore characters
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Providers.IContentProvider`1">
+            <summary>
+            Defines interface for the content provider
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.IContentProvider`1.GetContent(`0)">
+            <summary>
+            Get taggable content from item
+            </summary>
+            <param name="source">Content source</param>
+            <returns>Taggable content</returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Providers.IDiscoveryProvider">
+            <summary>
+            Defines interface for discovery provider
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.IDiscoveryProvider.GetTags(System.Collections.Generic.IEnumerable{Sitecore.ContentTagging.Core.Models.TaggableContent})">
+            <summary>
+            Perform content processing
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.IDiscoveryProvider.IsConfigured">
+            <summary>
+            Validate provider is configured
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Providers.ITagger`1">
+            <summary>
+            Defines tagger interface
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.ITagger`1.TagContent(`0,System.Collections.Generic.IEnumerable{Sitecore.ContentTagging.Core.Models.Tag})">
+            <summary>
+            Tag content item with a given set of tags.
+            </summary>
+            <param name="taggable">Item to tag</param>
+            <param name="tags">List of tags</param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Core.Providers.ITaxonomyProvider">
+            <summary>
+            Defines interface for taxonomy provider
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Core.Providers.ITaxonomyProvider.ProviderId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.ITaxonomyProvider.CreateTags(System.Collections.Generic.IEnumerable{Sitecore.ContentTagging.Core.Models.TagData})">
+            <summary>
+            
+            </summary>
+            <param name="tagData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.ITaxonomyProvider.GetTag(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="tagId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.ITaxonomyProvider.GetParent(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="tagId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Core.Providers.ITaxonomyProvider.GetChildren(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="tagId"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

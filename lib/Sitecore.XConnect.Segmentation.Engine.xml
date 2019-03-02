@@ -1,0 +1,368 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.XConnect.Segmentation.Engine</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder">
+            <summary>
+            Provides an intuitive mechanism to create a <see cref="T:Sitecore.XConnect.ContactExpandOptions"/> instance via
+            descriptive methods that represent common use cases.
+            </summary>
+        </member>
+        <member name="F:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder.AllContactFacetKeys">
+            <summary>
+            A list of all <see cref="T:Sitecore.XConnect.Contact"/> facet keys.
+            </summary>
+        </member>
+        <member name="F:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder.AllInteractionFacetKeys">
+            <summary>
+            A list of all <see cref="T:Sitecore.XConnect.Interaction"/> facet keys.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder.IncludeAllContactFacets">
+            <summary>
+            Populate all <see cref="T:Sitecore.XConnect.Contact"/> facets in the results.
+            </summary>
+            <returns>Returns the current <see cref="T:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder"/>.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder.IncludeContactFacets(System.String[])">
+            <summary>
+            Populate specific <see cref="T:Sitecore.XConnect.Contact"/> facets in the results.
+            </summary>
+            <param name="facetKeys">The keys of the facets to populate.</param>
+            <returns>Returns the current <see cref="T:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder"/>.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder.WithInteractions">
+            <summary>
+            Populate the Interactions property of the <see cref="T:Sitecore.XConnect.Contact"/>s returned.
+            </summary>
+            <returns>Returns the current <see cref="T:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder"/>.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder.WithInteractions(System.DateTime,System.DateTime)">
+            <summary>
+            Populate the Interactions property of the <see cref="T:Sitecore.XConnect.Contact"/>s returned.
+            </summary>
+            <param name="from">Optionally specifies the minimum start date of <see cref="T:Sitecore.XConnect.Interaction"/>s to return.</param>
+            <param name="to">Optionally specifies the maximum end date of <see cref="T:Sitecore.XConnect.Interaction"/>s to return.</param>
+            <returns>Returns the current <see cref="T:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder"/>.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder.WithInteractions(System.DateTime,System.DateTime,System.Int32)">
+            <summary>
+            Populate the Interactions property of the <see cref="T:Sitecore.XConnect.Contact"/>s returned.
+            </summary>
+            <param name="from">Optionally specifies the minimum start date of <see cref="T:Sitecore.XConnect.Interaction"/>s to return.</param>
+            <param name="to">Optionally specifies the maximum end date of <see cref="T:Sitecore.XConnect.Interaction"/>s to return.</param>
+            <param name="limit">Optionally specifies the maximum number of Interactions to return.</param>
+            <returns>Returns the current <see cref="T:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder"/>.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder.WithInteractions(System.Int32)">
+            <summary>
+            Populate the Interactions property of the <see cref="T:Sitecore.XConnect.Contact"/>s returned.
+            </summary>
+            <param name="limit">Optionally specifies the maximum number of Interactions to return.</param>
+            <returns>Returns the current <see cref="T:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder"/>.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder.IncludeAllInteractionFacets">
+            <summary>
+            Populate all <see cref="T:Sitecore.XConnect.Interaction"/> facets in the results. 
+            </summary>
+            <returns>Returns the current <see cref="T:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder"/>.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder.IncludeInteractionFacets(System.String[])">
+            <summary>
+            Populate specific <see cref="T:Sitecore.XConnect.Interaction"/> facets in the results.
+            </summary>
+            <param name="facetKeys"></param>
+            <returns>Returns the current <see cref="T:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder"/>.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder.Build">
+            <summary>
+            Builds the <see cref="T:Sitecore.XConnect.ContactExpandOptions"/> using the criteria specified. 
+            </summary>
+            <returns>A new <see cref="T:Sitecore.XConnect.ContactExpandOptions"/> representing the criteria specified in the builder.</returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.ContactSearchExpressionBuilderExtensions">
+            <summary>
+            Provides useful extensions for the <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.IContactSearchExpressionBuilder"/> that make common
+            use cases simpler for consumers.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.ContactSearchExpressionBuilderExtensions.BuildQueryFactories(Sitecore.XConnect.Segmentation.ExpressionBuilder.IContactSearchExpressionBuilder,System.Collections.Generic.IEnumerable{Sitecore.Marketing.Rules.IRuleConditionNode})">
+            <summary>
+            Creates a collection of <see cref="T:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory"/> trees from the supplied <see cref="T:Sitecore.Marketing.Rules.IRuleConditionNode"/> trees.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="nodes">The nodes describing the <see cref="T:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory"/> trees to create.</param>
+            <returns>A new query factory tree.</returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.IContactSearchExpressionBuilder">
+            <summary>
+            Represents the ability to create a <see cref="T:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory"/> tree represented 
+            by a <see cref="T:Sitecore.Marketing.Rules.IRuleConditionNode"/> tree.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.IContactSearchExpressionBuilder.BuildQueryFactory(Sitecore.Marketing.Rules.IRuleConditionNode)">
+            <summary>
+            Creates an <see cref="T:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory"/> tree from the supplied <see cref="T:Sitecore.Marketing.Rules.IRuleConditionNode"/> tree.
+            </summary>
+            <param name="node">The node describing the query factory tree to create.</param>
+            <returns>A new query factory tree.</returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.ISegmentationEngine">
+            <summary>
+            Represents the execution of <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>s to yield groups of <see cref="T:Sitecore.XConnect.Contact"/>s. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.CountContacts(Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory)">
+            <summary>
+            Returns the number of <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the query. 
+            </summary>
+            <param name="queryFactory">The factory that will create an XConnect contact search query.</param>
+            <returns>The number of <see cref="T:Sitecore.XConnect.Contact"/>s meeting the search criteria.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.CountContacts(Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,System.Byte[])">
+            <summary>
+            Returns the number of <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the query. 
+            </summary>
+            <param name="queryFactory">The factory that will create an XConnect contact search query.</param>
+            <param name="syncToken">The sync token passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <returns>The number of <see cref="T:Sitecore.XConnect.Contact"/>s meeting the search criteria.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.CountContacts(Sitecore.Marketing.Definitions.Segments.ISegmentDefinition)">
+            <summary>
+            Returns the number of <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>. 
+            </summary>
+            <param name="segment">The segment defining the Rules that select the contacts to return.</param>
+            <returns>The number of <see cref="T:Sitecore.XConnect.Contact"/>s meeting any of the search criteria.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.CountContacts(Sitecore.Marketing.Definitions.Segments.ISegmentDefinition,System.Byte[])">
+            <summary>
+            Returns the number of <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>. 
+            </summary>
+            <param name="segment">The segment defining the Rules that select the contacts to return.</param>
+            <param name="syncToken">The sync token passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <returns>The number of <see cref="T:Sitecore.XConnect.Contact"/>s meeting any of the search criteria.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.FindContacts(Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,System.Int32,System.Int32,Sitecore.XConnect.ContactExpandOptions)">
+            <summary>
+            Returns the <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the query. 
+            </summary>
+            <param name="queryFactory">The factory that will create an XConnect contact search query.</param>
+            <param name="skip">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the potential result set to skip.</param>
+            <param name="take">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the result set to return.</param>
+            <param name="expandOptions">The options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <returns>The <see cref="T:Sitecore.XConnect.Contact"/>s meeting the search criteria.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.FindContacts(Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,System.Int32,System.Int32,Sitecore.XConnect.ContactExpandOptions,System.Byte[])">
+            <summary>
+            Returns the <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the query. 
+            </summary>
+            <param name="queryFactory">The factory that will create an XConnect contact search query.</param>
+            <param name="skip">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the potential result set to skip.</param>
+            <param name="take">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the result set to return.</param>
+            <param name="expandOptions">The options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <param name="syncToken">The sync token passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <returns>The <see cref="T:Sitecore.XConnect.Contact"/>s meeting the search criteria.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.FindContacts(Sitecore.Marketing.Definitions.Segments.ISegmentDefinition,System.Int32,System.Int32,Sitecore.XConnect.ContactExpandOptions)">
+            <summary>
+            Returns the <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>. 
+            </summary>
+            <param name="segment">The segment defining the Rules that select the contacts to return.</param>
+            <param name="skip">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the potential result set to skip.</param>
+            <param name="take">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the result set to return.</param>
+            <param name="expandOptions">The options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <returns>The <see cref="T:Sitecore.XConnect.Contact"/>s meeting the search criteria.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.FindContacts(Sitecore.Marketing.Definitions.Segments.ISegmentDefinition,System.Int32,System.Int32,Sitecore.XConnect.ContactExpandOptions,System.Byte[])">
+            <summary>
+            Returns the <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>. 
+            </summary>
+            <param name="segment">The segment defining the Rules that select the contacts to return.</param>
+            <param name="skip">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the potential result set to skip.</param>
+            <param name="take">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the result set to return.</param>
+            <param name="expandOptions">The options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <param name="syncToken">The sync token passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates waiting for data to be persisted to the search index.</param>
+            <returns>The <see cref="T:Sitecore.XConnect.Contact"/>s meeting the search criteria.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.FindContacts(Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,System.Int32,Sitecore.XConnect.ContactExpandOptions)">
+            <summary>
+            Returns an enumerator to facilitate exporting all <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the query.
+            </summary>
+            <param name="queryFactory">The factory that will create an XConnect contact search query.</param>
+            <param name="batchSize">The number of <see cref="T:Sitecore.XConnect.Contact"/>s that will be returned on each advance of the enumerator.</param>
+            <param name="expandOptions">The options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/> describing which properties should be populated in the returned <see cref="T:Sitecore.XConnect.Contact"/>s.</param>
+            <returns>The batch enumerator to move through the result set.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.FindContacts(Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,System.Int32,Sitecore.XConnect.ContactExpandOptions,System.Byte[])">
+            <summary>
+            Returns an enumerator to facilitate exporting all <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the query.
+            </summary>
+            <param name="queryFactory">The factory that will create an XConnect contact search query.</param>
+            <param name="batchSize">The number of <see cref="T:Sitecore.XConnect.Contact"/>s that will be returned on each advance of the enumerator.</param>
+            <param name="expandOptions">The options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/> describing which properties should be populated in the returned <see cref="T:Sitecore.XConnect.Contact"/>s.</param>
+            <param name="bookmark">The bookmark passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates resuming enumerating a previously returned result set part way through.</param>
+            <returns>The batch enumerator to move through the result set.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.FindContacts(Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,System.Int32,Sitecore.XConnect.ContactExpandOptions,System.Byte[],System.Byte[])">
+            <summary>
+            Returns an enumerator to facilitate exporting all <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the query.
+            </summary>
+            <param name="queryFactory">The factory that will create an XConnect contact search query.</param>
+            <param name="batchSize">The number of <see cref="T:Sitecore.XConnect.Contact"/>s that will be returned on each advance of the enumerator.</param>
+            <param name="expandOptions">The options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/> describing which properties should be populated in the returned <see cref="T:Sitecore.XConnect.Contact"/>s.</param>
+            <param name="bookmark">The bookmark passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates resuming enumerating a previously returned result set part way through.</param>
+            <param name="syncToken">The sync token passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates waiting for data to be persisted to the search index.</param>
+            <returns>The batch enumerator to move through the result set.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.FindContacts(Sitecore.Marketing.Definitions.Segments.ISegmentDefinition,System.Int32,Sitecore.XConnect.ContactExpandOptions)">
+            <summary>
+            Returns an enumerator to facilitate exporting all <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>.
+            </summary>
+            <param name="segment">The segment defining the Rules that select the contacts to return.</param>
+            <param name="batchSize">The number of <see cref="T:Sitecore.XConnect.Contact"/>s that will be returned on each advance of the enumerator.</param>
+            <param name="expandOptions">The options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/> describing which properties should be populated in the returned <see cref="T:Sitecore.XConnect.Contact"/>s.</param>
+            <returns>The batch enumerator to move through the result set.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.FindContacts(Sitecore.Marketing.Definitions.Segments.ISegmentDefinition,System.Int32,Sitecore.XConnect.ContactExpandOptions,System.Byte[])">
+            <summary>
+            Returns an enumerator to facilitate exporting all <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>.
+            </summary>
+            <param name="segment">The segment defining the Rules that select the contacts to return.</param>
+            <param name="batchSize">The number of <see cref="T:Sitecore.XConnect.Contact"/>s that will be returned on each advance of the enumerator.</param>
+            <param name="expandOptions">The options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/> describing which properties should be populated in the returned <see cref="T:Sitecore.XConnect.Contact"/>s.</param>
+            <param name="bookmark">The bookmark passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates resuming enumerating a previously returned result set part way through.</param>
+            <returns>The batch enumerator to move through the result set.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ISegmentationEngine.FindContacts(Sitecore.Marketing.Definitions.Segments.ISegmentDefinition,System.Int32,Sitecore.XConnect.ContactExpandOptions,System.Byte[],System.Byte[])">
+            <summary>
+            Returns an enumerator to facilitate exporting all <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>.
+            </summary>
+            <param name="segment">The segment defining the Rules that select the contacts to return.</param>
+            <param name="batchSize">The number of <see cref="T:Sitecore.XConnect.Contact"/>s that will be returned on each advance of the enumerator.</param>
+            <param name="expandOptions">The options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/> describing which properties should be populated in the returned <see cref="T:Sitecore.XConnect.Contact"/>s.</param>
+            <param name="bookmark">The bookmark passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates resuming enumerating a previously returned result set part way through.</param>
+            <param name="syncToken">The sync token passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates waiting for data to be persisted to the search index.</param>
+            <returns>The batch enumerator to move through the result set.</returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.SegmentationEngineExtensions">
+            <summary>
+            Provides useful extensions for the <see cref="T:Sitecore.XConnect.Segmentation.ISegmentationEngine"/> that make common
+            use cases simpler for consumers.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.SegmentationEngineExtensions.FindContacts(Sitecore.XConnect.Segmentation.ISegmentationEngine,Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,System.Int32,System.Int32,System.Func{Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder,Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder})">
+            <summary>
+            Returns the <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the query. 
+            </summary>
+            <param name="engine">The <see cref="T:Sitecore.XConnect.Segmentation.ISegmentationEngine"/> instance.</param>
+            <param name="queryFactory">The factory that will create an XConnect contact search query.</param>
+            <param name="skip">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the potential result set to skip.</param>
+            <param name="take">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the result set to return.</param>
+            <param name="configureExpand">Configures the options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <returns>The <see cref="T:Sitecore.XConnect.Contact"/>s meeting the search criteria.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.SegmentationEngineExtensions.FindContacts(Sitecore.XConnect.Segmentation.ISegmentationEngine,Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,System.Int32,System.Int32,System.Func{Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder,Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder},System.Byte[])">
+            <summary>
+            Returns the <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the query. 
+            </summary>
+            <param name="engine">The <see cref="T:Sitecore.XConnect.Segmentation.ISegmentationEngine"/> instance.</param>
+            <param name="queryFactory">The factory that will create an XConnect contact search query.</param>
+            <param name="skip">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the potential result set to skip.</param>
+            <param name="take">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the result set to return.</param>
+            <param name="configureExpand">Configures the options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <param name="syncToken">The sync token passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <returns>The <see cref="T:Sitecore.XConnect.Contact"/>s meeting the search criteria.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.SegmentationEngineExtensions.FindContacts(Sitecore.XConnect.Segmentation.ISegmentationEngine,Sitecore.Marketing.Definitions.Segments.ISegmentDefinition,System.Int32,System.Int32,System.Func{Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder,Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder})">
+            <summary>
+            Returns the <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>. 
+            </summary>
+            <param name="engine">The <see cref="T:Sitecore.XConnect.Segmentation.ISegmentationEngine"/> instance.</param>
+            <param name="segment">The segment defining the Rules that select the contacts to return.</param>
+            <param name="skip">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the potential result set to skip.</param>
+            <param name="take">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the result set to return.</param>
+            <param name="configureExpand">Configures the options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <returns>The <see cref="T:Sitecore.XConnect.Contact"/>s meeting the search criteria.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.SegmentationEngineExtensions.FindContacts(Sitecore.XConnect.Segmentation.ISegmentationEngine,Sitecore.Marketing.Definitions.Segments.ISegmentDefinition,System.Int32,System.Int32,System.Func{Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder,Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder},System.Byte[])">
+            <summary>
+            Returns the <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>. 
+            </summary>
+            <param name="engine">The <see cref="T:Sitecore.XConnect.Segmentation.ISegmentationEngine"/> instance.</param>
+            <param name="segment">The segment defining the Rules that select the contacts to return.</param>
+            <param name="skip">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the potential result set to skip.</param>
+            <param name="take">The number of <see cref="T:Sitecore.XConnect.Contact"/>s in the result set to return.</param>
+            <param name="syncToken">The sync token passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates waiting for data to be persisted to the search index.</param>
+            <param name="configureExpand">Configures the options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <returns>The <see cref="T:Sitecore.XConnect.Contact"/>s meeting the search criteria.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.SegmentationEngineExtensions.FindContacts(Sitecore.XConnect.Segmentation.ISegmentationEngine,Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,System.Int32,System.Func{Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder,Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder})">
+            <summary>
+            Returns an enumerator to facilitate exporting all <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the query.
+            </summary>
+            <param name="engine">The <see cref="T:Sitecore.XConnect.Segmentation.ISegmentationEngine"/> instance.</param>
+            <param name="queryFactory">The factory that will create an XConnect contact search query.</param>
+            <param name="batchSize">The number of <see cref="T:Sitecore.XConnect.Contact"/>s that will be returned on each advance of the enumerator.</param>
+            <param name="configureExpand">Configures the options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <returns>The batch enumerator to move through the result set.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.SegmentationEngineExtensions.FindContacts(Sitecore.XConnect.Segmentation.ISegmentationEngine,Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,System.Int32,System.Func{Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder,Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder},System.Byte[])">
+            <summary>
+            Returns an enumerator to facilitate exporting all <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the query.
+            </summary>
+            <param name="engine">The <see cref="T:Sitecore.XConnect.Segmentation.ISegmentationEngine"/> instance.</param>
+            <param name="queryFactory">The factory that will create an XConnect contact search query.</param>
+            <param name="batchSize">The number of <see cref="T:Sitecore.XConnect.Contact"/>s that will be returned on each advance of the enumerator.</param>
+            <param name="configureExpand">Configures the options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <param name="bookmark">The bookmark passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates resuming enumerating a previously returned result set part way through.</param>
+            <returns>The batch enumerator to move through the result set.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.SegmentationEngineExtensions.FindContacts(Sitecore.XConnect.Segmentation.ISegmentationEngine,Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,System.Int32,System.Func{Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder,Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder},System.Byte[],System.Byte[])">
+            <summary>
+            Returns an enumerator to facilitate exporting all <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the query.
+            </summary>
+            <param name="engine">The <see cref="T:Sitecore.XConnect.Segmentation.ISegmentationEngine"/> instance.</param>
+            <param name="queryFactory">The factory that will create an XConnect contact search query.</param>
+            <param name="batchSize">The number of <see cref="T:Sitecore.XConnect.Contact"/>s that will be returned on each advance of the enumerator.</param>
+            <param name="configureExpand">Configures the options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <param name="bookmark">The bookmark passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates resuming enumerating a previously returned result set part way through.</param>
+            <param name="syncToken">The sync token passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates waiting for data to be persisted to the search index.</param>
+            <returns>The batch enumerator to move through the result set.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.SegmentationEngineExtensions.FindContacts(Sitecore.XConnect.Segmentation.ISegmentationEngine,Sitecore.Marketing.Definitions.Segments.ISegmentDefinition,System.Int32,System.Func{Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder,Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder})">
+            <summary>
+            Returns an enumerator to facilitate exporting all <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>.
+            </summary>
+            <param name="engine">The <see cref="T:Sitecore.XConnect.Segmentation.ISegmentationEngine"/> instance.</param>
+            <param name="segment">The segment defining the Rules that select the contacts to return.</param>
+            <param name="batchSize">The number of <see cref="T:Sitecore.XConnect.Contact"/>s that will be returned on each advance of the enumerator.</param>
+            <param name="configureExpand">Configures the options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <returns>The batch enumerator to move through the result set.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.SegmentationEngineExtensions.FindContacts(Sitecore.XConnect.Segmentation.ISegmentationEngine,Sitecore.Marketing.Definitions.Segments.ISegmentDefinition,System.Int32,System.Func{Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder,Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder},System.Byte[])">
+            <summary>
+            Returns an enumerator to facilitate exporting all <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>.
+            </summary>
+            <param name="engine">The <see cref="T:Sitecore.XConnect.Segmentation.ISegmentationEngine"/> instance.</param>
+            <param name="segment">The segment defining the Rules that select the contacts to return.</param>
+            <param name="batchSize">The number of <see cref="T:Sitecore.XConnect.Contact"/>s that will be returned on each advance of the enumerator.</param>
+            <param name="configureExpand">Configures the options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <param name="bookmark">The bookmark passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates resuming enumerating a previously returned result set part way through.</param>
+            <returns>The batch enumerator to move through the result set.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.SegmentationEngineExtensions.FindContacts(Sitecore.XConnect.Segmentation.ISegmentationEngine,Sitecore.Marketing.Definitions.Segments.ISegmentDefinition,System.Int32,System.Func{Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder,Sitecore.XConnect.Segmentation.ContactExpandOptionsBuilder},System.Byte[],System.Byte[])">
+            <summary>
+            Returns an enumerator to facilitate exporting all <see cref="T:Sitecore.XConnect.Contact"/>s that meet the criteria described by the <see cref="T:Sitecore.Marketing.Definitions.Segments.ISegmentDefinition"/>.
+            </summary>
+            <param name="engine">The <see cref="T:Sitecore.XConnect.Segmentation.ISegmentationEngine"/> instance.</param>
+            <param name="segment">The segment defining the Rules that select the contacts to return.</param>
+            <param name="batchSize">The number of <see cref="T:Sitecore.XConnect.Contact"/>s that will be returned on each advance of the enumerator.</param>
+            <param name="configureExpand">Configures the options passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.</param>
+            <param name="bookmark">The bookmark passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates resuming enumerating a previously returned result set part way through.</param>
+            <param name="syncToken">The sync token passed to the underlying <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.  Facilitates waiting for data to be persisted to the search index.</param>
+            <returns>The batch enumerator to move through the result set.</returns>
+        </member>
+    </members>
+</doc>

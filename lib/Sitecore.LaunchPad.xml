@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.LaunchPad</name>
+    </assembly>
+    <members>
+        <member name="P:Sitecore.LaunchPad.Configuration.LaunchPadSettings.EnablePersonalizedFrames">
+            <summary>
+            Gets a value indicating whether [show the personalized frames].
+            </summary>
+        </member>
+        <member name="T:Sitecore.LaunchPad.Pipelines.GetStartUrl.LaunchPadStartUrl">
+            <summary></summary>
+            <seealso cref="T:Sitecore.Pipelines.GetStartUrl.GetStartUrlProcessor" />
+        </member>
+        <member name="F:Sitecore.LaunchPad.Pipelines.GetStartUrl.LaunchPadStartUrl.LaunchPadItemId">
+            <summary>
+            The Launch Pad item ID.
+            </summary>
+        </member>
+        <member name="M:Sitecore.LaunchPad.Pipelines.GetStartUrl.LaunchPadStartUrl.Process(Sitecore.Pipelines.GetStartUrl.GetStartUrlArgs)">
+            <summary>
+            Processes the specified arguments.
+            </summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Sitecore.LaunchPad.Pipelines.GetStartUrl.LaunchPadStartUrl.GetDatabase(Sitecore.Pipelines.GetStartUrl.GetStartUrlArgs)">
+            <summary>
+            Gets the database.
+            </summary>
+            <param name="args">The arguments.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.LaunchPad.Pipelines.Loggingin.LaunchPadStartUrl.Process(Sitecore.Pipelines.LoggingIn.LoggingInArgs)">
+            <summary>
+            Runs the processor.
+            </summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Sitecore.LaunchPad.Pipelines.Loggingin.LaunchPadStartUrl.ValidateStartUrl(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="userName"></param>
+            <param name="startUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.LaunchPad.Pipelines.Loggingin.LaunchPadStartUrl.GetItemPath(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="startUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.LaunchPad.LaunchPad.GetControlGroups(Sitecore.Data.Items.Item)">
+            <summary>
+            Gets the control groups to render on LaunchBar.
+            </summary>
+            <param name="root">The root.</param>
+            <returns>Groups of items to render.</returns>
+        </member>
+        <member name="M:Sitecore.LaunchPad.LaunchPad.GetGroupItems(Sitecore.Data.Items.Item)">
+            <summary>
+            Gets the control groups to render on LaunchBar.
+            </summary>
+            <param name="root">The root.</param>
+            <returns>Groups of items to render.</returns>
+        </member>
+        <member name="M:Sitecore.LaunchPad.LaunchPad.IsButtonVisible(Sitecore.Data.Items.Item)">
+            <summary>
+            Determines whether the button is visible on the launchpad.
+            </summary>
+            <param name="buttonItem">The button item.</param>
+            <returns>
+              <c>true</c> if the button is visible; otherwise, <c>false</c>.
+            </returns>
+        </member>
+    </members>
+</doc>

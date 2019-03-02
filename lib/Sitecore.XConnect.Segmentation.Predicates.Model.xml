@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.XConnect.Segmentation.Predicates.Model</name>
+    </assembly>
+    <members>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.ContactSearchQueryFactoryExtensions.And(Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory[])">
+            <summary>
+            Combines the left and right <see cref="T:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory"/>s together with a logical And operator.
+            </summary>
+            <param name="left">The left query factory.</param>
+            <param name="rightOperands">One or more query factories to be included as the right operands.</param>
+            <returns>A query factory representing the logical And of the input operands.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.ContactSearchQueryFactoryExtensions.Or(Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory,Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory[])">
+            <summary>
+            Combines the left and right <see cref="T:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory"/>s together with a logical Or operator.
+            </summary>
+            <param name="left">The left query factory.</param>
+            <param name="rightOperands">One or more query factories to be included as the right operands.</param>
+            <returns>A query factory representing the logical Or of the input operands.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.ContactSearchQueryFactoryExtensions.Not(Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory)">
+            <summary>
+            Wraps a <see cref="T:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory"/>s in a logical Not operator.
+            </summary>
+            <param name="operand">The query factory to negate.</param>
+            <returns>A query factory representing the logical Not of the input operand.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.EnumerableContactSearchQueryFactoryExtensions.CombineUsingAnd(System.Collections.Generic.IEnumerable{Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory})">
+            <summary>
+            Combines the set of <see cref="T:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory"/>s with a logical And operator.
+            </summary>
+            <param name="factories">The factories to combine.</param>
+            <returns>A query factory representing a logical And of those supplied.</returns>
+            <exception cref="T:System.ArgumentNullException">When factories is null.</exception>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.EnumerableContactSearchQueryFactoryExtensions.CombineUsingOr(System.Collections.Generic.IEnumerable{Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory})">
+            <summary>
+            Combines the set of <see cref="T:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory"/>s with a logical Or operator.
+            </summary>
+            <param name="factories">The factories to combine.</param>
+            <returns>A query factory representing a logical Or of those supplied.</returns>
+            /// <exception cref="T:System.ArgumentNullException">When factories is null.</exception>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryContext">
+            <summary>
+            Represents the services and operations available when creating a <see cref="T:Sitecore.XConnect.Contact"/> predicate expression.  
+            See <see cref="T:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory"/>.
+            </summary>
+        </member>
+        <member name="P:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryContext.Services">
+            <summary>
+            Gets the services available.
+            </summary>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory">
+            <summary>
+            Represents a factory to create <see cref="T:Sitecore.XConnect.Contact"/> predicate, that will be built
+            into a search query to retrieve a set of contacts.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryFactory.CreateContactSearchQuery(Sitecore.XConnect.Segmentation.Predicates.IContactSearchQueryContext)">
+            <summary>
+            Creates a predicate expression to select a set of <see cref="T:Sitecore.XConnect.Contact"/>s.
+            </summary>
+            <param name="context">Contains services available for use when building the predicate.</param>
+            <returns>A <see cref="T:Sitecore.XConnect.Contact"/> predicate expression.</returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.Predicates.QueryFactoryOperators.QueryFactoryOperatorHelpers">
+            <summary>
+            Enables the efficient, dynamic composition of query predicates.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.QueryFactoryOperators.QueryFactoryOperatorHelpers.CombineUsingOr(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression{System.Func{Sitecore.XConnect.Contact,System.Boolean}}})">
+            <summary>
+            Combines the set of contact predicate expressions with a logical Or operator.
+            </summary>
+            <param name="expressions">The predicate expressions to combine.</param>
+            <returns>An expression factory representing a logical Or of those supplied.</returns>
+            /// <exception cref="T:System.ArgumentNullException">When expressions is null.</exception>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.QueryFactoryOperators.QueryFactoryOperatorHelpers.CombineUsingAnd(System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression{System.Func{Sitecore.XConnect.Contact,System.Boolean}}})">
+            <summary>
+            Combines the set of contact predicate expressions with a logical And operator.
+            </summary>
+            <param name="expressions">The predicate expressions to combine.</param>
+            <returns>An expression factory representing a logical And of those supplied.</returns>
+            /// <exception cref="T:System.ArgumentNullException">When expressions is null.</exception>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.QueryFactoryOperators.QueryFactoryOperatorHelpers.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Combines the first predicate with the second using the logical "and".
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.QueryFactoryOperators.QueryFactoryOperatorHelpers.Not``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Negates the predicate.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.QueryFactoryOperators.QueryFactoryOperatorHelpers.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Combines the first predicate with the second using the logical "or".
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.QueryFactoryOperators.QueryFactoryOperatorHelpers.Compose``1(System.Linq.Expressions.Expression{``0},System.Linq.Expressions.Expression{``0},System.Func{System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.Expression})">
+            <summary>
+            Combines the first expression with the second using the specified merge function.
+            </summary>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.Predicates.ISegmentationServiceContext">
+            <summary>
+            Defines the platform services available in the Segmentation Engine.
+            </summary>
+        </member>
+        <member name="P:Sitecore.XConnect.Segmentation.Predicates.ISegmentationServiceContext.XConnect">
+            <summary>
+            The readonly <see cref="T:Sitecore.XConnect.Client.XConnectClient"/>.
+            </summary>
+        </member>
+        <member name="P:Sitecore.XConnect.Segmentation.Predicates.ISegmentationServiceContext.ReferenceData">
+            <summary>
+            The Reference Data Client.
+            </summary>
+        </member>
+        <member name="P:Sitecore.XConnect.Segmentation.Predicates.ISegmentationServiceContext.DefinitionManagers">
+            <summary>
+            The Marketing Definition Managers.
+            </summary>
+        </member>
+        <member name="P:Sitecore.XConnect.Segmentation.Predicates.ISegmentationServiceContext.TaxonomyManagers">
+            <summary>
+            The marketing Taxonomy Managers.
+            </summary>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.Predicates.NumericOperationType">
+            <summary>
+            Defines the operations that can be performed against two numeric operands.  Currently numeric
+            operands include DateTime and Timespan types as well as the conventional numeric primitivees in C#.
+            </summary>
+        </member>
+        <member name="F:Sitecore.XConnect.Segmentation.Predicates.NumericOperationType.IsGreaterThan">
+            <summary>
+            Is the first operand greater than the second operand.
+            </summary>
+        </member>
+        <member name="F:Sitecore.XConnect.Segmentation.Predicates.NumericOperationType.IsGreaterThanOrEqualTo">
+            <summary>
+            Is the first operand greater than or equal to the second operand.
+            </summary>
+        </member>
+        <member name="F:Sitecore.XConnect.Segmentation.Predicates.NumericOperationType.IsLessThan">
+            <summary>
+            Is the first operand less than the second operand.
+            </summary>
+        </member>
+        <member name="F:Sitecore.XConnect.Segmentation.Predicates.NumericOperationType.IsLessThanOrEqualTo">
+            <summary>
+            Is the first operand less than or equal to the second operand.
+            </summary>
+        </member>
+        <member name="F:Sitecore.XConnect.Segmentation.Predicates.NumericOperationType.IsEqualTo">
+            <summary>
+            Is the first operand equal to the second operand.
+            </summary>
+        </member>
+        <member name="F:Sitecore.XConnect.Segmentation.Predicates.NumericOperationType.IsNotEqualTo">
+            <summary>
+            Is the first operand not equal to the second operand.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.NumericOperationTypeExtensions.Evaluate(Sitecore.XConnect.Segmentation.Predicates.NumericOperationType,System.Decimal,System.Decimal)">
+            <summary>
+            Evaluates the specified numeric operation against the two provided decimal operands.
+            </summary>
+            <param name="operation">The current operation.</param>
+            <param name="left">The left decimal operand.</param>
+            <param name="right">The right decimal operand.</param>
+            <returns>The result of the operation.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.NumericOperationTypeExtensions.Evaluate(Sitecore.XConnect.Segmentation.Predicates.NumericOperationType,System.Single,System.Single)">
+            <summary>
+            Evaluates the specified numeric operation against the two provided float operands.
+            </summary>
+            <param name="operation">The current operation.</param>
+            <param name="left">The left float operand.</param>
+            <param name="right">The right float operand.</param>
+            <returns>The result of the operation.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.NumericOperationTypeExtensions.Evaluate(Sitecore.XConnect.Segmentation.Predicates.NumericOperationType,System.Double,System.Double)">
+            <summary>
+            Evaluates the specified numeric operation against the two provided double operands.
+            </summary>
+            <param name="operation">The current operation.</param>
+            <param name="left">The left double operand.</param>
+            <param name="right">The right double operand.</param>
+            <returns>The result of the operation.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.NumericOperationTypeExtensions.Evaluate(Sitecore.XConnect.Segmentation.Predicates.NumericOperationType,System.Int32,System.Int32)">
+            <summary>
+            Evaluates the specified numeric operation against the two provided integer operands.
+            </summary>
+            <param name="operation">The current operation.</param>
+            <param name="left">The left integer operand.</param>
+            <param name="right">The right integer operand.</param>
+            <returns>The result of the operation.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.NumericOperationTypeExtensions.Evaluate(Sitecore.XConnect.Segmentation.Predicates.NumericOperationType,System.Int64,System.Int64)">
+            <summary>
+            Evaluates the specified numeric operation against the two provided long operands.
+            </summary>
+            <param name="operation">The current operation.</param>
+            <param name="left">The left long operand.</param>
+            <param name="right">The right long operand.</param>
+            <returns>The result of the operation.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.NumericOperationTypeExtensions.Evaluate(Sitecore.XConnect.Segmentation.Predicates.NumericOperationType,System.DateTime,System.DateTime)">
+            <summary>
+            Evaluates the specified numeric operation against the two provided DateTime operands.
+            </summary>
+            <param name="operation">The current operation.</param>
+            <param name="left">The left DateTime operand.</param>
+            <param name="right">The right DateTime operand.</param>
+            <returns>The result of the operation.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.NumericOperationTypeExtensions.Evaluate(Sitecore.XConnect.Segmentation.Predicates.NumericOperationType,System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Evaluates the specified numeric operation against the two provided TimeSpan operands.
+            </summary>
+            <param name="operation">The current operation.</param>
+            <param name="left">The left TimeSpan operand.</param>
+            <param name="right">The right TimeSpan operand.</param>
+            <returns>The result of the operation.</returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.Predicates.StringOperationType">
+            <summary>
+            Defines the types of operations that can be performed against two string operands.
+            </summary>
+        </member>
+        <member name="F:Sitecore.XConnect.Segmentation.Predicates.StringOperationType.IsCaseInsensitiveAndEqualTo">
+            <summary>
+            A string equality check, ignoring the case of the two operands.
+            </summary>
+        </member>
+        <member name="F:Sitecore.XConnect.Segmentation.Predicates.StringOperationType.IsCaseInsensitiveAndNotEqualTo">
+            <summary>
+            A negative equality check, ignoring the case of the two operands.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.StringOperationTypeExtensions.IsNegativeEquality(Sitecore.XConnect.Segmentation.Predicates.StringOperationType)">
+            <summary>
+            Determines if the specified operation is one of the known negative equality operations.
+            </summary>
+            <param name="operation">The specified operation.</param>
+            <returns>True if the operation is a negative equality check.</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Predicates.StringOperationTypeExtensions.Evaluate(Sitecore.XConnect.Segmentation.Predicates.StringOperationType,System.String,System.String)">
+            <summary>
+            Evaluates the specified string operation against the two provided string operands.
+            </summary>
+            <param name="operation">The string operation to perform.</param>
+            <param name="left">The left string operand.</param>
+            <param name="right">The right string operand.</param>
+            <returns>The result of the operation.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">When the type of operation is not recognised.</exception>
+        </member>
+    </members>
+</doc>

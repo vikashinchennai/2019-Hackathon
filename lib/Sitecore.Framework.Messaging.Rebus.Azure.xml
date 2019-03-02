@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Messaging.Rebus.Azure</name>
+    </assembly>
+    <members>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServicesExtensions.AddAzureConfigurators(Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices)">
+            <summary>
+            Registers support for reading configuration for Azure specific implementations (i.e. Azure Service Bus transport).
+            </summary>
+            <param name="rebusConfigServices"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Azure.Transport.SchemaInstaller">
+            <summary>
+            Provides simple utility methods for installing Rebus Azure Transport artefacts.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Azure.Transport.SchemaInstaller.EnsureInstalled(System.String,System.String)">
+            <summary>
+            Ensures the Azure Transport queue is created via the connection string.
+            </summary>
+            <param name="connectionString">The connection string.</param>
+            <param name="queueName">The queue name</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Azure.Transport.SchemaInstaller.EnsureInstalled(System.String,System.String,Rebus.Logging.LogLevel)">
+            <summary>
+            Ensures the Azure Transport table is created via the connection string.
+            </summary>
+            <param name="connectionString">The connection string.</param>
+            <param name="queueName">The queue name.</param>
+            <param name="logLevel">The minimum application log level.</param>
+        </member>
+    </members>
+</doc>

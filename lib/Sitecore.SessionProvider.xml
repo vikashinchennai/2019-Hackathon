@@ -1,0 +1,416 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.SessionProvider</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.AllowBreakingChangeAttribute">
+            <summary>
+            Represents a custom attribute that allows to ignore breaking changes found by ApiCheck.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="T:Sitecore.SessionProvider.Helpers.ConfigReader">
+            <summary>
+            The <see cref="T:Sitecore.SessionProvider.Helpers.ConfigReader"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Helpers.ConfigReader.#ctor(System.Collections.Specialized.NameValueCollection,System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Sitecore.SessionProvider.Helpers.ConfigReader"/> class.</summary>
+            <param name="values">The values.</param>
+            <param name="ownerName">Name of the owner.</param>
+        </member>
+        <member name="P:Sitecore.SessionProvider.Helpers.ConfigReader.OwnerName">
+            <summary>Gets or sets the name of the owner.</summary>
+            <value>The configuration owner.</value>
+        </member>
+        <member name="P:Sitecore.SessionProvider.Helpers.ConfigReader.Values">
+            <summary>Gets or sets the values.</summary>
+            <value>The values.</value>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Helpers.ConfigReader.GetBool(System.String,System.Boolean)">
+            <summary>Gets the bool.</summary>
+            <param name="key">The key.</param>
+            <param name="defaultValue">if set to <c>true</c> [default value].</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Helpers.ConfigReader.GetInt32(System.String,System.Int32)">
+            <summary>
+              Reads an integer value from the current configuration element.
+            </summary>
+            <param name="key">
+              The name of the attribute to read.
+            </param>
+            <param name="defaultValue">
+              The default value to return if the attribute is not specified.
+            </param>
+            <returns>
+              The value read from the configuration element or <paramref name="defaultValue"/> if the
+              attribute is not specified on the element.
+            </returns>
+            <exception cref="T:Sitecore.Exceptions.ConfigurationException">
+              The specified value is not a valid integer.
+            </exception>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Helpers.ConfigReader.GetConfigSection``1(System.String)">
+            <summary>Gets the config section.</summary>
+            <typeparam name="TSection">The type of the section.</typeparam>
+            <param name="sectionPath">The section path.</param>
+            <returns>The result.</returns>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException"></exception>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Helpers.ConfigReader.GetConnectionString">
+            <summary>Gets the connection string.</summary>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Helpers.ConfigReader.GetConnectionString(System.String)">
+            <summary>Gets the connection string.</summary>
+            <param name="connectionNameKeyName">Name of the connection name key.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Helpers.ConfigReader.GetString(System.String,System.Boolean)">
+            <summary>Gets the string.</summary>
+            <param name="key">The name.</param>
+            <param name="allowEmpty">if set to <c>true</c> [allow empty].</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Helpers.ConfigReader.GetString(System.String,System.String,System.Boolean)">
+            <summary>Gets the string.</summary>
+            <param name="key">The key.</param>
+            <param name="defaultValue">The default value.</param>
+            <param name="allowEmpty">if set to <c>true</c> [allow empty].</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Helpers.ConfigReader.GetTimeSpan(System.String,System.TimeSpan)">
+            <summary>Gets the time span.</summary>
+            <param name="key">The key.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Helpers.ConfigReader.GetTypedValue``2(System.String,System.Func{``0,``1})">
+            <summary>Gets the typed value.</summary>
+            <typeparam name="TSection">The type of the section.</typeparam>
+            <typeparam name="TValue">The type of the value.</typeparam>
+            <param name="sectionPath">The section path.</param>
+            <param name="mapper">The mapper.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Helpers.ConfigReader.ThrowMissingValue(System.String)">
+            <summary>Throws the missing value.</summary>
+            <param name="key">The name.</param>
+        </member>
+        <member name="T:Sitecore.SessionProvider.SessionStateLockCookie">
+            <summary>
+              Represents a lock that may be used to prevent other consumers of the session state store to modify a specific
+              session state store item.
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.SessionStateLockCookie.Id">
+            <summary>
+              The unique identifier of the lock.
+            </summary>
+            <value>
+              A <see cref="T:System.String"/> value that is the unique identifier of the lock; or <see cref="F:System.String.Empty"/> if the
+              session state entry is not locked.
+            </value>
+        </member>
+        <member name="P:Sitecore.SessionProvider.SessionStateLockCookie.Timestamp">
+            <summary>
+              Gets the date and time when the lock was acquired.
+            </summary>
+            <value>
+              A <see cref="T:System.DateTime"/> value that is the date and time, indicating when the lock was acquired, or
+              <see cref="F:System.DateTime.MinValue"/> if the lock is not valid.
+            </value>
+        </member>
+        <member name="P:Sitecore.SessionProvider.SessionStateLockCookie.IsLocked">
+            <summary>
+              Gets a value indicating whether the current lock object represents a lock.
+            </summary>
+            <value>
+              <c>true</c> is the current lock is held; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SessionStateLockCookie.#ctor(System.String,System.DateTime)">
+            <summary>
+              Initializes a new instance of the <see cref="T:Sitecore.SessionProvider.SessionStateLockCookie"/> object.
+            </summary>
+            <param name="id">
+              The unique identifier of the lock, or null or an empty string if the lock is not held.
+            </param>
+            <param name="timestamp">
+              A <see cref="T:System.DateTime"/> value that represents the date and time the lock was acquired.
+            </param>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SessionStateLockCookie.Generate(System.DateTime)">
+            <summary>
+              Creates a new <see cref="T:Sitecore.SessionProvider.SessionStateLockCookie"/> object that can be used to mark an entry in the session
+              state store as locked.
+            </summary>
+            <param name="timestamp">
+              A <see cref="T:System.DateTime"/> value that is used as the timestamp value for the lock.
+            </param>
+            <returns>
+              A new <see cref="T:Sitecore.SessionProvider.SessionStateLockCookie"/> object that contains a new unique lock identifier and the current
+              timestamp value.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SessionStateLockCookie.GenerateUniqueId">
+            <summary>
+              Generates a new unique lock identifier.
+            </summary>
+            <returns>
+              A <see cref="T:System.String"/> value that can be used as a unique lock identifier.
+            </returns>
+        </member>
+        <member name="T:Sitecore.SessionProvider.SessionStateSerializer">
+            <summary>
+              Provides static methods for serializing and deserializing session state.
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SessionStateSerializer.Serialize(System.Web.SessionState.SessionStateStoreData,System.Boolean)">
+            <summary>
+              Serializes the session state to an array of byte values.
+            </summary>
+            <param name="sessionState">
+              The session state to serialize.
+            </param>
+            <param name="compress">
+              Indicates whether to compress the serialized data.
+            </param>
+            <returns>
+              An array of <see cref="T:System.Byte"/> values that contains the serialized <paramref name="sessionState"/> object.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+              Argument <paramref name="sessionState"/> is a <c>null</c> reference.
+            </exception>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SessionStateSerializer.Deserialize(System.Byte[])">
+            <summary>
+              Restores a <see cref="T:System.Web.SessionState.SessionStateStoreData"/> object from an array of bytes containing the serialized
+              session state.
+            </summary>
+            <param name="data">
+              The serialized session state data.
+            </param>
+            <returns>
+              A <see cref="T:System.Web.SessionState.SessionStateStoreData"/> object that was restored from the serialized data in the specified
+              byte array.
+            </returns>
+        </member>
+        <member name="T:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider">
+            <summary>
+            Sitecore session state provider base class.
+            </summary>
+        </member>
+        <member name="F:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.SyncRoot">
+            <summary>
+            The sync root object.
+            </summary>
+        </member>
+        <member name="F:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.CanStartTimer">
+            <summary>
+            Delegate if concrete provider needs to control the timer
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.TriedToStartTimer">
+            <summary>
+            Flag to identify if the instance tried to start the timer
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.TimerEnabled">
+            <summary>
+            Get the timer status and start if needed
+            </summary>
+        </member>
+        <member name="F:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.isProcessing">
+            <summary>
+            The is processing flag.
+            </summary>
+        </member>
+        <member name="F:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.timer">
+            <summary>
+            The timer.
+            </summary>
+        </member>
+        <member name="F:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.pollingInterval">
+            <summary>
+            The polling interval.
+            </summary>
+        </member>
+        <member name="F:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.sessionEndCallback">
+            <summary>
+            The session end callback.
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider"/> class. 
+            </summary>
+            <param name="pollingInterval">
+            The polling interval.
+            </param>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider"/> class. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.StartTimer">
+            <summary>
+            Start the timer
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.Dispose">
+            <summary>
+            Releases managed and unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Initializes the current provider.
+            </summary>
+            <param name="name">
+            The friendly name of the provider.
+            </param>
+            <param name="config">
+            A collection of the name/value pairs representing the provider-specific attributes specified in the
+              configuration for this provider.
+            </param>
+            <exception cref="T:Sitecore.Exceptions.ConfigurationException">
+            The polling interval specified is too small or too high.
+            </exception>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.SetItemExpireCallback(System.Web.SessionState.SessionStateItemExpireCallback)">
+            <summary>
+            Sets a reference to the <see cref="T:System.Web.SessionState.SessionStateItemExpireCallback"/> delegate for the <c>Session_OnEnd</c>
+              event defined in the <c>Global.asax</c> file.
+            </summary>
+            <param name="expireCallback">
+            The <see cref="T:System.Web.SessionState.SessionStateItemExpireCallback"/> delegate for the <c>Session_OnEnd</c> event defined in the
+              <c>Global.asax</c> file.
+            </param>
+            <returns>
+            <c>true</c> if the session-state store provider supports calling the <c>Session_OnEnd</c> event; otherwise,
+              <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.CreateNewStoreData(System.Web.HttpContext,System.Int32)">
+            <summary>
+            Creates a new <see cref="T:System.Web.SessionState.SessionStateStoreData"/> object to be used for the current request.
+            </summary>
+            <param name="context">
+            The <see cref="T:System.Web.HttpContext"/> for the current request.
+            </param>
+            <param name="timeout">
+            The session-state timeout value for the new <see cref="T:System.Web.SessionState.SessionStateStoreData"/>.
+            </param>
+            <returns>
+            A new <see cref="T:System.Web.SessionState.SessionStateStoreData"/> for the current request.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Argument <paramref name="context"/> is a <c>null</c> reference.
+            </exception>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.EndRequest(System.Web.HttpContext)">
+            <summary>
+            Called by the <see cref="T:System.Web.SessionState.SessionStateModule"/> object at the end of a request.
+            </summary>
+            <param name="context">
+            The <see cref="T:System.Web.SessionState.SessionStateModule"/> object calls the <see cref="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.EndRequest(System.Web.HttpContext)"/> method at the end of a request
+              for an ASP.NET page, during the <see cref="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.EndRequest(System.Web.HttpContext)"/> event. The <see cref="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.EndRequest(System.Web.HttpContext)"/> method can be
+              used to perform any per-request cleanup required by your session-state store provider.
+            </param>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.InitializeRequest(System.Web.HttpContext)">
+            <summary>
+            Called by the <see cref="T:System.Web.SessionState.SessionStateModule"/> object for per-request initialization.
+            </summary>
+            <param name="context">
+            The <see cref="T:System.Web.HttpContext"/> for the current request.
+            </param>
+            <remarks>
+            The <see cref="T:System.Web.SessionState.SessionStateModule"/> object calls the <see cref="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.InitializeRequest(System.Web.HttpContext)"/> method before calling
+              any other <see cref="T:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider"/> method. The <see cref="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.InitializeRequest(System.Web.HttpContext)"/> method can be
+              used to perform any per-request initialization required by the session-state store provider.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.GetExpiredItemExclusive(System.DateTime,Sitecore.SessionProvider.SessionStateLockCookie,System.String@)">
+            <summary>
+            The get expired item exclusive.
+            </summary>
+            <param name="signalTime">
+            The signal time.
+            </param>
+            <param name="lockCookie">
+            The lock cookie.
+            </param>
+            <param name="id">
+            The id.
+            </param>
+            <returns>
+            Returns Session State object with exclusive lock<see cref="T:System.Web.SessionState.SessionStateStoreData"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.OnProcessExpiredItems(System.DateTime)">
+            <summary>
+            The on process expired items.
+            </summary>
+            <param name="signalTime">
+            The signal time.
+            </param>
+            <returns>
+            The unique identifier of item<see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.ExecuteSessionEnd(System.String,System.Web.SessionState.SessionStateStoreData)">
+            <summary>
+            Executes the <c>Session_OnEnd</c> event defined in the <c>Global.asax</c> file.
+            </summary>
+            <param name="id">
+            The unique identifier of the session.
+            </param>
+            <param name="item">
+            The <see cref="T:System.Web.SessionState.SessionStateStoreData"/> object that contains the current session values.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Argument <paramref name="id"/> or <paramref name="item"/> is a <c>null</c> reference.
+            </exception>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.RemoveItem(System.String,System.String)">
+            <summary>
+            Removes item from Session states storage.
+            </summary>
+            <param name="id">
+            The identifier of session object.
+            </param>
+            <param name="lockCookie">
+            The lock cookie.
+            </param>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.OnProcessExpiredItems(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            Processes expired items.
+            </summary>
+            <param name="sender">
+            The object that generated the event.
+            </param>
+            <param name="args">
+            A <see cref="T:System.Timers.ElapsedEventArgs"/> object that provides additional information about the event.
+            </param>
+            <remarks>
+            The <see cref="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.OnProcessExpiredItems(System.Object,System.Timers.ElapsedEventArgs)"/> queries the session state store for expired items. If an expired
+              item is found, the item is locked and a <c>Session_OnEnd</c>event is generated. The item is removed after the
+              event. This process is repeated until no more expired items are found.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.SessionProvider.SitecoreSessionStateStoreProvider.SetPollingInterval(System.Int32)">
+            <summary>
+            Set polling interval.
+            </summary>
+            <param name="interval">
+            The interval.
+            </param>
+        </member>
+    </members>
+</doc>

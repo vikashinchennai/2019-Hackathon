@@ -1,0 +1,630 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Processing.Tasks.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Processing.Tasks.Abstractions.Constants">
+            <summary>
+                Represents a collection of constants used throughout the project.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Abstractions.Constants.ProcessingTaskDataDescriptionMaxLength">
+            <summary>
+                The maximum size of <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Description" /> property.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData">
+            <summary>
+                The task base interface.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Id">
+            <summary>
+                Gets the unique ID of the task.
+            </summary>
+            <value>
+                A <see cref="T:System.Guid" /> value containing the unique identifier of the task.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Created">
+            <summary>
+                Gets the time when task was created, expressed as UTC.
+            </summary>
+            <value>
+                A <see cref="T:System.DateTime" /> value containing the creation time of the task, expressed as UTC.
+            </value>
+            <remarks><c>DateTime.Kind</c> should be <c>DateTimeKind.Utc</c>.</remarks>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Updated">
+            <summary>
+                Gets time when the record was last accessed by a worker, expressed as UTC. An access from the worker typically
+                means an update in the task status or progress.
+            </summary>
+            <value>
+                A <see cref="T:System.DateTime" /> value containing time when the record was last accessed by a worker, expressed as UTC.
+            </value>
+            <remarks><c>DateTime.Kind</c> should be <c>DateTimeKind.Utc</c>.</remarks>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.ConcurrencyToken">
+            <summary>
+                Gets the token used to identify this particular version of the task data.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Expiration">
+            <summary>
+                Gets the absolute expiration time for the task, expressed as UTC.
+            </summary>
+            <value>
+                A <see cref="T:System.DateTime" /> value of absolute expiration.
+            </value>
+            <remarks><c>DateTime.Kind</c> should be <c>DateTimeKind.Utc</c>.</remarks>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.TaskType">
+            <summary>
+                Gets the type of the task: deferred action or distributed task.
+            </summary>
+            <value>
+                A <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType" /> value describing the type of the task.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Error">
+            <summary>
+                Gets information about an error.
+            </summary>
+            <value>
+                Information about an error.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Status">
+            <summary>
+                Gets the status of the task.
+            </summary>
+            <value>
+                The status of the task. See <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus" /> for possible values.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Progress">
+            <summary>
+                Gets the progress of the task.
+            </summary>
+            <value>
+                The number of items processed by the task so far, if <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Status" /> property has
+                value <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Processing" />, or the total number of processed items, if
+                <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Status" /> property has value <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Completed" />.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Total">
+            <summary>
+                Gets the total approximate number of items to process.
+            </summary>
+            <value>
+                The total approximate number of items to process, if <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.TaskType" /> property has
+                value <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType.DistributedProcessing" />. Otherwise, returns null.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Description">
+            <summary>
+                Gets the human-readable description of the task for use in administrative UI. The maximum length is
+                <see cref="F:Sitecore.Processing.Tasks.Abstractions.Constants.ProcessingTaskDataDescriptionMaxLength" /> symbols.
+            </summary>
+            <value>
+                A <see cref="T:System.String" /> containing the description of the task, or <c>null</c> if no description was specified when
+                creating the task.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Options">
+            <summary>
+                Gets the runtime options associated with current task.
+            </summary>
+            <value>
+                A <see cref="T:System.Collections.Generic.IReadOnlyCollection`1" /> value containing the options passed to the task implementation at runtime.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.PrerequisiteTaskIds">
+            <summary>
+            Gets the list of Task IDs which are prerequisites for this task.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskProgress">
+            <summary>
+            Defines a type which contains the current progress of a task.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskProgress.Id">
+            <summary>
+                Gets the unique ID of the task.
+            </summary>
+            <value>
+                A <see cref="T:System.Guid" /> value containing the unique identifier of the task.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskProgress.Created">
+            <summary>
+                Gets the time when task was created, expressed as UTC.
+            </summary>
+            <value>
+                A <see cref="T:System.DateTime" /> value containing the creation time of the task, expressed as UTC.
+            </value>
+            <remarks><c>DateTime.Kind</c> should be <c>DateTimeKind.Utc</c>.</remarks>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskProgress.Updated">
+            <summary>
+                Gets time when the record was last accessed by a worker, expressed as UTC. An access from the worker typically
+                means an update in the task status or progress.
+            </summary>
+            <value>
+                A <see cref="T:System.DateTime" /> value containing time when the record was last accessed by a worker, expressed as UTC.
+            </value>
+            <remarks><c>DateTime.Kind</c> should be <c>DateTimeKind.Utc</c>.</remarks>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskProgress.TaskType">
+            <summary>
+                Gets the type of the task: deferred action or distributed task.
+            </summary>
+            <value>
+                A <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType" /> value describing the type of the task.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskProgress.Status">
+            <summary>
+                Gets the status of the task.
+            </summary>
+            <value>
+                The status of the task. See <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus" /> for possible values.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskProgress.Progress">
+            <summary>
+                Gets the progress of the task.
+            </summary>
+            <value>
+                The number of items processed by the task so far, if <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Status" /> property has
+                value <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Processing" />, or the total number of processed items, if
+                <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Status" /> property has value <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Completed" />.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskProgress.Total">
+            <summary>
+                Gets the total approximate number of items to process.
+            </summary>
+            <value>
+                The total approximate number of items to process, if <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.TaskType" /> property has
+                value <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType.DistributedProcessing" />. Otherwise, returns null.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskProgress.Description">
+            <summary>
+                Gets the human-readable description of the task for use in administrative UI. The maximum length is
+                <see cref="F:Sitecore.Processing.Tasks.Abstractions.Constants.ProcessingTaskDataDescriptionMaxLength" /> symbols.
+            </summary>
+            <value>
+                A <see cref="T:System.String" /> containing the description of the task, or <c>null</c> if no description was specified when
+                creating the task.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskProgress.PrerequisiteTaskIds">
+            <summary>
+            Gets the list of Task IDs which are prerequisites for this task.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Abstractions.ITaskDataProvider">
+            <summary>
+                Defines operations to asynchronously manipulate a <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> instances in the data store.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ITaskDataProvider.AddAsync(Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData)">
+            <summary>
+                Asynchronously adds given <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> to the data store.
+            </summary>
+            <param name="task">
+                An object describing the task to be executed by the agents.
+            </param>
+            <returns>
+                The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.
+            </returns>
+            <remarks>
+                <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Created" />, <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Updated" /> and <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.ConcurrencyToken" /> in
+                the <paramref name="task" /> are ignored, set by the provider, and can differ from specified.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ITaskDataProvider.GetAsync(System.Guid)">
+            <summary>
+                Asynchronously gets <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> by its unique identifier.
+            </summary>
+            <param name="id">
+                The unique identifier of <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> to look for.
+            </param>
+            <returns>
+                The <see cref="T:System.Threading.Tasks.Task`1" /> with a <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> instance containing information about the
+                requested task.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ITaskDataProvider.PickDistributedTaskInProgressAsync">
+            <summary>
+                Asynchronously picks an <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> with <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.TaskType" /> equal
+                to <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType.DistributedProcessing" />
+                and <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Status" /> equal to <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Processing" /> with
+                enough work items to split.
+            </summary>
+            <returns>
+                The <see cref="T:System.Threading.Tasks.Task`1" /> with an <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> instance that represents distributed
+                processing task that is actively processed.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ITaskDataProvider.PickDistributedTaskPendingAsync">
+            <summary>
+                Asynchronously gets an <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> with <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.TaskType" /> equal to
+                <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType.DistributedProcessing" />
+                and <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Status" /> equal to <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Pending" />.
+            </summary>
+            <returns>
+                The <see cref="T:System.Threading.Tasks.Task`1" /> with an <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> instance that represents distributed
+                processing task that is not started yet.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ITaskDataProvider.RemoveAsync(System.Guid)">
+            <summary>
+                Asynchronously removes the specified task from the data store.
+            </summary>
+            <param name="taskId">
+                The unique identifier of the <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> to remove.
+            </param>
+            <returns>
+                The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ITaskDataProvider.PickDeferredActionAsync">
+            <summary>
+                Asynchronously picks an available <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> with
+                <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.TaskType" /> equal to <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType.DeferredAction" />,
+                disregarding any locked tasks and locking the task for other workers.
+            </summary>
+            <returns>
+                The <see cref="T:System.Threading.Tasks.Task`1" /> with an <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> instance that represents single-threaded
+                processing task.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ITaskDataProvider.CleanUpAsync(System.TimeSpan)">
+            <summary>
+                Asynchronously cleans up all tasks from the data store with <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Status" />
+                equal to <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Failed" />, <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Completed" />, or
+                <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Expired" />.
+            </summary>
+            <param name="minimumAge">
+                The minimum age of the eligible tasks to be cleaned up.
+            </param>
+            <returns>
+                The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ITaskDataProvider.UpdateTotalAsync(System.Guid,System.Guid,System.Nullable{System.Int64})">
+            <summary>
+                Asynchronously updates the total count of the <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" />.
+            </summary>
+            <param name="taskId">
+                Id of the <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> to be updated.
+            </param>
+            <param name="concurrencyToken">
+                The <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.ConcurrencyToken" /> value to ensure we have the latest data for the task.
+            </param>
+            <param name="totalCount">
+                Total count of entities that are available to be processed by the distributed task.
+            </param>
+            <returns>
+                The <see cref="T:System.Threading.Tasks.Task`1" /> with an <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> instance that represents processing task.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ITaskDataProvider.IncrementProgressAsync(System.Guid,System.Int64)">
+            <summary>
+                Asynchronously increments <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Progress" />.
+            </summary>
+            <param name="taskId">
+                Id of the <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> to be updated.
+            </param>
+            <param name="progress">
+                Value to be added to the <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Progress" />.
+            </param>
+            <returns>
+                The <see cref="T:System.Threading.Tasks.Task`1" /> with a <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> instance that represents processing task.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ITaskDataProvider.UpdateStatusAsync(System.Guid,System.Guid,Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus,System.String)">
+            <summary>
+                Asynchronously updates the status of the <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" />.
+            </summary>
+            <param name="taskId">
+                Id of the <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> to be updated.
+            </param>
+            <param name="concurrencyToken">
+                The <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.ConcurrencyToken" /> value to ensure we have the latest data for the task.
+            </param>
+            <param name="status">
+                Status to be assigned to the task.
+            </param>
+            <param name="errorText">
+                Optional text of the exception associated with the status.
+            </param>
+            <returns>
+                The <see cref="T:System.Threading.Tasks.Task`1" /> with an <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> instance that represents processing task.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData">
+            <summary>
+                The task base.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.#ctor(System.Guid,System.DateTime,System.DateTime,System.Guid,System.DateTime,System.String,Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus,System.Int64,System.Nullable{System.Int64},System.String,Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType,System.Byte[],System.Collections.Generic.IList{System.Guid})">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData" /> class.
+            </summary>
+            <param name="id">The unique identifier of the task.</param>
+            <param name="created">The time when task was created, expressed as UTC.</param>
+            <param name="updated">
+                Time when the record was last accessed by a worker, expressed as UTC. An access from the worker
+                typically means an update in the task status or progress.
+            </param>
+            <param name="concurrencyToken">The token used to identify this particular version of the task data.</param>
+            <param name="expiration">The absolute expiration time for the task, expressed as UTC.</param>
+            <param name="error">Information about an error.</param>
+            <param name="status">The status of the task.</param>
+            <param name="progress">The progress of the task.</param>
+            <param name="total">The total approximate number of items to process.</param>
+            <param name="description">
+                The human-readable description of the task for use in administrative UI.
+                The maximum length is <see cref="F:Sitecore.Processing.Tasks.Abstractions.Constants.ProcessingTaskDataDescriptionMaxLength" /> symbols.
+            </param>
+            <param name="type">The type of the task: deferred action or distributed task.</param>
+            <param name="options">
+                The <see cref="T:System.Collections.Generic.IReadOnlyCollection`1" /> value containing the options passed to the task implementation at runtime.
+            </param>
+            <param name="prerequisiteTaskIds">The IDs of tasks which are prerequisite for this task.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="options" /> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="created" />, <paramref name="expiration" />, or <paramref name="updated" /> is not expressed as
+                UTC.
+                <paramref name="status" /> is not defined in the <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus" /> or
+                <paramref name="type" /> is not defined in the <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType" /> enumeration.
+                <paramref name="description" /> is greater than <see cref="F:Sitecore.Processing.Tasks.Abstractions.Constants.ProcessingTaskDataDescriptionMaxLength" />
+                symbols.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.#ctor(System.Guid,System.DateTime,System.String,Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus,System.Int64,System.Nullable{System.Int64},System.String,Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType,System.Byte[])">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData" /> class.
+            </summary>
+            <param name="id">The unique identifier of the task.</param>
+            <param name="expiration">The absolute expiration time for the task, expressed as UTC.</param>
+            <param name="error">Information about an error.</param>
+            <param name="status">The status of the task.</param>
+            <param name="progress">The progress of the task.</param>
+            <param name="total">The total approximate number of items to process.</param>
+            <param name="description">
+                The human-readable description of the task for use in administrative UI.
+                The maximum length is <see cref="F:Sitecore.Processing.Tasks.Abstractions.Constants.ProcessingTaskDataDescriptionMaxLength" /> symbols.
+            </param>
+            <param name="type">The type of the task: deferred action or distributed task.</param>
+            <param name="options">
+                The <see cref="T:System.Collections.Generic.IReadOnlyCollection`1" /> value containing the options passed to the task implementation at runtime.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="options" /> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="status" /> is not defined in the <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus" /> or
+                <paramref name="type" /> is not defined in the <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType" /> enumeration.
+                <paramref name="description" /> is greater than <see cref="F:Sitecore.Processing.Tasks.Abstractions.Constants.ProcessingTaskDataDescriptionMaxLength" />
+                symbols.
+            </exception>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.Id">
+            <summary>
+                Gets the unique ID of the task.
+            </summary>
+            <value>
+                A <see cref="T:System.Guid" /> value containing the unique identifier of the task.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.Created">
+            <summary>
+                Gets the time when task was created, expressed as UTC.
+            </summary>
+            <value>
+                A <see cref="T:System.DateTime" /> value containing the creation time of the task, expressed as UTC.
+            </value>
+            <remarks><c>DateTime.Kind</c> should be <c>DateTimeKind.Utc</c>.</remarks>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.Updated">
+            <summary>
+                Gets time when the record was last accessed by a worker, expressed as UTC. An access from the worker typically
+                means an update in the task status or progress.
+            </summary>
+            <value>
+                A <see cref="T:System.DateTime" /> value containing time when the record was last accessed by a worker, expressed as UTC.
+            </value>
+            <remarks><c>DateTime.Kind</c> should be <c>DateTimeKind.Utc</c>.</remarks>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.ConcurrencyToken">
+            <summary>
+                Gets the token used to identify this particular version of the task data.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.Expiration">
+            <summary>
+                Gets the absolute expiration time for the task, expressed as UTC.
+            </summary>
+            <value>
+                A <see cref="T:System.DateTime" /> value of absolute expiration.
+            </value>
+            <remarks><c>DateTime.Kind</c> should be <c>DateTimeKind.Utc</c>.</remarks>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.TaskType">
+            <summary>
+                Gets the type of the task: deferred action or distributed task.
+            </summary>
+            <value>
+                A <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType" /> value describing the type of the task.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.Error">
+            <summary>
+                Gets information about an error.
+            </summary>
+            <value>
+                Information about an error.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.Status">
+            <summary>
+                Gets the status of the task.
+            </summary>
+            <value>
+                The status of the task. See <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus" /> for possible values.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.Progress">
+            <summary>
+                Gets the progress of the task.
+            </summary>
+            <value>
+                The number of items processed by the task so far, if <see cref="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.Status" /> property has value
+                <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Processing" />, or the total number of processed items, if
+                <see cref="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.Status" /> property has value <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Completed" />.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.Total">
+            <summary>
+                Gets the total approximate number of items to process.
+            </summary>
+            <value>
+                The total approximate number of items to process, if <see cref="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.TaskType" /> property has
+                value <see cref="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType.DistributedProcessing" />. Otherwise, returns null.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.Description">
+            <summary>
+                Gets the human-readable description of the task for use in administrative UI.
+                The maximum length is <see cref="F:Sitecore.Processing.Tasks.Abstractions.Constants.ProcessingTaskDataDescriptionMaxLength" /> symbols.
+            </summary>
+            <value>
+                A <see cref="T:System.String" /> containing the description of the task, or <c>null</c> if no description was specified when
+                creating the task.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.Options">
+            <summary>
+                Gets the runtime options associated with current task.
+            </summary>
+            <value>
+                A <see cref="T:System.Collections.Generic.IReadOnlyCollection`1" /> value containing the options passed to the task implementation at runtime.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskData.PrerequisiteTaskIds">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress">
+            <summary>
+            The current progress of a task.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress.Create(Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData)">
+            <summary>
+            Creates a new instance of <see cref="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress"/> from an <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData"/> instance.
+            </summary>
+            <param name="taskData">The task data to read data from.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress.#ctor(System.Guid,System.DateTime,System.DateTime,Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType,Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus,System.Int64,System.Nullable{System.Int64},System.String,System.Collections.Generic.IList{System.Guid})">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="id">The unique ID of the task.</param>
+            <param name="created">The time when task was created, expressed as UTC.</param>
+            <param name="updated">The time when the task was last accessed by a worker.</param>
+            <param name="taskType">The type of the task.</param>
+            <param name="status">The status of the task.</param>
+            <param name="progress">The number of items processed by the task so far.</param>
+            <param name="total">The total approximate number of items to process.</param>
+            <param name="description">The human-readable description of the task.</param>
+            <param name="prerequisiteTaskIds">The list of Task IDs which are prerequisites for this task.</param>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress.Created">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress.Updated">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress.TaskType">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress.Status">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress.Progress">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress.Total">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress.Description">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskProgress.PrerequisiteTaskIds">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus">
+            <summary>
+                Defines possible statuses an <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" /> may have while being processed.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Pending">
+            <summary>
+                The processing task has been created and is ready to be picked up by any of the workers.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Processing">
+            <summary>
+                The processing task has been picked up by one or multiple workers and is in progress.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Completed">
+            <summary>
+                The processing task has been completed successfully.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Failed">
+            <summary>
+                An error occurred during processing.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Expired">
+            <summary>
+                The processing task could not be completed within the allocated time frame.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus.Canceled">
+            <summary>
+                The processing task has been canceled.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType">
+            <summary>
+                Defines all the types of <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData" />, Processing Engine supports.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType.DeferredAction">
+            <summary>
+                A single-shot deferred action - execute code on the computing cluster instead of local machine.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Abstractions.ProcessingTaskType.DistributedProcessing">
+            <summary>
+                A distributed processing task for a range of database entities.
+            </summary>
+        </member>
+    </members>
+</doc>

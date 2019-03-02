@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.CES.GeoIp.LegacyLocation</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.CES.GeoIp.LegacyLocation.ArchivedResourceGetter">
+            <summary>
+            Defines the getter to get the legacy location list resource.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.ArchivedResourceGetter.GetReader(System.String)">
+            <summary>
+            Gets the reader to read the legacy location list.
+            </summary>
+            <param name="resourceName">Name of the resource.</param>
+            <returns>The reader to read the legacy location list.</returns>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.LegacyLocation.Caching.LegacyLocationListCache">
+            <summary>
+            Implements the legacy location list cache.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.LegacyLocation.Caching.LegacyLocationListCache.CacheEntryKey">
+            <summary>
+            The cache entry key.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.Caching.LegacyLocationListCache.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.LegacyLocation.Caching.LegacyLocationListCache"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.Caching.LegacyLocationListCache.Add(System.Collections.Generic.HashSet{Sitecore.CES.GeoIp.LegacyLocation.Location})">
+            <summary>
+            Adds the legacy location list to the cache.
+            </summary>
+            <param name="legacyLocationList">The legacy location list.</param>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.Caching.LegacyLocationListCache.Get">
+            <summary>
+            Gets the legacy location list from the cache.
+            </summary>
+            <returns>The legacy location list.</returns>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.Caching.LegacyLocationListCache.GetDataLength(System.Collections.Generic.HashSet{Sitecore.CES.GeoIp.LegacyLocation.Location})">
+            <summary>
+            Gets the data length of the specified object.
+            </summary>
+            <param name="targetObject">The target object.</param>
+            <returns>The data length of the specified object.</returns>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.LegacyLocation.Configuration.Settings">
+            <summary>
+            The settings.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.LegacyLocation.Configuration.Settings.LegacyLocationListCacheSize">
+            <summary>
+            Gets the size of the legacy location list cache.
+            </summary>
+            <value>
+            The size of the legacy location list cache.
+            </value>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationDefaults">
+            <summary>
+            Defines the defaults for the legacy location functionality implementation.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationDefaults.instance">
+            <summary>
+            The instance of the object that represents the defaults of the legacy location functionality.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationDefaults.Instance">
+            <summary>
+            Gets or sets the instance of the object that represents the defaults of the legacy location functionality.
+            </summary>
+            <value>
+            The instance of the object that represents the defaults of the legacy location functionality.
+            </value>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationDefaults.GetLegacyLocationResourceGetter">
+            <summary>
+            Gets the default legacy location reader.
+            </summary>
+            <returns>The default legacy location reader.</returns>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationDefaults.GetLegacyLocationParser">
+            <summary>
+            Gets the default legacy location parser.
+            </summary>
+            <returns>The default legacy location parser.</returns>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationDefaults.GetLegacyLocationListCache">
+            <summary>
+            Gets the default legacy location list cache.
+            </summary>
+            <returns>The default legacy location list cache.</returns>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationParser">
+            <summary>
+            Implements logic of parsing legacy location list stream into <see cref="T:System.Collections.Generic.HashSet`1"/> object.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationParser.ParseList(System.IO.TextReader)">
+            <summary>
+            Parses the specified legacy location list stream into <see cref="T:System.Collections.Generic.HashSet`1"/> object.
+            </summary>
+            <param name="reader">The reader to read the legacy location list stream.</param>
+            <returns><see cref="T:System.Collections.Generic.HashSet`1"/> object that represents parsing result.</returns>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationParser.MapLocation(System.String)">
+            <summary>
+            Maps CSV representation of the location to <see cref="T:Sitecore.CES.GeoIp.LegacyLocation.Location"/> object.
+            </summary>
+            <param name="locationLine">The CSV representation of the location.</param>
+            <returns><see cref="T:Sitecore.CES.GeoIp.LegacyLocation.Location"/> object that represents mapping result.</returns>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationParser.CleanUpPropertyValue(System.String)">
+            <summary>
+            Cleans up the value of the location property.
+            </summary>
+            <param name="propertyValue">The value of the location property.</param>
+            <returns>The value of the location property without formatting characters.</returns>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationSource">
+            <summary>
+            Implements the source of the legacy location list.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationSource.ResourceGetter">
+            <summary>
+            The getter to get the legacy location list resource.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationSource.Parser">
+            <summary>
+            The parser to parse the legacy location list.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationSource.LegacyLocationListCache">
+            <summary>
+            The legacy location list cache.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationSource.#ctor(Sitecore.CES.GeoIp.LegacyLocation.ArchivedResourceGetter,Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationParser,Sitecore.CES.GeoIp.LegacyLocation.Caching.LegacyLocationListCache)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationSource" /> class.
+            </summary>
+            <param name="resourceGetter">The getter to get the legacy location list resource.</param>
+            <param name="parser">The parser to parse the legacy location list.</param>
+            <param name="legacyLocationListCache">The legacy location list cache.</param>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationSource.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationSource"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationSource.GetLegacyLocationList">
+            <summary>
+            Gets the legacy location list.
+            </summary>
+            <returns>The legacy location list.</returns>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.LegacyLocation.Location">
+            <summary>
+            Represents the legacy location.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.LegacyLocation.Location.Country">
+            <summary>
+            Gets or sets the country.
+            </summary>
+            <value>
+            The country.
+            </value>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.LegacyLocation.Location.PostalCode">
+            <summary>
+            Gets or sets the postal code.
+            </summary>
+            <value>
+            The postal code.
+            </value>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.LegacyLocation.Location.Region">
+            <summary>
+            Gets or sets the region.
+            </summary>
+            <value>
+            The region.
+            </value>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.LegacyLocation.Pipelines.ParseResponse.SetRegionToLegacyValue">
+            <summary>
+            Sets the region in the result object to the legacy value.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.LegacyLocation.Pipelines.ParseResponse.SetRegionToLegacyValue.LegacyLocationSource">
+            <summary>
+            The legacy location source.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.Pipelines.ParseResponse.SetRegionToLegacyValue.#ctor(Sitecore.CES.GeoIp.LegacyLocation.LegacyLocationSource)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.LegacyLocation.Pipelines.ParseResponse.SetRegionToLegacyValue"/> class.
+            </summary>
+            <param name="legacyLocationSource">The legacy location source.</param>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.Pipelines.ParseResponse.SetRegionToLegacyValue.Process(Sitecore.CES.Pipelines.ParseResponse.ParseResponseArgs{Newtonsoft.Json.Linq.JObject,Sitecore.CES.GeoIp.Core.Model.WhoIsInformation})">
+            <summary>
+            Runs the processor.
+            </summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.LegacyLocation.SingleArchiveEntryReader">
+            <summary>
+            Implements a <see cref="T:System.IO.TextReader"/> that reads characters from an archived byte stream in a particular encoding.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.LegacyLocation.SingleArchiveEntryReader.streamReader">
+            <summary>
+            The reader that reads characters from a byte stream in a particular encoding.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.LegacyLocation.SingleArchiveEntryReader.zipReader">
+            <summary>
+            The reader that decompresses an archived byte stream.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.SingleArchiveEntryReader.#ctor(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.LegacyLocation.SingleArchiveEntryReader"/> class.
+            </summary>
+            <param name="archiveStream">The archive stream.</param>
+            <param name="encoding">The encoding.</param>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.SingleArchiveEntryReader.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.LegacyLocation.SingleArchiveEntryReader"/> class.
+            </summary>
+            <param name="archiveStream">The archive stream.</param>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.SingleArchiveEntryReader.Peek">
+            <summary>
+            Reads the next character without changing the state of the reader or the character source. Returns the next available character without actually reading it from the input stream.
+            </summary>
+            <returns>
+            An integer representing the next character to be read, or -1 if no more characters are available or the stream does not support seeking.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.SingleArchiveEntryReader.Read">
+            <summary>
+            Reads the next character from the input stream and advances the character position by one character.
+            </summary>
+            <returns>
+            The next character from the input stream, or -1 if no more characters are available. The default implementation returns -1.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.LegacyLocation.SingleArchiveEntryReader.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the <see cref="T:Sitecore.CES.GeoIp.LegacyLocation.SingleArchiveEntryReader" /> and optionally releases the managed resources.
+            </summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+    </members>
+</doc>

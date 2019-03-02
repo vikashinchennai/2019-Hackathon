@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.TransientFaultHandling</name>
+    </assembly>
+    <members>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.ConfigBuilderExtensions.AddRetryer(Sitecore.Framework.TransientFaultHandling.ITransientFaultHandlingConfigBuilder,System.String,Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Registers an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> instance with the specified name in the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/>.
+            </summary>
+            <param name="builder"></param>
+            <param name="name">The name associated with the retryer in the registry.</param>
+            <param name="retryer">The retryer instance to register.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.ConfigBuilderExtensions.AddRetryer(Sitecore.Framework.TransientFaultHandling.ITransientFaultHandlingConfigBuilder,System.String,System.Func{Sitecore.Framework.TransientFaultHandling.IRetryer})">
+            <summary>
+            Registers an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> via a factory function, with
+            the specified name in the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/>.
+            </summary>
+            <param name="builder"></param>
+            <param name="name">The name associated with the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> instance yielded by the factory function.</param>
+            <param name="factory">The factory function that yields the retryer.</param>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.RetryerFactoryRegistration">
+            <summary>
+            Represents a service registration for a given factory function for an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> that
+            is identified by a name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.RetryerFactoryRegistration.Name">
+            <summary>
+            The name of the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> returned by the instance.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.RetryerFactoryRegistration.FactoryFunc">
+            <summary>
+            The function that yeilds an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> instance that will be identified
+            by the specified name.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.RetryerRegistry">
+            <summary>
+            Defines the default <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/> implementation which is responsible for 
+            managing the creation and access to a set of named <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> instances.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.RetryerRegistry.#ctor(System.IServiceProvider,System.Collections.Generic.IEnumerable{Sitecore.Framework.TransientFaultHandling.RetryerFactoryRegistration},Sitecore.Framework.TransientFaultHandling.RetryerRegistryOptions)">
+            <summary>
+            Instantiates a new instance of <see cref="T:Sitecore.Framework.TransientFaultHandling.RetryerRegistry"/>.  Supports symultaneous configuration
+            from file and code.
+            </summary>
+            <param name="provider">The current <see cref="T:System.IServiceProvider"/> for the application.</param>
+            <param name="defaultRegistrations">Defines <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/>s that have been configured via code.</param>
+            <param name="options">Defines <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerFactory"/>s that have been registered in file configuration.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.RetryerRegistry.#ctor(System.IServiceProvider,System.Collections.Generic.IEnumerable{Sitecore.Framework.TransientFaultHandling.RetryerFactoryRegistration},Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Instantiates a new instance of <see cref="T:Sitecore.Framework.TransientFaultHandling.RetryerRegistry"/>.  Supports symultaneous configuration
+            from file and code.
+            </summary>
+            <param name="provider">The current <see cref="T:System.IServiceProvider"/> for the application.</param>
+            <param name="defaultRegistrations">Defines <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/>s that have been configured via code.</param>
+            <param name="configuration">The configuration describing <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerFactory"/>s that have been configured.</param>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.RetryerRegistry.RetryerNames">
+            <summary>
+            Gets the names of all <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/>s that are registered.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.RetryerRegistry.IsRegistered(System.String)">
+            <summary>
+            Determines if there is an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> registered for the given name.
+            </summary>
+            <param name="name">The name of the retryer.</param>
+            <returns>Returns true if there is a <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> registered, false otherwise.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.RetryerRegistry.TryGet(System.String,Sitecore.Framework.TransientFaultHandling.IRetryer@)">
+            <summary>
+            Gets an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> registered with the specified name.
+            </summary>
+            <param name="name">The name of the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> to return.</param>
+            <param name="client">The retryer that is found if it exists.</param>
+            <returns>True if a retryer was registered, false otherwise.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.RetryerRegistryOptions">
+            <summary>
+            Defines the configuration options for the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/> that are available
+            from File based configuration (or rather <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/>).
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.RetryerRegistryOptions.Retryers">
+            <summary>
+            The configured named set of <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerFactory"/>s that will be used by the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.ServiceCollectionExtensions.AddTransientFaultHandling(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers Transient Fault Handling capabilities in the container.  Currently this
+            is primarily the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.ServiceCollectionExtensions.AddTransientFaultHandling(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Sitecore.Framework.TransientFaultHandling.TransientFaultHandlingConfigBuilder})">
+            <summary>
+            Registers Transient Fault Handling capabilities in the container.  Currently this is
+            primarily the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/>.
+            </summary>
+            <param name="services">The current service collection in which to perform the registrations.</param>
+            <param name="configure">Exposes configuration options for Transient Fault Handling features.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.SitecoreServicesConfigurationExtensions.TransientFaultHandling(Sitecore.Framework.Configuration.ISitecoreServicesConfiguration)">
+            <summary>
+            Registers Transient Fault Handling capabilities in the container.  Currently this
+            is primarily the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/>.
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.SitecoreServicesConfigurationExtensions.TransientFaultHandling(Sitecore.Framework.Configuration.ISitecoreServicesConfiguration,System.Action{Sitecore.Framework.TransientFaultHandling.TransientFaultHandlingConfigBuilder})">
+            <summary>
+            Registers Transient Fault Handling capabilities in the container.  Currently this
+            is primarily the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/>.
+            </summary>
+            <param name="builder">The current builder in which to perform the registrations.</param>
+            <param name="configure">Exposes configuration options for Transient Fault Handling features.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.TransientFaultHandlingConfigBuilder.AddRetryer(System.String,System.Func{System.IServiceProvider,System.Func{Sitecore.Framework.TransientFaultHandling.IRetryer}})">
+            <summary>
+            Registers an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/>, via a factory function, with a given name in the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/>.
+            </summary>
+            <param name="name">The name assigned as the identity of the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> resolved from the factory function.</param>
+            <param name="factoryFunc">The factory function that resolves an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> instance.</param>
+        </member>
+    </members>
+</doc>

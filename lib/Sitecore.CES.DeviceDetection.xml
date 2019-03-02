@@ -1,0 +1,1095 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.CES.DeviceDetection</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.CES.DeviceDetection.Cache.DeviceDetectionCache">
+            <summary>
+            The device detection cache.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Cache.DeviceDetectionCache.PropertyKeyPrefix">
+            <summary>
+            The property prefix.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Cache.DeviceDetectionCache.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Cache.DeviceDetectionCache"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Cache.DeviceDetectionCache.GetDeviceInformation(System.String)">
+            <summary>
+            Gets device information from the cache.
+            </summary>
+            <param name="userAgent">
+            The user agent.
+            </param>
+            <returns>
+            The <see cref="T:Sitecore.CES.DeviceDetection.DeviceInformation"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Cache.DeviceDetectionCache.GetExtendedProperty(System.String,System.String)">
+            <summary>
+            The get extended property.
+            </summary>
+            <param name="userAgent">
+            The user agent.
+            </param>
+            <param name="propertyName">
+            The property name.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Cache.DeviceDetectionCache.AddDeviceInformation(System.String,Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            Puts device information to the cache.
+            </summary>
+            <param name="userAgent">
+            The user agent.
+            </param>
+            <param name="deviceInfo">
+            The device info.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Cache.DeviceDetectionCache.AddExtendedProperty(System.String,System.String,System.String)">
+            <summary>
+            The add extended property.
+            </summary>
+            <param name="userAgent">
+            The user agent.
+            </param>
+            <param name="propertyName">
+            The property name.
+            </param>
+            <param name="value">
+            The value.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Cache.DeviceDetectionCache.GetObject``1(System.String)">
+            <summary>
+            Gets object from the cache and increments appropriate counter.
+            </summary>
+            <param name="key">
+            The key.
+            </param>
+            <typeparam name="T">
+            The type of the object.
+            </typeparam>
+            <returns>
+            The <see cref="!:T"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Configuration.DeviceDetectionSettings">
+            <summary>
+            The settings.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Configuration.DeviceDetectionSettings.CheckInitializationTimeout">
+            <summary>
+            Gets the ensure initialization time out.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Configuration.DeviceDetectionSettings.Enabled">
+            <summary>
+            Gets a value indicating whether device detection component is enabled.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Configuration.DeviceDetectionSettings.DatabaseUpdateCheckInterval">
+            <summary>
+            Gets the database update check interval.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Configuration.DeviceDetectionSettings.FailDatabaseCheckInterval">
+            <summary>
+            Gets the fail database check interval.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Configuration.DeviceDetectionSettings.DeviceDetectionCacheSize">
+            <summary>
+            Gets the device detection cache size.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Configuration.DeviceDetectionSettings.DeviceDetectionServiceName">
+            <summary>
+            Gets the device detection service name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Configuration.DeviceDetectionSettings.DatabasePath">
+            <summary>
+            Gets the database path.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Data.KeyInfo">
+            <summary>
+            The key info.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Data.KeyInfo.Key">
+            <summary>
+            Gets or sets the key.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Data.KeyInfo.RecommendedCacheTimeSpan">
+            <summary>
+            Gets or sets the recommended cache time span.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Data.UpdateInfo">
+            <summary>
+            The update info.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Data.UpdateInfo.UpdateRecommendation">
+            <summary>
+            Gets or sets the update recommendation.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Data.UpdateInfo.DatabaseLink">
+            <summary>
+            Gets or sets the database link.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Data.UpdateInfo.RecommendedCacheTimeSpan">
+            <summary>
+            Gets or sets the recommended cache time span.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Data.UpdateInfo.DatabaseVersion">
+            <summary>
+            Gets or sets the version.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.DeviceDetectionManager">
+            <summary>
+            The device detection manager.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceDetectionManager.ProviderHelper">
+            <summary>
+            The _provider helper.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.DeviceDetectionManager.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Sitecore.CES.DeviceDetection.DeviceDetectionManager"/> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceDetectionManager.IsReady">
+            <summary>
+            Gets a value indicating whether device detection is initialized and ready to use.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceDetectionManager.IsEnabled">
+            <summary>
+            Gets a value indicating whether is the device detection is enabled.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.DeviceDetectionManager.GetDeviceInformation(System.String)">
+            <summary>
+            The get device information.
+            </summary>
+            <param name="userAgent">
+            The user agent.
+            </param>
+            <returns>
+            The <see cref="T:Sitecore.CES.DeviceDetection.DeviceInformation"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.DeviceDetectionManager.GetExtendedProperty(System.String,System.String)">
+            <summary>
+            The get custom property.
+            </summary>
+            <param name="userAgent">
+            The user agent.
+            </param>
+            <param name="propertyName">
+            The property name.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.DeviceDetectionManager.CheckInitialization(System.TimeSpan)">
+            <summary>
+            Waits for provider initialization.
+            </summary>
+            <param name="timeout">
+            The timeout.
+            </param>
+            <returns>
+            <c>true</c> if provider was initialized; otherwise - <c>false</c>
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.DeviceDetectionManager.CheckInitialization">
+            <summary>
+            Waits for provider initialization with default timeout.
+            </summary>
+            <returns>
+            <c>true</c> if provider was initialized; otherwise - <c>false</c>
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.DeviceInformation">
+            <summary>
+            The device information base.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.Browser">
+            <summary>
+            Gets or sets the browser model.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.BrowserCanJavaScript">
+            <summary>
+            Gets or sets a value indicating whether browser can java script.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.BrowserHtml5VideoCanVideo">
+            <summary>
+            Gets or sets a value indicating whether browser html 5 video can video.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.BrowserHtml5AudioCanAudio">
+            <summary>
+            Gets or sets a value indicating whether browser html 5 audio can audio.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.CanTouchScreen">
+            <summary>
+            Gets or sets a value indicating whether browser can touch.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.DeviceType">
+            <summary>
+            Gets or sets the device type.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.DeviceModelName">
+            <summary>
+            Gets or sets the device model name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.DeviceOperatingSystemModel">
+            <summary>
+            Gets or sets the device operating system model.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.DeviceOperatingSystemVendor">
+            <summary>
+            Gets or sets the device operating system vendor.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.DeviceVendor">
+            <summary>
+            Gets or sets the device operating system vendor.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.HardwareDisplayWidth">
+            <summary>
+            Gets or sets the hardware display width.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.HardwareDisplayHeight">
+            <summary>
+            Gets or sets the hardware display height.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformation.DeviceIsSmartphone">
+            <summary>
+            Gets or sets a value indicating whether device is smartphone.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.DeviceInformationProviderBase">
+            <summary>
+            The device detection provider base.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceInformationProviderBase.DeviceCache">
+            <summary>
+            The cache.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformationProviderBase.IsEnabled">
+            <summary>
+            Gets a value indicating whether provider is enabled.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.DeviceInformationProviderBase.IsInitialized">
+            <summary>
+            Gets a value indicating whether provider is initialized.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.DeviceInformationProviderBase.GetDeviceInformation(System.String)">
+            <summary>
+            Resolves device information for user agent string
+            </summary>
+            <param name="userAgent">
+            The user agent.
+            </param>
+            <returns>
+            The <see cref="T:Sitecore.CES.DeviceDetection.DeviceInformation"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.DeviceInformationProviderBase.GetExtendedProperty(System.String,System.String)">
+            <summary>
+            Gets extended device property.
+            </summary>
+            <param name="userAgent">
+            The user agent.
+            </param>
+            <param name="propertyName">
+            The property name.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.DeviceInformationProviderBase.DoGetDeviceInformation(System.String)">
+            <summary>
+            Gets device information from vendor.
+            </summary>
+            <param name="userAgent">
+            The user agent.
+            </param>
+            <returns>
+            The <see cref="T:Sitecore.CES.DeviceDetection.DeviceInformation"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.DeviceInformationProviderBase.DoGetExtendedProperty(System.String,System.String)">
+            <summary>
+            Gets extended device property from vendor.
+            </summary>
+            <param name="userAgent">
+            The user agent.
+            </param>
+            <param name="propertyName">
+            The property name.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.DeviceType">
+            <summary>
+            The device type.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceType.Other">
+            <summary>
+            The other.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceType.MobilePhone">
+            <summary>
+            The mobile phone.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceType.MobileConsole">
+            <summary>
+            The mobile console.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceType.EReader">
+            <summary>
+            The e reader.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceType.Tablet">
+            <summary>
+            The tablet.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceType.MediaPlayer">
+            <summary>
+            The media player.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceType.SettopBox">
+            <summary>
+            The set top box or TV.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceType.Camera">
+            <summary>
+            The camera.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceType.Bot">
+            <summary>
+            The bot.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceType.WearableComputer">
+            <summary>
+            The wearable computer.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.DeviceType.Computer">
+            <summary>
+            The computer.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.AverageCounterMeasurer">
+            <summary>
+            The average counter measurement.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.AverageCounterMeasurer.counter">
+            <summary>
+            The counter.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.AverageCounterMeasurer.highResTimer">
+            <summary>
+            The high res timer.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.AverageCounterMeasurer.#ctor(Sitecore.Diagnostics.PerformanceCounters.AverageCounter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.AverageCounterMeasurer"/> class.
+            </summary>
+            <param name="counter">
+            The counter.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.AverageCounterMeasurer.Dispose">
+            <summary>
+            The dispose.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.DeviceDetectionCount">
+            <summary>
+            This static class holds Performance Counters for 'DeviceDetection' operations.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.DeviceDetectionCount.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.DeviceDetectionCount"/> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.DeviceDetectionCount.RequestsTotal">
+            <summary>
+            Gets the requests total.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.DeviceDetectionCount.CacheHits">
+            <summary>
+            Gets the cache hits.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.DeviceDetectionCount.CacheMisses">
+            <summary>
+            Gets the cache misses.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Diagnostics.PerformanceCounters.DeviceDetectionCount.AverageResolveTime">
+            <summary>
+            Gets the average resolve time.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Exceptions.DeviceDetectionException">
+            <summary>
+            The device detection exception.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Exceptions.DeviceDetectionException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Exceptions.DeviceDetectionException"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Exceptions.DeviceDetectionException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Exceptions.DeviceDetectionException"/> class.
+            </summary>
+            <param name="message">
+            The message.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Exceptions.DeviceDetectionException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Exceptions.DeviceDetectionException"/> class.
+            </summary>
+            <param name="message">
+            The message.
+            </param>
+            <param name="inner">
+            The inner.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Exceptions.DeviceDetectionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Exceptions.DeviceDetectionException"/> class.
+            </summary>
+            <param name="info">
+            The info.
+            </param>
+            <param name="context">
+            The context.
+            </param>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Hooks.EnsureDeviceDetectionInitialization">
+            <summary>
+            Ensures the component initialization.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Pipelines.GetFallbackUserAgent.GetFallbackUserAgentPipeline">
+            <summary>
+            Povides a way to get the fallback useragent
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Pipelines.GetFallbackUserAgent.GetFallbackUserAgentPipeline.Run(Sitecore.CES.DeviceDetection.Pipelines.GetFallbackUserAgent.GetFallbackUserAgentArgs)">
+            <summary>
+            Run the <c>getFallbackUserAgent</c> pipeline
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Pipelines.GetFallbackUserAgent.GetFallbackUserAgentProcessor">
+            <summary>
+            The base abstract class for processors of getFallbackUserAgent pipeline.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Pipelines.GetFallbackUserAgent.GetFallbackUserAgentProcessor.Process(Sitecore.CES.DeviceDetection.Pipelines.GetFallbackUserAgent.GetFallbackUserAgentArgs)">
+            <summary>
+            Processes the specified args.
+            </summary>
+            <param name="args">The pipeline args.</param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Pipelines.GetFallbackUserAgent.GetFallbackUserAgentProcessor.GetUserAgent">
+            <summary>
+            Get the user agent string
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Pipelines.Initialize.CheckInitialization">
+            <summary>
+            The ensure device detection is initialized.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Pipelines.Initialize.CheckInitialization.Process(Sitecore.Pipelines.PipelineArgs)">
+            <summary>
+            The process.
+            </summary>
+            <param name="args">
+            The args.
+            </param>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Providers.DatabaseAvailableEventArgs">
+            <summary>
+            The update available event args.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.DatabaseAvailableEventArgs.#ctor(Sitecore.CES.DeviceDetection.Providers.DatabaseInfo,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Providers.DatabaseAvailableEventArgs"/> class.
+            </summary>
+            <param name="databaseInfo">
+            The database info.
+            </param>
+            <param name="key">
+            The key.
+            </param>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Providers.DatabaseAvailableEventArgs.DatabaseInfo">
+            <summary>
+            Gets the database file.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Providers.DatabaseAvailableEventArgs.IsAccepted">
+            <summary>
+            Gets or sets a value indicating whether is accepted.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Providers.DatabaseAvailableEventArgs.Key">
+            <summary>
+            Gets the key.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Providers.DatabaseInfo">
+            <summary>
+            The database info.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.DatabaseInfo.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Providers.DatabaseInfo"/> class.
+            </summary>
+            <param name="path">
+            The path.
+            </param>
+            <param name="version">
+            The version.
+            </param>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Providers.DatabaseInfo.Path">
+            <summary>
+            Gets the path.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Providers.DatabaseInfo.Version">
+            <summary>
+            Gets the version.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient">
+            <summary>
+            The database updater.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.UpdateDeviceDetectionDb">
+            <summary>
+            The update device detection database job name.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.DeviceDatabasePrefix">
+            <summary>
+            The device database prefix.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.heartBeat">
+            <summary>
+            The heart beat.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.jobManager">
+            <summary>
+            The job manager.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.cesManager">
+            <summary>
+            The CES manager.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.downloader">
+            <summary>
+            The downloader.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.fileUtil">
+            <summary>
+            The FileUtil.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.currentVersion">
+            <summary>
+            The current version.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.isInitialized">
+            <summary>
+            The isInitialized.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.nextRing">
+            <summary>
+            The next ring.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.#ctor(Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.IFileUtilWrapper,Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.IHeartBeat,Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.IJobManager,Sitecore.CES.DeviceDetection.Wrappers.ICesManager,Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.IDownloader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient"/> class.
+            </summary>
+            <param name="fileUtil">The file Util.</param>
+            <param name="heartBeat">The heartBeat.</param>
+            <param name="jobManager">The job Manager.</param>
+            <param name="cesManager">The CES Manager.</param>
+            <param name="downloader">The downloader.</param>
+        </member>
+        <member name="E:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.OnDatabaseAvailable">
+            <summary>
+            The on update available.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.Initialize">
+            <summary>
+            Start watching for updates.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.RaiseOnUpdateAvailable(Sitecore.CES.DeviceDetection.Providers.DatabaseInfo,System.String)">
+            <summary>
+            Raises event for database.
+            </summary>
+            <param name="database">
+            The database.
+            </param>
+            <param name="key">
+            The key.
+            </param>
+            <returns>
+            <c>true</c> if update is accepted; otherwise - <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.Update">
+            <summary>
+            The update.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.GetDatabases">
+            <summary>
+            Gets databases.
+            </summary>
+            <returns>
+            The list of available databases.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.GetKey(System.String)">
+            <summary>
+            The get key.
+            </summary>
+            <param name="version">
+            The version.
+            </param>
+            <returns>
+            The key.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.GetVersion(System.String)">
+            <summary>
+            The get version.
+            </summary>
+            <param name="fileName">
+            The file name.
+            </param>
+            <returns>
+            The <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.DeviceDetectionClient.Tick">
+            <summary>
+            The tick.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.#ctor(Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchHelper,Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IProviderFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree"/> class.
+            </summary>
+            <param name="matchHelper"> The match Helper.</param>
+            <param name="providerFactory"> The provider Factory.</param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.#ctor(Sitecore.CES.DeviceDetection.Providers.IDeviceDetectionClient,Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchHelper,Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IProviderFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree"/> class.
+            </summary>
+            <param name="deviceDetectionClient"> The database updater.</param>
+            <param name="matchHelper"> The <see cref="T:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchHelper"/> object.</param>
+            <param name="providerFactory"> The provider Factory.</param>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.IsInitialized">
+            <summary>
+            Gets value indicating initialized whether provider is initialized.
+            </summary>
+            <returns>
+            <c>true</c> if provider is initialized and ready to use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Initializes the provider.
+            </summary>
+            <param name="name">The friendly name of the provider.</param>
+            <param name="config">A collection of the name/value pairs representing the provider-specific attributes specified in the configuration for this provider.</param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.GetDeviceInformation(System.String)">
+            <summary>
+            The get device info.
+            </summary>
+            <param name="userAgent">
+            The user agent.
+            </param>
+            <returns>
+            The <see cref="T:Sitecore.CES.DeviceDetection.DeviceInformation"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.GetExtendedProperty(System.String,System.String)">
+            <summary>
+            The get extended property.
+            </summary>
+            <param name="userAgent">
+            The user agent.
+            </param>
+            <param name="propertyName">
+            The property name.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.SetProvider(Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IProviderWrapper)">
+            <summary>
+            Set the provider.
+            </summary>
+            <param name="newProvider">The new provider.</param>
+            <returns> <c>true</c> if provider is set correctly.</returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.DoGetDeviceInformation(System.String)">
+            <summary>
+            Gets device info.
+            </summary>
+            <param name="userAgent">The user agent.</param>
+            <returns>The <see cref="T:Sitecore.CES.DeviceDetection.DeviceInformation"/>.</returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.DoGetExtendedProperty(System.String,System.String)">
+            <summary>
+            Gets extended device property from vendor.
+            </summary>
+            <param name="userAgent">The user agent.</param>
+            <param name="propertyName">The property name.</param>
+            <returns>The <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.Match(System.String)">
+            <summary>
+            Detect the given userAgent.
+            </summary>
+            <param name="userAgent">The user agent.</param>
+            <returns><see cref="T:FiftyOne.Foundation.Mobile.Detection.IMatch"/></returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.OnDatabaseAvailable(System.Object,Sitecore.CES.DeviceDetection.Providers.DatabaseAvailableEventArgs)">
+            <summary>
+            The on update available.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The e.</param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.InitializeDatabase(Sitecore.CES.DeviceDetection.Providers.DatabaseInfo)">
+            <summary> Initializes database.
+            </summary>
+            <param name="databaseInfo">The database file.</param>
+            <returns>The <see cref="T:System.Boolean"/>.</returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.DeviceInformationProvider51Degree.GetProvider(System.String)">
+            <summary>
+            Get provider for the given database file
+            </summary>
+            <param name="databasePath">Path to database.</param>
+            <returns>A <see cref="T:FiftyOne.Foundation.Mobile.Detection.Provider"/> object.</returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchHelper.ReadStringValue(Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper,System.String)">
+            <summary>
+            Reads property value as string.
+            </summary>
+            <param name="match">The match.</param>
+            <param name="propertyName">Property name.</param>
+            <returns><see cref="T:System.String"/> value of the property.</returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchHelper.ReadListStringValue(Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper,System.String)">
+            <summary>
+            Reads property value as list string.
+            </summary>
+            <param name="match">The match.</param>
+            <param name="propertyName">Property name.</param>
+            <returns><see cref="T:System.String"/> value of the property.</returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchHelper.ExtractDeviceInformation(Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper)">
+            <summary>
+            Extract a <see cref="T:Sitecore.CES.DeviceDetection.DeviceInformation"/> from the given match.
+            </summary>
+            <param name="match">The <see cref="T:FiftyOne.Foundation.Mobile.Detection.Match"/>.</param>
+            <returns>A <see cref="T:Sitecore.CES.DeviceDetection.DeviceInformation"/> object.</returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper">
+            <summary>
+            Defines wrapper class for Match class
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper.DataSet">
+            <summary>
+            Gets the <see cref="P:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper.DataSet"/> instance.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper.HasResults">
+            <summary>
+            Gets a value indicating whether the <see cref="T:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper"/> contain results.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper.GetValues(System.String)">
+            <summary>
+            Get matching <see cref="T:FiftyOne.Foundation.Mobile.Detection.Entities.Values"/> for the property.
+            </summary>
+            <param name="propertyName">The property name.</param>
+            <returns>The <see cref="T:FiftyOne.Foundation.Mobile.Detection.Entities.Values"/></returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.MatchHelper.ReadStringValue(Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper,System.String)">
+            <summary>
+            Reads property value as string.
+            </summary>
+            <param name="match">The match.</param>
+            <param name="propertyName">Property name.</param>
+            <returns><see cref="T:System.String"/> value of the property.</returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.MatchHelper.ReadListStringValue(Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper,System.String)">
+            <summary>
+            Reads property value as list string.
+            </summary>
+            <param name="match">The match.</param>
+            <param name="propertyName">Property name.</param>
+            <returns><see cref="T:System.String"/> value of the property.</returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.MatchHelper.ExtractDeviceInformation(Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper)">
+            <summary>
+            Extract a <see cref="T:Sitecore.CES.DeviceDetection.DeviceInformation"/> from the given match.
+            </summary>
+            <param name="match">The <see cref="T:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchHelper"/>.</param>
+            <returns>A <see cref="T:Sitecore.CES.DeviceDetection.DeviceInformation"/> object.</returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.MatchHelper.ParseDeviceType(System.String)">
+            <summary>
+            Parse device type string.
+            </summary>
+            <param name="deviceTypeString">The device type string.</param>
+            <returns>The <see cref="T:Sitecore.CES.DeviceDetection.DeviceType"/>.</returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.MatchWrapper">
+            <summary>
+            Defines wrapper class for Match class
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.MatchWrapper.#ctor(FiftyOne.Foundation.Mobile.Detection.Match)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.MatchWrapper"/> class. 
+            Create new <see cref="T:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.MatchHelper"/> instnace.
+            </summary>
+            <param name="match">
+            The <see cref="T:FiftyOne.Foundation.Mobile.Detection.Match"/>.
+            </param>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.MatchWrapper.DataSet">
+            <summary>
+            Gets the <see cref="P:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.MatchWrapper.DataSet"/> instance.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.MatchWrapper.HasResults">
+            <summary>
+            Gets a value indicating whether the <see cref="T:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.IMatchWrapper"/> contain results.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.FiftyOneDegrees.MatchWrapper.GetValues(System.String)">
+            <summary>
+            Get matching <see cref="T:FiftyOne.Foundation.Mobile.Detection.Entities.Values"/> for the property.
+            </summary>
+            <param name="propertyName">The property name.</param>
+            <returns>The <see cref="T:FiftyOne.Foundation.Mobile.Detection.Entities.Values"/></returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Providers.IDeviceDetectionClient">
+            <summary>
+            The Database Updater interface.
+            </summary>
+        </member>
+        <member name="E:Sitecore.CES.DeviceDetection.Providers.IDeviceDetectionClient.OnDatabaseAvailable">
+            <summary>
+            The on update available.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Providers.IDeviceDetectionClient.Initialize">
+            <summary>
+            Starts watching for updates.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.SleepSpinner">
+            <summary>
+            The sleep spinner.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.SleepSpinner.SyncObject">
+            <summary>
+            The sync object.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.SleepSpinner.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Sitecore.CES.DeviceDetection.SleepSpinner"/> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.SleepSpinner.SleepTime">
+            <summary>
+            Gets or sets the sleep time.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.SleepSpinner.Wait(System.Func{System.Boolean},System.TimeSpan)">
+            <summary>
+            Waits for conditions is <c>true</c>.
+            </summary>
+            <param name="condition">
+            The condition.
+            </param>
+            <param name="timeout">
+            The timeout.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Wrappers.CesManagerWrapper">
+            <summary>
+            The manager proxy.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Wrappers.CesManagerWrapper.Request``1(System.String,System.String)">
+            <summary>
+            The get async.
+            </summary>
+            <param name="serviceName">
+            The service name.
+            </param>
+            <param name="apiPath">
+            The API path.
+            </param>
+            <typeparam name="T">
+            The type.
+            </typeparam>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Wrappers.CesManagerWrapper.DownloadBinaryContent(System.String,System.String,Sitecore.CES.DownladBinaryContentParameters)">
+            <summary>
+            Download the specified resource in binary format.
+            </summary>
+            <param name="serviceName">The service name.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The <see cref="T:Sitecore.CES.DownloadBinaryContentResponse"/></returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Wrappers.ICesManager">
+            <summary>
+            The Manager interface.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Wrappers.ICesManager.Request``1(System.String,System.String)">
+            <summary>
+            The get async.
+            </summary>
+            <param name="serviceName">
+            The service name.
+            </param>
+            <param name="apiPath">
+            The API path.
+            </param>
+            <typeparam name="T">
+            The type.
+            </typeparam>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Wrappers.ICesManager.DownloadBinaryContent(System.String,System.String,Sitecore.CES.DownladBinaryContentParameters)">
+            <summary>
+            Download the specified resource in binary format.
+            </summary>
+            <param name="serviceName">The service name.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The <see cref="T:Sitecore.CES.DownloadBinaryContentResponse"/></returns>
+        </member>
+    </members>
+</doc>

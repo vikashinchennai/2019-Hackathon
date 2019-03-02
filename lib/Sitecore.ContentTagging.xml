@@ -1,0 +1,633 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.ContentTagging</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.ContentTagging.ButtonStateProvider">
+            <summary>
+            Defines tagging manager type
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.ButtonStateProvider.PipelineManager">
+            <summary>
+            Base pipeline manager
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.ButtonStateProvider.#ctor(Sitecore.Abstractions.BaseCorePipelineManager)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.ButtonStateProvider.GetButtonStateForUser(Sitecore.Data.Items.Item,Sitecore.Security.Accounts.User)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sitecore.ContentTagging.ButtonStateProvider.CheckLocking(Sitecore.Data.Items.Item,Sitecore.Security.Accounts.User)">
+            <summary>
+            Chekcs whether current user has locked the item
+            </summary>
+            <param name="item">item to check locking</param>
+            <param name="user">user who requests state</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Commands.TagContentCommand">
+            <summary>
+            Command to trigger content tagging process
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Commands.TagContentCommand.ContentTaggingRunner">
+            <summary>
+            Content tagging runner
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Commands.TagContentCommand.MessageBusFactory">
+            <summary>
+            MessageBusFactory Factory
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Commands.TagContentCommand.ButtonStateProvider">
+            <summary>
+            ButtonStateProvider
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Commands.TagContentCommand.PipelineManager">
+            <summary>
+            Base pipeline manager
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Commands.TagContentCommand.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Commands.TagContentCommand.Execute(Sitecore.Shell.Framework.Commands.CommandContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Commands.TagContentCommand.Run(Sitecore.Web.UI.Sheer.ClientPipelineArgs)">
+            <summary>Runs the command in ProgressBox.</summary>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Commands.TagContentCommand.QueryState(Sitecore.Shell.Framework.Commands.CommandContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Commands.TagContentCommand.RunTagging(Sitecore.Web.UI.Sheer.ClientPipelineArgs)">
+            <summary>
+            Runs process of tagging content
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Commands.TagContentCommand.TaggingDone(Sitecore.Web.UI.Sheer.ClientPipelineArgs)">
+            <summary>
+            Callback on tagging process done
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Configuration.IItemContentTaggingConfigurationService">
+            <summary>
+            Abstraction over named item content tagging configuration
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Configuration.IItemContentTaggingConfigurationService.GetConfigurationByName(System.String)">
+            <summary>
+            Get ItemContentTaggingConfiguration by configuration name
+            </summary>
+            <param name="configurationName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Configuration.IItemContentTaggingProviderSetBuilder">
+            <summary>
+            Item Content Tagging ProviderSet Builder abstraction
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Configuration.IItemContentTaggingProviderSetBuilder.Build(System.String)">
+            <summary>
+            Build named ItemContentTaggingProvidersSet instance
+            </summary>
+            <param name="providersSetName">Name of providers set from configuration which will be created</param>
+            <returns>Instance of ItemContentTaggingProvidersSet</returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfiguration">
+            <summary>
+            Item content tagging configuration model
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfiguration.ContentProviders">
+            <summary>
+            Content providers
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfiguration.DiscoveryProviders">
+            <summary>
+            Discovery providers
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfiguration.Taggers">
+            <summary>
+            Taggers
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfiguration.TaxonomyProviders">
+            <summary>
+            Taxponomy providers
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfigurationService">
+            <summary>
+            Read item content tagging configuration from sitecore configuration
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfigurationService.ConfigurationFactory">
+            <summary>
+            Configuration factory
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfigurationService.ItemContentTaggingConfigurations">
+            <summary>
+            All named configurations
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfigurationService.#ctor(Sitecore.Abstractions.BaseFactory)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configurationFactory"> Configuration factory</param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfigurationService.GetConfigurationByName(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfigurationService.InitializeItemContentTaggingConfigurations">
+            <summary>
+            Reads all configurations from web config
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfigurationService.GetConfiguration(System.String)">
+            <summary>
+            Get Item Content Tagging configuration model from sitecore configuration by name
+            </summary>
+            <param name="configurationName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfigurationService.GetConfigurationProvidersNames(System.String,System.String)">
+            <summary>
+            Get list of pro
+            </summary>
+            <param name="configurationName">Item content tagging configuration name</param>
+            <param name="category">content tagging provider category</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Configuration.ItemContentTaggingConfigurationService.GetAllConfigurationsNames">
+            <summary>
+            Returns all configurations names
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Configuration.ItemContentTaggingProviderSetBuilder">
+            <summary>
+            Item Content Tagging ProviderSet builder 
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Configuration.ItemContentTaggingProviderSetBuilder.ProvidersFactory">
+            <summary>
+            Providers factory
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Configuration.ItemContentTaggingProviderSetBuilder.ConfigurationService">
+            <summary>
+            Item Content Tagging Configuration provider
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Configuration.ItemContentTaggingProviderSetBuilder.#ctor(Sitecore.ContentTagging.Core.Factories.IContentTaggingProviderFactory,Sitecore.ContentTagging.Configuration.IItemContentTaggingConfigurationService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="providersFactory">Content tagging providers factory</param>
+            <param name="configurationService">Configuration provider</param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Configuration.ItemContentTaggingProviderSetBuilder.Build(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Configuration.ItemContentTaggingProviderSetBuilder.NotNull``1(``0)">
+            <summary>
+            Checks whether object is not null
+            </summary>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Configuration.ItemContentTaggingProvidersSet">
+            <summary>
+            Defines item content tagging set of providers
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Configuration.ItemContentTaggingProvidersSet.ContentProviders">
+            <summary>
+            Collection of content providers
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Configuration.ItemContentTaggingProvidersSet.DiscoveryProviders">
+            <summary>
+            Collection of discovery providers
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Configuration.ItemContentTaggingProvidersSet.TaxonomyProviders">
+            <summary>
+            Collection of taxonomy providers
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Configuration.ItemContentTaggingProvidersSet.Taggers">
+            <summary>
+            Collection of taggers
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Constants">
+            <summary>
+            Constants
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Constants.PostbackInterval">
+            <summary>
+            Postback interval
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Constants.ItemsArgsKey">
+            <summary>
+            Items key
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Constants.MessageBusArgsKey">
+            <summary>
+            MessageBus key
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Constants.ContentTaggingProgressBoxIcon">
+            <summary>
+            Content tagging ProgressBox Icon
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Constants.GetTaggingConfigurationPipelineName">
+            <summary>
+            GetTaggingConfiguration pipeline name
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Constants.TagContentPipelineName">
+            <summary>
+            TagContent pipeline name
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Constants.NormalizeContentPipelineName">
+            <summary>
+            NormalizeContent pipeline name
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Constants.ContentTaggingPipelineGroupName">
+            <summary>
+            ContentTagging pipeline group name
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.ContentTaggingRunner">
+            <summary>
+            Defines tagging manager type
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.ContentTaggingRunner.PipelineManager">
+            <summary>
+            Base pipeline manager
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.ContentTaggingRunner.#ctor(Sitecore.Abstractions.BaseCorePipelineManager)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="pipelineManager">Pipeline manager</param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.ContentTaggingRunner.Run(Sitecore.Data.Items.Item,Sitecore.ContentTagging.Core.Messaging.MessageBus)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sitecore.ContentTagging.IButtonStateProvider">
+            <summary>
+            Defines tagging manager interface
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.IButtonStateProvider.GetButtonStateForUser(Sitecore.Data.Items.Item,Sitecore.Security.Accounts.User)">
+            <summary>
+            Gets the state of the tag content button for a given item.
+            </summary>
+            <param name="item">Item to tag</param>
+            <param name="user">User to check</param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.IContentTaggingRunner">
+            <summary>
+            Defines tagging manager interface
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.IContentTaggingRunner.Run(Sitecore.Data.Items.Item,Sitecore.ContentTagging.Core.Messaging.MessageBus)">
+            <summary>
+            Executes content taging with messaging
+            </summary>
+            <param name="contentItem">Item to tag</param>
+            <param name="messageBus">Message bus</param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Jobs.JobContextMessageHandler">
+            <summary>
+            Message hanlder to push all messages to Sitecore job context
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Jobs.JobContextMessageHandler.HandleMessage(Sitecore.ContentTagging.Core.Messaging.Message)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.BuildConfiguration">
+            <summary>
+            Pipeline processor to initialize Item Content Tagging ProvidersSet
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.BuildConfiguration.TaggingProviderSetBuilder">
+            <summary>
+            Item Content Tagging ProviderSet Builder
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.BuildConfiguration.#ctor(Sitecore.ContentTagging.Configuration.IItemContentTaggingProviderSetBuilder)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="taggingProviderSetBuilder">Item Tagging ProviderSet Builder</param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.BuildConfiguration.Process(Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.GetTaggingConfigurationArgs)">
+            <summary>
+            Pipeline processor entry point
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.GetDefaultConfigurationName">
+            <summary>
+            Pipeline processor to initialize Item Content Tagging ProvidersSet
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.GetDefaultConfigurationName.Settings">
+            <summary>
+            BaseSettings
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.GetDefaultConfigurationName.#ctor(Sitecore.Abstractions.BaseSettings)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="settings">setting</param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.GetDefaultConfigurationName.Process(Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.GetTaggingConfigurationArgs)">
+            <summary>
+            Pipeline processor entry point
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.GetTaggingConfigurationArgs">
+            <summary>
+            Defines arguments type for configuration retrieving pipeline
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.GetTaggingConfigurationArgs.ConfigurationName">
+            <summary>
+            Configuration name
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.GetTaggingConfigurationArgs.ProvidersSet">
+            <summary>
+            Preserves tagging configuration.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Pipelines.GetTaggingConfiguration.GetTaggingConfigurationArgs.MessageBus">
+            <summary>
+            Message bus
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Pipelines.NormalizeContent.NormalizeContentArgs">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Pipelines.NormalizeContent.NormalizeContentArgs.MessageBus">
+            <summary>
+            Message bust to push messages from Message Sources
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Pipelines.NormalizeContent.NormalizeContentArgs.Content">
+            <summary>
+            Taggable content
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Pipelines.NormalizeContent.StripHtml">
+            <summary>
+            Removes HTML tags from the content
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Pipelines.NormalizeContent.StripHtml.Process(Sitecore.ContentTagging.Pipelines.NormalizeContent.NormalizeContentArgs)">
+            <summary>
+            Apply action
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Pipelines.NormalizeContent.StripHtml.StripHtmlTags(System.String)">
+            <summary>
+            Strip HTML tags from a given string value.
+            </summary>
+            <param name="html">HTML string value.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Pipelines.TagContent.ApplyTags">
+            <summary>
+            Applys tags to item
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Pipelines.TagContent.ApplyTags.Process(Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs)">
+            <summary>
+            Perform action
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Pipelines.TagContent.GetTags">
+            <summary>
+            Process content through discovery provider
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Pipelines.TagContent.GetTags.Process(Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs)">
+            <summary>
+            Apply action
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Pipelines.TagContent.Normalize">
+            <summary>
+            Retrieve taggable content from the content item
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Pipelines.TagContent.Normalize.PipelineManager">
+            <summary>
+            Base pipeline manager
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Pipelines.TagContent.Normalize.Process(Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs)">
+            <summary>
+            Apply action
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Pipelines.TagContent.RetrieveContent">
+            <summary>
+            Retrieve taggable content from the content item
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Pipelines.TagContent.RetrieveContent.Process(Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs)">
+            <summary>
+            Apply action
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Pipelines.TagContent.StoreTags">
+            <summary>
+            Preserve tags inside  the tag storage
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Pipelines.TagContent.StoreTags.Process(Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs)">
+            <summary>
+            Apply action
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs">
+            <summary>
+            Defines arguments type for tag content pipeline.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs.ContentItem">
+            <summary>
+            Content Uri
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs.MessageBus">
+            <summary>
+            Message bust to push messages from Message Sources
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs.Configuration">
+            <summary>
+            Set of providers for running Item Content Tagging
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs.Content">
+            <summary>
+            Taggable content
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs.TagDataCollection">
+            <summary>
+            TagData collection
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs.Tags">
+            <summary>
+            Tags collection
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Requests.CanTagContentRequest">
+            <summary>
+            Run content tagging process on request
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Requests.CanTagContentRequest.PipelineManager">
+            <summary>
+            Base pipeline manager
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.Requests.CanTagContentRequest.ButtonStateProvider">
+            <summary>
+            ButtonStateProvider
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Requests.CanTagContentRequest.MessageBusFactory">
+            <summary>
+            Messaging Factory
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Requests.CanTagContentRequest.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Requests.CanTagContentRequest.ProcessRequest">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Requests.TagContentRequest">
+            <summary>
+            Run content tagging process on request
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Requests.TagContentRequest.ContentTaggingRunner">
+            <summary>
+            Tag content runner
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Requests.TagContentRequest.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Requests.TagContentRequest.ProcessRequest">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Services.IItemLanguageService">
+            <summary>
+            Abstraction over item language
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Services.IItemLanguageService.CheckItemOriginalLanguage(Sitecore.Data.Items.Item,System.String)">
+            <summary>
+            Checks if item original language matches language name
+            </summary>
+            <param name="item">item to check</param>
+            <param name="language">language 2 digit name</param>
+            <returns>true if item original language mathes passed language parameter</returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Services.ItemLanguageService">
+            <summary>
+            IItemLanguageService implementation
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.Services.ItemLanguageService.CheckItemOriginalLanguage(Sitecore.Data.Items.Item,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sitecore.ContentTagging.Texts">
+            <summary>
+            Content tagging translatable texts
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Texts.ErrorMessageTitle">
+            <summary>
+            Error while tagging message
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Texts.ErrorWhileTaggingMessage">
+            <summary>
+            Error while tagging message
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Texts.WarningWhileTaggingMessage">
+            <summary>
+            Warning while tagging message
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Texts.ContentTaggingProgressBoxTitle">
+            <summary>
+            Content Tagging ProgressBox Title
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Texts.ContentTaggingProgressBoxMessage">
+            <summary>
+            Content Tagging ProgressBox message
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.Texts.UserDoesNotHaveItemWriteAccessMessage">
+            <summary>
+            User does not have item write access message
+            </summary>
+        </member>
+    </members>
+</doc>

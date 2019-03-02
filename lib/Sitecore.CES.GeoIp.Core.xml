@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.CES.GeoIp.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.CES.GeoIp.Core.Lookups.LookupManager">
+            <summary>Defines the lookup manager class.</summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.Core.Lookups.LookupManager.data">
+            <summary>
+                The lookup providers.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Lookups.LookupManager.Provider">
+            <summary>
+                Gets the providers.
+            </summary>
+            <value>The providers.</value>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Lookups.LookupManager.Providers">
+            <summary>
+                Gets the providers.
+            </summary>
+            <value>The providers.</value>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Core.Lookups.LookupManager.GetWhoIsInformationByIp(System.String)">
+            <summary>
+            Gets who is information by IP.
+            </summary>
+            <param name="ip">The ip.</param>
+            <returns>The who is information.</returns>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.Core.Lookups.LookupProviderBase">
+            <summary>
+            Defines the lookup provider base class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Core.Lookups.LookupProviderBase.GetWhoIsInformationByIp(System.String)">
+            <summary>
+            Gets who is information by IP.
+            </summary>
+            <param name="ip">The ip.</param>
+            <returns>The who is information.</returns>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.Core.Lookups.LookupProviderCollection">
+            <summary>
+            LookupProviderCollection class
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Lookups.LookupProviderCollection.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:Sitecore.CES.GeoIp.Core.Lookups.LookupProviderBase"/> with the specified name.
+            </summary>
+            <param name="name">The name of the provider.</param>
+            <value>The selected provider.</value>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Core.Lookups.LookupProviderCollection.Add(System.Configuration.Provider.ProviderBase)">
+            <summary>
+            Adds a provider to the collection.
+            </summary>
+            <param name="provider">The provider to be added.</param>
+            <exception cref="T:System.NotSupportedException">The collection is read-only.</exception>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="provider"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">The <see cref="P:System.Configuration.Provider.ProviderBase.Name"/> of <paramref name="provider"/> is null.- or -The length of the <see cref="P:System.Configuration.Provider.ProviderBase.Name"/> of <paramref name="provider"/> is less than 1.</exception>
+            <PermissionSet>
+            <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence"/>
+            </PermissionSet>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Core.Lookups.LookupProviderCollection.Add(Sitecore.CES.GeoIp.Core.Lookups.LookupProviderBase)">
+            <summary>
+            Adds the specified provider.
+            </summary>
+            <param name="provider">The provider.</param>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation">
+            <summary>
+              Contains geographical and IP address information received from a GeoIP provider.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.IsUnknown">
+            <summary>
+              Gets or sets a value indicating whether this instance's fields could
+              not be resolved via GeoIP provider.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.AreaCode">
+            <summary>
+              Gets or sets the area code.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.BusinessName">
+            <summary>
+              Gets or sets the name of business.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.City">
+            <summary>
+              Gets or sets the city.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.Country">
+            <summary>
+              Gets or sets the country.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.Dns">
+            <summary>
+              Gets or sets the domain name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.Isp">
+            <summary>
+              Gets or sets the ISP name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.Latitude">
+            <summary>
+              Gets or sets the latitude.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.Longitude">
+            <summary>
+              Gets or sets the longitude.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.MetroCode">
+            <summary>
+              Gets or sets the metro code.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.PostalCode">
+            <summary>
+              Gets or sets the postal code.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.Region">
+            <summary>
+              Gets or sets the region.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.Url">
+            <summary>
+              Gets or sets the URL.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation.CreateUnknown">
+            <summary>
+              Gets an instance of <see cref="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation"/> with all properties
+              set to <i>'N/A'</i>.
+            </summary>
+            <returns>
+              A new instance of <see cref="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation"/>.
+            </returns>
+        </member>
+    </members>
+</doc>

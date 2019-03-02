@@ -1,0 +1,1304 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.ContentSearch.Linq.Solr</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.ContentSearch.Linq.Solr.CustomQuery">
+            <summary>
+            The <see cref="T:Sitecore.ContentSearch.Linq.Solr.CustomQuery"/> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.CustomQuery.QueryNode">
+            <summary>Gets or sets the node.</summary>
+            <value>The node.</value>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery">
+            <summary>
+            The solr composite query.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.#ctor(SolrNet.AbstractSolrQuery,SolrNet.AbstractSolrQuery,System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Methods.QueryMethod},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.FacetQuery})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery"/> class.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="filterQuery">The filter.</param>
+            <param name="methods">The methods.</param>
+            <param name="virtualFieldProcessors">The virtual field processors.</param>
+            <param name="facetQueries">The facet queries.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.#ctor(SolrNet.AbstractSolrQuery,SolrNet.AbstractSolrQuery,System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Methods.QueryMethod},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.FacetQuery},Sitecore.ContentSearch.Linq.Common.IExecutionContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery"/> class.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="filterQuery">The filter.</param>
+            <param name="methods">The methods.</param>
+            <param name="virtualFieldProcessors">The virtual field processors.</param>
+            <param name="facetQueries">The facet queries.</param>
+            <param name="executionContext">The execution context.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.#ctor(SolrNet.AbstractSolrQuery,SolrNet.AbstractSolrQuery,System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Methods.QueryMethod},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.FacetQuery},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IExecutionContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery" /> class.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="filterQuery">The filter query.</param>
+            <param name="methods">The methods.</param>
+            <param name="virtualFieldProcessors">The virtual field processors.</param>
+            <param name="facetQueries">The facet queries.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.Methods">
+            <summary>Gets or sets the methods.</summary>
+            <value>The methods.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.Query">
+            <summary>
+            Gets or sets the query.
+            </summary>
+            <value>The query.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.Filter">
+            <summary>
+            Gets or sets the filter query.
+            </summary>
+            <value>The filter query.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.VirtualFieldProcessors">
+            <summary>Gets or sets the virtual field processors.</summary>
+            <value>The virtual field processors.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.FacetQueries">
+            <summary>Gets or sets the facet queries.</summary>
+            <value>The facet queries.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.ExecutionContexts">
+            <summary>Gets or sets the execution contexts.</summary>
+            <value>The execution contexts.</value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.Sitecore#ContentSearch#Linq#Common#IDumpable#WriteTo(System.IO.TextWriter)">
+            <summary>Dumps the specified writer.</summary>
+            <param name="writer">The writer.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.ShouldRunCountOnAllDocuments">
+            <summary>
+            True if count method has to be run against all the documents
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.GetSorting">
+            <summary>
+            Gets order by fields.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery.GetMaxHits(System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+            Gets maximum hits.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters">
+            <summary>
+            The solr index parameters.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters.#ctor(Sitecore.ContentSearch.Linq.Parsing.IIndexValueFormatter,Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslatorMap{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},Sitecore.ContentSearch.Linq.Common.FieldNameTranslator,Sitecore.ContentSearch.Linq.Common.IExecutionContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters"/> class.
+            </summary>
+            <param name="valueFormatter">The value formatter.</param>
+            <param name="fieldQueryTranslators">The field query translators.</param>
+            <param name="fieldNameTranslator">The field name translator.</param>
+            <param name="executionContext">The execution context.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters.#ctor(Sitecore.ContentSearch.Linq.Parsing.IIndexValueFormatter,Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslatorMap{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},Sitecore.ContentSearch.Linq.Common.FieldNameTranslator,Sitecore.ContentSearch.Linq.Common.IExecutionContext[],Sitecore.ContentSearch.IFieldMapReaders)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters" /> class.
+            </summary>
+            <param name="valueFormatter">The value formatter.</param>
+            <param name="fieldQueryTranslators">The field query translators.</param>
+            <param name="fieldNameTranslator">The field name translator.</param>
+            <param name="executionContexts">The execution contexts.</param>
+            <param name="fieldMap">The field map.</param>
+            <exception cref="T:System.ArgumentNullException">valueFormatter or fieldQueryTranslators or fieldNameTranslator is <c>null</c>.</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters.#ctor(Sitecore.ContentSearch.Linq.Parsing.IIndexValueFormatter,Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslatorMap{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},Sitecore.ContentSearch.Linq.Common.FieldNameTranslator,Sitecore.ContentSearch.Linq.Common.IExecutionContext[],Sitecore.ContentSearch.IFieldMapReaders,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters" /> class.
+            </summary>
+            <param name="valueFormatter">The value formatter.</param>
+            <param name="fieldQueryTranslators">The field query translators.</param>
+            <param name="fieldNameTranslator">The field name translator.</param>
+            <param name="executionContexts">The execution contexts.</param>
+            <param name="fieldMap">The field map.</param>
+            <param name="convertQueryDatesToUtc">The value indicating whether dates during the querying will be always convert to dates with UTC kind.</param>
+            <exception cref="T:System.ArgumentNullException">valueFormatter or fieldQueryTranslators or fieldNameTranslator is <c>null</c>.</exception>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters.ValueFormatter">
+            <summary>Gets or sets the value formatter.</summary>
+            <value>The value formatter.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters.FieldQueryTranslators">
+            <summary>Gets or sets the field query translators.</summary>
+            <value>The field query translators.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters.FieldNameTranslator">
+            <summary>Gets or sets the field name translator.</summary>
+            <value>The field name translator.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters.ExecutionContexts">
+            <summary>Gets or sets the execution context.</summary>
+            <value>The execution context.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters.ConvertQueryDatesToUtc">
+            <summary>
+            Gets or sets a value indicating whether dates during the querying will be always convert to dates with UTC kind.
+            </summary>
+            <value>
+            <c>true</c> if convert dates to date with UTC kind; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters.FieldMap">
+            <summary>
+            Gets or sets the field map.
+            </summary>
+            <value>
+            The field map.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters.ExecutionContext">
+            <summary> Gets the execution context. </summary>
+            <value> The execution context. </value>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper">
+            <summary>
+            The solr query mapper.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.fieldQueryTranslators">
+            <summary>
+            The field query translators
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.#ctor(Sitecore.ContentSearch.Linq.Solr.SolrIndexParameters)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper"/> class.
+            </summary>
+            <param name="parameters">
+            The parameters.
+            </param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.Parameters">
+            <summary>Gets the parameters.</summary>
+            <value>The parameters.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.FieldNameTranslator">
+            <summary>Gets or sets the field name translator.</summary>
+            <value>The field name translator.</value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.MapQuery(Sitecore.ContentSearch.Linq.Parsing.IndexQuery)">
+            <summary>
+            Maps the query.
+            </summary>
+            <param name="query">
+            The query.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripAll(Sitecore.ContentSearch.Linq.Nodes.AllNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips all.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripAny(Sitecore.ContentSearch.Linq.Nodes.AnyNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips any.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripCast(Sitecore.ContentSearch.Linq.Nodes.CastNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the cast.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripCount(Sitecore.ContentSearch.Linq.Nodes.CountNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the count.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripElementAt(Sitecore.ContentSearch.Linq.Nodes.ElementAtNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the element at.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripFirst(Sitecore.ContentSearch.Linq.Nodes.FirstNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the first.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripMin(Sitecore.ContentSearch.Linq.Nodes.MinNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the first.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripMax(Sitecore.ContentSearch.Linq.Nodes.MaxNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the first.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripLast(Sitecore.ContentSearch.Linq.Nodes.LastNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the last.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripOrderBy(Sitecore.ContentSearch.Linq.Nodes.OrderByNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the order by.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripSingle(Sitecore.ContentSearch.Linq.Nodes.SingleNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the single.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripSkip(Sitecore.ContentSearch.Linq.Nodes.SkipNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the skip.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripTake(Sitecore.ContentSearch.Linq.Nodes.TakeNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the take.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripSelect(Sitecore.ContentSearch.Linq.Nodes.SelectNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the select.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripGetResults(Sitecore.ContentSearch.Linq.Nodes.GetResultsNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the get results.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="additionalQueryMethods">
+            The additional query methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripInContext(Sitecore.ContentSearch.Linq.Nodes.InContextNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Common.IExecutionContext})">
+            <summary>Strips the with context.</summary>
+            <param name="node">The node.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripGetFacets(Sitecore.ContentSearch.Linq.Nodes.GetFacetsNode,System.Collections.Generic.HashSet{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>
+            Strips the get facets.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="methods">
+            The methods.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripFacetOn(Sitecore.ContentSearch.Linq.Nodes.FacetOnNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Strips the facet on.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripFacetPivotOn(Sitecore.ContentSearch.Linq.Nodes.FacetPivotOnNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Strips the facet pivot on.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripJoin(Sitecore.ContentSearch.Linq.Nodes.JoinNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>Strips the join.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripGroupJoin(Sitecore.ContentSearch.Linq.Nodes.GroupJoinNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>Strips the group join.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripUnion(Sitecore.ContentSearch.Linq.Nodes.UnionNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>Strips the union.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.StripSelectMany(Sitecore.ContentSearch.Linq.Nodes.SelectManyNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>Strips the select many.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.Visit(Sitecore.ContentSearch.Linq.Nodes.QueryNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the specified node.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+            <exception cref="T:System.NotSupportedException">
+            Unknown query node type.
+            </exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitFilter(Sitecore.ContentSearch.Linq.Nodes.FilterNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the filter.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitField(Sitecore.ContentSearch.Linq.Nodes.FieldNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the field.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitUnion(Sitecore.ContentSearch.Linq.Nodes.UnionNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the union.
+            </summary>
+            <param name="node"> The node. </param>
+            <param name="state"> The state. </param>
+            <returns> The result. </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitAnd(Sitecore.ContentSearch.Linq.Nodes.AndNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the and.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitBetween(Sitecore.ContentSearch.Linq.Nodes.BetweenNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the between.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitContains(Sitecore.ContentSearch.Linq.Nodes.ContainsNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the equal.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitContains(System.String,System.Object,System.Single)">
+            <summary>
+            Visits the contains.
+            </summary>
+            <param name="field">The field.</param>
+            <param name="value">The field value.</param>
+            <param name="boost">The boost</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitEndsWith(Sitecore.ContentSearch.Linq.Nodes.EndsWithNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            The visit ends with.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The <see cref="!:Query"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitEqual(Sitecore.ContentSearch.Linq.Nodes.EqualNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the equal.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitEqual(System.String,System.Object,System.Single)">
+            <summary>
+            Visits the equal.
+            </summary>
+            <param name="field">
+            The field.
+            </param>
+            <param name="fieldValue">
+            The field value.
+            </param>
+            <param name="boost">
+            The boost.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitLessThanOrEqual(Sitecore.ContentSearch.Linq.Nodes.LessThanOrEqualNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the less than or equal.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitLessThanOrEqual(System.String,System.Object,System.Single)">
+            <summary>
+            Visits the less than or equal.
+            </summary>
+            <param name="field">
+            The field.
+            </param>
+            <param name="value">
+            The value.
+            </param>
+            <param name="boost">
+            The boost.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitLessThan(Sitecore.ContentSearch.Linq.Nodes.LessThanNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the less than.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitLessThan(System.String,System.Object,System.Single)">
+            <summary>
+            Visits the less than.
+            </summary>
+            <param name="field">
+            The field.
+            </param>
+            <param name="value">
+            The value.
+            </param>
+            <param name="boost">
+            The boost.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitGreaterThanOrEqual(Sitecore.ContentSearch.Linq.Nodes.GreaterThanOrEqualNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the greater than or equal.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitGreaterThanOrEqual(System.String,System.Object,System.Single)">
+            <summary>
+            Visits the greater than or equal.
+            </summary>
+            <param name="field">
+            The field.
+            </param>
+            <param name="value">
+            The value.
+            </param>
+            <param name="boost">
+            The boost.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitGreaterThan(Sitecore.ContentSearch.Linq.Nodes.GreaterThanNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the greater than.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitGreaterThan(System.String,System.Object,System.Single)">
+            <summary>
+            Visits the greater than.
+            </summary>
+            <param name="field">
+            The field.
+            </param>
+            <param name="value">
+            The value.
+            </param>
+            <param name="boost">
+            The boost.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitMatchAll(Sitecore.ContentSearch.Linq.Nodes.MatchAllNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the match all.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitMatchNone(Sitecore.ContentSearch.Linq.Nodes.MatchNoneNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the match none.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitNot(Sitecore.ContentSearch.Linq.Nodes.NotNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the not.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitOr(Sitecore.ContentSearch.Linq.Nodes.OrNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the or.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitStartsWith(Sitecore.ContentSearch.Linq.Nodes.StartsWithNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the starts with.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitStartsWith(System.String,System.Object,System.Single)">
+            <summary>
+            Visits the starts with.
+            </summary>
+            <param name="field">The field.</param>
+            <param name="value">The field value.</param>
+            <param name="boost">The boost</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitWhere(Sitecore.ContentSearch.Linq.Nodes.WhereNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the where.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitMatches(Sitecore.ContentSearch.Linq.Nodes.MatchesNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the matches.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitWildcardMatch(Sitecore.ContentSearch.Linq.Nodes.WildcardMatchNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the wildcard match.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="mappingState">
+            State of the mapping.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitLike(Sitecore.ContentSearch.Linq.Nodes.LikeNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visits the like.
+            </summary>
+            <param name="node">
+            The node.
+            </param>
+            <param name="mappingState">
+            State of the mapping.
+            </param>
+            <returns>
+            The result.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.CalculateMatching(Sitecore.ContentSearch.Linq.Nodes.LikeNode)">
+            <summary>
+            Calculate Matching
+            </summary>
+            <param name="node">Like Node</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.GetLikeQuery(Sitecore.ContentSearch.Pipelines.FormatQueryFieldValue.FormatQueryFieldValueArgs,System.String,System.String,System.Single)">
+            <summary>
+            Get Like Query
+            </summary>
+            <param name="args">FormatQueryFieldValueArgs</param>
+            <param name="field">Field</param>
+            <param name="searchValue">SearchValue</param>
+            <param name="matching">Matching</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.GetSearchValue(Sitecore.ContentSearch.Pipelines.FormatQueryFieldValue.FormatQueryFieldValueArgs,System.Single)">
+            <summary>
+            Get Seach Value
+            </summary>
+            <param name="args">FormatQueryFieldValueArgs</param>
+            <param name="matching">Matching</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitSelfJoin(Sitecore.ContentSearch.Linq.Nodes.SelfJoinNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>Visits the self join.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.ProcessAsVirtualField(Sitecore.ContentSearch.Linq.Nodes.FieldNode,Sitecore.ContentSearch.Linq.Nodes.ConstantNode,System.Single,Sitecore.ContentSearch.Linq.Common.ComparisonType,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState,SolrNet.AbstractSolrQuery@)">
+            <summary>
+            Processes as virtual field.
+            </summary>
+            <param name="fieldNode">
+            The field node.
+            </param>
+            <param name="valueNode">
+            The value node.
+            </param>
+            <param name="boost">
+            The boost.
+            </param>
+            <param name="comparison">
+            The comparison.
+            </param>
+            <param name="state">
+            The state.
+            </param>
+            <param name="query">
+            The query.
+            </param>
+            <returns>
+            The result.
+            </returns>
+            <exception cref="T:System.InvalidOperationException">
+            Unknown comparison type
+            </exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitWithinRadius(Sitecore.ContentSearch.Linq.Nodes.WithinRadiusNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visit the within radius
+            </summary>
+            <param name="node"><see cref="T:Sitecore.ContentSearch.Linq.Nodes.WithinRadiusNode"/></param>
+            <param name="state"><see cref="T:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitCenterPoint(Sitecore.ContentSearch.Linq.Nodes.OrderByDistanceNode,SolrNet.AbstractSolrQuery)">
+            <summary>
+            Visit the withinradius
+            </summary>
+            <param name="node"><see cref="T:Sitecore.ContentSearch.Linq.Nodes.OrderByDistanceNode"/></param>
+            <param name="query"><see cref="!:query"/></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.VisitOrderByDistance(Sitecore.ContentSearch.Linq.Nodes.OrderByDistanceNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState)">
+            <summary>
+            Visit OrderByDistance
+            </summary>
+            <param name="node"></param>
+            <param name="state"></param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.ConvertDateTimeToUtc(System.Object,System.String)">
+            <summary>
+            Converts DateTime objects to UTC.
+            </summary>
+            <param name="objectToConvert">The object to convert.</param>
+            <param name="fieldName">Name of the field.</param>
+            <returns> Returns converted to UTC time DateTime object.</returns>   
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.GetNullableType(System.Type)">
+            <summary>
+            Gets the type of the nullable.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The type of the nullable type.
+            </returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState">
+            <summary>
+            The solr query mapper state.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState.#ctor(System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IExecutionContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState" /> class.
+            </summary>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState.AdditionalQueryMethods">
+            <summary>Gets or sets the additional query methods.</summary>
+            <value>The additional query methods.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState.FilterQuery">
+            <summary>Gets or sets the filter query.</summary>
+            <value>The filter query.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState.VirtualFieldProcessors">
+            <summary>Gets or sets the virtual field processors.</summary>
+            <value>The virtual field processors.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState.FacetQueries">
+            <summary>Gets or sets the facet queries.</summary>
+            <value>The facet queries.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrQueryMapper.SolrQueryMapperState.ExecutionContexts">
+            <summary>Gets or sets the execution contexts.</summary>
+            <value>The execution contexts.</value>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer" -->
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.Visit(Sitecore.ContentSearch.Linq.Nodes.QueryNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the specified node.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitAll(Sitecore.ContentSearch.Linq.Nodes.AllNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits all.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitAnd(Sitecore.ContentSearch.Linq.Nodes.AndNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the and.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitAny(Sitecore.ContentSearch.Linq.Nodes.AnyNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits any.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitBoost(Sitecore.ContentSearch.Linq.Nodes.BoostNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the boost.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitCast(Sitecore.ContentSearch.Linq.Nodes.CastNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the cast.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitConstant(Sitecore.ContentSearch.Linq.Nodes.ConstantNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the constant.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitCount(Sitecore.ContentSearch.Linq.Nodes.CountNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the count.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitElementAt(Sitecore.ContentSearch.Linq.Nodes.ElementAtNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the element at.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitMatches(Sitecore.ContentSearch.Linq.Nodes.MatchesNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the Matches.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitEqual(Sitecore.ContentSearch.Linq.Nodes.EqualNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the equal.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitFirst(Sitecore.ContentSearch.Linq.Nodes.FirstNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the first.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitMin(Sitecore.ContentSearch.Linq.Nodes.MinNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the first.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitMax(Sitecore.ContentSearch.Linq.Nodes.MaxNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the last.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitLast(Sitecore.ContentSearch.Linq.Nodes.LastNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the last.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitNot(Sitecore.ContentSearch.Linq.Nodes.NotNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the not.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitNotEqual(Sitecore.ContentSearch.Linq.Nodes.NotEqualNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the not equal.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitOr(Sitecore.ContentSearch.Linq.Nodes.OrNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the or.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitOrderBy(Sitecore.ContentSearch.Linq.Nodes.OrderByNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the order by.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitSelect(Sitecore.ContentSearch.Linq.Nodes.SelectNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the select.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitSingle(Sitecore.ContentSearch.Linq.Nodes.SingleNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the single.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitSkip(Sitecore.ContentSearch.Linq.Nodes.SkipNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the skip.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitTake(Sitecore.ContentSearch.Linq.Nodes.TakeNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the take.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitWhere(Sitecore.ContentSearch.Linq.Nodes.WhereNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the where.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitFilter(Sitecore.ContentSearch.Linq.Nodes.FilterNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the filter.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitGetResults(Sitecore.ContentSearch.Linq.Nodes.GetResultsNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the element at.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitInContext(Sitecore.ContentSearch.Linq.Nodes.InContextNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the with context method.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitGetFacets(Sitecore.ContentSearch.Linq.Nodes.GetFacetsNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the get facets.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitFacetOn(Sitecore.ContentSearch.Linq.Nodes.FacetOnNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the facet on.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitFacetPivotOn(Sitecore.ContentSearch.Linq.Nodes.FacetPivotOnNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the facet pivot on.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitBetween(Sitecore.ContentSearch.Linq.Nodes.BetweenNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>
+            Visits the between.
+            </summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitNegate(Sitecore.ContentSearch.Linq.Nodes.NegateNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the negate.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitGreaterThan(Sitecore.ContentSearch.Linq.Nodes.GreaterThanNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the greater than.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitGreaterThanOrEqual(Sitecore.ContentSearch.Linq.Nodes.GreaterThanOrEqualNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the greater than or equal.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitLessThan(Sitecore.ContentSearch.Linq.Nodes.LessThanNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the less than.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitLessThanOrEqual(Sitecore.ContentSearch.Linq.Nodes.LessThanOrEqualNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the less than or equal.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitContains(Sitecore.ContentSearch.Linq.Nodes.ContainsNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the contains.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitWildcardMatch(Sitecore.ContentSearch.Linq.Nodes.WildcardMatchNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the fuzzy match.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitLike(Sitecore.ContentSearch.Linq.Nodes.LikeNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the like.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitJoin(Sitecore.ContentSearch.Linq.Nodes.JoinNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the join.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitGroupJoin(Sitecore.ContentSearch.Linq.Nodes.GroupJoinNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the group join.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitUnion(Sitecore.ContentSearch.Linq.Nodes.UnionNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the union.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitSelfJoin(Sitecore.ContentSearch.Linq.Nodes.SelfJoinNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the self join.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitSelectMany(Sitecore.ContentSearch.Linq.Nodes.SelectManyNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the select many.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitStartsWith(Sitecore.ContentSearch.Linq.Nodes.StartsWithNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the StartsWith.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitEndsWith(Sitecore.ContentSearch.Linq.Nodes.EndsWithNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>Visits the EndsWith.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitWithinRadius(Sitecore.ContentSearch.Linq.Nodes.WithinRadiusNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>
+            Visit the WithinRadius
+            </summary>
+            <param name="node"></param>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.VisitOrderByDistance(Sitecore.ContentSearch.Linq.Nodes.OrderByDistanceNode,Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState)">
+            <summary>
+            Visit the OrderByDistance
+            </summary>
+            <param name="node"></param>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizer.GetBoolValue(Sitecore.ContentSearch.Linq.Nodes.QueryNode)">
+            <summary>Gets the bool value.</summary>
+            <param name="node">The node.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState">
+            <summary>
+            The <see cref="T:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState"/> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Solr.SolrQueryOptimizerState.Boost">
+            <summary>Gets or sets the boost.</summary>
+            <value>The boost.</value>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Solr.SolrQuerySerializerUtility">
+            <summary>
+            The solr query serializer utility.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQuerySerializerUtility.Serialize(System.Object)">
+            <summary>Serializes the specified query.</summary>
+            <param name="query">The query.</param>
+            <returns>Serialized query.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Solr.SolrQuerySerializerUtility.GetQuerySerializer">
+            <summary>Gets the query serializer.</summary>
+            <returns>The serializer.</returns>
+        </member>
+    </members>
+</doc>

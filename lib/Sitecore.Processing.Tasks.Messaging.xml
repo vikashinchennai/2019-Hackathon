@@ -1,0 +1,286 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Processing.Tasks.Messaging</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Processing.Tasks.Messaging.Buses.TaskProgressProducer">
+            <summary>
+            Message bus that is used to send messages about processing task progress.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Messaging.Buses.TaskRegistrationProducer">
+            <summary>
+            Message bus that is used to send messages about processing task registration.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.Extensions.WaitHandleExtensions.WaitOneAsync(System.Threading.WaitHandle,System.TimeSpan)">
+            <remarks>
+            Source: http://www.thomaslevesque.com/2015/06/04/async-and-cancellation-support-for-wait-handles/
+            </remarks>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Messaging.Handlers.TaskProgressResponseHandler">
+            <summary>
+            Handler that is used to handle <see cref="T:Sitecore.Processing.Engine.Abstractions.Messages.TaskProgressResponse"/> messages.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.Handlers.TaskProgressResponseHandler.#ctor(Sitecore.Processing.Tasks.Messaging.ISynchronizedMessageBusContext{Sitecore.Framework.Messaging.IMessageBus{Sitecore.Processing.Tasks.Messaging.Buses.TaskProgressProducer}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Messaging.Handlers.TaskProgressResponseHandler"/> class.
+            </summary>
+            <param name="synchronizedMessageBusContext">The synchronized context of the message bus to pass <see cref="T:Sitecore.Processing.Engine.Abstractions.Messages.TaskProgressResponse"/> messages to.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="synchronizedMessageBusContext"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.Handlers.TaskProgressResponseHandler.Handle(Sitecore.Processing.Engine.Abstractions.Messages.TaskProgressResponse,Sitecore.Framework.Messaging.IMessageReceiveContext,Sitecore.Framework.Messaging.IMessageReplyContext)">
+            <inheritdoc />
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="message"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Messaging.Handlers.TaskRegistrationStatusHandler">
+            <summary>
+            Handler that is used to handle <see cref="T:Sitecore.Processing.Engine.Abstractions.Messages.TaskRegistrationStatus"/> messages.
+            </summary>
+            <seealso cref="T:Sitecore.Framework.Messaging.IMessageHandler`1" />
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.Handlers.TaskRegistrationStatusHandler.#ctor(Sitecore.Processing.Tasks.Messaging.ISynchronizedMessageBusContext{Sitecore.Framework.Messaging.IMessageBus{Sitecore.Processing.Tasks.Messaging.Buses.TaskRegistrationProducer}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Messaging.Handlers.TaskRegistrationStatusHandler"/> class.
+            </summary>
+            <param name="synchronizedMessageBusContext">The synchronized context of the message bus to pass <see cref="T:Sitecore.Processing.Engine.Abstractions.Messages.TaskRegistrationStatus"/> messages to.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="synchronizedMessageBusContext"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.Handlers.TaskRegistrationStatusHandler.Handle(Sitecore.Processing.Engine.Abstractions.Messages.TaskRegistrationStatus,Sitecore.Framework.Messaging.IMessageReceiveContext,Sitecore.Framework.Messaging.IMessageReplyContext)">
+            <inheritdoc />
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="message"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Messaging.ISynchronizedMessageBusContext`1">
+            <summary>
+            Context that is used to synchronize requests and responses in the message bus.
+            </summary>
+            <typeparam name="TMessageBus">The type of the message bus.</typeparam>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.ISynchronizedMessageBusContext`1.SendRequestAndWaitForResponseAsync(System.Guid,System.Object,System.TimeSpan)">
+            <summary>
+            Sends a request and waits for the response to it.
+            </summary>
+            <param name="requestId">ID of the request being sent.</param>
+            <param name="requestMessage">The request message to send.</param>
+            <param name="timeout">The timeout to wait for the response.</param>
+            <returns>The response to the request.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.ISynchronizedMessageBusContext`1.SetResponseAsync(System.Guid,System.Object)">
+            <summary>
+            Sets the response for the request.
+            </summary>
+            <param name="requestId">ID of the request to set the response for.</param>
+            <param name="responseMessage">The response message to set.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Messaging.NotConfiguredTaskManager">
+            <summary>
+            An implementation of <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskManager"/> which is not configured and does nothing.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.NotConfiguredTaskManager.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Processing.Tasks.Messaging.NotConfiguredTaskManager})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Messaging.NotConfiguredTaskManager"/> class.
+            </summary>
+            <param name="logger">The logger to log messages to.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="logger"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.NotConfiguredTaskManager.RegisterDistributedTaskAsync(Sitecore.Processing.Engine.Abstractions.IDataSourceOptionsCollection,Sitecore.Processing.Engine.Abstractions.IDistributedWorkerOptionsCollection,System.Collections.Generic.IEnumerable{System.Guid},System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.NotConfiguredTaskManager.RegisterDeferredTaskAsync(Sitecore.Processing.Engine.Abstractions.IDeferredWorkerOptionsCollection,System.Collections.Generic.IEnumerable{System.Guid},System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.NotConfiguredTaskManager.GetTaskProgressAsync(System.Guid)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Messaging.SynchronizedMessageBusContext`1">
+            <summary>
+            Context that is used to synchronize requests and responses in the message bus.
+            </summary>
+            <typeparam name="TMessageBus">The type of the message bus.</typeparam>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.SynchronizedMessageBusContext`1.#ctor(`0,Microsoft.Extensions.Logging.ILogger{Sitecore.Processing.Tasks.Messaging.SynchronizedMessageBusContext{`0}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Messaging.SynchronizedMessageBusContext`1"/> class.
+            </summary>
+            <param name="messageBus">The message bus to synchronize requests and responses for.</param>
+            <param name="logger">The logger to log messages to.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="messageBus"/> or <paramref name="logger"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.SynchronizedMessageBusContext`1.SetResponseAsync(System.Guid,System.Object)">
+            <inheritdoc />
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="responseMessage"/> is <c>null</c>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="requestId"/> is empty.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                Could not set a response. The response is already set.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.SynchronizedMessageBusContext`1.SendRequestAndWaitForResponseAsync(System.Guid,System.Object,System.TimeSpan)">
+            <inheritdoc />
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="requestMessage"/> is <c>null</c>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="requestId"/> is empty.
+            </exception>
+            <exception cref="T:System.TimeoutException">
+                Timeout expired. Could not get a response for the request <paramref name="requestId"/>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                Could not send a request message. Request <paramref name="requestId"/> already exists.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Messaging.TaskManager">
+            <summary>
+            An implementation of <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskManager"/> that uses a message bus to register processing task workers for execution.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.TaskManager.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Sitecore.Processing.Tasks.Messaging.ISynchronizedMessageBusContext{Sitecore.Framework.Messaging.IMessageBus{Sitecore.Processing.Tasks.Messaging.Buses.TaskRegistrationProducer}},Sitecore.Processing.Tasks.Messaging.ISynchronizedMessageBusContext{Sitecore.Framework.Messaging.IMessageBus{Sitecore.Processing.Tasks.Messaging.Buses.TaskProgressProducer}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Messaging.TaskManager" /> class.
+            </summary>
+            <param name="configuration">The configuration to read configuration options from.</param>
+            <param name="synchronizedTaskRegistrationBusContext">
+                The context of the message bus to synchronize task registration requests and task registration statuses.
+            </param>
+            <param name="synchronizedTaskProgressBusContext">
+                The context of the message bus to synchronize task progress requests and task progress responses.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="configuration"/> or <paramref name="synchronizedTaskRegistrationBusContext"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.TaskManager.#ctor(Sitecore.Processing.Tasks.Messaging.TaskManagerOptions,Sitecore.Processing.Tasks.Messaging.ISynchronizedMessageBusContext{Sitecore.Framework.Messaging.IMessageBus{Sitecore.Processing.Tasks.Messaging.Buses.TaskRegistrationProducer}},Sitecore.Processing.Tasks.Messaging.ISynchronizedMessageBusContext{Sitecore.Framework.Messaging.IMessageBus{Sitecore.Processing.Tasks.Messaging.Buses.TaskProgressProducer}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Messaging.TaskManager" /> class.
+            </summary>
+            <param name="taskManagerOptions">The options to configure task manager with.</param>
+            <param name="synchronizedTaskRegistrationBusContext">
+                The context of the message bus to synchronize task registration requests and task registration statuses.
+            </param>
+            <param name="synchronizedTaskProgressBusContext">
+                The context of the message bus to synchronize task progress requests and task progress responses.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="taskManagerOptions"/> or <paramref name="synchronizedTaskRegistrationBusContext"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.TaskManager.RegisterDistributedTaskAsync(Sitecore.Processing.Engine.Abstractions.IDataSourceOptionsCollection,Sitecore.Processing.Engine.Abstractions.IDistributedWorkerOptionsCollection,System.Collections.Generic.IEnumerable{System.Guid},System.TimeSpan)">
+            <inheritdoc />
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="dataSourceOptions" /> or <paramref name="workerOptions" /> is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="expiresAfter" /> timespan is less than or equal to zero.
+            </exception>
+            <exception cref="T:Sitecore.Framework.Conditions.PostconditionException">
+                Task registration status message should not be null.
+            </exception>
+            <exception cref="T:Sitecore.Framework.Conditions.PostconditionException">
+                Request ID mismatch.
+            </exception>
+            <exception cref="T:Sitecore.Processing.Common.Exceptions.RegisterTaskException">
+                Failed to register task.
+            </exception>
+            <exception cref="T:System.TimeoutException">
+                Timeout expired. Could not get a response for the request.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.TaskManager.RegisterDeferredTaskAsync(Sitecore.Processing.Engine.Abstractions.IDeferredWorkerOptionsCollection,System.Collections.Generic.IEnumerable{System.Guid},System.TimeSpan)">
+            <inheritdoc />
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="workerOptions" /> is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="expiresAfter" /> timespan is less than or equal to zero.
+            </exception>
+            <exception cref="T:Sitecore.Framework.Conditions.PostconditionException">
+                Task registration status message should not be null.
+            </exception>
+            <exception cref="T:Sitecore.Framework.Conditions.PostconditionException">
+                Request ID mismatch.
+            </exception>
+            <exception cref="T:Sitecore.Processing.Common.Exceptions.RegisterTaskException">
+                Failed to register task.
+            </exception>
+            <exception cref="T:System.TimeoutException">
+                Timeout expired. Could not get a response for the request.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.TaskManager.GetTaskProgressAsync(System.Guid)">
+            <inheritdoc />
+            <exception cref="T:System.TimeoutException">
+                Timeout expired. Could not get a response for the request.
+            </exception>
+            <exception cref="T:Sitecore.Framework.Conditions.PostconditionException">
+                Task progress response message should not be null.
+            </exception>
+            <exception cref="T:Sitecore.Framework.Conditions.PostconditionException">
+                Request ID mismatch.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                Failed to get task progress status.
+            </exception>
+            <exception cref="T:Sitecore.Processing.Common.Exceptions.EntityDoesNotExistException">
+                A task cannot be found for the provided task ID.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Messaging.TaskManagerOptions">
+            <summary>
+            Options to configure <see cref="T:Sitecore.Processing.Tasks.Messaging.TaskManager"/> with.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Messaging.TaskManagerOptions.DefaultRequestTimeout">
+            <summary>
+            Default timeout that is used for task registration and task progress requests.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.TaskManagerOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Messaging.TaskManagerOptions"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.TaskManagerOptions.#ctor(System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Messaging.TaskManagerOptions" /> class.
+            </summary>
+            <param name="taskRegistrationTimeout">Timeout that is used for task registration requests.</param>
+            <param name="taskProgressRequestTimeout">Timeout that is used for task progress requests.</param>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Messaging.TaskManagerOptions.TaskRegistrationTimeout">
+            <summary>
+            Timeout that is used for task registration requests.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Value is less or equal to <see cref="F:System.TimeSpan.Zero"/>.
+            </exception>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Messaging.TaskManagerOptions.TaskProgressRequestTimeout">
+            <summary>
+            Timeout that is used for task progress requests.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                Value is less or equal to <see cref="F:System.TimeSpan.Zero"/>.
+            </exception>
+        </member>
+    </members>
+</doc>

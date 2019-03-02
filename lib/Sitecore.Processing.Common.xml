@@ -1,0 +1,1037 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Processing.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Processing.Common.AgentId">
+            <summary>
+                Represents a compound key that uniquely identifies an agent.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.AgentId.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Common.AgentId" /> with specified parameters.
+            </summary>
+            <param name="computer">
+                The computer name of the agent without domain name with maximum length of
+                <see cref="F:Sitecore.Processing.Common.Constants.AgentIdComputerMaxLength" /> symbols.
+            </param>
+            <param name="process">The Windows process ID of the agent.</param>
+            <param name="agent">The agent id.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="computer" /> is <c>null</c>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="computer" /> is <see cref="F:System.String.Empty" /> or contains only whitespace.
+                <paramref name="computer" /> is longer than <see cref="F:Sitecore.Processing.Common.Constants.AgentIdComputerMaxLength" /> symbols.
+            </exception>
+        </member>
+        <member name="P:Sitecore.Processing.Common.AgentId.Computer">
+            <summary>
+                Gets the computer name of the agent without domain name.
+            </summary>
+            <remarks>
+                The value's length is not longer than <see cref="F:Sitecore.Processing.Common.Constants.AgentIdComputerMaxLength" /> symbols.
+            </remarks>
+        </member>
+        <member name="P:Sitecore.Processing.Common.AgentId.Process">
+            <summary>
+                Gets the Windows process ID of the agent.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Common.AgentId.Agent">
+            <summary>
+                Gets the agent id.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.AgentId.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Processing.Common.ConfigurationHelper">
+            <summary>
+              Provides static helper methods used from the configuration files.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.ConfigurationHelper.ToTimeSpan(System.String)">
+            <summary>
+              Parses a string value as a <see cref="T:System.TimeSpan"/>.
+            </summary>
+            <param name="value">
+              The string value to parse.
+            </param>
+            <returns>
+              Returns the <see cref="T:System.TimeSpan"/> value parsed from the specified string value.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="value"/> is <c>null</c> or empty or white space.
+            </exception>
+            <exception cref="T:System.FormatException">
+                <paramref name="value" /> has an invalid format.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.ConnectionStringResolver">
+            <summary>
+                Resolves the connection string itself using its name as an identifier.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.ConnectionStringResolver.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.ConnectionStringResolver" /> class.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+                <see cref="P:System.Configuration.ConfigurationManager.ConnectionStrings"/> is <c>null</c>
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Common.ConnectionStringResolver.Resolve(System.String)">
+            <inheritdoc />
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="connectionStringName" /> is <c>null</c>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="connectionStringName" /> is <see cref="F:System.String.Empty" /> or contains only whitespace.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Constants">
+            <summary>
+                Represents a collection of constants used throughout the project.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Common.Constants.AgentIdComputerMaxLength">
+            <summary>
+                The maximum length of <see cref="P:Sitecore.Processing.Common.IAgentId.Computer" /> property.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Common.ETagGenerator">
+            <summary>
+            Generates ETags.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.ETagGenerator.Generate">
+            <summary>
+            Generates a new ETag.
+            </summary>
+            <returns>A new ETag.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Exceptions.ConcurrentlyModifiedException">
+            <summary>
+                Implements an exception type that is thrown when an operation fails because the target entity modified by a
+                concurrent operation.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.ConcurrentlyModifiedException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.ConcurrentlyModifiedException" /> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.ConcurrentlyModifiedException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.ConcurrentlyModifiedException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.ConcurrentlyModifiedException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.ConcurrentlyModifiedException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+            <param name="inner">
+                The exception that is the cause of the current exception, or a <b>null</b> if the current exception is
+                the original exception.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.ConcurrentlyModifiedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.ConcurrentlyModifiedException" /> class with serialized data.
+            </summary>
+            <param name="info">
+                The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.
+            </param>
+            <param name="context">
+                The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                Argument <paramref name="info" /> is a <b>null</b> reference.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Exceptions.DataProviderException">
+            <summary>
+                Base class for general exceptions thrown by data providers.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.DataProviderException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.DataProviderException" /> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.DataProviderException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.DataProviderException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.DataProviderException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.DataProviderException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+            <param name="inner">
+                The exception that is the cause of the current exception, or a <b>null</b> if the current exception is
+                the original exception.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.DataProviderException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.DataProviderException" /> class with serialized data.
+            </summary>
+            <param name="info">
+                The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.
+            </param>
+            <param name="context">
+                The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                Argument <paramref name="info" /> is a <b>null</b> reference.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Exceptions.EntityAlreadyExistsException">
+            <summary>
+                Implements an exception type that is thrown when an operation fails because the entity already exists.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.EntityAlreadyExistsException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.EntityAlreadyExistsException" /> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.EntityAlreadyExistsException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.EntityAlreadyExistsException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.EntityAlreadyExistsException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.EntityAlreadyExistsException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+            <param name="inner">
+                The exception that is the cause of the current exception, or a <b>null</b> if the current exception is
+                the original exception.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.EntityAlreadyExistsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.EntityAlreadyExistsException" /> class with serialized data.
+            </summary>
+            <param name="info">
+                The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.
+            </param>
+            <param name="context">
+                The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                Argument <paramref name="info" /> is a <b>null</b> reference.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Exceptions.EntityDoesNotExistException">
+            <summary>
+                Implements an exception type that is thrown when an operation fails because the entity does not exist.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.EntityDoesNotExistException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.EntityDoesNotExistException" /> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.EntityDoesNotExistException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.EntityDoesNotExistException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.EntityDoesNotExistException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.EntityDoesNotExistException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+            <param name="inner">
+                The exception that is the cause of the current exception, or a <b>null</b> if the current exception is
+                the original exception.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.EntityDoesNotExistException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.EntityDoesNotExistException" /> class with serialized data.
+            </summary>
+            <param name="info">
+                The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.
+            </param>
+            <param name="context">
+                The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                Argument <paramref name="info" /> is a <b>null</b> reference.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Exceptions.InputValidationException">
+            <summary>
+                Implements an exception type that is thrown when the validation of the input parameters fails.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.InputValidationException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.InputValidationException" /> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.InputValidationException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.InputValidationException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.InputValidationException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.InputValidationException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+            <param name="inner">
+                The exception that is the cause of the current exception, or a <b>null</b> if the current exception is
+                the original exception.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.InputValidationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.InputValidationException" /> class with serialized data.
+            </summary>
+            <param name="info">
+                The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.
+            </param>
+            <param name="context">
+                The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                Argument <paramref name="info" /> is a <b>null</b> reference.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Exceptions.NotInTransactionException">
+            <summary>
+                Represents an exception type which is thrown when an operation detected no transactional context when one was
+                expected.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.NotInTransactionException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.NotInTransactionException" /> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.NotInTransactionException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.NotInTransactionException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.NotInTransactionException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.NotInTransactionException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+            <param name="inner">
+                The exception that is the cause of the current exception, or a <b>null</b> if the current exception is
+                the original exception.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.NotInTransactionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.NotInTransactionException" /> class with serialized data.
+            </summary>
+            <param name="info">
+                The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.
+            </param>
+            <param name="context">
+                The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                Argument <paramref name="info" /> is a <b>null</b> reference.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Exceptions.RegisterTaskException">
+            <summary>
+                Class for register task exceptions thrown by task manager implementations
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.RegisterTaskException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.RegisterTaskException" /> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.RegisterTaskException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.RegisterTaskException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.RegisterTaskException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.RegisterTaskException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+            <param name="inner">
+                The exception that is the cause of the current exception, or a <b>null</b> if the current exception is
+                the original exception.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.RegisterTaskException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.RegisterTaskException" /> class with serialized data.
+            </summary>
+            <param name="info">
+                The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.
+            </param>
+            <param name="context">
+                The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                Argument <paramref name="info" /> is a <b>null</b> reference.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Exceptions.TaskException">
+            <summary>
+                Class for general exceptions thrown by task manager implementations
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.TaskException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.TaskException" /> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.TaskException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.TaskException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.TaskException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.TaskException" /> class.
+            </summary>
+            <param name="message">
+                The message that describes the error.
+            </param>
+            <param name="inner">
+                The exception that is the cause of the current exception, or a <b>null</b> if the current exception is
+                the original exception.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Exceptions.TaskException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.Exceptions.TaskException" /> class with serialized data.
+            </summary>
+            <param name="info">
+                The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.
+            </param>
+            <param name="context">
+                The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                Argument <paramref name="info" /> is a <b>null</b> reference.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Extensions.ConditionValidatorExtensions">
+            <summary>
+                Contains extension methods to provide additional functionality for <see cref="T:Sitecore.Framework.Conditions.ConditionValidator`1" />.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Extensions.ConditionValidatorExtensions.IsDefinedInEnum``1(Sitecore.Framework.Conditions.ConditionValidator{``0})">
+            <summary>
+                Checks whether the value is defined in the enumeration.
+            </summary>
+            <typeparam name="TEnum">The type of the enumeration to check.</typeparam>
+            <param name="validator">The validator which contains value to check.</param>
+            <returns>The validator with the checked value.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="validator" /> is null.</exception>
+            <exception cref="T:System.ArgumentException">
+                The value in <paramref name="validator.Value.Value" /> is not defined in the
+                <typeparamref name="TEnum" /> enumeration.
+            </exception>
+            <remarks>
+                The method uses <see cref="M:System.Enum.IsDefined(System.Type,System.Object)" /> method for check. It means that if
+                TEnum is an enumeration that is defined by using the FlagsAttribute attribute, the method returns false
+                if multiple bit fields in value are set but value does not correspond to a composite enumeration value,
+                or if value is a string concatenation of the names of multiple bit flags.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Extensions.ConditionValidatorExtensions.EndsWith(Sitecore.Framework.Conditions.ConditionValidator{System.Uri},System.String)">
+            <summary>
+                Checks whether <see cref="T:System.Uri"/> ends with <paramref name="value"/>.
+            </summary>
+            <param name="validator">The validator which contains value to check.</param>
+            <param name="value">The string to compare to the substring at the end of <see cref="T:System.Uri"/>.</param>
+            <returns>The validator with the checked value.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="validator" /> is null.</exception>
+            <exception cref="T:System.ArgumentException">
+                The value in <paramref name="validator.Value.Value" /> does not end with <paramref name="value"/>.
+            </exception>
+            <remarks>
+                The method uses <see cref="M:System.String.EndsWith(System.String,System.StringComparison)" /> method for check.
+                Strings are compared using <see cref="F:System.StringComparison.OrdinalIgnoreCase"/> comparison type.
+            </remarks>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Extensions.ObjectExtensions">
+            <summary>
+                Provides static helper methods that extend the <see cref="T:System.Object" />.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Extensions.ObjectExtensions.SerializeToJson(System.Object,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+                Serializes the <paramref name="objectToSerialize" /> using <paramref name="settings" />
+                to influence serialization process.
+            </summary>
+            <param name="objectToSerialize">The object to serialize.</param>
+            <param name="settings">The settings to influence serialization process.</param>
+            <returns>The string with JSON representation of the <paramref name="objectToSerialize" />.</returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="objectToSerialize" /> is null.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Extensions.ReadOnlyDictionaryExtensions">
+            <summary>
+                Provides static helper methods that extend the <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2" />.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Extensions.ReadOnlyDictionaryExtensions.DeserializeJsonValue``1(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String,Newtonsoft.Json.JsonSerializerSettings,System.Boolean)">
+            <summary>
+                Deserializes value from <paramref name="values" /> using <paramref name="key" /> as an identifier.
+            </summary>
+            <typeparam name="T">
+                The type to deserialize a value to.
+            </typeparam>
+            <param name="values">
+                The <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2" /> with all keys and values.
+            </param>
+            <param name="key">
+                The key of the option to deserialize.
+            </param>
+            <param name="settings">
+                The settings to influence deserialization process.
+            </param>
+            <param name="isOptional">
+                The parameter to specify whether an option is required.
+            </param>
+            <returns>
+                The value of type <typeparamref name="T" /> deserialized from <paramref name="values" />.
+                If value retrieved by <paramref name="key" /> is null, the default value of <typeparamref name="T" />
+                is returned.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="values" /> or <paramref name="key" /> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="key" /> is <see cref="F:System.String.Empty" /> or contains only whitespace characters.
+                <paramref name="values" /> is empty or does not contain provided <paramref name="key" />.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Extensions.ReadOnlyDictionaryExtensions.GetNonEmptyRequiredString(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String)">
+            <summary>
+                Gets the required string value looked up in <paramref name="values" /> using <paramref name="key"/> as a key.
+            </summary>
+            <param name="values">The <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2" /> with all keys and values.</param>
+            <param name="key">The key of the option to retrieve.</param>
+            <returns>
+                The value looked up in <paramref name="values" /> using <paramref name="key"/> as a key.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="values" /> or <paramref name="key" /> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="key" /> is <see cref="F:System.String.Empty" /> or contains only whitespace characters.
+                <paramref name="values" /> is empty or does not contain provided <paramref name="key" />.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                Value retrieved from <paramref name="values"/> is null, empty or contains only whitespace characters.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Extensions.ReadOnlyDictionaryExtensions.GetNonEmptyOptionalString(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String,System.String)">
+            <summary>
+                Gets the optional string value looked up in <paramref name="values" /> using <paramref name="key"/> as a key.
+            </summary>
+            <param name="values">The <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2" /> with all keys and values.</param>
+            <param name="key">The key of the option to retrieve.</param>
+            <param name="defaultValue">
+                Default value to return if <paramref name="key"/> is not found in <paramref name="values"/> 
+                or corresponding value is null, empty, or contains only whitespace characters.
+            </param>
+            <returns>
+                The value looked up in <paramref name="values" /> using <paramref name="key"/> as a key or 
+                <paramref name="defaultValue"/> if <paramref name="key"/> is not found in <paramref name="values"/> 
+                or corresponding value is null, empty, or contains only whitespace characters.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="values" /> or <paramref name="key" /> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="key" /> is <see cref="F:System.String.Empty" /> or contains only whitespace characters.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Extensions.ReadOnlyDictionaryExtensions.GetPositiveTimeSpan(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String,System.String)">
+            <summary>
+                Gets the required <see cref="T:System.TimeSpan"/> value looked up in <paramref name="values" /> using <paramref name="key"/> as a key.
+            </summary>
+            <param name="values">The <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2" /> with all keys and values. </param>
+            <param name="key">The key of the option to retrieve.</param>
+            <param name="format">
+                A standard or custom format string that defines the required format of <see cref="T:System.TimeSpan"/> 
+                stored in <paramref name="values"/>.
+            </param>
+            <returns>
+                The value looked up in <paramref name="values" /> using <paramref name="key"/> as a key.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="values" />, <paramref name="key" />, or <paramref name="format" /> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="key" /> or <paramref name="format" /> is <see cref="F:System.String.Empty" /> or contains only whitespace characters.
+                <paramref name="values" /> is empty or does not contain provided <paramref name="key" />.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                Retrieved value does not represent a <see cref="T:System.TimeSpan"/> that is bigger than <see cref="F:System.TimeSpan.Zero"/>.
+            </exception>
+            <exception cref="T:System.FormatException">
+                Retrieved value has an invalid format. 
+            </exception>
+            <exception cref="T:System.OverflowException">
+                 Retrieved value represents a number that is greater than <see cref="F:System.TimeSpan.MaxValue" /> or
+                 at least one of the days, hours, minutes, or seconds components in retrieved value is outside its valid range.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Extensions.ReadOnlyDictionaryExtensions.Except(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String[])">
+            <summary>
+                Creates an <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> of <see cref="T:System.String"/> that contains all the keys 
+                from original <paramref name="values"/> set except keys defined in <paramref name="keys"/> set.
+            </summary>
+            <param name="values">The original <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> of <see cref="T:System.String"/>.</param>
+            <param name="keys">The set of keys to skip during creation of the result <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> of <see cref="T:System.String"/>.</param>
+            <returns>
+                An <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> of <see cref="T:System.String"/> that contains all the keys 
+                from original <paramref name="values"/> set except keys defined in <paramref name="keys"/> set.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="values"/> or <paramref name="keys"/> is <see langword="null"/>.
+            </exception>
+            <remarks>
+                <see cref="F:System.StringComparison.OrdinalIgnoreCase"/> is used to perform comparison of key in
+                original <paramref name="values"/> set and a key in <paramref name="keys"/> set.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Extensions.ReadOnlyDictionaryExtensions.EnsureNotContainsKeys(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String[])">
+            <summary>
+                Ensures that <paramref name="values"/> does not contain any keys defined in <paramref name="keys"/>.
+                Otherwise, throws <see cref="T:System.InvalidOperationException"/>.
+            </summary>
+            <param name="values">The original <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> of <see cref="T:System.String"/> to check for <paramref name="keys"/>.</param>
+            <param name="keys">The set of keys that must not be present in <paramref name="values"/>.</param>
+            <exception cref="T:System.InvalidOperationException">
+                <paramref name="values"/> contains any key from <paramref name="keys"/>.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="values"/> or <paramref name="keys"/> is <see langword="null"/>.
+            </exception>
+            <remarks>
+                <see cref="F:System.StringComparison.OrdinalIgnoreCase"/> is used to perform comparison of key in
+                original <paramref name="values"/> set and a key in <paramref name="keys"/> set.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Extensions.ReadOnlyDictionaryExtensions.GetRequiredBoolean(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String)">
+            <summary>
+                Gets the required <see cref="T:System.Boolean"/> value looked up in <paramref name="values" /> using <paramref name="key"/> as a key.
+            </summary>
+            <param name="values">The <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2" /> with all keys and values.</param>
+            <param name="key">The key of the option to retrieve.</param>
+            <returns>
+                The <see cref="T:System.Boolean"/> value looked up in <paramref name="values" /> using <paramref name="key"/> as a key.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="values" /> or <paramref name="key" /> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="key" /> is <see cref="F:System.String.Empty" /> or contains only whitespace characters.
+                <paramref name="values" /> is empty or does not contain provided <paramref name="key" />.
+            </exception>
+            <exception cref="T:System.FormatException">
+                Value retrieved from <paramref name="values"/> can not be parsed as a <see cref="T:System.Boolean"/>.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Extensions.StringExtensions">
+            <summary>
+                Provides static helper methods that extend the <see cref="T:System.String" />.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Extensions.StringExtensions.Truncate(System.String,System.Int32)">
+            <summary>
+                Truncates <paramref name="originalString"/> after a given <paramref name="length"/>
+                if <paramref name="originalString"/> is longer than <paramref name="length"/>.
+            </summary>
+            <param name="originalString">Original string.</param>
+            <param name="length">The length.</param>
+            <returns>Truncated string.</returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="originalString"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="length"/> is less than zero.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Extensions.StringExtensions.ParseCertificatePathAndPassword(System.String,System.String@,System.String@)">
+            <summary>
+                Parses the connection string to extract path and password.
+            </summary>
+            <param name="connectionString">The connection string to parse.</param>
+            <param name="path">The path parsed out of <paramref name="connectionString"/>.</param>
+            <param name="password">The password parsed out of <paramref name="connectionString"/>.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="connectionString"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="connectionString"/> is <see cref="F:System.String.Empty"/> or contains only whitespace characters.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+                <paramref name="connectionString"/> is not well formed. 
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.IAgentId">
+            <summary>
+                Represents a compound key that uniquely identifies an agent.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Common.IAgentId.Computer">
+            <summary>
+                Gets the computer name of the agent without domain name.
+            </summary>
+            <remarks>
+                The value's length is not longer than <see cref="F:Sitecore.Processing.Common.Constants.AgentIdComputerMaxLength" /> symbols.
+            </remarks>
+        </member>
+        <member name="P:Sitecore.Processing.Common.IAgentId.Process">
+            <summary>
+                Gets the process ID of the agent.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Common.IAgentId.Agent">
+            <summary>
+                Gets the agent id.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Common.IConnectionStringResolver">
+            <summary>
+                Allows to resolve the connection string itself using its name as an identifier.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.IConnectionStringResolver.Resolve(System.String)">
+            <summary>
+                Resolves the connection string itself using <paramref name="connectionStringName" /> as an identifier.
+            </summary>
+            <param name="connectionStringName">A name of the connection string used as an identifier.</param>
+            <returns>The connection string itself.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Common.ObjectFactoryServicesDictionary">
+            <summary>
+                Map with <see cref="T:System.Type" /> keys and matching <see cref="T:Microsoft.Extensions.DependencyInjection.ObjectFactory" /> used to
+                instantiate the type at runtime.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.ObjectFactoryServicesDictionary.#ctor(System.Collections.Generic.IDictionary{System.Type,Microsoft.Extensions.DependencyInjection.ObjectFactory})">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Common.ObjectFactoryServicesDictionary" /> that maps <see cref="T:System.Type"/>s to corresponding
+                <see cref="T:Microsoft.Extensions.DependencyInjection.ObjectFactory" /> values.
+            </summary>
+            <param name="dictionary">
+                A set of <see cref="T:System.Type"/> instances with corresponding <see cref="T:Microsoft.Extensions.DependencyInjection.ObjectFactory" /> to instantiate them. 
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.ObjectFactoryServicesDictionary.Instantiate(System.IServiceProvider,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Instantiates a service with type defined in <paramref name="typeString"/> using <paramref name="provider"/> 
+                to retrieve constructor parameters and <paramref name="options"/> as one of them.
+            </summary>
+            <param name="provider">
+                A provider that contains services required to create a service of type defined in <paramref name="typeString" />.
+            </param>
+            <param name="typeString">A type name, an instance of which must be created.</param>
+            <param name="options">An additional set of options used as a constructor parameter during object creation.</param>
+            <returns>
+                An instance of <paramref name="typeString"/> if passed <paramref name="typeString"/> is found in the 
+                <see cref="T:System.Collections.Generic.IDictionary`2"/> passed to <see cref="M:Sitecore.Processing.Common.ObjectFactoryServicesDictionary.#ctor(System.Collections.Generic.IDictionary{System.Type,Microsoft.Extensions.DependencyInjection.ObjectFactory})"/>.
+                Otherwise, returns <see langword="null"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="provider"/>, <paramref name="typeString"/>, or <paramref name="options"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="typeString"/> is <see cref="F:System.String.Empty"/> or contains only whitespace characters.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Common.ObjectFactoryServicesDictionary.OnFailureToFindType(System.Type)">
+            <summary>
+                Reports failure to find a <paramref name="typeToInstantiate"/> in this instance of <see cref="T:Sitecore.Processing.Common.ObjectFactoryServicesDictionary"/>.
+            </summary>
+            <param name="typeToInstantiate">A <see cref="T:System.Type"/> that is missing in this instance of <see cref="T:Sitecore.Processing.Common.ObjectFactoryServicesDictionary"/>.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Common.ObjectFactoryServicesDictionary.Instantiate``1(System.IServiceProvider,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Instantiates a strongly typed service with type defined in 
+                <paramref name="typeString"/> using <paramref name="provider"/> to retrieve
+                constructor parameters and <paramref name="options"/> as one of them.
+            </summary>
+            <typeparam name="TCast">The type instantiated service will be casted to.</typeparam>
+            <param name="provider">
+                A provider that contains services required to create a service of type defined in <paramref name="typeString" />.
+            </param>
+            <param name="typeString">A type name the instance of which must be created.</param>
+            <param name="options">An additional set of options used as a constructor parameter during object creation.</param>
+            <returns>
+                A service of type defined in <paramref name="typeString"/> casted to <typeparamref name="TCast"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="provider"/>, <paramref name="typeString"/>, or <paramref name="options"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="typeString"/> is <see cref="F:System.String.Empty"/> or contains only whitespace characters.
+            </exception>
+            <exception cref="T:System.InvalidCastException">
+                The created service cannot be casted to <typeparamref name="TCast"/>.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.SerializationUtils">
+            <summary>
+                Provides static helper methods for serialization.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.SerializationUtils.ToBytes``1(``0)">
+            <summary>
+                Serializes the <paramref name="objectToSerialize" /> to <see cref="T:System.Array"/> of <see cref="T:System.Byte"/>.
+            </summary>
+            <param name="objectToSerialize">The object to serialize.</param>
+            <returns><see cref="T:System.Array"/> of <see cref="T:System.Byte"/> that contains serialized <paramref name="objectToSerialize"/>.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Common.SerializationUtils.ToBytes``1(``0,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+                Serializes the <paramref name="objectToSerialize" /> using <paramref name="settings" />
+                to <see cref="T:System.Array"/> of <see cref="T:System.Byte"/>.
+            </summary>
+            <param name="objectToSerialize">The object to serialize.</param>
+            <param name="settings">The settings to influence serialization process.</param>
+            <returns><see cref="T:System.Array"/> of <see cref="T:System.Byte"/> that contains serialized <paramref name="objectToSerialize"/>.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Common.SerializationUtils.FromBytes``1(System.Byte[])">
+            <summary>
+                Deserializes the <paramref name="data" />.
+            </summary>
+            <typeparam name="TObject"></typeparam>
+            <param name="data">The <see cref="T:System.Array"/> of <see cref="T:System.Byte"/> to deserialize.</param>
+            <returns>Deserialized object of type <typeparamref name="TObject"/>.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Common.SerializationUtils.FromBytes``1(System.Byte[],Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+                Deserializes the <paramref name="data" /> using <paramref name="settings" />.
+            </summary>
+            <typeparam name="TObject"></typeparam>
+            <param name="data">The <see cref="T:System.Array"/> of <see cref="T:System.Byte"/> to deserialize.</param>
+            <param name="settings">The settings to influence serialization process.</param>
+            <returns>Deserialized object of type <typeparamref name="TObject"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Serialization.ExpandOptionsConverter">
+            <summary>
+                Allows to convert <see cref="T:Sitecore.XConnect.ExpandOptions" />, <see cref="T:Sitecore.XConnect.ContactExpandOptions" />,
+                <see cref="T:Sitecore.XConnect.InteractionExpandOptions" /> from JSON.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Common.Serialization.ExpandOptionsConverter.CanWrite">
+            <summary>
+                Gets a value indicating whether this <see cref="T:Newtonsoft.Json.JsonConverter" /> can write JSON.
+            </summary>
+            <value>
+                <c>true</c> if this <see cref="T:Newtonsoft.Json.JsonConverter" /> can write JSON;
+                otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Serialization.ExpandOptionsConverter.CanConvert(System.Type)">
+            <summary>
+                Determines whether this instance can convert the specified object type.
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <returns>
+                <c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Serialization.ExpandOptionsConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>Reads the JSON representation of the object.</summary>
+            <param name="reader">The <see cref="T:Newtonsoft.Json.JsonReader" /> to read from.</param>
+            <param name="objectType">Type of the object.</param>
+            <param name="existingValue">The existing value of object being read.</param>
+            <param name="serializer">The calling serializer.</param>
+            <returns>The object value.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Serialization.ExpandOptionsConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>Writes the JSON representation of the object.</summary>
+            <param name="writer">The <see cref="T:Newtonsoft.Json.JsonWriter" /> to write to.</param>
+            <param name="value">The value.</param>
+            <param name="serializer">The calling serializer.</param>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Serialization.SamplingOptionsConverter">
+            <summary>
+                Allows to convert <see cref="T:Sitecore.XConnect.SamplingOptions" /> from JSON.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Common.Serialization.SamplingOptionsConverter.CanWrite">
+            <summary>
+                Gets a value indicating whether this <see cref="T:Newtonsoft.Json.JsonConverter" /> can write JSON.
+            </summary>
+            <value>
+                <c>true</c> if this <see cref="T:Newtonsoft.Json.JsonConverter" /> can write JSON;
+                otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Serialization.SamplingOptionsConverter.CanConvert(System.Type)">
+            <summary>
+                Determines whether this instance can convert the specified object type.
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <returns>
+                <c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Serialization.SamplingOptionsConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+                Reads the JSON representation of the object.
+            </summary>
+            <param name="reader">
+                The <see cref="T:Newtonsoft.Json.JsonReader" /> to read from.
+            </param>
+            <param name="objectType">
+                Type of the object.
+            </param>
+            <param name="existingValue">
+                The existing value of object being read.
+            </param>
+            <param name="serializer">
+                The calling serializer.
+            </param>
+            <returns>
+                The object value.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Serialization.SamplingOptionsConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+                Writes the JSON representation of the object.
+            </summary>
+            <param name="writer">
+                The <see cref="T:Newtonsoft.Json.JsonWriter" /> to write to.
+            </param>
+            <param name="value">
+                The value.
+            </param>
+            <param name="serializer">
+                The calling serializer.
+            </param>
+            <exception cref="T:System.NotSupportedException">
+                Not supported method.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Common.Serialization.SearchQueryConverter">
+            <summary>
+                Allows to convert <see cref="T:Sitecore.XConnect.Search.Queries.SearchQuery" /> from JSON.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.Serialization.SearchQueryConverter.CanConvert(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Processing.Common.Serialization.SearchQueryConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Processing.Common.Serialization.SearchQueryConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Processing.Common.TypeInspection">
+            <summary>
+            Utilities for inspecting <see cref="T:System.Type"/>s.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Common.TypeInspection.IsIncludedInList(System.Type[])">
+            <summary>
+            A function which can be used to filter a list of types to only those which are provided in the input list.
+            </summary>
+            <param name="types">The types which are allowed.</param>
+            <returns>A function which evaluates whether an input <see cref="T:System.Type"/> is included in the input type list.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Common.TypeInspection.ImplementsAllowedInterface(System.Type,System.Type[])">
+            <summary>
+            Determines whether a type implements one of the allowed interface types.
+            </summary>
+            <param name="target">The type check.</param>
+            <param name="allowedInterfaceTypes">The interface types which are allowed.</param>
+            <returns>True if the target type implements at least one of the allowed interface types.</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions">
+            <summary>
+                Represents a class with extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.ExtractAllowedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type[])">
+            <summary>
+                Finds the services which implement interfaces in <paramref name="allowedBaseInterfaceTypes"/>
+                and removes them from <paramref name="services"/>.
+            </summary>
+            <param name="services">The set of services where allowed services should be extracted from.</param>
+            <param name="allowedBaseInterfaceTypes">
+                The list of interfaces, service must implement in order to be returned. If 
+                service implements at least one interface it is considered allowed.
+            </param>
+            <returns>
+                The <see cref="T:System.Collections.Generic.IDictionary`2"/> of allowed services where 
+                Key is <see cref="T:System.Type"/> of the service and value is <see cref="T:Microsoft.Extensions.DependencyInjection.ObjectFactory"/> to create the service.
+            </returns>
+            <remarks>
+                Each <see cref="T:Microsoft.Extensions.DependencyInjection.ObjectFactory"/> in returned <see cref="T:System.Collections.Generic.IDictionary`2"/> requires 
+                additional parameter <see cref="T:System.Collections.Generic.IDictionary`2" /> of <see cref="T:System.String"/> that must be
+                provided during invocation of <see cref="T:Microsoft.Extensions.DependencyInjection.ObjectFactory"/>.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="services" /> or <paramref name="allowedBaseInterfaceTypes"/>
+                is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="allowedBaseInterfaceTypes" /> is empty.
+            </exception>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,1331 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Processing.Tasks.Options</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Processing.Tasks.Options.Constants">
+            <summary>
+                The set of constants used throughout the Sitecore Processing Tasks Options project.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyNamespaceLength">
+            <summary>
+                The maximum length of a namespace supported by Sitecore.Processing.Engine.Storage.Abstractions.IBlobStore.
+            </summary>
+            <remarks>
+                Must be the same as Sitecore.Processing.Engine.Storage.Abstractions.Constants.BlobStoreMaxKeyNamespaceLength.
+            </remarks>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyLength">
+            <summary>
+                The maximum length of a key supported by Sitecore.Processing.Engine.Storage.Abstractions.IBlobStore.
+            </summary>
+            <remarks>
+                Must be the same as Sitecore.Processing.Engine.Storage.Abstractions.Constants.BlobStoreMaxKeyLength.
+            </remarks>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxETagLength">
+            <summary>
+                The maximum length of an ETag supported by Sitecore.Processing.Engine.Storage.Abstractions.IBlobStore.
+            </summary>
+            <remarks>
+                Must be the same as Sitecore.Processing.Engine.Storage.Abstractions.Constants.BlobStoreMaxETagLength.
+            </remarks>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxTimeToLiveDays">
+            <summary>
+                The maximum time to live (in days) supported by Sitecore.Processing.Engine.Storage.Abstractions.IBlobStore.
+            </summary>
+            <remarks>
+                Must be the same as Sitecore.Processing.Engine.Storage.Abstractions.Constants.BlobStoreMaxTimeToLiveDays.
+            </remarks>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Constants.TableStoreTableNameMaxLength">
+            <summary>
+                The maximum length of a table name supported by Sitecore.Processing.Engine.Storage.Abstractions.ITableStore.
+            </summary>
+            <remarks>
+                Must be the same as Sitecore.Processing.Engine.Storage.Abstractions.Constants.TableStoreTableNameMaxLength.
+            </remarks>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Constants.WorkerTimeSpanFormat">
+            <summary>
+                The format used with <see cref="M:System.TimeSpan.ToString(System.String,System.IFormatProvider)"/> operation 
+                to serialize <see cref="T:System.TimeSpan"/> values.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Constants.EvaluationDefaultTimeToLive">
+            <summary>
+                The default time to live used during model evaluation process if time to live is not provided.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.ContactDataSourceOptionsDictionary">
+            <summary>
+                Represents a data source options used with contact data source.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.ContactDataSourceOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.ContactDataSourceOptionsDictionary"/> class.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.ContactDataSourceOptionsDictionary.#ctor(Sitecore.XConnect.ContactExpandOptions,System.Int32,System.Int32)">
+            <summary>
+                Creates the instance of <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.ContactDataSourceOptionsDictionary" />.
+            </summary>
+            <param name="expandOptions">
+                The <see cref="T:Sitecore.XConnect.ContactExpandOptions" /> to use with contact data source.
+            </param>
+            <param name="maxBatchSize">
+                The maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method will return.
+            </param>
+            <param name="defaultSplitItemCount">
+                The default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.ContactDataSourceOptionsDictionary.#ctor(Sitecore.XConnect.ContactExpandOptions,Sitecore.XConnect.SamplingOptions,System.Int32,System.Int32)">
+            <summary>
+                Creates the instance of <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.ContactDataSourceOptionsDictionary" />.
+            </summary>
+            <param name="expandOptions">
+                The <see cref="T:Sitecore.XConnect.ContactExpandOptions" /> to use with contact data source.
+            </param>
+            <param name="samplingOptions">
+                The <see cref="T:Sitecore.XConnect.SamplingOptions"/> to use with contact data source to sample extracted contacts.
+            </param>
+            <param name="maxBatchSize">
+                The maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method will return.
+            </param>
+            <param name="defaultSplitItemCount">
+                The default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </param>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary">
+            <summary>
+                Represents data source options used with interaction data source.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary"/> class.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.#ctor(Sitecore.XConnect.InteractionExpandOptions,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime)">
+            <summary>
+                Creates the instance of <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary" />.
+            </summary>
+            <param name="expandOptions">
+                The <see cref="T:Sitecore.XConnect.InteractionExpandOptions" /> to use with interaction data source.
+            </param>
+            <param name="maxBatchSize">
+                The maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method will return.
+            </param>
+            <param name="defaultSplitItemCount">
+                The default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </param>
+            <param name="cutoffDateTime">
+                The exclusive upper bound (specified in UTC) for save date of interactions that will be returned by
+                <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> created by
+                <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method.
+            </param>
+            <param name="minStartDateTime">
+                The minimum <see cref="P:Sitecore.XConnect.Interaction.StartDateTime" /> (specified in UTC) that will be returned by
+                <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> created by
+                <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method.
+            </param>
+            <param name="maxStartDateTime">
+                The maximum <see cref="P:Sitecore.XConnect.Interaction.StartDateTime" /> (specified in UTC) that will be returned by
+                <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> created by
+                <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method.
+            </param>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="cutoffDateTime" />, <paramref name="minStartDateTime" />,
+                or <paramref name="maxStartDateTime" /> have <see cref="P:System.DateTime.Kind" /> different
+                from <see cref="F:System.DateTimeKind.Utc" />.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="maxStartDateTime" /> is less than or equal to <paramref name="minStartDateTime" />.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.#ctor(Sitecore.XConnect.InteractionExpandOptions,Sitecore.XConnect.SamplingOptions,System.Int32,System.Int32,System.DateTime,System.DateTime,System.DateTime)">
+            <summary>
+                Creates the instance of <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary" />.
+            </summary>
+            <param name="expandOptions">
+                The <see cref="T:Sitecore.XConnect.InteractionExpandOptions" /> to use with interaction data source.
+            </param>
+            <param name="samplingOptions">
+                The <see cref="T:Sitecore.XConnect.SamplingOptions" /> to use with interaction data source to sample extracted interactions.
+            </param>
+            <param name="maxBatchSize">
+                The maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method will return.
+            </param>
+            <param name="defaultSplitItemCount">
+                The default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </param>
+            <param name="cutoffDateTime">
+                The exclusive upper bound (specified in UTC) for save date of interactions that will be returned by
+                <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> created by
+                <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method.
+            </param>
+            <param name="minStartDateTime">
+                The minimum <see cref="P:Sitecore.XConnect.Interaction.StartDateTime" /> (specified in UTC) that will be returned by
+                <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> created by
+                <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method.
+            </param>
+            <param name="maxStartDateTime">
+                The maximum <see cref="P:Sitecore.XConnect.Interaction.StartDateTime" /> (specified in UTC) that will be returned by
+                <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> created by
+                <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method.
+            </param>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="cutoffDateTime" />, <paramref name="minStartDateTime" />,
+                or <paramref name="maxStartDateTime" /> have <see cref="P:System.DateTime.Kind" /> different
+                from <see cref="F:System.DateTimeKind.Utc" />.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="maxStartDateTime" /> is less than or equal to <paramref name="minStartDateTime" />.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.#ctor(Sitecore.XConnect.InteractionExpandOptions,System.Int32,System.Int32)">
+            <summary>
+                Creates the instance of <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary" />.
+            </summary>
+            <param name="expandOptions">
+                The <see cref="T:Sitecore.XConnect.InteractionExpandOptions" /> to use with interaction data source.
+            </param>
+            <param name="maxBatchSize">
+                The maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method will return.
+            </param>
+            <param name="defaultSplitItemCount">
+                The default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </param>
+            <remarks>
+                This constructor sets <see cref="P:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.CutoffDateTime" /> and <see cref="P:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.MaxStartDateTime" /> to
+                <see cref="F:System.DateTime.MaxValue" />, <see cref="P:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.MinStartDateTime" /> to <see cref="F:System.DateTime.MinValue" />.
+                All dates have <see cref="P:System.DateTime.Kind" /> set to <see cref="F:System.DateTimeKind.Utc" />.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.#ctor(Sitecore.XConnect.InteractionExpandOptions,Sitecore.XConnect.SamplingOptions,System.Int32,System.Int32)">
+            <summary>
+                Creates the instance of <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary" />.
+            </summary>
+            <param name="expandOptions">
+                The <see cref="T:Sitecore.XConnect.InteractionExpandOptions" /> to use with interaction data source.
+            </param>
+            <param name="samplingOptions">
+                The <see cref="T:Sitecore.XConnect.SamplingOptions" /> to use with interaction data source to sample data.
+            </param>
+            <param name="maxBatchSize">
+                The maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method will return.
+            </param>
+            <param name="defaultSplitItemCount">
+                The default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </param>
+            <remarks>
+                This constructor sets <see cref="P:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.CutoffDateTime" /> and <see cref="P:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.MaxStartDateTime" /> to
+                <see cref="F:System.DateTime.MaxValue" />, <see cref="P:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.MinStartDateTime" /> to <see cref="F:System.DateTime.MinValue" />.
+                All dates have <see cref="P:System.DateTime.Kind" /> set to <see cref="F:System.DateTimeKind.Utc" />.
+            </remarks>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.CutoffDateTime">
+            <summary>
+                Gets the exclusive upper bound (specified in UTC) for save date of interactions that will be returned by
+                <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> created by
+                <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.MinStartDateTime">
+            <summary>
+                Gets the minimum <see cref="P:Sitecore.XConnect.Interaction.StartDateTime" /> (specified in UTC) that will be returned by
+                <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> created by
+                <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.DataSources.DataExtraction.InteractionDataSourceOptionsDictionary.MaxStartDateTime">
+            <summary>
+                Gets the maximum <see cref="P:Sitecore.XConnect.Interaction.StartDateTime" /> (specified in UTC) that will be returned by
+                <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> created by
+                <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.DataSources.Search.ContactSearchDataSourceOptionsDictionary">
+            <summary>
+                Represents a data source options to use with contact search data source.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.Search.ContactSearchDataSourceOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.Search.ContactSearchDataSourceOptionsDictionary"/> class.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.Search.ContactSearchDataSourceOptionsDictionary.#ctor(Sitecore.XConnect.Search.SearchRequest,System.Int32,System.Int32)">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.Search.ContactSearchDataSourceOptionsDictionary"/>.
+            </summary>
+            <param name="searchRequest">
+                The search request that contains all the required data to execute search operation.
+            </param>
+            <param name="maxBatchSize">
+                The maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" />
+                method will return.
+            </param>
+            <param name="defaultSplitItemCount">
+                The default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </param>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.DataSources.Search.InteractionSearchDataSourceOptionsDictionary">
+            <summary>
+                Represents a data source options to use with interaction search data source.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.Search.InteractionSearchDataSourceOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.Search.InteractionSearchDataSourceOptionsDictionary"/> class.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.Search.InteractionSearchDataSourceOptionsDictionary.#ctor(Sitecore.XConnect.Search.SearchRequest,System.Int32,System.Int32)">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.Search.InteractionSearchDataSourceOptionsDictionary"/>.
+            </summary>
+            <param name="searchRequest">
+                The search request that contains all the required data to execute search operation.
+            </param>
+            <param name="maxBatchSize">
+                The maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" />
+                method will return.
+            </param>
+            <param name="defaultSplitItemCount">
+                The default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </param>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.DataSources.Search.SearchDataSourceOptionsDictionary`1">
+            <summary>
+                Represents base class for data source options to use with search data source.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.Search.SearchDataSourceOptionsDictionary`1.#ctor(System.Action{Newtonsoft.Json.JsonSerializerSettings},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.Search.SearchDataSourceOptionsDictionary`1"/> class.
+            </summary>
+            <param name="configureSerializer">
+                The <see cref="T:System.Action`1" /> to configure <see cref="T:Newtonsoft.Json.JsonSerializerSettings" /> which influence
+                serialization/deserialization process.
+            </param>
+            <param name="options">Options to influence search data source.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.Search.SearchDataSourceOptionsDictionary`1.#ctor(System.String,Sitecore.XConnect.Search.SearchRequest,System.Int32,System.Int32,System.Action{Newtonsoft.Json.JsonSerializerSettings})">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.Search.SearchDataSourceOptionsDictionary`1"/>.
+            </summary>
+            <param name="dataSourceType">
+                Assembly qualified .NET type name of the data source to use the options with.
+            </param>
+            <param name="searchRequest">
+                The search request that contains all the required data to execute search operation.
+            </param>
+            <param name="maxBatchSize">
+                The maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" />
+                method will return.
+            </param>
+            <param name="defaultSplitItemCount">
+                The default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </param>
+            <param name="configureSerializer">
+                The <see cref="T:System.Action`1" /> to configure <see cref="T:Newtonsoft.Json.JsonSerializerSettings" /> which influences
+                serialization/deserialization process.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="searchRequest"/> or <see cref="P:Sitecore.XConnect.Search.SearchRequest.ExpandOptions"/> 
+                of <paramref name="searchRequest"/> parameter is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                Type of <see cref="P:Sitecore.XConnect.Search.SearchRequest.ExpandOptions"/> of <paramref name="searchRequest"/> 
+                is different from <typeparamref name="TExpandOptions"/>.
+            </exception>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.DataSources.Search.SearchDataSourceOptionsDictionary`1.SearchRequest">
+            <summary>
+                Gets the <see cref="T:Sitecore.XConnect.Search.SearchRequest"/> that contains all the required data
+                to execute search operation.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1">
+            <summary>
+                Represents a base class for data source options used with xConnect data source.
+            </summary>
+            <typeparam name="TExpandOptions">
+                The <see cref="T:Sitecore.XConnect.ExpandOptions" /> to use with xConnect data source.
+            </typeparam>
+            <remarks>
+                The options are serialized and stored in the form of JSON string internally. <see cref="T:Newtonsoft.Json.JsonSerializer" /> is used
+                for serialization/deserialization process.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1.#ctor(System.Action{Newtonsoft.Json.JsonSerializerSettings},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1"/> class.
+            </summary>
+            <param name="configureSerializer">
+                The <see cref="T:System.Action`1" /> to configure <see cref="T:Newtonsoft.Json.JsonSerializerSettings" /> which influence
+                serialization/deserialization process.
+            </param>
+            <param name="options">Options to influence with xConnect data source.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1.#ctor(System.String,`0,Sitecore.XConnect.SamplingOptions,System.Int32,System.Int32,System.Action{Newtonsoft.Json.JsonSerializerSettings})">
+            <summary>
+                Creates the instance of <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1" />.
+            </summary>
+            <param name="dataSourceType">
+                Assembly qualified .NET type name of the data source to use the options with.
+            </param>
+            <param name="expandOptions">
+                The <see cref="T:Sitecore.XConnect.ExpandOptions" /> to use with xConnect data source.
+            </param>
+            <param name="samplingOptions">
+                The <see cref="T:Sitecore.XConnect.SamplingOptions" /> to use with xConnect data source to sample data.
+            </param>
+            <param name="maxBatchSize">
+                The maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method will return.
+            </param>
+            <param name="defaultSplitItemCount">
+                The default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </param>
+            <param name="configureSerializer">
+                The <see cref="T:System.Action`1" /> to configure <see cref="T:Newtonsoft.Json.JsonSerializerSettings" /> which influence
+                serialization/deserialization process.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="expandOptions" /> is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="maxBatchSize" /> or <paramref name="defaultSplitItemCount" /> is less than or equal to 0.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1.#ctor(System.String,`0,Sitecore.XConnect.SamplingOptions,System.Int32,System.Int32,System.Action{Newtonsoft.Json.JsonSerializerSettings},System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+                Creates the instance of <see cref="T:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1" />.
+            </summary>
+            <param name="dataSourceType">
+                Assembly qualified .NET type name of the data source to use the options with.
+            </param>
+            <param name="expandOptions">
+                The <see cref="T:Sitecore.XConnect.ExpandOptions" /> to use with xConnect data source.
+            </param>
+            <param name="samplingOptions">
+                The <see cref="T:Sitecore.XConnect.SamplingOptions" /> to use with xConnect data source.
+            </param>
+            <param name="maxBatchSize">
+                The maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method will return.
+            </param>
+            <param name="defaultSplitItemCount">
+                The default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </param>
+            <param name="configureSerializer">
+                The <see cref="T:System.Action`1" /> to configure <see cref="T:Newtonsoft.Json.JsonSerializerSettings" /> which influence
+                serialization/deserialization process.
+            </param>
+            <param name="additionalOptions">
+                Additional options to influence xConnect data source.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="expandOptions" /> is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="maxBatchSize" /> or <paramref name="defaultSplitItemCount" /> is less than or equal to 0.
+            </exception>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1.MaxBatchSize">
+            <summary>
+                Gets the maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method will return.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1.DefaultSplitItemCount">
+            <summary>
+                Gets the default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1.ExpandOptions">
+            <summary>
+                Gets the <see cref="T:Sitecore.XConnect.ExpandOptions" /> to use with xConnect data source.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1.SamplingOptions">
+            <summary>
+                Gets the <see cref="T:Sitecore.XConnect.SamplingOptions" /> to use with xConnect data source.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1.DeserializeOption``1(System.String,System.Boolean)">
+            <summary>
+                Deserializes value from this instance of data source options using <paramref name="key" />
+                as an identifier.
+            </summary>
+            <typeparam name="T">The type to deserialize an option to.</typeparam>
+            <param name="key">The key of the option to deserialize.</param>
+            <param name="isOptional">The parameter to specify whether option is optional.</param>
+            <returns>
+                The value of type <typeparamref name="T" /> deserialized from this instance of options.
+                If value retrieved by <paramref name="key" /> is null, the default value of
+                <typeparamref name="T" /> is returned.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.DataSources.XConnectDataSourceOptionsDictionary`1.SerializeOptions(`0,Sitecore.XConnect.SamplingOptions,System.Int32,System.Int32,System.Collections.Generic.IDictionary{System.String,System.Object},Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+                Serializes <paramref name="expandOptions" />, <paramref name="samplingOptions"/>,
+                <paramref name="maxBatchSize" />, <paramref name="defaultSplitItemCount" />,
+                <paramref name="additionalOptions" /> parameters and returns their serialized
+                representation in one
+                <see cref="T:System.Collections.Generic.IDictionary`2" />.
+            </summary>
+            <param name="expandOptions">
+                The <see cref="T:Sitecore.XConnect.ExpandOptions" /> to use with xConnect data source.
+            </param>
+            <param name="samplingOptions">
+                The <see cref="T:Sitecore.XConnect.SamplingOptions" /> to use with xConnect data source.
+            </param>
+            <param name="maxBatchSize">
+                The maximum size of the batch which <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                created by <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method will return.
+            </param>
+            <param name="defaultSplitItemCount">
+                The default preferred amount of items in the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" />
+                returned by <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" />.
+            </param>
+            <param name="additionalOptions">
+                Additional options to influence xConnect data source.
+            </param>
+            <param name="serializerSettings">
+                The settings for <see cref="T:Newtonsoft.Json.JsonSerializer" /> to influence deserialization process.
+            </param>
+            <returns>
+                Serialized representation of <paramref name="expandOptions" />, <paramref name="maxBatchSize" />,
+                <paramref name="defaultSplitItemCount" />, and <paramref name="additionalOptions" />
+                in one <see cref="T:System.Collections.Generic.IDictionary`2" />.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="expandOptions" /> is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="maxBatchSize" /> or <paramref name="defaultSplitItemCount" /> is less than or equal to 0.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions">
+            <summary>
+                A set of options to influence model training task started by 
+                <see cref="M:Sitecore.Processing.Engine.Abstractions.TaskManagerExtensions.RegisterModelTrainingTaskChainAsync(Sitecore.Processing.Engine.Abstractions.ITaskManager,Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions,Sitecore.Processing.Engine.Abstractions.IDataSourceOptionsCollection,System.TimeSpan)"/> method.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions"/>.
+            </summary>
+            <param name="modelTypeString">Assembly qualified .NET type name of the model used to instantiate, get projection, and train it.</param>
+            <param name="modelEntityTypeString">Assembly qualified .NET type name of the entity used in model's projection.</param>
+            <param name="modelProjectionTableName">A name of the table definition inside projection of the model.</param>
+            <param name="projectionResultsTableName">A name of the table to store merged results after projection.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="modelTypeString"/>, <paramref name="modelEntityTypeString"/>, <paramref name="modelProjectionTableName"/>,
+                 or <paramref name="projectionResultsTableName"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="modelTypeString"/>, <paramref name="modelEntityTypeString"/>, <paramref name="modelProjectionTableName"/>, or
+                <paramref name="projectionResultsTableName"/> is <see cref="F:System.String.Empty"/> or contains only whitespace characters.
+                <paramref name="modelProjectionTableName"/> or <paramref name="projectionResultsTableName"/> is longer than <see cref="F:Sitecore.Processing.Tasks.Options.Constants.TableStoreTableNameMaxLength"/>.
+            </exception> 
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions.#ctor(System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String,System.String)">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions"/>.
+            </summary>
+            <param name="modelTypeString">Assembly qualified .NET type name of the model used to instantiate, get projection, and train it.</param>
+            <param name="modelEntityTypeString">Assembly qualified .NET type name of the entity used in model's projection.</param>
+            <param name="modelOptions">A set of options to pass to a constructor of a model.</param>
+            <param name="modelProjectionTableName">A name of the table definition inside projection of the model.</param>
+            <param name="projectionResultsTableName">A name of the table to store merged results after projection.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="modelTypeString"/>, <paramref name="modelEntityTypeString"/>, <paramref name="modelOptions"/>, 
+                <paramref name="modelProjectionTableName"/>, or <paramref name="projectionResultsTableName"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="modelTypeString"/>, <paramref name="modelEntityTypeString"/>, <paramref name="modelProjectionTableName"/>, or
+                <paramref name="projectionResultsTableName"/> is <see cref="F:System.String.Empty"/> or contains only whitespace characters.
+                <paramref name="modelProjectionTableName"/> or <paramref name="projectionResultsTableName"/> is longer than <see cref="F:Sitecore.Processing.Tasks.Options.Constants.TableStoreTableNameMaxLength"/>.
+            </exception> 
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions.#ctor(System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions"/>.
+            </summary>
+            <param name="modelTypeString">Assembly qualified .NET type name of the model used to instantiate, get projection, and train it.</param>
+            <param name="modelEntityTypeString">Assembly qualified .NET type name of the entity used in model's projection.</param>
+            <param name="modelOptions">A set of options to pass to a constructor of a model.</param>
+            <param name="sourceTargetTableNamesMap">Map of source (<see cref="P:System.Collections.Generic.KeyValuePair`2.Key"/>) and 
+                target (<see cref="P:System.Collections.Generic.KeyValuePair`2.Value"/>) table names. Source - a name of the table definition 
+                inside projection of the model. Target - a name of the table to store merged results after projection.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="modelTypeString"/>, <paramref name="modelEntityTypeString"/>, <paramref name="modelOptions"/>, 
+                or <paramref name="sourceTargetTableNamesMap"/> is <see langword="null"/>.
+                <paramref name="sourceTargetTableNamesMap"/> contains entries with <see langword="null"/> value.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="modelTypeString"/>, <paramref name="modelEntityTypeString"/> is <see cref="F:System.String.Empty"/> or contains only whitespace characters.
+                <paramref name="sourceTargetTableNamesMap"/> is empty.
+            </exception> 
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions.#ctor(System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String)">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions"/>.
+            </summary>
+            <param name="modelTypeString">Assembly qualified .NET type name of the model used to instantiate, get projection, and train it.</param>
+            <param name="modelEntityTypeString">Assembly qualified .NET type name of the entity used in model's projection.</param>
+            <param name="modelOptions">A set of options to pass to a constructor of a model.</param>
+            <param name="sourceTargetTableNamesMap">Map of source (<see cref="P:System.Collections.Generic.KeyValuePair`2.Key"/>) and 
+                target (<see cref="P:System.Collections.Generic.KeyValuePair`2.Value"/>) table names. Source - a name of the table definition 
+                inside projection of the model. Target - a name of the table to store merged results after projection. 
+            </param>
+            <param name="schemaName">
+                Optional schema name of the tables in <paramref name="sourceTargetTableNamesMap"/>. If <paramref name="schemaName"/> is <see langword="null"/>,
+                <see cref="F:System.String.Empty"/>, or contains only whitespace characters, <paramref name="modelTypeString"/> is used as a <paramref name="schemaName"/>.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="modelTypeString"/>, <paramref name="modelEntityTypeString"/>, <paramref name="modelOptions"/>, 
+                or <paramref name="sourceTargetTableNamesMap"/> is <see langword="null"/>.
+                <paramref name="sourceTargetTableNamesMap"/> contains entries with <see langword="null"/> value.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="modelTypeString"/>, <paramref name="modelEntityTypeString"/> is <see cref="F:System.String.Empty"/> or contains only whitespace characters.
+                <paramref name="sourceTargetTableNamesMap"/> is empty.
+                <paramref name="schemaName"/> is longer than <see cref="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyNamespaceLength"/>.
+                <see cref="P:System.Collections.Generic.KeyValuePair`2.Key"/> or <see cref="P:System.Collections.Generic.KeyValuePair`2.Value"/> in 
+                <paramref name="sourceTargetTableNamesMap"/> is <see cref="F:System.String.Empty"/>, contains only whitespace characters or 
+                longer than <see cref="F:Sitecore.Processing.Tasks.Options.Constants.TableStoreTableNameMaxLength"/>.
+            </exception> 
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions.ModelTypeString">
+            <summary>
+               Assembly qualified .NET type name of the model used to instantiate, get projection, and train it.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions.ModelEntityTypeString">
+            <summary>
+               Assembly qualified .NET type name of the entity used in model's projection.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions.SourceTargetTableNamesMap">
+            <summary>
+                Map of source (<see cref="P:System.Collections.Generic.KeyValuePair`2.Key"/>) and 
+                target (<see cref="P:System.Collections.Generic.KeyValuePair`2.Value"/>) table names. Source - a name of the table definition inside projection of the model.
+                Target - a name of the table to store merged results after projection. 
+            </summary>
+            <remarks>Each source-target pair must correspond to a table definition inside model projection (linked projections).</remarks>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions.ModelOptions">
+            <summary>
+                Set of options to pass to a constructor of a model.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions.SchemaName">
+            <summary>
+                Schema name of the tables in <see cref="P:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions.SourceTargetTableNamesMap"/>. 
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.Workers.ML.ContactProjectionWorkerOptionsDictionary">
+            <summary>
+                Options to use with contact projection worker.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.ContactProjectionWorkerOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.ContactProjectionWorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.ContactProjectionWorkerOptionsDictionary.#ctor(System.String,System.TimeSpan,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.ContactProjectionWorkerOptionsDictionary"/>.
+            </summary>
+            <param name="modelTypeString">
+               Assembly qualified .NET type name of the model used to get projection.
+            </param>
+            <param name="timeToLive">
+                Time span, projected tables will be guaranteed to live. The projected tables will be deleted approximately after this time span.
+            </param>
+            <param name="schemaName">
+                An optional schema name of the tables with projected data. If <paramref name="schemaName"/> is <see langword="null"/>,
+                <see cref="F:System.String.Empty"/>, or contains only whitespace characters, <paramref name="modelTypeString"/> is used as a <paramref name="schemaName"/>.
+            </param>
+            <param name="modelOptions">A set of options to pass to a constructor of model.</param>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.Workers.ML.ContactTrainingWorkerOptionsDictionary">
+            <summary>
+                Options to use with contact training worker.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.ContactTrainingWorkerOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.ContactTrainingWorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.ContactTrainingWorkerOptionsDictionary.#ctor(System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.ContactTrainingWorkerOptionsDictionary"/>.
+            </summary>
+            <param name="modelTypeString">
+               Assembly qualified .NET type name of the model used to start training.
+            </param>
+            <param name="schemaName">
+                An optional schema name of a table that stores source data for training. 
+                If <paramref name="schemaName"/> is <see langword="null"/>, <see cref="F:System.String.Empty"/>, 
+                or contains only whitespace characters, <paramref name="modelTypeString"/> is used as a
+                <paramref name="schemaName"/>.
+            </param>
+            <param name="tableNames">A list of table names that store source data for training.</param>
+            <param name="modelOptions">A set of options to pass to a constructor of model.</param>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary">
+            <summary>
+                Options to use with evaluation worker.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.ModelTypeKey">
+            <summary>
+                The key to store in internal dictionary type of the model.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.TimeToLiveKey">
+            <summary>
+                The key to store in internal dictionary time to live value. The projected tables will be deleted 
+                approximately after this time.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.SchemaNameKey">
+            <summary>
+                The key to store in internal dictionary schema name of the projected tables.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.#ctor(System.String,System.String)">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary"/>.
+            </summary>
+            <param name="workerTypeString">
+                Assembly qualified .NET type name of the evaluation worker.
+            </param>
+            <param name="modelTypeString">
+               Assembly qualified .NET type name of the model used to get projection.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="workerTypeString"/> or <paramref name="modelTypeString"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="workerTypeString"/> or <paramref name="modelTypeString"/> is <see cref="F:System.String.Empty"/>
+                or contains only whitespace characters.
+            </exception> 
+            <remarks>
+                <see cref="F:Sitecore.Processing.Tasks.Options.Constants.EvaluationDefaultTimeToLive"/> is used as a Time to live parameter.
+                The first <see cref="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyNamespaceLength"/> characters of model type
+                specified in <paramref name="modelTypeString"/> are used as schema name.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.#ctor(System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary"/>.
+            </summary>
+            <param name="workerTypeString">
+                Assembly qualified .NET type name of the evaluation worker.
+            </param>
+            <param name="modelTypeString">
+               Assembly qualified .NET type name of the model used to get projection.
+            </param>
+            <param name="modelOptions">A set of options to pass to a constructor of model.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="workerTypeString"/>, <paramref name="modelTypeString"/>, or <paramref name="modelOptions"/>
+                is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="workerTypeString"/>, or <paramref name="modelTypeString"/> is <see cref="F:System.String.Empty"/>
+                or contains only whitespace characters.
+            </exception> 
+            <remarks>
+                <see cref="F:Sitecore.Processing.Tasks.Options.Constants.EvaluationDefaultTimeToLive"/> is used as a Time to live parameter.
+                The first <see cref="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyNamespaceLength"/> characters of model type
+                specified in <paramref name="modelTypeString"/> are used as schema name.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.#ctor(System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String)">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary"/>.
+            </summary>
+            <param name="workerTypeString">
+                Assembly qualified .NET type name of the evaluation worker.
+            </param>
+            <param name="modelTypeString">
+               Assembly qualified .NET type name of the model used to get projection.
+            </param>
+            <param name="modelOptions">A set of options to pass to a constructor of model.</param>
+            <param name="schemaName">A schema name of the tables with projected data.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="workerTypeString"/>, <paramref name="modelTypeString"/>, or <paramref name="modelOptions"/>
+                is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="workerTypeString"/>, or <paramref name="modelTypeString"/> is <see cref="F:System.String.Empty"/>
+                or contains only whitespace characters.
+                <paramref name="schemaName"/> is longer than <see cref="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyNamespaceLength"/>.
+            </exception>
+            <remarks>
+                <see cref="F:Sitecore.Processing.Tasks.Options.Constants.EvaluationDefaultTimeToLive"/> is used as a Time to live parameter.
+                If <paramref name="schemaName"/> is <see langword="null"/>, <see cref="F:System.String.Empty"/> or contains only
+                whitespace characters, the first <see cref="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyNamespaceLength"/> characters 
+                of model type specified in <paramref name="modelTypeString"/> are used as <paramref name="schemaName"/>.
+            </remarks> 
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.#ctor(System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String,System.TimeSpan)">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary"/>.
+            </summary>
+            <param name="workerTypeString">
+                Assembly qualified .NET type name of the evaluation worker.
+            </param>
+            <param name="modelTypeString">
+               Assembly qualified .NET type name of the model used to get projection.
+            </param>
+            <param name="modelOptions">A set of options to pass to a constructor of model.</param>
+            <param name="schemaName">
+                A schema name of the tables with projected data. 
+            </param>
+            <param name="timeToLive">
+                Time span, projected tables will be guaranteed to live. The projected tables will be deleted approximately
+                after this time span.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="workerTypeString"/>, <paramref name="modelTypeString"/>, or <paramref name="modelOptions"/>
+                is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="workerTypeString"/> or <paramref name="modelTypeString"/> is <see cref="F:System.String.Empty"/>
+                or contains only whitespace characters.
+                <paramref name="schemaName"/> is longer than <see cref="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyNamespaceLength"/>.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="timeToLive"/> is less than or equals to <see cref="F:System.TimeSpan.Zero"/>.
+            </exception> 
+            <remarks>
+                If <paramref name="schemaName"/> is <see langword="null"/>, <see cref="F:System.String.Empty"/> or contains only
+                whitespace characters, the first <see cref="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyNamespaceLength"/> characters of
+                model type specified in <paramref name="modelTypeString"/> are used as <paramref name="schemaName"/>.
+            </remarks> 
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="dictionary">A <see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.ModelType">
+            <summary>
+                Gets the model type to specify which model to use to get projection and evaluate entities.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.SchemaName">
+            <summary>
+                Gets the schema name of the tables with projected data.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.ModelOptions">
+            <summary>
+                Gets the set of options to pass to a constructor of model.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.TimeToLive">
+            <summary>
+                Gets the time span, projected tables will be guaranteed to live. The projected tables will be deleted
+                approximately after this time span.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.Parse(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Converts the <paramref name="options"/> into <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary"/> instance.
+            </summary>
+            <param name="options">A list of keys and mapped values to create <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary"/>.</param>
+            <returns>A fully functional instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="options"/> parameter is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="options"/> parameter is empty.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.ModelTypeKey"/> key.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Engine.Abstractions.WorkerOptionsDictionary.WorkerTypeKey"/> key.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Tasks.Options.Workers.ML.EvaluationWorkerOptionsDictionary.TimeToLiveKey"/> key.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.Workers.ML.InteractionProjectionWorkerOptionsDictionary">
+            <summary>
+                Options to use with interaction projection worker.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.InteractionProjectionWorkerOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.InteractionProjectionWorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.InteractionProjectionWorkerOptionsDictionary.#ctor(System.String,System.TimeSpan,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.InteractionProjectionWorkerOptionsDictionary"/>.
+            </summary>
+            <param name="modelTypeString">
+               Assembly qualified .NET type name of the model used to get projection.
+            </param>
+            <param name="timeToLive">
+                Time span, projected tables will be guaranteed to live. The projected tables will be deleted approximately after this time span.
+            </param>
+            <param name="schemaName">
+                An optional schema name of the tables with projected data. If <paramref name="schemaName"/> is <see langword="null"/>,
+                <see cref="F:System.String.Empty"/>, or contains only whitespace characters, <paramref name="modelTypeString"/> is used as a <paramref name="schemaName"/>.
+            </param>
+            <param name="modelOptions">A set of options to pass to a constructor of model.</param>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.Workers.ML.InteractionTrainingWorkerOptionsDictionary">
+            <summary>
+                Options to use with interaction training worker.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.InteractionTrainingWorkerOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.InteractionTrainingWorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.InteractionTrainingWorkerOptionsDictionary.#ctor(System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.InteractionTrainingWorkerOptionsDictionary"/>.
+            </summary>
+            <param name="modelTypeString">
+               Assembly qualified .NET type name of the model used to start training.
+            </param>
+            <param name="schemaName">
+                An optional schema name of a table that stores source data for training.
+                If <paramref name="schemaName"/> is <see langword="null"/>, <see cref="F:System.String.Empty"/>, 
+                or contains only whitespace characters, <paramref name="modelTypeString"/> is used as a
+                <paramref name="schemaName"/>.
+            </param>
+            <param name="tableNames">A list of table names that store source data for training.</param>
+            <param name="modelOptions">A set of options to pass to a constructor of model.</param>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary">
+            <summary>
+                Options to use with merge worker.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.TableNameKey">
+            <summary>
+                The key to store in internal dictionary name of the merge target table.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.PrefixKey">
+            <summary>
+                The key to store in internal dictionary prefix of the tables to merge.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.TimeToLiveKey">
+            <summary>
+                The key to store in internal dictionary time to live value. The merged table will be deleted 
+                approximately after this time.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.SchemaNameKey">
+            <summary>
+                The key to store in internal dictionary schema name of the tables involved in merge.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.FailOnEmptyDataSetKey">
+            <summary>
+                The key to store in internal dictionary flag that indicates whether to throw exception
+                if there are no tables to perform merge.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.#ctor(System.String,System.String,System.TimeSpan,System.String)">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary"/>.
+            </summary>
+            <param name="tableName">A name of the table where data must be merged.</param>
+            <param name="prefix">A prefix of the tables to merge.</param>
+            <param name="timeToLive">
+                Time span, a merged table will be guaranteed to live. The merged table will be deleted approximately after this time span.
+            </param>
+            <param name="schemaName">
+                A name of the schema for the tables involved in merge.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="tableName"/>, <paramref name="prefix"/>, or <paramref name="schemaName"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="tableName"/>, <paramref name="prefix"/>, or <paramref name="schemaName"/> is <see cref="F:System.String.Empty"/>
+                or contains only whitespace characters.
+                <paramref name="schemaName"/> is longer than <see cref="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyNamespaceLength"/>.
+                <paramref name="tableName"/> is longer than <see cref="F:Sitecore.Processing.Tasks.Options.Constants.TableStoreTableNameMaxLength"/>.
+            </exception> 
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="timeToLive"/> is less than or equals to <see cref="F:System.TimeSpan.Zero"/>.
+            </exception> 
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.#ctor(System.String,System.String,System.TimeSpan,System.String,System.Boolean)">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary"/>.
+            </summary>
+            <param name="tableName">A name of the table where data must be merged.</param>
+            <param name="prefix">A prefix of the tables to merge.</param>
+            <param name="timeToLive">
+                Time span, a merged table will be guaranteed to live. The merged table will be deleted approximately after this time span.
+            </param>
+            <param name="schemaName">
+                A name of the schema for the tables involved in merge.
+            </param>
+            <param name="failOnEmptyDataSet">
+                A flag that indicates whether to throw exception if there are no tables to perform merge.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="tableName"/>, <paramref name="prefix"/>, or <paramref name="schemaName"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="tableName"/>, <paramref name="prefix"/>, or <paramref name="schemaName"/> is <see cref="F:System.String.Empty"/>
+                or contains only whitespace characters.
+                <paramref name="schemaName"/> is longer than <see cref="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyNamespaceLength"/>.
+                <paramref name="tableName"/> is longer than <see cref="F:Sitecore.Processing.Tasks.Options.Constants.TableStoreTableNameMaxLength"/>.
+            </exception> 
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="timeToLive"/> is less than or equals to <see cref="F:System.TimeSpan.Zero"/>.
+            </exception> 
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.TableName">
+            <summary>
+                Gets the name of the table where data must be merged.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.Prefix">
+            <summary>
+                Gets the prefix of the tables to merge.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.SchemaName">
+            <summary>
+                Gets the name of the schema for the tables involved in merge.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.FailOnEmptyDataSet">
+            <summary>
+                Gets the value that indicates whether to throw exception if there are no tables to perform merge.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.TimeToLive">
+            <summary>
+                Gets time span, a merged table will be guaranteed to live. The merged table will be deleted approximately after this time span.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.Parse(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Converts the <paramref name="options"/> into <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary"/> instance.
+            </summary>
+            <param name="options">A list of keys and mapped values to create <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary"/>.</param>
+            <returns>A fully functional instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="options"/> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="options"/> parameter is empty.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.TableNameKey"/> key.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.PrefixKey"/> key.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.TimeToLiveKey"/> key.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.SchemaNameKey"/> key.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Tasks.Options.Workers.ML.MergeWorkerOptionsDictionary.FailOnEmptyDataSetKey"/> key.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary">
+            <summary>
+                Options to use with projection worker.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary.ModelTypeKey">
+            <summary>
+                The key to store in internal dictionary type of the model.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary.TimeToLiveKey">
+            <summary>
+                The key to store in internal dictionary time to live value. The projected tables will be deleted 
+                approximately after this time.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary.SchemaNameKey">
+            <summary>
+                The key to store in internal dictionary schema name of the projected tables.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary.#ctor(System.String,System.String,System.TimeSpan,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary"/>.
+            </summary>
+            <param name="workerEntityTypeString">
+                Assembly qualified .NET type name of the projection worker entity.
+            </param>
+            <param name="modelTypeString">
+               Assembly qualified .NET type name of the model used to get projection.
+            </param>
+            <param name="timeToLive">
+                Time span, projected tables will be guaranteed to live. The projected tables will be deleted approximately after this time span.
+            </param>
+            <param name="schemaName">
+                An optional schema name of the tables with projected data. If <paramref name="schemaName"/> is <see langword="null"/>,
+                <see cref="F:System.String.Empty"/>, or contains only whitespace characters, <paramref name="modelTypeString"/> is used as a <paramref name="schemaName"/>.
+            </param>
+            <param name="modelOptions">A set of options to pass to a constructor of model.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="workerEntityTypeString"/>, <paramref name="modelTypeString"/> or <paramref name="modelOptions"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="workerEntityTypeString"/>, <paramref name="modelTypeString"/> is <see cref="F:System.String.Empty"/> or contains only whitespace characters.
+                <paramref name="schemaName"/> is longer than <see cref="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyNamespaceLength"/>.
+            </exception> 
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="timeToLive"/> is less than or equals to <see cref="F:System.TimeSpan.Zero"/>.
+            </exception> 
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary.ModelType">
+            <summary>
+                Gets the model identifier to specify which model to use to get projection for.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary.SchemaName">
+            <summary>
+                Gets the name of the schema of the tables with projected data.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary.ModelOptions">
+            <summary>
+                Gets the set of options to pass to a constructor of model.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary.TimeToLive">
+            <summary>
+                Gets time span, projected tables will be guaranteed to live. The projected tables will be deleted
+                approximately after this time span.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary.Parse(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Converts the <paramref name="options"/> into <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary"/> instance.
+            </summary>
+            <param name="options">A list of keys and mapped values to create <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary"/>.</param>
+            <returns>A fully functional instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="options"/> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="options"/> parameter is empty.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary.ModelTypeKey"/> key.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Engine.Abstractions.WorkerOptionsDictionary.WorkerTypeKey"/> key.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Tasks.Options.Workers.ML.ProjectionWorkerOptionsDictionary.TimeToLiveKey"/> key.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary">
+            <summary>
+                Options to use with training worker.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary.ModelTypeKey">
+            <summary>
+                The key to store in internal dictionary type of the model.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary.SchemaNameKey">
+            <summary>
+                The key to store in internal dictionary schema name of the table that stores source data for training.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary.TableNamesKey">
+            <summary>
+                The key to store in internal dictionary table names that store source data for training.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary.#ctor(System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary"/>.
+            </summary>
+            <param name="workerEntityTypeString">
+                Assembly qualified .NET type name of the training worker entity.
+            </param>
+            <param name="modelTypeString">
+                Assembly qualified .NET type name of the model used to start training.
+            </param>
+            <param name="schemaName">
+                An optional schema name of a table that stores source data for training. 
+                If <paramref name="schemaName"/> is <see langword="null"/>, <see cref="F:System.String.Empty"/>, 
+                or contains only whitespace characters, <paramref name="modelTypeString"/> is used as a
+                <paramref name="schemaName"/>.
+            </param>
+            <param name="tableNames">A list of table names that store source data for training.</param>
+            <param name="modelOptions">A set of options to pass to a constructor of model.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="workerEntityTypeString"/>, <paramref name="modelTypeString"/>, <paramref name="tableNames"/>, or <paramref name="modelOptions"/> is <see langword="null"/>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="workerEntityTypeString"/> or <paramref name="modelTypeString"/> is <see cref="F:System.String.Empty"/> or contains only whitespace characters.
+                <paramref name="schemaName"/> is longer than <see cref="F:Sitecore.Processing.Tasks.Options.Constants.BlobStoreMaxKeyNamespaceLength"/>.
+                <paramref name="tableNames"/> is empty.
+            </exception> 
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary.ModelType">
+            <summary>
+                Gets assembly qualified .NET type name of the model to use.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary.SchemaName">
+            <summary>
+                Gets the schema name of the table that stores source data for training.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary.ModelOptions">
+            <summary>
+                Gets the set of options to pass to a constructor of model.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary.TableNames">
+            <summary>
+                Gets the table names that store source data for training.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary.Parse(System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Converts the <paramref name="options"/> into <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary"/> instance.
+            </summary>
+            <param name="options">
+                A list of keys and mapped values to create <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary"/>.
+            </param>
+            <returns>A fully functional instance of <see cref="T:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="options"/> parameter is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="options"/> parameter is empty.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary.ModelTypeKey"/> key.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Tasks.Options.Workers.ML.TrainingWorkerOptionsDictionary.TableNamesKey"/> key.
+                <paramref name="options"/> parameter does not have entry for <see cref="F:Sitecore.Processing.Engine.Abstractions.WorkerOptionsDictionary.WorkerTypeKey"/> key.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.TaskManagerExtensions">
+            <summary>
+                Extension methods for the <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskManager"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.TaskManagerExtensions.RegisterModelTrainingTaskChainAsync(Sitecore.Processing.Engine.Abstractions.ITaskManager,Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions,Sitecore.Processing.Engine.Abstractions.IDataSourceOptionsCollection,System.TimeSpan)">
+             <summary>
+                 Asynchronously registers a chain of tasks to be executed to train an ML model.
+             </summary>
+             <param name="taskManager">The <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskManager"/> to use to register the chain of tasks.</param>
+             <param name="modelTrainingOptions">A set of options for model training tasks.</param>
+             <param name="dataSourceOptions">
+                 Options collection passed to the datasource object during projection task execution.
+            </param>
+             <param name="expiresAfter">
+                 <see cref="T:System.TimeSpan" /> after which chain of tasks will expire.
+             </param>
+            <exception cref="T:System.ArgumentNullException">
+                 <paramref name="taskManager"/>, <paramref name="modelTrainingOptions"/>,  or <paramref name="dataSourceOptions"/> is <see langword="null"/>.
+             </exception>
+             <exception cref="T:System.ArgumentException">
+                 <paramref name="dataSourceOptions"/> is empty.
+             </exception>
+             <exception cref="T:System.ArgumentOutOfRangeException">
+                 <paramref name="expiresAfter"/> is less than or equal to <see cref="F:System.TimeSpan.Zero"/>.
+             </exception>
+             <returns>
+                 Asynchronous task that returns a <see cref="T:System.Guid" /> identifier of registered model training task only. 
+                 Neither projection nor merge tasks included into the return value because they are prerequisites to the training task.
+             </returns>
+             <remarks>
+                 This method registers merge tasks for each pair in <see cref="P:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions.SourceTargetTableNamesMap"/>
+                 of <paramref name="modelTrainingOptions"/>.
+             </remarks>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.TaskManagerExtensions.RegisterModelTrainingTaskChainAsync(Sitecore.Processing.Engine.Abstractions.ITaskManager,Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions,Sitecore.Processing.Engine.Abstractions.IDataSourceOptionsCollection,System.TimeSpan,System.Collections.Generic.IEnumerable{System.Guid})">
+             <summary>
+                 Asynchronously registers a chain of tasks to be executed to train an ML model.
+             </summary>
+             <param name="taskManager">The <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskManager"/> to use to register the chain of tasks.</param>
+             <param name="modelTrainingOptions">A set of options for model training tasks.</param>
+             <param name="dataSourceOptions">
+                 Options collection passed to the datasource object during projection task execution.
+            </param>
+             <param name="prerequisiteTaskIds">The IDs of the tasks which are prerequisites to this task.</param>
+             <param name="expiresAfter">
+                 <see cref="T:System.TimeSpan" /> after which the task will expire.
+             </param>
+            <exception cref="T:System.ArgumentNullException">
+                 <paramref name="taskManager"/>, <paramref name="modelTrainingOptions"/>,  or <paramref name="dataSourceOptions"/> is <see langword="null"/>.
+             </exception>
+             <exception cref="T:System.ArgumentException">
+                 <paramref name="dataSourceOptions"/> is empty.
+             </exception>
+             <exception cref="T:System.ArgumentOutOfRangeException">
+                 <paramref name="expiresAfter"/> is less than or equal to <see cref="F:System.TimeSpan.Zero"/>.
+             </exception>
+             <returns>
+                 Asynchronous task that returns a <see cref="T:System.Guid" /> identifier of registered model training task only. 
+                 Neither projection nor merge tasks included into the return value because they are prerequisites to the training task.
+             </returns>
+             <remarks>
+                 This method registers merge tasks for each pair in <see cref="P:Sitecore.Processing.Tasks.Options.ModelTrainingTaskOptions.SourceTargetTableNamesMap"/>
+                 of <paramref name="modelTrainingOptions"/>.
+             </remarks>
+        </member>
+    </members>
+</doc>

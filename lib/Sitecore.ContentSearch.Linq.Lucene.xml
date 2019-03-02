@@ -1,0 +1,1529 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.ContentSearch.Linq.Lucene</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.AnalyzerExtensions">
+            <summary>
+            The analyzer extensions.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.AnalyzerExtensions.GetAnalyzerByExecutionContext(Lucene.Net.Analysis.Analyzer,Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>Gets the analyzer by execution context.</summary>
+            <param name="analyzer">The analyzer.</param>
+            <param name="executionContexts">The execution contexts.</param>
+            <returns>The analyzer for the specified <paramref name="executionContexts"/></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.AnalyzerExtensions.GetAnalyzerByExecutionContext(Lucene.Net.Analysis.Analyzer,Sitecore.ContentSearch.Linq.Common.IExecutionContext)">
+            <summary>Gets the analyzer by execution context.</summary>
+            <param name="analyzer">The analyzer.</param>
+            <param name="executionContext">The execution context.</param>
+            <returns>The analyzer for the specified <paramref name="executionContext"/></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.AnalyzerExtensions.GetAnalyzerByExecutionContext(Lucene.Net.Analysis.Analyzer,System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IExecutionContext})">
+            <summary>Gets the analyzer by execution context.</summary>
+            <param name="analyzer">The analyzer.</param>
+            <param name="executionContexts">The execution contexts.</param>
+            <returns>The analyzer for the specified <paramref name="executionContexts"/></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.CustomQuery">
+            <summary>
+            The <see cref="T:Sitecore.ContentSearch.Linq.Lucene.CustomQuery"/> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.CustomQuery.QueryNode">
+            <summary>Gets or sets the node.</summary>
+            <value>The node.</value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.CustomQuery.ToString(System.String)">
+            <summary>Returns a <see cref="T:System.String"/> that represents this instance.</summary>
+            <param name="field">The field.</param>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.Exceptions.TooManyClausesException">
+            <summary>
+             TooManyClausesException class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Exceptions.TooManyClausesException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.Exceptions.TooManyClausesException"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Exceptions.TooManyClausesException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.Exceptions.TooManyClausesException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.FieldExecutionContext">
+            <summary>
+            The field execution context.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.FieldExecutionContext.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.FieldExecutionContext" /> class.
+            </summary>
+            <param name="fieldName">Name of the field.</param>
+            <exception cref="T:System.ArgumentNullException">fieldName is null.</exception>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.FieldExecutionContext.FieldName">
+            <summary>Gets or sets the name of the field.</summary>
+            <value>The name of the field.</value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.FieldExecutionContext.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" /> is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.FieldExecutionContext.GetHashCode">
+            <summary>Returns a hash code for this instance.</summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.ICompositeAnalyzer">
+            <summary>
+            The CompositeAnalyzer interface.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.ICompositeAnalyzer.GetAnalyzerByExecutionContext(System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IExecutionContext})">
+            <summary>Gets the analyzer by execution context.</summary>
+            <param name="executionContexts">The execution contexts.</param>
+            <returns>
+            The analyzer for the specified <paramref name="executionContexts" />
+            </returns>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.ILuceneSearchFieldConfiguration.Boost">
+            <summary>Gets or sets the boost.</summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.ILuceneSearchFieldConfiguration.IndexType">
+            <summary>Gets or sets the index type.</summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.ILuceneSearchFieldConfiguration.StorageType">
+            <summary>Gets or sets the storage type.</summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.ILuceneSearchFieldConfiguration.VectorType">
+            <summary>Gets or sets the vector type.</summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.ILuceneSearchFieldConfiguration.Analyzer">
+            <summary>Gets or sets the analyzer.</summary>
+            <value>The analyzer.</value>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters">
+            <summary>
+            The lucene index parameters.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.#ctor(Sitecore.ContentSearch.Linq.Parsing.IIndexValueFormatter,Lucene.Net.Analysis.Analyzer,Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslatorMap{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},Sitecore.ContentSearch.Linq.Common.FieldNameTranslator,Sitecore.ContentSearch.Linq.Common.IExecutionContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters"/> class.
+            </summary>
+            <param name="valueFormatter">The value formatter.</param>
+            <param name="analyzer">The analyzer.</param>
+            <param name="fieldQueryTranslators">The field query translators.</param>
+            <param name="fieldNameTranslator">The field name translator.</param>
+            <param name="executionContext">The execution context.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.#ctor(Sitecore.ContentSearch.Linq.Parsing.IIndexValueFormatter,Lucene.Net.Analysis.Analyzer,Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslatorMap{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},Sitecore.ContentSearch.Linq.Common.FieldNameTranslator,Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters"/> class.
+            </summary>
+            <param name="valueFormatter">The value formatter.</param>
+            <param name="analyzer">The analyzer.</param>
+            <param name="fieldQueryTranslators">The field query translators.</param>
+            <param name="fieldNameTranslator">The field name translator.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.#ctor(Sitecore.ContentSearch.Linq.Parsing.IIndexValueFormatter,Lucene.Net.Analysis.Analyzer,Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslatorMap{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},Sitecore.ContentSearch.Linq.Common.FieldNameTranslator,Sitecore.ContentSearch.Linq.Common.IExecutionContext[],Sitecore.ContentSearch.IFieldMapReaders)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters" /> class.
+            </summary>
+            <param name="valueFormatter">The value formatter.</param>
+            <param name="analyzer">The analyzer.</param>
+            <param name="fieldQueryTranslators">The field query translators.</param>
+            <param name="fieldNameTranslator">The field name translator.</param>
+            <param name="executionContexts">The execution contexts.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="valueFormatter" /> or <paramref name="analyzer" /> or <paramref name="fieldQueryTranslators" /> or <paramref name="fieldNameTranslator" /> is null.</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.#ctor(Sitecore.ContentSearch.Linq.Parsing.IIndexValueFormatter,Lucene.Net.Analysis.Analyzer,Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslatorMap{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},Sitecore.ContentSearch.Linq.Common.FieldNameTranslator,System.Func{System.String,Sitecore.ContentSearch.Linq.Lucene.ILuceneSearchFieldConfiguration},Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters"/> class.
+            </summary>
+            <param name="valueFormatter">The value formatter.</param>
+            <param name="analyzer">The analyzer.</param>
+            <param name="fieldQueryTranslators">The field query translators.</param>
+            <param name="fieldNameTranslator">The field name translator.</param>
+            <param name="getFieldConfiguration">The get field configuration.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.#ctor(Sitecore.ContentSearch.Linq.Parsing.IIndexValueFormatter,Lucene.Net.Analysis.Analyzer,Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslatorMap{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},Sitecore.ContentSearch.Linq.Common.FieldNameTranslator,System.Func{System.String,Sitecore.ContentSearch.Linq.Lucene.ILuceneSearchFieldConfiguration},Sitecore.ContentSearch.Linq.Common.IExecutionContext[],Sitecore.ContentSearch.IFieldMapReaders)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters"/> class.
+            </summary>
+            <param name="valueFormatter">The value formatter.</param>
+            <param name="analyzer">The analyzer.</param>
+            <param name="fieldQueryTranslators">The field query translators.</param>
+            <param name="fieldNameTranslator">The field name translator.</param>
+            <param name="getFieldConfiguration">The get field configuration.</param>
+            <param name="executionContexts">The execution contexts.</param>
+            <param name="fieldMap">The field map.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.#ctor(Sitecore.ContentSearch.Linq.Parsing.IIndexValueFormatter,Lucene.Net.Analysis.Analyzer,Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslatorMap{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},Sitecore.ContentSearch.Linq.Common.FieldNameTranslator,System.Func{System.String,Sitecore.ContentSearch.Linq.Lucene.ILuceneSearchFieldConfiguration},Sitecore.ContentSearch.Linq.Common.IExecutionContext[],Sitecore.ContentSearch.IFieldMapReaders,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters" /> class.
+            </summary>
+            <param name="valueFormatter">The value formatter.</param>
+            <param name="analyzer">The analyzer.</param>
+            <param name="fieldQueryTranslators">The field query translators.</param>
+            <param name="fieldNameTranslator">The field name translator.</param>
+            <param name="getFieldConfiguration">The get field configuration.</param>
+            <param name="executionContexts">The execution context.</param>
+            <param name="fieldMap">The field map.</param>
+            <param name="convertQueryDatesToUtc">if set to <c>true</c> query dates will be converted to UTC kind.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="valueFormatter" /> or <paramref name="analyzer" /> or <paramref name="fieldQueryTranslators" /> or <paramref name="fieldNameTranslator" /> is null.</exception>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.ValueFormatter">
+            <summary>Gets or sets the value formatter.</summary>
+            <value>The value formatter.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.Analyzer">
+            <summary>Gets or sets the analyzer.</summary>
+            <value>The analyzer.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.FieldQueryTranslators">
+            <summary>Gets or sets the field query translators.</summary>
+            <value>The field query translators.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.FieldNameTranslator">
+            <summary>Gets or sets the field name translator.</summary>
+            <value>The field name translator.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.ExecutionContexts">
+            <summary>Gets or sets the execution contexts.</summary>
+            <value>The execution contexts.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.ConvertQueryDatesToUtc">
+            <summary>
+            Gets or sets a value indicating whether dates during the querying will be always convert to dates with UTC kind.
+            </summary>
+            <value>
+            <c>true</c> if convert dates to date with UTC kind; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.FieldMap">
+            <summary>
+            Gets or sets the field map.
+            </summary>
+            <value>
+            The field map.
+            </value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.GetFieldConfiguration(System.String)">
+            <summary>Gets the field configuration.</summary>
+            <param name="fieldName">Name of the field.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters.ExecutionContext">
+            <summary> Gets the execution context. </summary>
+            <value> The execution context. </value>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery">
+            <summary>Class LuceneQuery</summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery.#ctor(Lucene.Net.Search.Query,Lucene.Net.Search.Query,System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Methods.QueryMethod},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.FacetQuery},System.Collections.Generic.IEnumerable{System.Tuple{System.String,Sitecore.ContentSearch.Linq.Common.ComparisonType,Lucene.Net.Analysis.Analyzer}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery"/> class.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="filter">The filter.</param>
+            <param name="methods">The methods.</param>
+            <param name="virtualFieldProcessors">The virtual field processors.</param>
+            <param name="facetQueries">The facet queries.</param>
+            <param name="usedAnalyzers">The used analyzers.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery.#ctor(Lucene.Net.Search.Query,Lucene.Net.Search.Query,System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Methods.QueryMethod},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.FacetQuery},System.Collections.Generic.IEnumerable{System.Tuple{System.String,Sitecore.ContentSearch.Linq.Common.ComparisonType,Lucene.Net.Analysis.Analyzer}},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IExecutionContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery" /> class.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="filter">The filter.</param>
+            <param name="methods">The methods.</param>
+            <param name="virtualFieldProcessors">The virtual field processors.</param>
+            <param name="facetQueries">The facet queries.</param>
+            <param name="usedAnalyzers">The used analyzers.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery.Methods">
+            <summary>Gets or sets the methods.</summary>
+            <value>The methods.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery.Query">
+            <summary>
+            Gets or sets the query.
+            </summary>
+            <value>The query.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery.Filter">
+            <summary>
+            Gets or sets the filter query.
+            </summary>
+            <value>The filter query.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery.VirtualFieldProcessors">
+            <summary>Gets or sets the virtual field processors.</summary>
+            <value>The virtual field processors.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery.FacetQueries">
+            <summary>Gets or sets the facet queries.</summary>
+            <value>The facet queries.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery.UsedAnalyzers">
+            <summary>Gets or sets the used analyzers.</summary>
+            <value>The used analyzers.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery.ExecutionContexts">
+            <summary>Gets or sets the execution contexts.</summary>
+            <value>The execution contexts.</value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQuery.Sitecore#ContentSearch#Linq#Common#IDumpable#WriteTo(System.IO.TextWriter)">
+            <summary>Dumps the specified writer.</summary>
+            <param name="writer">The writer.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper">
+            <summary>Class LuceneQueryMapper</summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.queryParser">
+            <summary>
+            The query parser.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.rangeQueryBuilder">
+            <summary>
+            The range query builder
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.#ctor(Sitecore.ContentSearch.Linq.Lucene.LuceneIndexParameters)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper" /> class.
+            </summary>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.Parameters">
+            <summary>Gets the parameters.</summary>
+            <value>The parameters.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.QueryParser">
+            <summary>
+            Gets the query parser.
+            </summary>
+            <value> The query parser. </value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.MapQuery(Sitecore.ContentSearch.Linq.Parsing.IndexQuery)">
+            <summary>Maps the query.</summary>
+            <param name="query">The query.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.GetFieldQuery(System.String,System.String,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Gets the field query.</summary>
+            <param name="field">The field.</param>
+            <param name="queryText">The query text.</param>
+            <param name="mappingState"></param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.GetFieldTerms(System.String,System.String,Lucene.Net.Analysis.Analyzer@)">
+            <summary>Gets the field terms.</summary>
+            <param name="field">The field.</param>
+            <param name="queryText">The query text.</param>
+            <param name="analyzer">The analyzer.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.GetFieldTerms(System.String,System.String,Lucene.Net.Analysis.Analyzer)">
+            <summary>Gets the field terms.</summary>
+            <param name="field">The field.</param>
+            <param name="queryText">The query text.</param>
+            <param name="analyzer">The analyzer.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.GetPhraseQuery(System.String,System.Collections.Generic.List{System.String})">
+            <summary>Gets the phrase query.</summary>
+            <param name="field">The field.</param>
+            <param name="terms">The terms.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.GetTermsWithPositions(System.String,System.String)">
+            <summary>
+            Gets the tokens.
+            </summary>
+            <param name="field">The field.</param>
+            <param name="queryText">The query text.</param>
+            <returns>Terms with positions</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.GetTermsWithPositions(System.String,System.String,Lucene.Net.Analysis.Analyzer)">
+            <summary>
+            Gets the tokens.
+            </summary>
+            <param name="field">The field.</param>
+            <param name="queryText">The query text.</param>
+            <param name="analyzer">The analyzer.</param>
+            <returns>Terms with positions</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.GetAnalyzer(System.String)">
+            <summary>
+            Gets the analyzer.
+            </summary>
+            <param name="fieldName">Name of the field.</param>
+            <returns>Return analyzer by field.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.GetAnalyzer(System.String,System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IExecutionContext})">
+            <summary>
+            Gets the analyzer.
+            </summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="executionContexts">The execution contexts.</param>
+            <returns>Return analyzer by field.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.GetEqualsQuery(System.String,System.String,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>
+            Gets the phrase query.
+            </summary>
+            <param name="field">The field.</param>
+            <param name="queryText">The query text.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>Returns phrase query</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripAll(Sitecore.ContentSearch.Linq.Nodes.AllNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips all.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripAny(Sitecore.ContentSearch.Linq.Nodes.AnyNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips any.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripCast(Sitecore.ContentSearch.Linq.Nodes.CastNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the cast.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripCount(Sitecore.ContentSearch.Linq.Nodes.CountNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the count.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripElementAt(Sitecore.ContentSearch.Linq.Nodes.ElementAtNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the element at.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripFirst(Sitecore.ContentSearch.Linq.Nodes.FirstNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the first.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripMax(Sitecore.ContentSearch.Linq.Nodes.MaxNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the first.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripMin(Sitecore.ContentSearch.Linq.Nodes.MinNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the first.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripLast(Sitecore.ContentSearch.Linq.Nodes.LastNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the last.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripOrderBy(Sitecore.ContentSearch.Linq.Nodes.OrderByNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Strips the order by.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripSingle(Sitecore.ContentSearch.Linq.Nodes.SingleNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the single.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripSkip(Sitecore.ContentSearch.Linq.Nodes.SkipNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the skip.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripTake(Sitecore.ContentSearch.Linq.Nodes.TakeNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the take.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripSelect(Sitecore.ContentSearch.Linq.Nodes.SelectNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the select.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripGetResults(Sitecore.ContentSearch.Linq.Nodes.GetResultsNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the get results.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripInContext(Sitecore.ContentSearch.Linq.Nodes.InContextNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Common.IExecutionContext})">
+            <summary>Strips the with context.</summary>
+            <param name="node">The node.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripGetFacets(Sitecore.ContentSearch.Linq.Nodes.GetFacetsNode,System.Collections.Generic.List{Sitecore.ContentSearch.Linq.Methods.QueryMethod})">
+            <summary>Strips the get facets.</summary>
+            <param name="node">The node.</param>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripFacetOn(Sitecore.ContentSearch.Linq.Nodes.FacetOnNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Strips the facet on.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripFacetPivotOn(Sitecore.ContentSearch.Linq.Nodes.FacetPivotOnNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Strips the facet pivot on.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripJoin(Sitecore.ContentSearch.Linq.Nodes.JoinNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Strips the join.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripGroupJoin(Sitecore.ContentSearch.Linq.Nodes.GroupJoinNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Strips the group join.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripSelfJoin(Sitecore.ContentSearch.Linq.Nodes.SelfJoinNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Strips the self join.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripUnion(Sitecore.ContentSearch.Linq.Nodes.UnionNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Strips the union.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.StripSelectMany(Sitecore.ContentSearch.Linq.Nodes.SelectManyNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Strips the select many.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.Visit(Sitecore.ContentSearch.Linq.Nodes.QueryNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the specified node.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+            <exception cref="T:System.NotSupportedException">The query node type is not supported in this context.</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.OutInContext(Sitecore.ContentSearch.Linq.Nodes.InContextNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Handles step out from InContext node.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">The mapping state.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitField(Sitecore.ContentSearch.Linq.Nodes.FieldNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the field.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+            <exception cref="T:System.NotSupportedException">The query node type is not supported in this context.</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitUnion(Sitecore.ContentSearch.Linq.Nodes.UnionNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the union.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitAnd(Sitecore.ContentSearch.Linq.Nodes.AndNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the and.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitBetween(Sitecore.ContentSearch.Linq.Nodes.BetweenNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the between.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitBetween(System.String,System.Object,System.Object,System.Boolean,System.Boolean)">
+            <summary>Visits the between.</summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="fieldFromValue">The field from value.</param>
+            <param name="fieldToValue">The field to value.</param>
+            <param name="includeLower">if set to <c>true</c> [include lower].</param>
+            <param name="includeUpper">if set to <c>true</c> [include upper].</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitContains(Sitecore.ContentSearch.Linq.Nodes.ContainsNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the equal.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.BuildSpanQuery(Sitecore.ContentSearch.Linq.Lucene.Queries.SpanSubQuery[])">
+            <summary>
+            Builds the span query.
+            </summary>
+            <param name="subqueries">The sub queries.</param>
+            <returns>Returns Span query.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.GetSpanQuery(System.String,System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Gets the span query.
+            </summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="terms">The terms.</param>
+            <param name="isWildcard">if set to <c>true</c> [is wildcard].</param>
+            <returns>Returns Wildcard or SpanNear quries.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.GetSpanWildcardQuery(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Gets the span wildcard query.
+            </summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="terms">The terms.</param>
+            <returns>Returns SpanWildcard query by terms.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitEndsWith(Sitecore.ContentSearch.Linq.Nodes.EndsWithNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>The visit ends with.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The <see cref="T:Lucene.Net.Search.Query" />.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitEqual(Sitecore.ContentSearch.Linq.Nodes.EqualNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the equal.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitEqual(System.String,System.Object,System.Single,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the equal.</summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="fieldValue">The field value.</param>
+            <param name="fieldBoost">The field boost.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+            <exception cref="T:System.NotSupportedException">Comparison of null values is not supported.</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitLessThanOrEqual(Sitecore.ContentSearch.Linq.Nodes.LessThanOrEqualNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the less than or equal.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitLessThanOrEqual(System.String,System.Object,System.Single)">
+            <summary>Visits the less than or equal.</summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="fieldValue">The field value.</param>
+            <param name="fieldBoost">The field boost.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitLessThan(Sitecore.ContentSearch.Linq.Nodes.LessThanNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the less than.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitLessThan(System.String,System.Object,System.Single)">
+            <summary>Visits the less than.</summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="fieldValue">The field value.</param>
+            <param name="fieldBoost">The field boost.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitGreaterThanOrEqual(Sitecore.ContentSearch.Linq.Nodes.GreaterThanOrEqualNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the greater than or equal.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitGreaterThanOrEqual(System.String,System.Object,System.Single)">
+            <summary>Visits the greater than or equal.</summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="fieldValue">The field value.</param>
+            <param name="fieldBoost">The field boost.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitGreaterThan(Sitecore.ContentSearch.Linq.Nodes.GreaterThanNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the greater than.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitGreaterThan(System.String,System.Object,System.Single)">
+            <summary>Visits the greater than.</summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="fieldValue">The field value.</param>
+            <param name="fieldBoost">The field boost.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitMatchAll(Sitecore.ContentSearch.Linq.Nodes.MatchAllNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the match all.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitMatchNone(Sitecore.ContentSearch.Linq.Nodes.MatchNoneNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the match none.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitNot(Sitecore.ContentSearch.Linq.Nodes.NotNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the not.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitOr(Sitecore.ContentSearch.Linq.Nodes.OrNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the or.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitStartsWith(Sitecore.ContentSearch.Linq.Nodes.StartsWithNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the starts with.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitWhere(Sitecore.ContentSearch.Linq.Nodes.WhereNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the where.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitMatches(Sitecore.ContentSearch.Linq.Nodes.MatchesNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the matches.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitWildcardMatch(Sitecore.ContentSearch.Linq.Nodes.WildcardMatchNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the wildcard match.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitLike(Sitecore.ContentSearch.Linq.Nodes.LikeNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the like.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.VisitFilter(Sitecore.ContentSearch.Linq.Nodes.FilterNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Visits the filter.</summary>
+            <param name="node">The node.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.ProcessAsVirtualField(System.String,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState)">
+            <summary>Processes as virtual field.</summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <returns>true if the field should be processed as virtual field, otherwise false.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.ProcessAsVirtualField(Sitecore.ContentSearch.Linq.Nodes.FieldNode,Sitecore.ContentSearch.Linq.Nodes.ConstantNode,System.Single,Sitecore.ContentSearch.Linq.Common.ComparisonType,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState,Lucene.Net.Search.Query@)">
+            <summary>Processes as virtual field.</summary>
+            <param name="fieldNode">The field node.</param>
+            <param name="valueNode">The value node.</param>
+            <param name="boost">The boost.</param>
+            <param name="comparison">The comparison.</param>
+            <param name="mappingState">The mapping state.</param>
+            <param name="query">The query.</param>
+            <returns>The result.</returns>
+            <exception cref="T:System.InvalidOperationException">Unknown comparison type</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.ProcessAsVirtualField(System.String,System.Object,System.Single,Sitecore.ContentSearch.Linq.Common.ComparisonType,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState,Lucene.Net.Search.Query@)">
+            <summary>Processes as virtual field.</summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="fieldValue">The field value.</param>
+            <param name="boost">The boost.</param>
+            <param name="comparison">The comparison.</param>
+            <param name="mappingState">State of the mapping.</param>
+            <param name="query">The query.</param>
+            <returns>The result.</returns>
+            <exception cref="T:System.InvalidOperationException">Unknown comparison type</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.NormalizeValue(System.String)">
+            <summary>Normalizes terms of wildcard, prefix, fuzzy and range queries.</summary>
+            <param name="value">The value.</param>
+            <returns>Normalized value.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState">
+            <summary>
+            The lucene query mapper state.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState.#ctor(System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IExecutionContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState" /> class.
+            </summary>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState.AdditionalQueryMethods">
+            <summary>Gets or sets the additional query methods.</summary>
+            <value>The additional query methods.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState.FilterQuery">
+            <summary>Gets or sets the filter query.</summary>
+            <value>The filter query.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState.VirtualFieldProcessors">
+            <summary>Gets or sets the virtual field processors.</summary>
+            <value>The virtual field processors.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState.FacetQueries">
+            <summary>Gets or sets the facet queries.</summary>
+            <value>The facet queries.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState.UsedAnalyzers">
+            <summary>Gets or sets the used analyzers.</summary>
+            <value>The used analyzers.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState.ExecutionContexts">
+            <summary>Gets or sets the execution contexts.</summary>
+            <value>The execution contexts.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper.LuceneQueryMapperState.TemporaryExecutionContexts">
+            <summary>
+            Gets or sets the list of temporary execution contexts.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer">
+            <summary>
+            The <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.Visit(Sitecore.ContentSearch.Linq.Nodes.QueryNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the specified node.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitAll(Sitecore.ContentSearch.Linq.Nodes.AllNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits all.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitAnd(Sitecore.ContentSearch.Linq.Nodes.AndNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the and.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitAny(Sitecore.ContentSearch.Linq.Nodes.AnyNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits any.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitBoost(Sitecore.ContentSearch.Linq.Nodes.BoostNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the boost.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitCast(Sitecore.ContentSearch.Linq.Nodes.CastNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the cast.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitConstant(Sitecore.ContentSearch.Linq.Nodes.ConstantNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the constant.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitCount(Sitecore.ContentSearch.Linq.Nodes.CountNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the count.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitElementAt(Sitecore.ContentSearch.Linq.Nodes.ElementAtNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the element at.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitEqual(Sitecore.ContentSearch.Linq.Nodes.EqualNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the equal.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitMatches(Sitecore.ContentSearch.Linq.Nodes.MatchesNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the equal.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitFirst(Sitecore.ContentSearch.Linq.Nodes.FirstNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the first.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitMax(Sitecore.ContentSearch.Linq.Nodes.MaxNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the first.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitMin(Sitecore.ContentSearch.Linq.Nodes.MinNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the first.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitLast(Sitecore.ContentSearch.Linq.Nodes.LastNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the last.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitNot(Sitecore.ContentSearch.Linq.Nodes.NotNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the not.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitNotEqual(Sitecore.ContentSearch.Linq.Nodes.NotEqualNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the not equal.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitOr(Sitecore.ContentSearch.Linq.Nodes.OrNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the or.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitOrderBy(Sitecore.ContentSearch.Linq.Nodes.OrderByNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the order by.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitSelect(Sitecore.ContentSearch.Linq.Nodes.SelectNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the select.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitSingle(Sitecore.ContentSearch.Linq.Nodes.SingleNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the single.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitSkip(Sitecore.ContentSearch.Linq.Nodes.SkipNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the skip.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitTake(Sitecore.ContentSearch.Linq.Nodes.TakeNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the take.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitWhere(Sitecore.ContentSearch.Linq.Nodes.WhereNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the where.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitFilter(Sitecore.ContentSearch.Linq.Nodes.FilterNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the filter.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitGetResults(Sitecore.ContentSearch.Linq.Nodes.GetResultsNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the get results.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitInContext(Sitecore.ContentSearch.Linq.Nodes.InContextNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the with context method.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitGetFacets(Sitecore.ContentSearch.Linq.Nodes.GetFacetsNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the get facets.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitFacetOn(Sitecore.ContentSearch.Linq.Nodes.FacetOnNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the facet on.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitFacetPivotOn(Sitecore.ContentSearch.Linq.Nodes.FacetPivotOnNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the facet pivot on.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitBetween(Sitecore.ContentSearch.Linq.Nodes.BetweenNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the Between.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitNegate(Sitecore.ContentSearch.Linq.Nodes.NegateNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the negate.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitGreaterThan(Sitecore.ContentSearch.Linq.Nodes.GreaterThanNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the greater than.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitGreaterThanOrEqual(Sitecore.ContentSearch.Linq.Nodes.GreaterThanOrEqualNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the greater than or equal.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitLessThan(Sitecore.ContentSearch.Linq.Nodes.LessThanNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the less than.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitLessThanOrEqual(Sitecore.ContentSearch.Linq.Nodes.LessThanOrEqualNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the less than or equal.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitContains(Sitecore.ContentSearch.Linq.Nodes.ContainsNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the contains.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitStartsWith(Sitecore.ContentSearch.Linq.Nodes.StartsWithNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>
+            Visits the starts with.
+            </summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitEndsWith(Sitecore.ContentSearch.Linq.Nodes.EndsWithNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>
+            Visits the ends with.
+            </summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitWildcardMatch(Sitecore.ContentSearch.Linq.Nodes.WildcardMatchNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the fuzzy match.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitLike(Sitecore.ContentSearch.Linq.Nodes.LikeNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the like.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitJoin(Sitecore.ContentSearch.Linq.Nodes.JoinNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the join.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitGroupJoin(Sitecore.ContentSearch.Linq.Nodes.GroupJoinNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the group join.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitUnion(Sitecore.ContentSearch.Linq.Nodes.UnionNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the union.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitSelfJoin(Sitecore.ContentSearch.Linq.Nodes.SelfJoinNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the self join.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.VisitSelectMany(Sitecore.ContentSearch.Linq.Nodes.SelectManyNode,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState)">
+            <summary>Visits the select many.</summary>
+            <param name="node">The node.</param>
+            <param name="state">The state.</param>
+            <returns>The results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizer.GetBooleanValue(Sitecore.ContentSearch.Linq.Nodes.QueryNode)">
+            <summary>Gets the boolean value.</summary>
+            <param name="node">The node.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState">
+            <summary>
+            The <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState"/> class.</summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.LuceneQueryOptimizerState.Boost">
+            <summary>Gets or sets the boost.</summary>
+            <value>The boost.</value>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities">
+            <summary>
+            The lucene regex capabilities.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities.regexOptions">
+            <summary>
+            The regex options.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities.regex">
+            <summary>
+            The regex.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities.#ctor(System.Text.RegularExpressions.RegexOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities"/> class.
+            </summary>
+            <param name="regexOptions">The regex options.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities.Compile(System.String)">
+            <summary>
+            Called by the constructor of <see cref="T:Contrib.Regex.RegexTermEnum"/> allowing implementations to cache a compiled version of the regular expression pattern.
+            </summary>
+            <param name="pattern">regular expression pattern</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities.Match(System.String)">
+            <summary>
+            True on match.
+            </summary>
+            <param name="s">text to match</param>
+            <returns>true on match</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities.Prefix">
+            <summary>
+            A wise prefix implementation can reduce the term enumeration (and thus performance)
+            of RegexQuery dramatically.
+            </summary>
+            <returns>static non-regex prefix of the pattern last passed to <see cref="M:Contrib.Regex.IRegexCapabilities.Compile(System.String)"/>. May return null</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities.Equals(Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <returns>
+            true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+            </returns>
+            <param name="other">An object to compare with this object</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" /> is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities.GetHashCode">
+            <summary>Returns a hash code for this instance.</summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.LuceneRegexCapabilities.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.MatchNoDocsQuery">
+            <summary>The match no docs query.</summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.Linq.Lucene.MatchNoDocsQuery.normsField">
+            <summary>Field used for normalization factor (document boost). Null if nothing.</summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.MatchNoDocsQuery.ToString(System.String)">
+            <summary>Returns a <see cref="T:System.String"/> that represents this instance.</summary>
+            <param name="field">The field.</param>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.MatchNoDocsQuery.CreateWeight(Lucene.Net.Search.Searcher)">
+            <summary>
+            Expert: Constructs an appropriate Weight implementation for this query.
+            <p />
+            Only implemented by primitive queries, which re-write to themselves.
+            </summary>
+            <param name="searcher"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.DateTimeRangeQueryProcessor">
+            <summary>
+             DateTime range queries processor.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.DateTimeRangeQueryProcessor.Process(Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper)">
+            <summary>
+            Runs the processor.
+            </summary>
+            <param name="options">The options.</param>
+            <param name="mapper">The mapper.</param>
+            <returns> The <see cref="T:Lucene.Net.Search.Query" />.</returns>
+            <exception cref="T:System.NotSupportedException">Search by not UTC dates are not supported.</exception>    
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.DateTimeRangeQueryProcessor.ConvertToUtc(System.Object,System.String,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper)">
+            <summary>
+            Converts to UTC.
+            </summary>
+            <param name="objectToConvert">The object to convert.</param>
+            <param name="fieldName">Name of the field.</param>
+            <param name="mapper">The mapper.</param>
+            <returns> Returns converted to UTC time DateTime object.</returns>    
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.DefaultRangeQueryProcessor">
+            <summary>
+            Default RangeQuery processor
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.DefaultRangeQueryProcessor.Process(Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper)">
+            <summary>
+            Runs the processor.
+            </summary>
+            <param name="options">The options.</param>
+            <param name="mapper">The mapper.</param>
+            <returns> The <see cref="T:Lucene.Net.Search.Query" />.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.PrimitiveTypesProcessor">
+            <summary>
+            Primitive types processor.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.PrimitiveTypesProcessor.Process(Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper)">
+            <summary>
+            Runs the processor.
+            </summary>
+            <param name="opt">The options.</param>
+            <param name="mapper">The mapper.</param>
+            <returns> The <see cref="T:Lucene.Net.Search.Query" />Returns numbers range query.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.PrimitiveTypesProcessor.BuildLongRangeQuery(Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions)">
+            <summary>
+            Builds the long range query.
+            </summary>
+            <param name="opt">The options.</param>
+            <returns>Returns LongRange query by options.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.PrimitiveTypesProcessor.BuildDoubleRangeQuery(Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions)">
+            <summary>
+            Builds the double range query.
+            </summary>
+            <param name="opt">The options.</param>
+            <returns>Returns DoubleRange query by options.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryBuilder">
+            <summary>
+            Builds Lucene Range Queries by specific options.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryBuilder.BuildRangeQuery(Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper,System.Boolean)">
+            <summary>
+            Builds the range query.
+            </summary>
+            <param name="options">The options.</param>
+            <param name="mapper">The mapper.</param>
+            <param name="useDefaultProcessor">if set to <c>true</c>the default processor will be used if appropriate processors will not be resolved.</param>
+            <returns> Returns Lucene native query.</returns>
+            <exception cref="T:System.ArgumentException">RangeQueryOptions.FieldName cannot be null or empty string.</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryBuilder.GetProcessors">
+            <summary>
+            Gets the processors.
+            </summary>
+            <returns>Returns collection of Range processors.</returns> 
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions">
+            <summary>
+            Range query options class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions.FieldName">
+            <summary>
+            Gets or sets the name of the field.
+            </summary>
+            <value> The name of the field. </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions.FieldFromValue">
+            <summary>
+            Gets or sets the field from value.
+            </summary>
+            <value> The field from range value. </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions.FieldToValue">
+            <summary>
+            Gets or sets the field to value.
+            </summary>
+            <value> The field to range value. </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions.Boost">
+            <summary>
+            Gets or sets the field boost.
+            </summary>
+            <value> The field boost value. </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions.IncludeUpper">
+            <summary>
+            Gets or sets a value indicating whether include upper value from range.
+            </summary>
+            <value><c>true</c> if upper value to include; otherwise, <c>false</c>. </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions.IncludeLower">
+            <summary>
+            Gets or sets a value indicating whether lower value to include from range.
+            </summary>
+            <value> <c>true</c> if lower value to include; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryProcessor">
+            <summary>
+            RangeQuery processors interface.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryProcessor.Process(Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryOptions,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper)">
+            <summary>
+            Runs the processor.
+            </summary>
+            <param name="options">The options.</param>
+            <param name="mapper">The mapper.</param>
+            <returns> The <see cref="T:Lucene.Net.Search.Query" />.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.Range.RangeQueryProcessor.NormalizeValue(System.String,Sitecore.ContentSearch.Linq.Lucene.LuceneQueryMapper)">
+            <summary>
+            Normalizes the value.
+            </summary>
+            <param name="valueToNormalize">The value to normalize.</param>
+            <param name="mapper">The mapper.</param>
+            <returns> Returns normalized value by Lucene QueryParser </returns>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery.Term">
+            <summary>Gets the term.</summary>
+            <value>The term.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery.Field">
+            <summary>
+            Returns the name of the field matched by this query.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery.MinimumSimilarity">
+            <summary>Gets or sets the minimum similarity.</summary>
+            <value>The minimum similarity.</value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery.#ctor(Lucene.Net.Index.Term,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery"/> class.
+            </summary>
+            <param name="term">The term.</param>
+            <param name="minimumSimilarity"></param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery.ToString(System.String)">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <param name="field">The field.</param>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery.Rewrite(Lucene.Net.Index.IndexReader)">
+            <summary>
+            Expert: called to re-write queries into primitive queries. For example,
+            a PrefixQuery will be rewritten into a BooleanQuery that consists
+            of TermQuerys.
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException">Unexpected rewritten query type</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery.GetSpans(Lucene.Net.Index.IndexReader)">
+            <summary>
+            Expert: Returns the matches for this query in an index.  Used internally
+            to search for spans.
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException">Query should have been rewritten</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery.GetTerms">
+            <summary>Gets the terms.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery.Equals(Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery.Equals(System.Object)">
+            <summary>True if this object equals the specified object.</summary>
+            <param name="obj">object</param>
+            <returns>true on equality</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanFuzzyQuery.GetHashCode">
+            <summary>Get hash code for this object.</summary>
+            <returns>hash code</returns>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanLastQuery.Match">
+            <summary>
+            Return the SpanQuery whose matches are filtered.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanLastQuery.#ctor(Lucene.Net.Search.Spans.SpanQuery,Lucene.Net.Analysis.Analyzer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanLastQuery" /> class.
+            </summary>
+            <param name="match">The match.</param>
+            <param name="analyzer">The analyzer.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanSubQuery">
+            <summary>
+            SpanQuery strategy class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanSubQuery.CreatorMethod">
+            <summary>
+            Gets or sets the create method.
+            </summary>
+            <value> The create method.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanSubQuery.Position">
+            <summary>
+            Gets or sets the position.
+            </summary>
+            <value>The position. </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanSubQuery.IsWildcard">
+            <summary>
+            Gets or sets a value indicating whether query is wildcard query.
+            </summary>
+            <value>
+            <c>true</c> if query is wildcard; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="F:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery.terms">
+            <summary>
+            The terms
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery.Field">
+            <summary>
+            Returns the name of the field matched by this query.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery.#ctor(Lucene.Net.Index.Term)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery" /> class.
+            </summary>
+            <param name="term">The term.</param>
+            <exception cref="T:System.ArgumentNullException">term</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery.#ctor(System.Collections.Generic.IEnumerable{Lucene.Net.Index.Term})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery" /> class.
+            </summary>
+            <param name="terms">The terms.</param>
+            <exception cref="T:System.ArgumentNullException">terms</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery.ToString(System.String)">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <param name="field">The field.</param>
+            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery.Rewrite(Lucene.Net.Index.IndexReader)">
+            <summary>
+            Expert: called to re-write queries into primitive queries. For example,
+            a PrefixQuery will be rewritten into a BooleanQuery that consists
+            of TermQueries.
+            </summary>
+            <param name="reader"></param>
+            <returns>
+            Returns rewrited query.
+            </returns>
+            <exception cref="T:Sitecore.ContentSearch.Linq.Lucene.Exceptions.TooManyClausesException"></exception>
+            <exception cref="T:System.InvalidOperationException">Unexpected rewritten query type</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery.GetSpans(Lucene.Net.Index.IndexReader)">
+            <summary>
+            Expert: Returns the matches for this query in an index.  Used internally
+            to search for spans.
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException">Query should have been rewritten</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery.GetTerms">
+            <summary>Gets the terms.</summary>
+            <returns>Returns list of terms.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery.Equals(Lucene.Net.Search.WildcardQuery)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery.Equals(System.Object)">
+            <summary>True if this object equals the specified object.</summary>
+            <param name="obj">object</param>
+            <returns>true on equality</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.Linq.Lucene.Queries.SpanWildcardQuery.GetHashCode">
+            <summary>Get hash code for this object.</summary>
+            <returns>hash code</returns>
+        </member>
+    </members>
+</doc>

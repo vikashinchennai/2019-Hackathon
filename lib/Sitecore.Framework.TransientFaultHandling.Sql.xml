@@ -1,0 +1,1073 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.TransientFaultHandling.Sql</name>
+    </assembly>
+    <members>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.ConfigBuilderExtensions.AddSqlRetryer(Sitecore.Framework.TransientFaultHandling.ITransientFaultHandlingConfigBuilder,System.String,Sitecore.Framework.TransientFaultHandling.Sql.SqlPolicyRetryerOptions)">
+            <summary>
+             Registers an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> for SqlServer transient errors, with the specified name and options,
+             in the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/>.
+            </summary>
+            <param name="builder"></param>
+            <param name="name">The name associated with the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> instance.</param>
+            <param name="options">The options that configure the retryer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.ConfigBuilderExtensions.AddSqlCustomRetryer(Sitecore.Framework.TransientFaultHandling.ITransientFaultHandlingConfigBuilder,System.String,Sitecore.Framework.TransientFaultHandling.Sql.CustomSqlPolicyRetryerOptions)">
+            <summary>
+            Registers an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> for SqlServer transient errors, with the specified name and custom
+            retry intervals, in the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/>.
+            </summary>
+            <param name="builder"></param>
+            <param name="name">The name associated with the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> instance.</param>
+            <param name="options">The options that configure the retryer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandExtensions.ExecuteReaderWithRetryAsync(System.Data.Common.DbCommand,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Executes the ExecuteReaderAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="command">The db command.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandExtensions.ExecuteReaderWithRetryAsync(System.Data.Common.DbCommand,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy,System.Threading.CancellationToken)">
+            <summary>
+            Executes the ExecuteReaderAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="command">The db command.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <param name="cancellationToken">A cancellation token used to indicate when to cancel the operation.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandExtensions.ExecuteNonQueryWithRetryAsync(System.Data.Common.DbCommand,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Executes the ExecuteNonQueryAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="command">The db command.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandExtensions.ExecuteNonQueryWithRetryAsync(System.Data.Common.DbCommand,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy,System.Threading.CancellationToken)">
+            <summary>
+            Executes the ExecuteNonQueryAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="command">The db command.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <param name="cancellationToken">A cancellation token used to indicate when to cancel the operation.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandExtensions.ExecuteScalarWithRetryAsync(System.Data.Common.DbCommand,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Executes the ExecuteScalarAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="command">The db command.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandExtensions.ExecuteScalarWithRetryAsync(System.Data.Common.DbCommand,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy,System.Threading.CancellationToken)">
+            <summary>
+            Executes the ExecuteScalarAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="command">The db command.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <param name="cancellationToken">A cancellation token used to indicate when to cancel the operation.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandExtensions.ExecuteReaderWithRetry(System.Data.IDbCommand,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Sends the specified command to the connection and builds a DbDataReader object that contains the results.
+            Uses the specified retry policy when executing the command.
+            </summary>
+            <param name="command">The command object that is required for the extension method declaration.</param>
+            <param name="retryPolicy">The retry policy that determines whether to retry a command if a connection fails while executing the command.</param>
+            <returns>A System.Data.Common.DbDataReader object.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandExtensions.ExecuteNonQueryWithRetry(System.Data.IDbCommand,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Executes a Transact-SQL statement against the connection and returns the number of rows affected. Uses the specified retry policy when executing the command.
+            </summary>
+            <param name="command">The command object that is required for the extension method declaration.</param>
+            <param name="retryPolicy">The retry policy that determines whether to retry a command if a connection fails while executing the command.</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandRetryerExtensions.ExecuteReaderWithRetryAsync(System.Data.Common.DbCommand,Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Executes the ExecuteReaderAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="command">The db command.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandRetryerExtensions.ExecuteReaderWithRetryAsync(System.Data.Common.DbCommand,Sitecore.Framework.TransientFaultHandling.IRetryer,System.Threading.CancellationToken)">
+            <summary>
+            Executes the ExecuteReaderAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="command">The db command.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <param name="cancellationToken">A cancellation token used to indicate when to cancel the operation.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandRetryerExtensions.ExecuteNonQueryWithRetryAsync(System.Data.Common.DbCommand,Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Executes the ExecuteNonQueryAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="command">The db command.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandRetryerExtensions.ExecuteNonQueryWithRetryAsync(System.Data.Common.DbCommand,Sitecore.Framework.TransientFaultHandling.IRetryer,System.Threading.CancellationToken)">
+            <summary>
+            Executes the ExecuteNonQueryAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="command">The db command.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <param name="cancellationToken">A cancellation token used to indicate when to cancel the operation.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandRetryerExtensions.ExecuteScalarWithRetryAsync(System.Data.Common.DbCommand,Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Executes the ExecuteScalarAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="command">The db command.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandRetryerExtensions.ExecuteScalarWithRetryAsync(System.Data.Common.DbCommand,Sitecore.Framework.TransientFaultHandling.IRetryer,System.Threading.CancellationToken)">
+            <summary>
+            Executes the ExecuteScalarAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="command">The db command.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <param name="cancellationToken">A cancellation token used to indicate when to cancel the operation.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandRetryerExtensions.ExecuteReaderWithRetry(System.Data.IDbCommand,Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Sends the specified command to the connection and builds a DbDataReader object that contains the results.
+            Uses the specified retry policy when executing the command.
+            </summary>
+            <param name="command">The command object that is required for the extension method declaration.</param>
+            <param name="retryPolicy">The retry policy that determines whether to retry a command if a connection fails while executing the command.</param>
+            <returns>A System.Data.Common.DbDataReader object.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbCommandRetryerExtensions.ExecuteNonQueryWithRetry(System.Data.IDbCommand,Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Executes a Transact-SQL statement against the connection and returns the number of rows affected. Uses the specified retry policy when executing the command.
+            </summary>
+            <param name="command">The command object that is required for the extension method declaration.</param>
+            <param name="retryPolicy">The retry policy that determines whether to retry a command if a connection fails while executing the command.</param>
+            <returns>The number of rows affected.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbConnectionExtensions.OpenWithRetryAsync(System.Data.Common.DbConnection,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Executes the OpenAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="connection">The db connection.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbConnectionExtensions.OpenWithRetryAsync(System.Data.Common.DbConnection,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy,System.Threading.CancellationToken)">
+            <summary>
+            Executes the OpenAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="connection">The db connection.</param>
+            <param name="retryPolicy">The transient fault retry policy.</param>
+            <param name="cancellationToken">A cancellation token used to indicate when to cancel the oerpation.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbConnectionExtensions.OpenWithRetry(System.Data.IDbConnection,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Opens a database connection with the connection settings specified in the ConnectionString property of the connection object.
+            Uses the specified retry policy when opening the connection.
+            </summary>
+            <param name="connection">The connection object that is required for the extension method declaration.</param>
+            <param name="retryPolicy">The retry policy that defines whether to retry a request if the connection fails.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbConnectionRretryerExtensions.OpenWithRetryAsync(System.Data.Common.DbConnection,Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Executes the OpenAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="connection">The db connection.</param>
+            <param name="retryer">The transient fault retry policy.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbConnectionRretryerExtensions.OpenWithRetryAsync(System.Data.Common.DbConnection,Sitecore.Framework.TransientFaultHandling.IRetryer,System.Threading.CancellationToken)">
+            <summary>
+            Executes the OpenAsync method which will automatically retry if the query has
+            failed (or connection was dropped)
+            Repeatedly executes operation while it satisfies the current retry policy,
+            the retry policy is used for transient faults like SQL Azure transient faults
+            or AlwaysOn automatic failover scenarios (Secondary is switching to the Primary).
+            </summary>
+            <param name="connection">The db connection.</param>
+            <param name="retryer">The transient fault retry policy.</param>
+            <param name="cancellationToken">A cancellation token used to indicate when to cancel the oerpation.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.DbConnectionRretryerExtensions.OpenWithRetry(System.Data.IDbConnection,Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Opens a database connection with the connection settings specified in the ConnectionString property of the connection object.
+            Uses the specified retry policy when opening the connection.
+            </summary>
+            <param name="connection">The connection object that is required for the extension method declaration.</param>
+            <param name="retryer">The retry policy that defines whether to retry a request if the connection fails.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.IsTransientErrorDelegateSqlExtensions.DetectSqlCustomError(Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate,System.Func{System.Data.SqlClient.SqlException,System.Boolean})">
+            <summary>
+            Combines the current predicate with a transient error detection predicate for <see cref="T:System.Data.SqlClient.SqlException"/>s,
+            implemented by a custom predicate.
+            </summary>
+            <param name="curr">The delegate to combine.</param>
+            <param name="isSqlTransientPredicate">The custom predicate implemenation for SqlExceptions.</param>
+            <returns>A delegate representing the two seed delegates combined.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.IsTransientErrorDelegateSqlExtensions.DetectSqlError(Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate)">
+            <summary>
+            Combines the current predicate with a transient error detection predicate for <see cref="T:System.Data.SqlClient.SqlException"/> 
+            that will detect all known standard SqlServer transient errors.
+            </summary>
+            <param name="curr">The delegate to combine.</param>
+            <returns>A delegate representing the two seed delegates combined.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.IsTransientErrorDelegateSqlExtensions.DetectSqlError(Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate,System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Combines the current predicate with a transient error detection predicate that will detect all 
+            known standard SqlServer transient errors, and any of the specified <see cref="T:System.Data.SqlClient.SqlError"/> code numbers.
+            </summary>
+            <param name="curr">The delegate to combine.</param>
+            <param name="customErrorCodes">The custom error code numbers that will be detected.</param>
+            <returns>A delegate representing the two seed delegates combined.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.IsTransientErrorDelegateSqlExtensions.DetectSqlAzureError(Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate)">
+            <summary>
+            Combines the current predicate with a transient error detection predicate that will detect all known 
+            SqlAzure transient errors.
+            </summary>
+            <param name="curr">The delegate to combine.</param>
+            <returns>A delegate representing the two seed delegates combined.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.IsTransientErrorDelegateSqlExtensions.DetectSqlAlwaysOnError(Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate)">
+            <summary>
+            Combines the current predicate with a transient error detection predicate that will detect all known 
+            SqlServer WlaysOn tranisent errors.
+            </summary>
+            <param name="curr">The delegate to combine.</param>
+            <returns>A delegate representing the two seed delegates combined.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.IsTransientErrorDelegateSqlExtensions.DetectSqlNetworkConnectivityError(Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate)">
+            <summary>
+            Combines the current predicate with a transient error detection predicate that will detect network 
+            connectivity errors to be able to determine whether we need to failover to the original connection 
+            string containing the DNS name of the SQL Database server.
+            </summary>
+            <param name="curr">The delegate to combine.</param>
+            <returns>A delegate representing the two seed delegates combined.</returns>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlAlwaysOnErrorDetection.InappropriateReplicaRole">
+            <summary>
+            Inappropriate replica role
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlAlwaysOnErrorDetection.DatabaseIsNotAccessible">
+            <summary>
+            The target database is participating in an availability group and is currently not accessible for queries.
+            Either data movement is suspended or the availability replica is not enabled for read access.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlAzureErrorDetection.NotEnoughResources">
+            <summary>
+            Cannot process request. Not enough resources to process request.
+            The service is currently busy. Please retry the request later.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlAzureErrorDetection.TooManyCreateOrUpdateOperationsInProgressForSubscription">
+            <summary>
+            Cannot process create or update request. Too many create or update
+            operations in progress for subscription.
+            Requests are currently blocked for resource optimization.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlAzureErrorDetection.TooManyOperationsInProgressForSubscription">
+            <summary>
+            Cannot process request. Too many operations in progress for subscription.
+            The service is busy processing multiple requests for this subscription.
+            Requests are currently blocked for resource optimization. 
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlNetworkConnectivityErrorDetection.NetworkConnectivityError">
+            <summary>
+            SQL Error Code: 11001
+            A network-related or instance-specific error occurred while establishing a connection to SQL Server. 
+            The server was not found or was not accessible. Verify that the instance name is correct and that SQL 
+            Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientError">
+            <summary>
+            Defines transient error detection predicates that can be chained together to define composite predicates.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientError.DetectAllRecommendedSqlErrors">
+            <summary>
+            A transient error detection predicate that will detect all known transient errors for all supported
+            SqlServer contexts (i.e. vanilla, AlwaysOn, SqlAzure).
+            </summary>
+            <returns>A delegate implementing the predicate.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientError.DetectAllRecommendedSqlErrors(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            A transient error detection predicate that will detect all known transient errors for all supported
+            SqlServer contexts (i.e. vanilla, AlwaysOn, SqlAzure).
+            </summary>
+            <param name="customErrorCodes">The custom error code numbers that will be detected.</param>
+            <returns>A delegate implementing the predicate.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientError.DetectCustomSqlError(System.Func{System.Data.SqlClient.SqlException,System.Boolean})">
+            <summary>
+            A transient error detection predicate for <see cref="T:System.Data.SqlClient.SqlException"/>s, implemented by a custom predicate.
+            </summary>
+            <param name="isSqlTransientPredicate">The custom predicate implemenation for SqlExceptions.</param>
+            <returns>A delegate wrapping the custom predicate supplied.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientError.DetectSqlError">
+            <summary>
+            A transient error detection predicate that will detect all known standard SqlServer
+            transient errors.
+            </summary>
+            <returns>A delegate implementing the predicate.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientError.DetectSqlError(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            A transient error detection predicate that will detect all known standard SqlServer
+            transient errors, and any of the specified <see cref="T:System.Data.SqlClient.SqlError"/> code numbers.
+            </summary>
+            <param name="customErrorCodes">The custom error code numbers that will be detected.</param>
+            <returns>A delegate implementing the predicate, that includes checking for the custom code numbers.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientError.DetectSqlAzureError">
+            <summary>
+            A transient error detection predicate that will detect all known SqlAzure transient errors.
+            </summary>
+            <returns>A delegate implementing the predicate.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientError.DetectSqlAlwaysOnError">
+            <summary>
+            A transient error detection predicate that will detect all known SqlServer WlaysOn tranisent errors.
+            </summary>
+            <returns>A delegate implementing the predicate.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientError.DetectSqlNetworkConnectivityError">
+            <summary>
+            A transient error detection predicate that will detect network connectivity errors to be able to determine whether 
+            we need to failover to the original connection string containing the DNS name of the SQL Database server.
+            </summary>
+            <returns>A delegate implementing the predicate.</returns>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.ResourceLimitReached">
+            <summary>
+            SQL Error Code: 10928
+            Resource ID: %d. The %s limit for the database is %d and has been reached. 
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.ServerTooBusyForRequestsGreater">
+            <summary>
+            SQL Error Code: 10929
+            Resource ID: %d. The %s minimum guarantee is %d, maximum limit is %d and the current usage for the database is %d. 
+            However, the server is currently too busy to support requests greater than %d for this database.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.TransportLevelErrorReceivingRequests">
+            <summary>
+            SQL Error Code: 10053
+            A transport-level error has occurred when receiving results from the server.
+            An established connection was aborted by the software in your host machine.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.TransportLevelErrorSendingRequests">
+            <summary>
+            SQL Error Code: 10054
+            A transport-level error has occurred when sending the request to the server. 
+            (provider: TCP Provider, error: 0 - An existing connection was forcibly closed by the remote host.)
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.NetworkRelatedErrorEstablishingConnection">
+            <summary>
+            SQL Error Code: 10060
+            A network-related or instance-specific error occurred while establishing a connection to SQL Server. 
+            The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server 
+            is configured to allow remote connections. (provider: TCP Provider, error: 0 - A connection attempt failed 
+            because the connected party did not properly respond after a period of time, or established connection failed 
+            because connected host has failed to respond.)"}
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.ServerEncountedErrorProcessingRequest">
+            <summary>
+            SQL Error Code: 40197
+            The service has encountered an error processing your request. Please try again.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.ServiceEncountedErrorProcessingRequest">
+            <summary>
+            SQL Error Code: 40540
+            The service has encountered an error processing your request. Please try again.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.DatabaseNotCurrentlyAvailable">
+            <summary>
+            SQL Error Code: 40613
+            Database XXXX on server YYYY is not currently available. Please retry the connection later. If the problem persists, contact customer 
+            support, and provide them the session tracing ID of ZZZZZ.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.ServiceEncounteredAnError">
+            <summary>
+            SQL Error Code: 40143
+            The service has encountered an error processing your request. Please try again.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.ClientNotAbleToEstablishAConnection">
+            <summary>
+            SQL Error Code: 233
+            The client was unable to establish a connection because of an error during connection initialization process before login. 
+            Possible causes include the following: the client tried to connect to an unsupported version of SQL Server; the server was too busy 
+            to accept new connections; or there was a resource limitation (insufficient memory or maximum allowed connections) on the server. 
+            (provider: TCP Provider, error: 0 - An existing connection was forcibly closed by the remote host.)
+            System.Data.SqlClient.SqlException: A connection was successfully established with the
+            server, but then an error occurred during the login process. (provider: Named Pipes
+            Provider, error: 0 - No process is on the other end of the pipe.)
+            It appears that this happens when the database has just been created but has not yet finished
+            opening or is auto-closing when using the AUTO_CLOSE option. The workaround is to flush the pool
+            for the connection and then retry the Open call.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.ConnectionEstablishedButErroOccurredDuringLogin">
+            <summary>
+            SQL Error Code: 64
+            A connection was successfully established with the server, but then an error occurred during the login process. 
+            (provider: TCP Provider, error: 0 - The specified network name is no longer available.) 
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.ProcessNetLibErrorCode">
+            <summary>
+            Error codes reported by the DBNETLIB module.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.ConnectionTimeoutExpired">
+            <summary>
+            System.Data.SqlClient.SqlException: Connection Timeout Expired. The timeout period elapsed while
+            attempting to consume the pre-login handshake acknowledgement. This could be because the pre-login
+            handshake failed or the server was unable to respond back in time.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.WaitOperationTimedOut">
+            <summary>
+            Transient wait expired error resulting in timeout
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.SemaphoreWaitOperationTimesOut">
+            <summary>
+            Transient semaphore wait expired error resulting in timeout
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.SnapshotIsolationTransactionAbortedDueToUpdateConflict">
+            <summary>
+            Snapshot isolation transaction aborted due to update conflict. 
+            You cannot use snapshot isolation to access table '%.*ls' directly or indirectly in database '%.*ls' 
+            to update, delete, or insert the row that has been modified or deleted by another transaction. 
+            Retry the transaction or change the isolation level for the update/delete statement.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.CannotOpenDatabaseLoginFailed">
+            <summary>
+            Cannot open database requested by the login.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.RemoteHardeningFailure">
+            <summary>
+            Remote harden of transaction '%.*ls' (ID 0x%016I64x %ls) started at %S_DATE in database '%ls' at LSN %S_LSN failed. 
+            Cannot continue the execution because the session is in the kill state.
+            A severe error occurred on the current command.The results, if any, should be discarded.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.SessionInKillState">
+            <summary>
+            Cannot continue the execution because the session is in the kill state.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.SqlTransientErrorDetection.TransactionWasDeadlockVictim">
+            <summary>
+            The transaction was deadlocked and chosen as the deadlock victim.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingMode">
+            <summary>
+            Defines the possible throttling modes in SQL Database.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingMode.NoThrottling">
+            <summary>
+            Corresponds to the "No Throttling" throttling mode, in which all SQL statements can be processed.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingMode.RejectUpdateInsert">
+            <summary>
+            Corresponds to the "Reject Update / Insert" throttling mode, in which SQL statements such as INSERT, UPDATE, CREATE TABLE, and CREATE INDEX are rejected.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingMode.RejectAllWrites">
+            <summary>
+            Corresponds to the "Reject All Writes" throttling mode, in which SQL statements such as INSERT, UPDATE, DELETE, CREATE, and DROP are rejected.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingMode.RejectAll">
+            <summary>
+            Corresponds to the "Reject All" throttling mode, in which all SQL statements are rejected.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingMode.Unknown">
+            <summary>
+            Corresponds to an unknown throttling mode whereby throttling mode cannot be determined with certainty.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingType">
+            <summary>
+            Defines the possible throttling types in SQL Database.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingType.None">
+            <summary>
+            Indicates that no throttling was applied to a given resource.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingType.Soft">
+            <summary>
+            Corresponds to a soft throttling type. Soft throttling is applied when machine resources such as, CPU, I/O, storage, and worker threads exceed 
+            predefined safety thresholds despite the load balancer’s best efforts. 
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingType.Hard">
+            <summary>
+            Corresponds to a hard throttling type. Hard throttling is applied when the machine is out of resources, for example storage space.
+            With hard throttling, no new connections are allowed to the databases hosted on the machine until resources are freed up.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingType.Unknown">
+            <summary>
+            Corresponds to an unknown throttling type in the event that the throttling type cannot be determined with certainty.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.Sql.ThrottledResourceType">
+            <summary>
+            Defines the types of resources in SQL Database that may be subject to throttling conditions.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottledResourceType.PhysicalDatabaseSpace">
+            <summary>
+            Corresponds to the "Physical Database Space" resource, which may be subject to throttling.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottledResourceType.PhysicalLogSpace">
+            <summary>
+            Corresponds to the "Physical Log File Space" resource, which may be subject to throttling.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottledResourceType.LogWriteIoDelay">
+            <summary>
+            Corresponds to the "Transaction Log Write IO Delay" resource, which may be subject to throttling.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottledResourceType.DataReadIoDelay">
+            <summary>
+            Corresponds to the "Database Read IO Delay" resource, which may be subject to throttling.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottledResourceType.Cpu">
+            <summary>
+            Corresponds to the "CPU" resource, which may be subject to throttling.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottledResourceType.DatabaseSize">
+            <summary>
+            Corresponds to the "Database Size" resource, which may be subject to throttling.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottledResourceType.WorkerThreads">
+            <summary>
+            Corresponds to the "SQL Worker Thread Pool" resource, which may be subject to throttling.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottledResourceType.Internal">
+            <summary>
+            Corresponds to an internal resource that may be subject to throttling.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottledResourceType.Unknown">
+            <summary>
+            Corresponds to an unknown resource type in the event that the actual resource cannot be determined with certainty.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition">
+            <summary>
+            Implements an object that holds the decoded reason code returned from SQL Database when throttling conditions are encountered.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.ThrottlingErrorNumber">
+            <summary>
+            Gets the error number that corresponds to the throttling conditions reported by SQL Database.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.throttledResources">
+            <summary>
+            Maintains a collection of key/value pairs where a key is the resource type and a value is the type of throttling applied to the given resource type.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.sqlErrorCodeRegEx">
+            <summary>
+            Provides a compiled regular expression used to extract the reason code from the error message.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.Unknown">
+            <summary>
+            Gets an unknown throttling condition in the event that the actual throttling condition cannot be determined.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.ThrottlingMode">
+            <summary>
+            Gets the value that reflects the throttling mode in SQL Database.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.ThrottledResources">
+            <summary>
+            Gets a list of the resources in the SQL Database that were subject to throttling conditions.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.IsThrottledOnDataSpace">
+            <summary>
+            Gets a value that indicates whether physical data file space throttling was reported by SQL Database.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.IsThrottledOnLogSpace">
+            <summary>
+            Gets a value that indicates whether physical log space throttling was reported by SQL Database.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.IsThrottledOnLogWrite">
+            <summary>
+            Gets a value that indicates whether transaction activity throttling was reported by SQL Database.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.IsThrottledOnDataRead">
+            <summary>
+            Gets a value that indicates whether data read activity throttling was reported by SQL Database.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.IsThrottledOnCpu">
+            <summary>
+            Gets a value that indicates whether CPU throttling was reported by SQL Database.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.IsThrottledOnDatabaseSize">
+            <summary>
+            Gets a value that indicates whether database size throttling was reported by SQL Database.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.IsThrottledOnWorkerThreads">
+            <summary>
+            Gets a value that indicates whether concurrent requests throttling was reported by SQL Database.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.IsUnknown">
+            <summary>
+            Gets a value that indicates whether throttling conditions were not determined with certainty.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.FromException(System.Data.SqlClient.SqlException)">
+            <summary>
+            Determines throttling conditions from the specified SQL exception.
+            </summary>
+            <param name="ex">The <see cref="T:System.Data.SqlClient.SqlException"/> object that contains information relevant to an error returned by SQL Server when throttling conditions were encountered.</param>
+            <returns>An instance of the object that holds the decoded reason codes returned from SQL Database when throttling conditions were encountered.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.FromError(System.Data.SqlClient.SqlError)">
+            <summary>
+            Determines the throttling conditions from the specified SQL error.
+            </summary>
+            <param name="error">The <see cref="T:System.Data.SqlClient.SqlError"/> object that contains information relevant to a warning or error returned by SQL Server.</param>
+            <returns>An instance of the object that holds the decoded reason codes returned from SQL Database when throttling conditions were encountered.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.FromReasonCode(System.Int32)">
+            <summary>
+            Determines the throttling conditions from the specified reason code.
+            </summary>
+            <param name="reasonCode">The reason code returned by SQL Database that contains the throttling mode and the exceeded resource types.</param>
+            <returns>An instance of the object holding the decoded reason codes returned from SQL Database when encountering throttling conditions.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.ThrottlingCondition.ToString">
+            <summary>
+             Returns a textual representation of the current ThrottlingCondition object, including the information held with respect to throttled resources.
+            </summary>
+            <returns>A string that represents the current ThrottlingCondition object.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.Sql.CustomSqlPolicyRetryerOptions">
+            <summary>
+            Defines the configuration options for a SqlServer retry strategy with explicitly specified
+            retry intervals.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.CustomSqlPolicyRetryerOptions.CustomRetryIntervals">
+            <summary>
+            An explicit list of intervals at which to attempt subsequent retries, and after which
+            to propogate the underlying exception.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.CustomSqlPolicyRetryerOptions.CustomErrorCodes">
+            <summary>
+            An optional list of <see cref="T:System.Data.SqlClient.SqlError"/> numbers that identify a <see cref="T:System.Data.SqlClient.SqlException"/>
+            that indicates a transient error.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ExponentialRetryOptions.MaxAttempts">
+            <summary>
+            The maximum number of retry attempts.
+            </summary> 
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ExponentialRetryOptions.MinBackoff">
+            <summary>
+            The minimum backoff time.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ExponentialRetryOptions.MaxBackoff">
+            <summary>
+            The maximum backoff time.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.ExponentialRetryOptions.DeltaBackoff">
+            <summary>
+            The value that will be used to calculate a random delta in the exponential delay between
+            retries.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.Sql.SqlPolicyRetryerOptions">
+            <summary>
+            Defines the configuration options for a SqlServer retry strategy.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.SqlPolicyRetryerOptions.ExponentialRetry">
+            <summary>
+            The parameters to the exponential retry function.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Sql.SqlPolicyRetryerOptions.CustomErrorCodes">
+            <summary>
+            An optional list of <see cref="T:System.Data.SqlClient.SqlError"/> numbers that identify a <see cref="T:System.Data.SqlClient.SqlException"/>
+            that indicates a transient error.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper">
+            <summary>
+            Defines default implementations for applying a <see cref="T:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy"/> to SQL-bound
+            work for a given <see cref="T:System.Data.Common.DbConnection"/> reference for a <see cref="T:System.Data.SqlClient.SqlConnection"/>
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.ExecuteAsync(System.Data.Common.DbConnection,System.Func{System.Threading.Tasks.Task},Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.ExecuteAsync(System.Data.Common.DbConnection,System.Func{System.Threading.Tasks.Task},Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.ExecuteAsync``1(System.Data.Common.DbConnection,System.Func{System.Threading.Tasks.Task{``0}},Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+            <returns>The value yielded by the work.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.ExecuteAsync``1(System.Data.Common.DbConnection,System.Func{System.Threading.Tasks.Task{``0}},Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+            <returns>The value yielded by the work.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.ExecuteAsync(System.Data.Common.DbConnection,System.Func{System.Threading.Tasks.Task},Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy,System.Threading.CancellationToken)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+            <param name="cancellationToken">The cancellation token for the work being performed.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.ExecuteAsync(System.Data.Common.DbConnection,System.Func{System.Threading.Tasks.Task},Sitecore.Framework.TransientFaultHandling.IRetryer,System.Threading.CancellationToken)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+            <param name="cancellationToken">The cancellation token for the work being performed.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.ExecuteAsync``1(System.Data.Common.DbConnection,System.Func{System.Threading.Tasks.Task{``0}},Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy,System.Threading.CancellationToken)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+            <param name="cancellationToken">The cancellation token for the work being performed.</param>
+            <returns>The value yielded by the work.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.ExecuteAsync``1(System.Data.Common.DbConnection,System.Func{System.Threading.Tasks.Task{``0}},Sitecore.Framework.TransientFaultHandling.IRetryer,System.Threading.CancellationToken)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+            <param name="cancellationToken">The cancellation token for the work being performed.</param>
+            <returns>The value yielded by the work.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.ExecuteAsync``1(System.Data.Common.DbConnection,System.Func{System.Threading.Tasks.Task{``0}},System.Func{System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+            <param name="cancellationToken">The cancellation token for the work being performed.</param>
+            <returns>The value yielded by the work.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.Execute(System.Data.IDbConnection,System.Action,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.Execute(System.Data.IDbConnection,System.Action,Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.Execute``1(System.Data.IDbConnection,System.Func{``0},Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+            <returns>The value yielded by the work.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.Execute``1(System.Data.IDbConnection,System.Func{``0},Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+            <returns>The value yielded by the work.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.Execute``1(System.Data.IDbConnection,System.Func{``0},System.Func{System.Func{``0},``0})">
+            <summary>
+            Executes some SQL-bound work associated with the supplied connection subject to a retry policy.
+            </summary>
+            <param name="connection">The connection for which the work is being performed.</param>
+            <param name="sqlWork">Task to perform on the connection.</param>
+            <param name="commandRetryPolicy">The retry policy for the work.</param>
+            <returns>The value yielded by the work.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.OpenAsync(System.Data.Common.DbConnection,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="connectionRetryPolicy">The retry policy for the connection.</param>
+            <returns>Returns true if the connection was opened.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.OpenAsync(System.Data.Common.DbConnection,Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="connectionRetryPolicy">The retry policy for the connection.</param>
+            <returns>Returns true if the connection was opened.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.OpenAsync(System.Data.Common.DbConnection,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy,System.Threading.CancellationToken)">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="connectionRetryPolicy">The retry policy for the connection.</param>
+            <returns>Returns true if the connection was opened.</returns>
+            <param name="cancellationToken">The cancellation token for the open operation.</param>
+            <returns>Returns if connection was opened</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.OpenAsync(System.Data.Common.DbConnection,Sitecore.Framework.TransientFaultHandling.IRetryer,System.Threading.CancellationToken)">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="connectionRetryPolicy">The retry policy for the connection.</param>
+            <returns>Returns true if the connection was opened.</returns>
+            <param name="cancellationToken">The cancellation token for the open operation.</param>
+            <returns>Returns if connection was opened</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.OpenAsync(System.Data.Common.DbConnection,System.Func{System.Func{System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken)">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="retryer">The retry policy for the connection.</param>
+            <returns>Returns true if the connection was opened.</returns>
+            <param name="cancellationToken">The cancellation token for the open operation.</param>
+            <returns>Returns if connection was opened</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.OpenAsync(System.Data.Common.DbConnection,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="connectionRetryPolicy">The retry policy for the connection.</param>
+            <param name="connectionStringFailoverPolicy">The rety policy for the connection string failover.</param>
+            <returns>Returns true if the connection was opened.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.OpenAsync(System.Data.Common.DbConnection,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy,System.Threading.CancellationToken)">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="connectionRetryPolicy">The retry policy for the connection.</param>
+            <param name="connectionStringFailoverPolicy">The rety policy for the connection string failover.</param>
+            <param name="cancellationToken">The cancellation token for the open operation.</param>
+            <returns>Returns true if the connection was opened.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.OpenAsync(System.Data.Common.DbConnection,System.Func{System.Func{System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Boolean}},System.Func{System.Func{System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken)">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="connectionRetryPolicy">The retry policy for the connection.</param>
+            <param name="connectionStringFailoverPolicy">The rety policy for the connection string failover.</param>
+            <param name="cancellationToken">The cancellation token for the open operation.</param>
+            <returns>Returns true if the connection was opened.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.Open(System.Data.IDbConnection,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="connectionRetryPolicy">The retry policy for the connection.</param>
+            <returns>Returns true if the connection was opened.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.Open(System.Data.IDbConnection,Sitecore.Framework.TransientFaultHandling.IRetryer)">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="connectionRetryPolicy">The retry policy for the connection.</param>
+            <returns>Returns true if the connection was opened.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.Open(System.Data.IDbConnection,System.Func{System.Func{System.Boolean},System.Boolean})">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="connectionRetryPolicy">The retry policy for the connection.</param>
+            <returns>Returns true if the connection was opened.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.Open(System.Data.IDbConnection,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy,Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy)">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="connectionRetryPolicy">The retry policy for the connection.</param>
+            <param name="connectionStringFailoverPolicy">The rety policy for the connection string failover.</param>
+            <returns>Returns true if the connection was opened.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.Sql.SqlRetryHelper.Open(System.Data.IDbConnection,System.Func{System.Func{System.Boolean},System.Boolean},System.Func{System.Func{System.Boolean},System.Boolean})">
+            <summary>
+            Opens the connection subject to the retry policy.
+            </summary>
+            <param name="connection">The connection to open.</param>
+            <param name="connectionRetryPolicy">The retry policy for the connection.</param>
+            <param name="connectionStringFailoverPolicy">The rety policy for the connection string failover.</param>
+            <returns>Returns true if the connection was opened.</returns>
+        </member>
+    </members>
+</doc>

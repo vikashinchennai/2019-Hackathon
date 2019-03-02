@@ -1,0 +1,545 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Configuration</name>
+    </assembly>
+    <members>
+        <member name="M:Sitecore.Framework.Configuration.ChainedConfigurationProvider.#ctor(Sitecore.Framework.Configuration.ChainedConfigurationSource)">
+            <summary>
+            Initialize a new instance from the source configuration.
+            </summary>
+            <param name="source">The source configuration.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.ChainedConfigurationProvider.TryGet(System.String,System.String@)">
+            <summary>
+            Tries to get a configuration value for the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <returns><c>True</c> if a value for the specified key was found, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.ChainedConfigurationProvider.Set(System.String,System.String)">
+            <summary>
+            Sets a configuration value for the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.ChainedConfigurationProvider.GetReloadToken">
+            <summary>
+            Returns a change token if this provider supports change tracking, null otherwise.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.ChainedConfigurationProvider.Load">
+            <summary>
+            Loads configuration values from the source represented by this <see cref="T:Microsoft.Extensions.Configuration.IConfigurationProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.ChainedConfigurationProvider.GetChildKeys(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Returns the immediate descendant configuration keys for a given parent path based on this
+            <see cref="T:Microsoft.Extensions.Configuration.IConfigurationProvider"/>'s data and the set of keys returned by all the preceding
+            <see cref="T:Microsoft.Extensions.Configuration.IConfigurationProvider"/>s.
+            </summary>
+            <param name="earlierKeys">The child keys returned by the preceding providers for the same parent path.</param>
+            <param name="parentPath">The parent path.</param>
+            <returns>The child keys.</returns>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.ChainedConfigurationSource.Configuration">
+            <summary>
+            The chained configuration.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.ChainedConfigurationSource.Build(Microsoft.Extensions.Configuration.IConfigurationBuilder)">
+            <summary>
+            Builds the <see cref="T:Sitecore.Framework.Configuration.ChainedConfigurationProvider"/> for this source.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/>.</param>
+            <returns>A <see cref="T:Sitecore.Framework.Configuration.ChainedConfigurationProvider"/></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.ConfigurationException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Framework.Configuration.Patcher.ConfigurationException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.ConfigurationException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Framework.Configuration.Patcher.ConfigurationException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innnerException">The innner exception.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Configuration.Patcher.ElementIdentification">
+            <summary>
+                Implements generic identification of elements.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.ElementIdentification.HasUniqueIdentificationAttributes(Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Identifies whether the specified element has unique identification attributes.
+            </summary>
+            <param name="element"></param>
+            <returns>
+                <c>true</c> if the specified element has unique identification attributes.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.ElementIdentification.GetSignificantAttributes(Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Gets the significant attributes of the specific XML element. Significant attributes are used to identify elements
+                in an XML document.
+            </summary>
+            <param name="element">The XML element to process.</param>
+            <returns>
+                A sequence of significant attributes for the element, in document order.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.ElementIdentification.UpdateSignificantAttributes">
+            <summary>
+                Updates significant attributes.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.ElementIdentification.ReadSignificantAttributesFromConfiguration">
+            <summary>
+                Reads Significant Attributes From Configuration.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.ElementIdentification.GetID(Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Gets the string ID of an XML element.
+            </summary>
+            <param name="element">The XML element to process.</param>
+            <returns>
+                A minimal string ID that uniquely identifies an element among siblings.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.InvalidStructureException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Framework.Configuration.Patcher.InvalidStructureException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Configuration.Patcher.UpgradeableReadScope">
+            <summary>
+                Defines a scope that takes UpgradeableRead lock on a <see cref="T:System.Threading.ReaderWriterLockSlim" />
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.Configuration.Patcher.UpgradeableReadScope._mutex">
+            <summary>
+                Reference to the mutex
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.UpgradeableReadScope.Dispose">
+            <summary>
+                Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.UpgradeableReadScope.#ctor(Sitecore.Framework.Configuration.Patcher.ISynchronizable)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Framework.Configuration.Patcher.UpgradeableReadScope" /> class.
+            </summary>
+            <param name="instance">The instance.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.UpgradeableReadScope.#ctor(System.Threading.ReaderWriterLockSlim)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Framework.Configuration.Patcher.UpgradeableReadScope" /> class.
+            </summary>
+            <param name="mutex">The mutex.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Configuration.Patcher.WriteScope">
+            <summary>
+                Defines a scope that takes a Write lock on a <see cref="T:System.Threading.ReaderWriterLockSlim" />
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.Configuration.Patcher.WriteScope.mutex">
+            <summary>
+                Reference to the mutex.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.WriteScope.Dispose">
+            <summary>
+                Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.WriteScope.#ctor(Sitecore.Framework.Configuration.Patcher.ISynchronizable)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Framework.Configuration.Patcher.WriteScope" /> class.
+            </summary>
+            <param name="instance">The instance that contains a lock.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.WriteScope.#ctor(System.Threading.ReaderWriterLockSlim)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Framework.Configuration.Patcher.WriteScope" /> class.
+            </summary>
+            <param name="mutex">The mutex.</param>
+        </member>
+        <member name="F:Sitecore.Framework.Configuration.Patcher.XmlDomSource._node">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlDomSource.#ctor(System.Xml.XmlNode)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Framework.Configuration.Patcher.XmlDomSource" /> class.
+            </summary>
+            <param name="node">The node.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlDomSource.#ctor(System.Xml.XmlNode,System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Framework.Configuration.Patcher.XmlDomSource" /> class.
+            </summary>
+            <param name="node">The node.</param>
+            <param name="sourceName">The source name.</param>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.Patcher.XmlDomSource.Node">
+            <summary>
+                Gets the node.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.Patcher.XmlDomSource.NodeType">
+            <summary>
+                Gets the type of the node.
+            </summary>
+            <value>The type of the node.</value>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.Patcher.XmlDomSource.NamespaceURI">
+            <summary>
+                Gets the namespace URI.
+            </summary>
+            <value>The namespace URI.</value>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.Patcher.XmlDomSource.Prefix">
+            <summary>
+                Gets the prefix.
+            </summary>
+            <value>The prefix.</value>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.Patcher.XmlDomSource.LocalName">
+            <summary>
+                Gets the name of the local.
+            </summary>
+            <value>The name of the local.</value>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.Patcher.XmlDomSource.Value">
+            <summary>
+                Gets the value.
+            </summary>
+            <value>The value.</value>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlDomSource.GetAttributes">
+            <summary>
+                Gets the attributes.
+            </summary>
+            <returns>The attributes.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlDomSource.GetChildren">
+            <summary>
+                Gets the children.
+            </summary>
+            <returns>The children.</returns>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.Patcher.XmlDomSource.SourceName">
+            <summary>
+                Name of the source (implements IXmlSource)
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Configuration.Patcher.XmlNodeInfo">
+            <summary>
+                A simple in-memory IXmlNode implementation.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.Patcher.XmlNodeInfo.NodeType">
+            <summary>
+                Gets the type of the node.
+            </summary>
+            <value>The type of the node.</value>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.Patcher.XmlNodeInfo.NamespaceURI">
+            <summary>
+                Gets the namespace URI.
+            </summary>
+            <value>The namespace URI.</value>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.Patcher.XmlNodeInfo.Prefix">
+            <summary>
+                Gets the prefix.
+            </summary>
+            <value>The prefix.</value>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.Patcher.XmlNodeInfo.LocalName">
+            <summary>
+                Gets the name of the local.
+            </summary>
+            <value>The name of the local.</value>
+        </member>
+        <member name="P:Sitecore.Framework.Configuration.Patcher.XmlNodeInfo.Value">
+            <summary>
+                Gets the value.
+            </summary>
+            <value>The value.</value>
+        </member>
+        <member name="T:Sitecore.Framework.Configuration.Patcher.XmlPatcher">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.GetXmlElement(System.Xml.XmlReader,System.String)">
+            <summary>
+                Gets the XML element.
+            </summary>
+            <param name="reader">The reader.</param>
+            <param name="sourceName">Name of the source.</param>
+            <returns>The XmlElement that implements IXmlElement interface.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.Merge(System.Xml.XmlNode,Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Merges the specified target.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="patch">The patch.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.AssignAttributes(System.Xml.XmlNode,System.Collections.Generic.IEnumerable{Sitecore.Framework.Configuration.Patcher.IXmlNode})">
+            <summary>
+                Assigns the attributes.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="attributes">The attributes.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.CopyAttributes(System.Xml.XmlNode,Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Copies the attributes.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="patch">The patch.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.ShouldPatchNode(System.Xml.XmlNode,Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Shoulds the merge node.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="patch">The patch.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.ShouldProcessPatchNode(Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Defines whether specified patch node should be processed and applied.
+            </summary>
+            <param name="patchNode">The patch node.</param>
+            <returns><c>true</c> if the patch node should be applied.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.IsPatchingAttributeName(System.String)">
+            <summary>
+                Determines whether specified attribute name might be related to a patching logic.
+            </summary>
+            <param name="attributeName">Name of the attribute.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.MergeChildren(System.Xml.XmlNode,Sitecore.Framework.Configuration.Patcher.IXmlElement,System.Boolean)">
+            <summary>
+                Appends the children.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="patch">The patch.</param>
+            <param name="targetWasInserted">
+                if set to <c>true</c> means that <paramref name="target" /> has been inserted in the
+                target document earlier by this patch.
+            </param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.ContainsPatchNodesOnly(Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Determines whether all child nodes are patches.
+            </summary>
+            <param name="node">The node.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.FindBestTargetChild(System.Xml.XmlNode,Sitecore.Framework.Configuration.Patcher.IXmlElement,System.Text.StringBuilder,System.Xml.XmlNamespaceManager)">
+            <summary>
+                Finds the best target child.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="patchNode">The patchNode.</param>
+            <param name="predicateBuilder">The predicate builder.</param>
+            <param name="nsManager">The ns manager.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.CalculateRelevancy(System.Xml.XmlNode,Sitecore.Framework.Configuration.Patcher.IXmlElement,System.Int32)">
+            <summary>
+                Calculates the relevancy.
+            </summary>
+            <param name="node">The node.</param>
+            <param name="patch">The patch.</param>
+            <param name="level">The level.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.InitializeQueryAttributes(Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Initializes the attributes to be user for identifying (selecting) the patchNode.
+            </summary>
+            <param name="node">The patchNode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.InitializeSetAttributes(Sitecore.Framework.Configuration.Patcher.IXmlElement,System.Collections.Generic.List{Sitecore.Framework.Configuration.Patcher.IXmlNode})">
+            <summary>
+                Initializes the attributes to be updated.
+            </summary>
+            <param name="node">The patchNode.</param>
+            <param name="queryAttributes">The query attributes.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.IsSpecificNamespace(Sitecore.Framework.Configuration.Patcher.IXmlNode)">
+            <summary>
+                Determines whether the specified node has specific namespace.
+            </summary>
+            <param name="node">The xml node.</param>
+            <returns><c>true</c> is the specified node has specific namespace like patch, set, etc.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.DetermineInsertOperation(Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Determines the insert operation.
+            </summary>
+            <param name="node">The patchNode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.BuildNamespaceForNode(Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Builds the namespace manager for the specified patchNode.
+            </summary>
+            <param name="node">The patchNode.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.BuildPredicateForNodeAttributes(System.Collections.Generic.List{Sitecore.Framework.Configuration.Patcher.IXmlNode},System.Xml.XmlNamespaceManager)">
+            <summary>
+                Builds the predicate for patchNode attributes.
+            </summary>
+            <param name="queryAttributes">The query attributes.</param>
+            <param name="nsManager">The namespace manager.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.InsertNode(System.Xml.XmlNode,Sitecore.Framework.Configuration.Patcher.IXmlElement,Sitecore.Framework.Configuration.Patcher.InsertOperation,System.Collections.Generic.Stack{Sitecore.Framework.Configuration.Patcher.InsertOperation})">
+            <summary>
+                Inserts patchNode.
+            </summary>
+            <param name="target">The target patchNode.</param>
+            <param name="node">The patch patchNode.</param>
+            <param name="operation">The insert operation.</param>
+            <param name="pendingOperations">The pending operations list.</param>
+            <returns>Inserted patchNode.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.ShouldInsertNode(System.Xml.XmlNode,System.Xml.XmlNode)">
+            <summary>
+                Checks whether patch patchNode should be inserted.
+            </summary>
+            <param name="target">The target patchNode.</param>
+            <param name="patch">The patch patchNode.</param>
+            <returns>Value indicating whether patch patchNode should be inserted.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.InsertChild(System.Xml.XmlNode,System.Xml.XmlNode,Sitecore.Framework.Configuration.Patcher.InsertOperation)">
+            <summary>
+                Inserts the child.
+            </summary>
+            <param name="parent">The parent.</param>
+            <param name="child">The child.</param>
+            <param name="operation">The operation.</param>
+            <returns>The insert child.</returns>
+            <exception cref="T:System.Exception">Insert operation is not implemented</exception>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.ProcessConfigNode(System.Xml.XmlNode,Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Processes the config node.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="command">The command.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.AssignSourceNamespace(System.Xml.XmlNode,System.Object)">
+            <summary>
+                Assigns modification source to the target element.
+            </summary>
+            <param name="target">An element in the target document.</param>
+            <param name="source">Source to take information from. The object must implement <see cref="T:Sitecore.Framework.Configuration.Patcher.IXmlSource" />.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.MakeName(System.String,System.String)">
+            <summary>
+                Makes the name.
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <param name="localName">Name of the local.</param>
+            <returns>The full name.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlPatcher.GetAttributesToCopy(Sitecore.Framework.Configuration.Patcher.IXmlElement)">
+            <summary>
+                Gets the attributes to be copied to a merged node.
+            </summary>
+            <param name="element">The element.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.Framework.Configuration.Patcher.XmlUtil">
+            <summary>
+                Implements a library of standard utility functions for manipulating
+                XML documents and nodes.
+            </summary>
+            <remarks>
+                <seealso cref="T:Sitecore.Framework.Configuration.Patcher.XmlUtil" />
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlUtil.GetAttribute(System.Xml.XmlNode,System.String)">
+            <summary>
+                Gets an attribute value by name.
+            </summary>
+            <param name="name">The name of the attribute.</param>
+            <param name="node">An XML node.</param>
+            <returns>
+                The value of the attribute or blank if the attribute was not found.
+            </returns>
+            <example>
+                The following example gets the value of the id attribute on the XML node.
+                <code>
+            string id = XmlUtil.GetAttribute("id", node);
+            </code>
+            </example>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlUtil.SetAttribute(System.Xml.XmlNode,System.String,System.String)">
+            <summary>
+                Sets the value of an attribute.
+            </summary>
+            <param name="name">The name of the attribute.</param>
+            <param name="value">A value.</param>
+            <param name="node">An XML node.</param>
+            <remarks>If the attribute does already exist, it is created.</remarks>
+            <example>
+                <code>
+            XmlUtil.SetAttribute("name", "MyName", node);
+            </code>
+            </example>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Patcher.XmlUtil.TransferAttributesTo(System.Xml.XmlNode,System.Xml.XmlNode)">
+            <summary>
+                Transfers attributes from an XML node to another.
+            </summary>
+            <param name="source">The XML node to copy from.</param>
+            <param name="target">The XML node to copy to.</param>
+            <example>
+                <code>
+            XmlUtil.TransferAttributes(node0, node1);
+            </code>
+            </example>
+        </member>
+        <member name="T:Sitecore.Framework.Configuration.StringTypeConverter">
+            <summary>
+            Enables two way conversion between <see cref="T:System.Type"/> and <see cref="T:System.String"/> objects as part of
+            the <see cref="T:System.ComponentModel.TypeConverter"/> component.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Configuration.StringTypeConverterRegistration">
+            <summary>
+            Defines registration behaviour for <see cref="T:Sitecore.Framework.Configuration.StringTypeConverter"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.StringTypeConverterRegistration.EnsureRegistered">
+            <summary>
+            Ensures <see cref="T:Sitecore.Framework.Configuration.StringTypeConverter"/> is registered to enable conversions between <see cref="T:System.Type"/> and
+            <see cref="T:System.String"/>.  Warning: this registers the converter in a static collection, affecting any and all
+            code that uses type converters in the current process.
+            </summary>
+        </member>
+    </members>
+</doc>

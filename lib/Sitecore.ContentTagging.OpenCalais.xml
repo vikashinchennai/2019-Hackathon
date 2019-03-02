@@ -1,0 +1,295 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.ContentTagging.OpenCalais</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.ContentTagging.OpenCalais.Client.OpenCalaisClient">
+            <summary>
+            CalaisEngine
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.OpenCalais.Client.OpenCalaisClient.HttpClientFactory">
+            <summary>
+            Http client factory
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Client.OpenCalaisClient.#ctor(Sitecore.ContentTagging.Core.Factories.IHttpClientFactory,System.String,System.String,System.String)">
+            <summary>
+            OpenCalais Client
+            </summary>
+            <param name="httpClientFactory"></param>
+            <param name="endpoint"></param>
+            <param name="accessToken"></param>
+            <param name="language"></param>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Client.OpenCalaisClient.CalaisEndpoint">
+            <summary>
+            Calais Endpoint
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Client.OpenCalaisClient.CalaisAccessToken">
+            <summary>
+            Calais Access Token
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Client.OpenCalaisClient.CalaisLanguage">
+            <summary>
+            Calais Language
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Client.OpenCalaisClient.RequestJsonTags(System.String)">
+            <summary>
+            RequestTags
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Client.OpenCalaisClient.GetHttpClient">
+            <summary>
+            GetHttpClient
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.OpenCalais.Domain.CalaisTag">
+            <summary>
+            base tag
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Domain.CalaisTag.#ctor">
+            <summary>
+            CalaisTag
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Domain.CalaisTag.TypeGroup">
+            <summary>
+            type
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Domain.CalaisTag.Name">
+            <summary>
+            name
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Domain.CalaisTag.ForEndUserDisplay">
+            <summary>
+            forenduserdisplay
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Domain.CalaisTag.Properties">
+            <summary>
+            Properties
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Domain.CalaisTag.ToTagData">
+            <summary>
+            ToTagData
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.OpenCalais.Domain.EntityTag">
+            <summary>
+            EntityTag
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Domain.EntityTag.Type">
+            <summary>
+            type
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Domain.EntityTag.Relevance">
+            <summary>
+            relevance
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Domain.EntityTag.ToTagData">
+            <summary>
+            ToTagData
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.OpenCalais.Domain.IndustryTag">
+            <summary>
+            IndustryTag
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Domain.IndustryTag.Relevance">
+            <summary>
+            importance
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Domain.IndustryTag.RCScode">
+            <summary>
+            originalValue
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Domain.IndustryTag.ToTagData">
+            <summary>
+            ToTagData
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.OpenCalais.Domain.SocialTag">
+            <summary>
+            Social tag
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Domain.SocialTag.OriginalValue">
+            <summary>
+            originalValue
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Domain.SocialTag.Importance">
+            <summary>
+            importance
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Domain.SocialTag.ToTagData">
+            <summary>
+            ToTagData
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.OpenCalais.Domain.TopicTag">
+            <summary>
+            TopicTag
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Domain.TopicTag.Score">
+            <summary>
+            Score
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Domain.TopicTag.ToTagData">
+            <summary>
+            ToTagData
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.OpenCalais.Pipelines.TagContent.ValidateContent">
+            <summary>
+            Validate language of items if provider is OpenCalais
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Pipelines.TagContent.ValidateContent.AllowedLanguages">
+            <summary>
+            AllowedLanguages
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Pipelines.TagContent.ValidateContent.GetListOfAllowedLanguages">
+            <summary>
+            GetAllowedLanguages
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Sitecore.ContentTagging.OpenCalais.Pipelines.TagContent.ValidateContent.ConfigurationFactory">
+            <summary>
+            BaseFactory
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.OpenCalais.Pipelines.TagContent.ValidateContent.ItemLanguageService">
+            <summary>
+            BaseFactory
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Pipelines.TagContent.ValidateContent.#ctor(Sitecore.Abstractions.BaseFactory,Sitecore.ContentTagging.Services.IItemLanguageService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configurationFactory"></param>
+            <param name="itemLanguageService"></param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Pipelines.TagContent.ValidateContent.Process(Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs)">
+            <summary>
+            Apply action
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Pipelines.TagContent.ValidateContent.InvalidLanguage(Sitecore.Data.Items.Item)">
+            <summary>
+            Check if item has supported language
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Pipelines.TagContent.ValidateContent.RemoveOpenCalaisProviders(Sitecore.ContentTagging.Pipelines.TagContent.TagContentArgs)">
+            <summary>
+            Remove all providers which are OpenCalaisDiscoveryProvider from Providers collection in Configuration object
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Sitecore.ContentTagging.OpenCalais.Providers.OpenCalaisDiscoveryProvider">
+            <summary>
+            OpenCalaisDiscoveryProvider
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentTagging.OpenCalais.Providers.OpenCalaisDiscoveryProvider.AccessToken">
+            <summary>
+            AccessToken
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.OpenCalais.Providers.OpenCalaisDiscoveryProvider.TypeGroupKey">
+            <summary>
+            TypeGroupKey
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.OpenCalais.Providers.OpenCalaisDiscoveryProvider.SocialTag">
+            <summary>
+            SocialTag
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.OpenCalais.Providers.OpenCalaisDiscoveryProvider.IndustryTag">
+            <summary>
+            IndustryTag
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.OpenCalais.Providers.OpenCalaisDiscoveryProvider.EntityTag">
+            <summary>
+            EntityTag
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.OpenCalais.Providers.OpenCalaisDiscoveryProvider.TopicTag">
+            <summary>
+            TopicTag
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.OpenCalais.Providers.OpenCalaisDiscoveryProvider.JTokenKey">
+            <summary>
+            JTokenKey
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.OpenCalais.Providers.OpenCalaisDiscoveryProvider.CalaisClient">
+            <summary>
+            Calais Client
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Providers.OpenCalaisDiscoveryProvider.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Providers.OpenCalaisDiscoveryProvider.GetTags(System.Collections.Generic.IEnumerable{Sitecore.ContentTagging.Core.Models.TaggableContent})">
+            <summary>
+            GetTags
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentTagging.OpenCalais.Providers.OpenCalaisDiscoveryProvider.IsConfigured">
+            <summary>
+            Status of the provider
+            </summary>
+            <returns>Returns true if provider is configured</returns>
+        </member>
+        <member name="T:Sitecore.ContentTagging.OpenCalais.Texts">
+            <summary>
+            Content tagging OpenCalais translatable texts
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentTagging.OpenCalais.Texts.CouldNotPerformTaggingMessage">
+            <summary>
+            Error while tagging message
+            </summary>
+        </member>
+    </members>
+</doc>

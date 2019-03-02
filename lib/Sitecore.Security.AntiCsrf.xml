@@ -1,0 +1,639 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Security.AntiCsrf</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Security.AntiCsrf.AntiCsrfRule">
+            <summary>
+            Defines the Url to monitor.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.AntiCsrfRule.filters">
+            <summary>
+            The url filters.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.AntiCsrfRule.urlPrefix">
+            <summary>
+            The AntiCSRF Url prefix.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfRule.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.AntiCsrfRule"/> class.
+            </summary>
+            <param name="urlPrefix">The URL prefix.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfRule.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.AntiCsrfRule"/> class.
+            </summary>
+            <param name="urlPrefix">The URL prefix.</param>
+            <param name="ruleName">Name of the rule.</param>
+            <exception cref="T:System.IO.InvalidDataException">Specified url is not in a right format</exception>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.AntiCsrfRule.Filters">
+            <summary>
+            Gets the readonly filters list.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.AntiCsrfRule.Name">
+            <summary>
+            Gets or sets the name of the rule.
+            </summary>
+            <value>
+            The rule name.
+            </value>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.AntiCsrfRule.UrlPrefix">
+            <summary>
+            Gets or sets the AntiCSRF Url prefix.
+            </summary>
+            <value>
+            The URL prefix.
+            </value>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfRule.AddFilter(Sitecore.Security.AntiCsrf.AntiCsrfUrlFilter)">
+            <summary>
+            Adds the filter.
+            </summary>
+            <param name="filter">The filter.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfRule.IsAntiCsrfUrl(System.String)">
+            <summary>
+            Determines whether specified Url should be protected from CSRF attack.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns>
+              <c>true</c> if specified Url should be protected from CSRF attack; otherwise, <c>false</c>.
+            </returns>
+            <exception cref="T:System.IO.InvalidDataException"><c>InvalidDataException</c>.</exception>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfRule.MatchUrl(System.String)">
+            <summary>
+            Matches the URL with the URL prefix of the current AntiCSRF rule.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns>
+            true if the URL must be processed by this AntiCSRF rule, otherwise false
+            </returns>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfRule.FilterUrl(System.String)">
+            <summary>
+            Filters the URL.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns>true if the url should be filtered, otherwise false</returns>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfRule.IsUrlValid(System.String)">
+            <summary>
+            Determines whether the specified URL is valid.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns>
+              <c>true</c> if the specified URL is valid; otherwise, <c>false</c>.
+            </returns>
+            <exception cref="T:System.IO.InvalidDataException"><c>InvalidDataException</c>.</exception>
+        </member>
+        <member name="T:Sitecore.Security.AntiCsrf.AntiCsrfUrlFilter">
+            <summary>
+            Defines the Url filter.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.AntiCsrfUrlFilter.filter">
+            <summary>
+            The filter.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.AntiCsrfUrlFilter.originalFilter">
+            <summary>
+            The original filter value.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfUrlFilter.#ctor(System.String,Sitecore.Security.AntiCsrf.Replacers.IFilterUrlReplacer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.AntiCsrfUrlFilter" /> class.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="replacer">The replacer.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfUrlFilter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.AntiCsrfUrlFilter"/> class.
+            </summary>
+            <param name="filter">The filter.</param>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.AntiCsrfUrlFilter.Filter">
+            <summary>
+            Gets the filer.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.AntiCsrfUrlFilter.OriginalFilter">
+            <summary>
+            Gets the original filter.
+            </summary>
+            <value>
+            The original filter.
+            </value>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfUrlFilter.FilterUrl(System.String)">
+            <summary>
+            Filters the URL.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns><c>true</c> in case specified Url should be filtered.</returns>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.AntiCsrfWildcardUrlFilter.mask">
+            <summary>
+            The mask.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.AntiCsrfWildcardUrlFilter.originalMask">
+            <summary>
+            The original mask.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfWildcardUrlFilter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.AntiCsrfWildcardUrlFilter"/> class.
+            </summary>
+            <param name="filter">The filter.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfWildcardUrlFilter.#ctor(System.String,Sitecore.Security.AntiCsrf.Replacers.IFilterUrlReplacer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.AntiCsrfWildcardUrlFilter"/> class.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="replacer">The replacer.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfWildcardUrlFilter.#ctor(System.String,Sitecore.Security.AntiCsrf.Replacers.IFilterUrlReplacer,Sitecore.Security.AntiCsrf.Replacers.IFilterUrlReplacer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.AntiCsrfWildcardUrlFilter"/> class.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="replacer">The replacer.</param>
+            <param name="originalFilterReplacer">The original filter replacer.</param>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.AntiCsrfWildcardUrlFilter.Mask">
+            <summary>
+            Gets the regex mask generated from wildcard filter.
+            </summary>
+            <value>
+            The regex mask.
+            </value>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.AntiCsrfWildcardUrlFilter.OriginalMask">
+            <summary>
+            Gets the regex mask generated from wildcard original filter.
+            </summary>
+            <value>
+            The regex mask.
+            </value>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.AntiCsrfWildcardUrlFilter.FilterUrl(System.String)">
+            <summary>
+            Filters the URL.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns>
+              <c>true</c> in case specified Url should be filtered.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Security.AntiCsrf.Configuration.DetectionResult">
+            <summary>
+            An enumeration for the different results to take when an error is discovered.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.Configuration.DetectionResult.RaiseException">
+            <summary>
+            Raise an exception on a potential CSRF problem
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.Configuration.DetectionResult.Redirect">
+            <summary>
+            Redirect to an error page specified in the configuration settings on a potential CSRF problem.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.Configuration.Settings.Root">
+            <summary>
+            Gets the settings root.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Configuration.Settings.GetSetting(System.String,System.String)">
+            <summary>
+            Gets the setting.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Configuration.Settings.GetBoolSetting(System.String,System.Boolean)">
+            <summary>
+            Gets the bool setting.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="defaultValue">if set to <c>true</c> [default value].</param>
+            <returns></returns>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.Configuration.Settings.Enabled">
+            <summary>
+            Gets a value indicating whether this module is enabled.
+            </summary>
+            <value>
+              <c>true</c> if module is enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.Configuration.Settings.CookieName">
+            <summary>
+            Gets the name of the cookie used to hold the CSRF token.
+            </summary>
+            <value>The name of the cookie used to hold the CSRF token.</value>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.Configuration.Settings.FormFieldName">
+            <summary>
+            Gets the name of the form field used to hold the CSRF token.
+            </summary>
+            <value>The name of the form field used to hold the CSRF token.</value>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.Configuration.Settings.DetectionResult">
+            <summary>
+            Gets or sets the operation to take when a CSRF attack is found.
+            </summary>
+            <value>The operation to take when a CSRF attack is found.</value>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.Configuration.Settings.ErrorPage">
+            <summary>
+            Gets the page to redirect to if CSRF error occurs.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Security.AntiCsrf.Exceptions.BadPostBackException">
+            <summary>
+            The exception that is thrown when a faked postback sent via a GET request is detected
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Exceptions.BadPostBackException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Exceptions.BadPostBackException"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Exceptions.BadPostBackException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Exceptions.BadPostBackException"/> class with a specified error message 
+            and a reference to the inner exception that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Exceptions.BadPostBackException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Exceptions.BadPostBackException"/> class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference 
+            (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Exceptions.BadPostBackException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Exceptions.BadPostBackException"/> class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Sitecore.Security.AntiCsrf.Exceptions.NoErrorPageSpecifiedException">
+            <summary>
+            The exception that is thrown when the configuration states redirection should happen but no error page is specified.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Exceptions.NoErrorPageSpecifiedException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Exceptions.NoErrorPageSpecifiedException"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Exceptions.NoErrorPageSpecifiedException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Exceptions.NoErrorPageSpecifiedException"/> class with a specified error message 
+            and a reference to the inner exception that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Exceptions.NoErrorPageSpecifiedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Exceptions.NoErrorPageSpecifiedException"/> class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference 
+            (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Exceptions.NoErrorPageSpecifiedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Exceptions.NoErrorPageSpecifiedException"/> class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Sitecore.Security.AntiCsrf.Exceptions.PotentialCsrfException">
+            <summary>
+            The exception that is thrown when a CSRF attempt is detected. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Exceptions.PotentialCsrfException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Exceptions.PotentialCsrfException"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Exceptions.PotentialCsrfException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Exceptions.PotentialCsrfException"/> class with a specified error message 
+            and a reference to the inner exception that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Exceptions.PotentialCsrfException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Exceptions.PotentialCsrfException"/> class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference 
+            (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Exceptions.PotentialCsrfException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Exceptions.PotentialCsrfException"/> class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Sitecore.Security.AntiCsrf.ISuppressCsrfCheck">
+            <summary>
+            A marker interface for excluding a page from the CSRF checks. This allows
+            pages which have no code behind to opt-out for the checks.
+            </summary>
+            <remarks>
+            To use add &lt;%@ Implements Interface="Sitecore.Security.AntiCsrf.ISuppressCsrfCheck" %&gt; to your ASPX page.
+            </remarks>
+        </member>
+        <member name="T:Sitecore.Security.AntiCsrf.Replacers.FilterUrlReplacer">
+            <summary>
+            Replaces filter URLs using standard Sitecore encode name replacers feature.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Replacers.FilterUrlReplacer.Replace(System.String)">
+            <summary>
+            Replaces the specified URL according to encode name replacers feature.
+            </summary>
+            <param name="url">The filter Url.</param>
+            <returns>
+            The encoded filter Url.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Security.AntiCsrf.Replacers.IFilterUrlReplacer">
+            <summary>
+            Replacer of filter urls accorsing to Sitecore encode name replacer feature.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Replacers.IFilterUrlReplacer.Replace(System.String)">
+            <summary>
+            Replaces the specified URL according to encode name replacers feature.
+            </summary>
+            <param name="url">The filter Url.</param>
+            <returns>The encoded filter Url.</returns>
+        </member>
+        <member name="T:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer">
+            <summary>
+            Wildcard url replacer.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.defaultWildcardTokenMap">
+            <summary>
+            The default wildcard token map
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.wildcardTokenMap">
+            <summary>
+            The wildcard token map
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.urlTokenMap">
+            <summary>
+            The URL token map
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.skipItemNameReplacement">
+            <summary>
+            Defines whether Sitecore item name replacement should be performed.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer" /> class.
+            </summary>
+            <param name="skipItemNameReplacement">Defines whether Sitecore item name replacement should be performed.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.#ctor(System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer"/> class.
+            </summary>
+            <param name="urlTokenMap">The URL token map.</param>
+            <param name="wildcardTokenMap">The wildcard token map.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.#ctor(System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer" /> class.
+            </summary>
+            <param name="urlTokenMap">The URL token map.</param>
+            <param name="wildcardTokenMap">The wildcard token map.</param>
+            <param name="skipItemNameReplacement">Defines whether Sitecore item name replacement should be performed.</param>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.DefaultWildcardTokenMap">
+            <summary>
+            Gets the default wildcard token map.
+            </summary>
+            <value>
+            The default wildcard token map.
+            </value>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.WildcardTokenMap">
+            <summary>
+            Gets the wildcard token map.
+            </summary>
+            <value>
+            The wildcard token map.
+            </value>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.UrlTokenMap">
+            <summary>
+            Gets the url token map.
+            </summary>
+            <value>
+            The url token map.
+            </value>
+        </member>
+        <member name="P:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.SkipItemNameReplacement">
+            <summary>
+            Gets a value indicating whether Sitecore item name replacement should be performed.
+            </summary>
+            <value>
+            <c>true</c> if Sitecore item name replacement should not be performed; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.Replace(System.String)">
+            <summary>
+            Replaces the specified URL according to encode name replacers feature.
+            </summary>
+            <param name="url">The filter Url.</param>
+            <returns>
+            The encoded filter Url.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.ReplaceUrlTokens(System.String)">
+            <summary>
+            Replaces the URL tokens.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns>Url with tokens replaced.</returns>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.EncodeUrlChunk(System.String)">
+            <summary>
+            Encodes the URL chunk.
+            </summary>
+            <param name="chunk">The chunk.</param>
+            <returns>Encoded url chunk.</returns>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.Replacers.WildcardFilterUrlReplacer.ReplaceWildcardTokens(System.String)">
+            <summary>
+            Replaces the wildcard tokens.
+            </summary>
+            <param name="url">The URL to replace tokens in.</param>
+            <returns>The URL with tokens replaced.</returns>
+        </member>
+        <member name="T:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule">
+            <summary>
+            Implements the Anti Cross Site Request Forgery HTTP Module.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.AttributeCache">
+            <summary>
+            Contains a cached list of classes we have already checked for the exclusion attribute.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.ContextIndexName">
+            <summary>
+            Contains the key name used for HttpContext storage of the CSRF token.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.Dispose">
+            <summary>
+            Disposes of the resources (other than memory) used by the module that implements <see cref="T:System.Web.IHttpModule"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.Init(System.Web.HttpApplication)">
+            <summary>
+            Initializes a module and prepares it to handle requests.
+            </summary>
+            <param name="context">An <see cref="T:System.Web.HttpApplication"/> that provides access to the methods, properties, and events common to all application objects within an ASP.NET application</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.SkipByConfiguration(System.String)">
+            <summary>
+            Check if request should be skipped by the configuration.
+            </summary>
+            <param name="rawUrl">The raw url from request.</param>
+            <returns>TRUE if url must be skipped, otherwise FALSE</returns>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.AddExclusionStateToCache(System.String,System.Boolean)">
+            <summary>
+            Adds the exclusion state to the result cache.
+            </summary>
+            <param name="assemblyQualifiedName">The fully qualified name of the type to cache.</param>
+            <param name="exclusionState">True if the type has opted-out of the check, otherwise false.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.PreRequestHandlerExecute(System.Object,System.EventArgs)">
+            <summary>
+            Pres the request handler execute.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.PreSendRequestHeaders(System.Object,System.EventArgs)">
+            <summary>
+            Pres the send request headers.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.PagePreRender(System.Object,System.EventArgs)">
+            <summary>
+            Occurs when the server control is about to render to its containing <see cref="T:System.Web.UI.Page"/> control.
+            </summary>
+            <param name="sender">The event sender.</param>
+            <param name="eventArgs">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.PageLoad(System.Object,System.EventArgs)">
+            <summary>
+            Check whether the page is an ASP.NET PostBack which uses the GET method. If so, throw an exception.
+            </summary>
+            <param name="sender">The event sender.</param>
+            <param name="eventArgs">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.LoadRule(System.Xml.Linq.XElement)">
+            <summary>
+            Loads the rule.
+            </summary>
+            <param name="rule">The rule configuration node.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.InitializeRuleFilters(Sitecore.Security.AntiCsrf.AntiCsrfRule,System.Xml.Linq.XElement)">
+            <summary>
+            Initializes the rule filters.
+            </summary>
+            <param name="csrfRule">The CSRF rule object to add filters to.</param>
+            <param name="rule">The rule configuration node.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.LoadConfiguration">
+            <summary>
+            Loads the configuration.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.RaiseError(System.Exception,System.Web.HttpContext)">
+            <summary>
+            Raises a CSRF error based on the configuration settings.
+            </summary>
+            <param name="ex">The exception to throw if exceptions are configured.</param>
+            <param name="context">The current HttpContext.</param>
+            <exception cref="T:System.Exception"><c>Exception</c>.</exception>
+            <exception cref="T:Sitecore.Security.AntiCsrf.Exceptions.NoErrorPageSpecifiedException"><c>NoErrorPageSpecifiedException</c>.</exception>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.WriteCsrfCookie(System.Web.HttpCookieCollection,System.String)">
+            <summary>
+            Adds the CRSF protection cookie to the specified cookie collection.
+            </summary>
+            <param name="cookies">The cookie collection to add the cookie to.</param>
+            <param name="value">The value for the created cookie.</param>
+        </member>
+        <member name="M:Sitecore.Security.AntiCsrf.SitecoreAntiCsrfModule.GuidTryParse(System.String,System.Guid@)">
+            <summary>
+            Attemps to converts the string representation of a Guid to its Guid
+            equivalent. A return value indicates whether the operation
+            succeeded.
+            </summary>
+            <param name="s">A string containing a Guid to convert.</param>
+            <param name="result">
+            When this method returns, contains the Guid value equivalent to
+            the Guid contained in <paramref name="s"/>, if the conversion
+            succeeded, or <see cref="F:System.Guid.Empty"/> if the conversion failed.
+            </param>
+            <returns>
+            <see langword="true" /> if <paramref name="s"/> was converted
+            successfully; otherwise, <see langword="false" />.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Security.AntiCsrf.SuppressCsrfCheckAttribute">
+            <summary>
+            Provides a class level attribute for excluding a page from the CSRF checks.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,736 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.CES.DeviceDetection.Rules</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBoolConditionBase`1">
+            <summary>
+            The device boolean condition base.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBoolConditionBase`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBoolConditionBase`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBoolConditionBase`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBoolConditionBase`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBoolConditionBase`1.RuleDeviceInformationManager">
+            <summary>
+            Gets the rule device information manager.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBoolConditionBase`1.Execute(`0)">
+            <summary>
+            The execute.
+            </summary>
+            <param name="ruleContext">
+            The rule context.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBoolConditionBase`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserCanJavaScriptCondition`1">
+            <summary>
+            The device browser can java script condition.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserCanJavaScriptCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserCanJavaScriptCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserCanJavaScriptCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserCanJavaScriptCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserCanJavaScriptCondition`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserCondition`1">
+            <summary>
+            The device type condition.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserCondition`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserHtml5AudioCanAudioCondition`1">
+            <summary>
+            The device browser html 5 video can video condition.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserHtml5AudioCanAudioCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserHtml5AudioCanAudioCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserHtml5AudioCanAudioCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserHtml5AudioCanAudioCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserHtml5AudioCanAudioCondition`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserHtml5VideoCanVideoCondition`1">
+            <summary>
+            The device browser html 5 video can video condition.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserHtml5VideoCanVideoCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserHtml5VideoCanVideoCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserHtml5VideoCanVideoCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserHtml5VideoCanVideoCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceBrowserHtml5VideoCanVideoCondition`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceCanTouchScreenCondition`1">
+            <summary>
+            The device browser can java script condition.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceCanTouchScreenCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceCanTouchScreenCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceCanTouchScreenCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceCanTouchScreenCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceCanTouchScreenCondition`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceHardwareDisplayHeightCondition`1">
+            <summary>
+            The device hardware display height condition.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceHardwareDisplayHeightCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceHardwareDisplayHeightCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceHardwareDisplayHeightCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceHardwareDisplayHeightCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceHardwareDisplayHeightCondition`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceHardwareDisplayWidthCondition`1">
+            <summary>
+            The device hardware display width condition.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceHardwareDisplayWidthCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceHardwareDisplayWidthCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceHardwareDisplayWidthCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceHardwareDisplayWidthCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceHardwareDisplayWidthCondition`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceIntegerConditionBase`1">
+            <summary>
+            The device integer condition base.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceIntegerConditionBase`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceIntegerConditionBase`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceIntegerConditionBase`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceIntegerConditionBase`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceIntegerConditionBase`1.RuleDeviceInformationManager">
+            <summary>
+            Gets the rule device information manager.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceIntegerConditionBase`1.Execute(`0)">
+            <summary>
+            The execute.
+            </summary>
+            <param name="ruleContext">
+            The rule context.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceIntegerConditionBase`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceModelNameCondition`1">
+            <summary>
+            The device type condition.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceModelNameCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceModelNameCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceModelNameCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceModelNameCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceModelNameCondition`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceOperatingSystemModelCondition`1">
+            <summary>
+            The device type condition.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceOperatingSystemModelCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceOperatingSystemModelCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceOperatingSystemModelCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceOperatingSystemModelCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceOperatingSystemModelCondition`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceOperatingSystemVendorCondition`1">
+            <summary>
+            The device type condition.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceOperatingSystemVendorCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceOperatingSystemVendorCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceOperatingSystemVendorCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceOperatingSystemVendorCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceOperatingSystemVendorCondition`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DevicePropertyCondition`1">
+            <summary>
+            The device property condition.
+            </summary>
+            <typeparam name="T">
+            The rule context.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DevicePropertyCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DevicePropertyCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DevicePropertyCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DevicePropertyCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Rules.Conditions.DevicePropertyCondition`1.PropertyName">
+            <summary>Gets or sets the property name.</summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Rules.Conditions.DevicePropertyCondition`1.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Rules.Conditions.DevicePropertyCondition`1.RuleDeviceInformationManager">
+            <summary>
+            Gets the rule device information manager.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DevicePropertyCondition`1.Execute(`0)">
+            <summary>Executes the specified rule context.</summary>
+            <param name="ruleContext">The rule context.</param>
+            <returns><c>True</c>, if the condition succeeds, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceStringConditionBase`1">
+            <summary>
+            The device type condition base.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceStringConditionBase`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceStringConditionBase`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceStringConditionBase`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceStringConditionBase`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceStringConditionBase`1.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceStringConditionBase`1.RuleDeviceInformationManager">
+            <summary>
+            Gets the rule device information manager.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceStringConditionBase`1.Execute(`0)">
+            <summary>Executes the specified rule context.</summary>
+            <param name="ruleContext">The rule context.</param>
+            <returns><c>True</c>, if the condition succeeds, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceStringConditionBase`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeCondition`1">
+            <summary>
+            The device type condition.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeCondition`1.Matchers">
+            <summary>
+            The types.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeCondition`1.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeCondition`1.RuleDeviceInformationManager">
+            <summary>
+            Gets the rule device information manager.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeCondition`1.Execute(`0)">
+            <summary>Executes the specified rule context.</summary>
+            <param name="ruleContext">The rule context.</param>
+            <returns><c>True</c>, if the condition succeeds, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs">
+            <summary>
+            The constants.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.MobilePhone">
+            <summary>
+            The mobile phone item id.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.FeaturePhone">
+            <summary>
+            The feature phone item id.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.Smartphone">
+            <summary>
+            The smartphone item id.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.MobileConsole">
+            <summary>
+            The mobile console item id.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.EReader">
+            <summary>
+            The e reader item id.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.Tablet">
+            <summary>
+            The tablet item id.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.MediaPlayer">
+            <summary>
+            The media player item id.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.SettopBox">
+            <summary>
+            The set top box item id.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.Camera">
+            <summary>
+            The camera item id.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.Bot">
+            <summary>
+            The bot item id.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.WearableComputer">
+            <summary>
+            The wearable computer item id.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.Computer">
+            <summary>
+            The computer item id.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceTypeIDs.Other">
+            <summary>
+            The other item id.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceVendorCondition`1">
+            <summary>
+            The device vendor condition.
+            </summary>
+            <typeparam name="T">
+            The parameter type.
+            </typeparam>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceVendorCondition`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceVendorCondition`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceVendorCondition`1.#ctor(Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceVendorCondition`1"/> class.
+            </summary>
+            <param name="ruleDeviceInformationManager">
+            The rule device information manager.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.Conditions.DeviceVendorCondition`1.GetDeviceProperty(Sitecore.CES.DeviceDetection.DeviceInformation)">
+            <summary>
+            The device value.
+            </summary>
+            <param name="deviceInformation">
+            The device information.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager">
+            <summary>
+            The RuleDeviceInformation interface.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager.GetDeviceInformation(Sitecore.Rules.RuleContext)">
+            <summary>
+            The get device information.
+            </summary>
+            <param name="ruleContext">
+            The rule context.
+            </param>
+            <returns>
+            The <see cref="T:Sitecore.CES.DeviceDetection.DeviceInformation"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.IRuleDeviceInformationManager.GetExtendedProperty(Sitecore.Rules.RuleContext,System.String)">
+            <summary>
+            The get custom property.
+            </summary>
+            <param name="ruleContext">
+            The rule context.
+            </param>
+            <param name="propertyName">
+            The property name.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DeviceDetection.Rules.RuleDeviceInformationManager">
+            <summary>
+            The rule device information manager.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.RuleDeviceInformationManager.GetDeviceInformation(Sitecore.Rules.RuleContext)">
+            <summary>
+            The get device information.
+            </summary>
+            <param name="ruleContext">
+            The rule context.
+            </param>
+            <returns>
+            The <see cref="T:Sitecore.CES.DeviceDetection.DeviceInformation"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.RuleDeviceInformationManager.GetExtendedProperty(Sitecore.Rules.RuleContext,System.String)">
+            <summary>
+            The get custom property.
+            </summary>
+            <param name="ruleContext">
+            The rule context.
+            </param>
+            <param name="propertyName">
+            The property name.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.RuleDeviceInformationManager.GetUserAgentFromDeviceRuleContext(Sitecore.Rules.Devices.DeviceRuleContext)">
+            <summary>
+            Gets user agent string from a rule context.
+            </summary>
+            <param name="deviceRuleContext">
+            The rule context.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.DeviceDetection.Rules.RuleDeviceInformationManager.ResolveObject``1(Sitecore.Rules.RuleContext,System.String,System.Func{System.String,``0},System.String,System.Object[])">
+            <summary>
+            Resolve object form rule context or tracker.
+            </summary>
+            <param name="ruleContext">The rule context.</param>
+            <param name="key">The key.</param>
+            <param name="objectFactory">The get function.</param>
+            <param name="deviceDetectionExceptionMessageFormat">The device detection exception message format.</param>
+            <param name="formatArgs">The format args.</param>
+            <typeparam name="T">The result type</typeparam>
+            <returns>The <see cref="!:T"/>.</returns>
+        </member>
+    </members>
+</doc>

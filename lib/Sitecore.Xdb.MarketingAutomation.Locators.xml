@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Xdb.MarketingAutomation.Locators</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.IActivityDescriptorLocator">
+            <summary>
+            Defines a locator which locates <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityDescriptor">
+            <summary>
+            Represents a descriptor for an activity.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityDescriptor.#ctor(System.Guid,System.Globalization.CultureInfo,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.Guid,System.Collections.Generic.IReadOnlyList{System.Guid}},System.Collections.Generic.IReadOnlyList{Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityParameterDescriptor},System.Collections.Generic.IReadOnlyList{Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityPathDescriptor},System.Collections.Generic.IReadOnlyList{System.Guid},System.String,System.Nullable{System.Guid},System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityDescriptor"/> class.
+            </summary>
+            <param name="id">The ID for this entity.</param>
+            <param name="culture">The culture the culture specific fields are provided in.</param>
+            <param name="name">The human readable name of the entity.</param>
+            <param name="description">A description of the entity and what it does.</param>
+            <param name="iconPath">The path of the icon used to represent this descriptor.</param>
+            <param name="classification">Specifies a set of taxonomies and the classification values for the entity in each taxonomy.</param>
+            <param name="parameters">The parameters the activity accepts and should be input by the user.</param>
+            <param name="paths">The legal paths leading out of the activity to the next activity.</param>
+            <param name="dependencies">Lists dependent activities which must be included in the plan before this activity.</param>
+            <param name="implementationType">The full .net type (including namespace and assembly) of the type implementing the activity.</param>
+            <param name="editorId">The ID of the editor used to edit the properties of the activity.</param>
+            <param name="editorParameters">Parameters to pass to the editor given in the <paramref name="editorId"/> parameter.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityDescriptor.Parameters">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityDescriptor.Paths">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityDescriptor.Dependencies">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityDescriptor.ImplementationType">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityDescriptor.EditorId">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityDescriptor.EditorParameters">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityParameterDescriptor">
+            <summary>
+            Represents a type which describes a user settable parameter on an activity.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityParameterDescriptor" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityParameterDescriptor.#ctor(System.String,System.String,System.String,System.Boolean,System.Nullable{System.Guid},System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityParameterDescriptor"/> class.
+            </summary>
+            <param name="key">The exact name of the property exposed on the activity implementation class.</param>
+            <param name="name">The human readable name of the parameter.</param>
+            <param name="description">A description of the parameter and what it does.</param>
+            <param name="required">Indicates whether the parameter must be populated.</param>
+            <param name="editorId">The ID of the editor used to edit this parameter.</param>
+            <param name="editorParameters">Parameters to pass to the editor given in the <paramref name="editorId"/> parameter.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityParameterDescriptor.Key">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityParameterDescriptor.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityParameterDescriptor.Description">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityParameterDescriptor.Required">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityParameterDescriptor.EditorId">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityParameterDescriptor.EditorParameters">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityPathDescriptor">
+            <summary>
+            Represents a type which describes an outgoing path from an activity.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityPathDescriptor" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityPathDescriptor.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityPathDescriptor"/> class.
+            </summary>
+            <param name="key">The key of the path.</param>
+            <param name="name">The human readable name of the path.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityPathDescriptor.Key">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.ActivityPathDescriptor.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor">
+            <summary>
+            Defines a descriptor for an activity.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Model.IDescriptor" />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor.Parameters">
+            <summary>
+            The parameters the activity accepts and should be input by the user.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor.Paths">
+            <summary>
+            The legal paths leading out of the activity to the next activity.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor.Dependencies">
+            <summary>
+            Lists dependent activities which must be included in the plan before this activity.
+            </summary>
+            <remarks>
+            The dependent activity must be on the same plan path as the current activity;
+            it must be visited when walking up the plan tree from the current activity to the entry activity.
+            </remarks>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor.ImplementationType">
+            <summary>
+            The full .net type (including namespace and assembly) of the type implementing the activity.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor.EditorId">
+            <summary>
+            The ID of the editor used to edit the properties of the activity.
+            </summary>
+            <remarks>
+            If this property is populated it is expected the editor will edit all parameters of the activity.
+            Individual activity editors will not be used.
+            </remarks>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor.EditorParameters">
+            <summary>
+            Parameters to pass to the editor given in the <see cref="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor.EditorId"/> property.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityParameterDescriptor">
+            <summary>
+            Defines a type which describes a user settable parameter on an activity.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityParameterDescriptor.Key">
+            <summary>
+            The exact name of the property exposed on the activity implementation class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityParameterDescriptor.Name">
+            <summary>
+            The human readable name of the parameter.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityParameterDescriptor.Description">
+            <summary>
+            A description of the parameter and what it does.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityParameterDescriptor.Required">
+            <summary>
+            Indicates whether the parameter must be populated.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityParameterDescriptor.EditorId">
+            <summary>
+            The ID of the editor used to edit this parameter.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityParameterDescriptor.EditorParameters">
+            <summary>
+            Parameters to pass to the editor given in the <see cref="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityParameterDescriptor.EditorId"/> property.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityPathDescriptor">
+            <summary>
+            Defines a type which describes an outgoing path from an activity.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityPathDescriptor.Key">
+            <summary>
+            The key of the path.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityPathDescriptor.Name">
+            <summary>
+            The human readable name of the path.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.IDescriptorLocator`1">
+            <summary>
+            Defines a general locators for a descriptor.
+            </summary>
+            <typeparam name="TEntity">The type of the descriptor.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.IDescriptorLocator`1.GetDescriptor(System.Guid,System.Globalization.CultureInfo)">
+            <summary>
+            Locates a descriptor by the given ID.
+            </summary>
+            <param name="id">The ID of the descriptor to get.</param>
+            <param name="culture">The culture to get the descriptor in.</param>
+            <returns>
+            The found descriptor, or<c>null</c> if the descriptor wasn't found.
+            </returns>
+            <remarks>Returns culture specific properties (such as Name and Description in the provided culture.</remarks>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.IDescriptorLocator`1.GetAllDescriptors(System.Globalization.CultureInfo,System.Int32,System.Int32)">
+            <summary>
+            Gets all descriptors the locator finds.
+            </summary>
+            <param name="culture">The culture to get the descriptors in.</param>
+            <param name="pageNumber">The page number of the results to retrieve.</param>
+            <param name="pageSize">The size of each page of results.</param>
+            <returns>
+            The paged descriptors, or an empty<see cref="T:Sitecore.Marketing.Core.ResultSet`1"/> if no descriptors were found.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.IDescriptorLocator`1.GetDescriptorsByClassification(System.Globalization.CultureInfo,System.Guid,System.Guid,System.Int32,System.Int32)">
+            <summary>
+            Gets all entity descriptors which have the provided value in the specified taxonomy.
+            </summary>
+            <param name="culture">The culture to get the descriptors in.</param>
+            <param name="taxonomy">The ID of the taxonomy.</param>
+            <param name="requiredValue">The required value in the specified taxonomy.</param>
+            <param name="pageNumber">The page number of the results to retrieve.</param>
+            <param name="pageSize">The size of each page of results.</param>
+            <returns>
+            The paged descriptors, or an empty<see cref="T:Sitecore.Marketing.Core.ResultSet`1" /> if no descriptors were found.
+            </returns>
+            <remarks>This is a "contains" check. The entity may have other values in the provided taxonomy.</remarks>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Model.Descriptor">
+            <summary>
+            Defines an abstract class which describes an entity.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Model.IDescriptor" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Model.Descriptor.#ctor(System.Guid,System.Globalization.CultureInfo,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyDictionary{System.Guid,System.Collections.Generic.IReadOnlyList{System.Guid}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Model.Descriptor"/> class.
+            </summary>
+            <param name="id">The ID for this entity.</param>
+            <param name="culture">The culture the culture specific fields are provided in.</param>
+            <param name="name">The human readable name of the entity.</param>
+            <param name="description">A description of the entity and what it does.</param>
+            <param name="iconPath">The path of the icon used to represent this descriptor.</param>
+            <param name="classification">Specifies a set of taxonomies and the classification values for the entity in each taxonomy.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.Descriptor.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.Descriptor.Culture">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.Descriptor.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.Descriptor.Description">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.Descriptor.IconPath">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.Descriptor.Classification">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Model.IDescriptor">
+            <summary>
+            Defines a type which describes an entity.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.IDescriptor.Id">
+            <summary>
+            The ID for this entity.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.IDescriptor.Culture">
+            <summary>
+            The culture the culture specific fields are provided in.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.IDescriptor.Name">
+            <summary>
+            The human readable name of the entity.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.IDescriptor.Description">
+            <summary>
+            A description of the entity and what it does.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.IDescriptor.IconPath">
+            <summary>
+            The path of the icon used to represent this descriptor.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.IDescriptor.Classification">
+            <summary>
+            Specifies a set of taxonomies and the classification values for the entity in each taxonomy.
+            </summary>
+            <remarks>
+            The keys of the <see cref="P:Sitecore.Xdb.MarketingAutomation.Locators.Model.IDescriptor.Classification"/> dictionary specify the taxonomy being checked.
+            The value of the dictionary is the list of values for the specified taxonomy.
+            </remarks>
+        </member>
+    </members>
+</doc>

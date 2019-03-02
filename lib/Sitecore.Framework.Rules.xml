@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Rules</name>
+    </assembly>
+    <members>
+        <member name="M:Sitecore.Framework.Rules.EntityDiscoveryConfigExtensions.RegisterEntity``1(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig)">
+            <summary>Ensures the supplied entity type will be discovered by the registry.</summary>
+            <typeparam name="TEntity">The entity type to be registered.</typeparam>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.EntityDiscoveryConfigExtensions.RegisterFactResolver``1(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig)">
+            <summary>Ensures the supplied entity type will be discovered by the registry.</summary>
+            <typeparam name="TEntity">The entity type to be registered.</typeparam>
+        </member>
+        <member name="T:Sitecore.Framework.Rules.IgnoreEntityAttribute">
+            <summary>Identifies an entity class that will not be automatically discovered by
+            the registry.</summary>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.IgnoreEntityAttribute.#ctor">
+            <summary>An entity class that will not be automatically discovered by
+            the registry.</summary>
+        </member>
+        <member name="T:Sitecore.Framework.Rules.IRulesConfigBuilder">
+            <summary>
+            Provides all of the configuration operations available for the Rules component.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.Rules.RuleEntityUtilities.DefaultIdentifierFactory">
+            <summary>
+            The default Reflection based implementation that yields a string identifier for a Rule entity
+            by looking for a <see cref="T:Sitecore.Framework.Rules.EntityIdentifierAttribute"/>, and falling back to the full name of the type.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.RulesConfigBuilderExtensions.Registry(Sitecore.Framework.Rules.IRulesConfigBuilder,System.Action{Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig})">
+            <summary>
+            Configures the <see cref="T:Sitecore.Framework.Rules.Registry.IEntityRegistry"/> which discovers and manages all of the Rule entities
+            available in the system.
+            </summary>
+            <param name="builder"></param>
+            <param name="configureRegistry">Configures the registry.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.RulesServiceCollectionExtensions.AddRules(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers the Rules component in the service collection.
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.RulesServiceCollectionExtensions.AddRules(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Sitecore.Framework.Rules.IRulesConfigBuilder})">
+            <summary>
+            Registers the Rules component in the service collection.
+            </summary>
+            <param name="services"></param>
+            <param name="configure">Configures the Rules component.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.SitecoreServicesConfigurationExtensions.Rules(Sitecore.Framework.Configuration.ISitecoreServicesConfiguration)">
+            <summary>
+            Registers the Rules component in the Sitecore configuration instance.
+            </summary>
+            <param name="sitecore"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.SitecoreServicesConfigurationExtensions.Rules(Sitecore.Framework.Configuration.ISitecoreServicesConfiguration,System.Action{Sitecore.Framework.Rules.IRulesConfigBuilder})">
+            <summary>
+            Registers the Rules component in the Sitecore configuration instance.
+            </summary>
+            <param name="sitecore"></param>
+            <param name="configure">Configures the Rules component.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

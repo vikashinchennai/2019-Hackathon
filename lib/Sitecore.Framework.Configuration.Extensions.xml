@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Configuration.Extensions</name>
+    </assembly>
+    <members>
+        <member name="M:Sitecore.Framework.Configuration.Extensions.XmlNamespaceConfigurationProvider.#ctor(Sitecore.Framework.Configuration.Extensions.XmlNamespaceConfigurationSource)">
+            <summary>
+            Initializes a new instance with the specified source.
+            </summary>
+            <param name="source">The source settings.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Configuration.Extensions.XmlNamespaceConfigurationProvider.Load(System.IO.Stream)">
+            <summary>
+            Loads the XML data from a stream.
+            </summary>
+            <param name="stream">The stream to read.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,555 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.CES</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.CES.CESManager">
+            <summary>
+            Implements communication with CES endpoints.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.CESManager.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Sitecore.CES.CESManager"/> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.CESManager.WebClient">
+            <summary>
+            Gets or sets the web client to execute request and read its response..
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.CESManager.EndpointSourceFactory">
+            <summary>
+            Gets or sets the factory to create the source of the CES endpoints.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.CESManager.Request``1(System.String,System.String,System.Object[])">
+            <summary>
+            Requests the specified resource.
+            </summary>
+            <typeparam name="T">The type of an object that represents the request result.</typeparam>
+            <param name="serviceName">The service name.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The response of the request to the specified resource.</returns>
+        </member>
+        <member name="M:Sitecore.CES.CESManager.DownloadBinaryContent(System.String,System.String,Sitecore.CES.DownladBinaryContentParameters)">
+            <summary>
+            Download the specified resource in binary format.
+            </summary>
+            <param name="serviceName">The service name.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The <see cref="T:Sitecore.CES.DownloadBinaryContentResponse"/></returns>
+        </member>
+        <member name="M:Sitecore.CES.CESManager.CheckSubscription(System.String)">
+            <summary>
+            Determines whether there is a subscription to the specified service.
+            </summary>
+            <param name="serviceName">The service name.</param>
+            <returns><c>true</c> if there is a subscription to the specified service, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Sitecore.CES.CESManager.GetEndpointUri(System.String)">
+            <summary>
+            Gets the endpoint URI for the specified service.
+            </summary>
+            <param name="serviceName">The service name.</param>
+            <returns>The endpoint URI for the specified service.</returns>
+        </member>
+        <member name="T:Sitecore.CES.Client.AuthenticationHeader">
+            <summary>
+            The authentication header wrapper for the Cloud.Nexus.CloudLicense.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Client.AuthenticationHeader.licenseFile">
+            <summary>
+            The license file path.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.Client.AuthenticationHeader.LicenseFile">
+            <summary>
+            Gets or sets the license file.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.Client.AuthenticationHeader.GetAuthenticationHeaderValue">
+            <summary>
+            Gets the authentication header value.
+            </summary>
+            <returns>
+            The  authentication header value<see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.Client.ResourceConnector`1">
+            <summary>
+            Implements logic of requesting a resource.
+            </summary>
+            <typeparam name="T">The type of an object that represents the request result.</typeparam>
+        </member>
+        <member name="F:Sitecore.CES.Client.ResourceConnector`1.WebClient">
+            <summary>
+            Defines logic of executing request and reading its response. 
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Client.ResourceConnector`1.ResponseParser">
+            <summary>
+            Defines logic of parsing resource response into an object.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Client.ResourceConnector`1.ResourcePath">
+            <summary>
+            The resource path.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.Client.ResourceConnector`1.#ctor(Sitecore.CES.Client.WebClient,Sitecore.CES.Client.ResponseParserBase{`0},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.Client.ResourceConnector`1"/> class.
+            </summary>
+            <param name="webClient">The client to execute request and read its response.</param>
+            <param name="responseParser">The parser to parse resource response into an object.</param>
+            <param name="resourcePath">The resource path.</param>
+        </member>
+        <member name="M:Sitecore.CES.Client.ResourceConnector`1.Request(System.String,System.Object[])">
+            <summary>
+            Requests the specified resource.
+            </summary>
+            <param name="endpoint">The endpoint.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The object that represents the request result.</returns>
+        </member>
+        <member name="T:Sitecore.CES.Client.ResponseParserBase`1">
+            <summary>
+            Implements logic of parsing service response into an object.
+            </summary>
+            <typeparam name="T">The type of returned object.</typeparam>
+        </member>
+        <member name="M:Sitecore.CES.Client.ResponseParserBase`1.Parse(System.String)">
+            <summary>
+            Parses the specified service response into an object.
+            </summary>
+            <param name="responseStream">The service response to parse.</param>
+            <returns>The object that represents parsing result.</returns>
+        </member>
+        <member name="T:Sitecore.CES.Client.WebClient">
+            <summary>
+            Implements executing request and reading its response.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Client.WebClient.RequestFactory">
+            <summary>
+            Represents the factory to create a web request.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Client.WebClient.MaxAttempts">
+            <summary>
+            The max count of attempts for executing request.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebClient.#ctor(Sitecore.CES.Client.WebRequestFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.Client.WebClient"/> class.
+            </summary>
+            <param name="requestFactory">The factory to create a web request.</param>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebClient.#ctor(Sitecore.CES.Client.WebRequestFactory,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.Client.WebClient"/> class.
+            </summary>
+            <param name="requestFactory">The factory to create a web request.</param>
+            <param name="maxAttempts">Max attempts of request.</param>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebClient.#ctor(Sitecore.CES.Client.WebRequestFactory,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.Client.WebClient"/> class.
+            </summary>
+            <param name="requestFactory">The factory to create a web request.</param>
+            <param name="maxAttempts">Max attempts of request.</param>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebClient.ExecuteRequest(System.String)">
+            <summary>
+            Executes a request to specified URI.
+            </summary>
+            <param name="requestUri">The URI to request.</param>
+            <returns>The response of the request to specified URI.</returns>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebClient.DownloadBinaryContent(System.String,System.String,Sitecore.CES.DownladBinaryContentParameters)">
+            <summary>
+            Download the specified resource in binary format.
+            </summary>
+            <param name="endpointUri">The endpoint URI.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The response of the request to specified resource.</returns>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebClient.DownloadBinaryContent(System.String,Sitecore.CES.DownladBinaryContentParameters)">
+            <summary>
+            Download the specified resource in binary format.
+            </summary>
+            <param name="requestUri">The resource to download.</param>
+            <param name="parameters">Download paramaters.</param>
+            <returns>The response of the request to specified URI.</returns>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebClient.ExecuteRequest(System.String,System.String,System.Object[])">
+            <summary>
+            Executes a request to specified resource.
+            </summary>
+            <param name="endpointUri">The endpoint URI.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The response of the request to specified resource.</returns>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebClient.ReadResponse(System.Net.WebResponse)">
+            <summary>
+            Reads a value of specified response.
+            </summary>
+            <param name="response">The response to read a value from.</param>
+            <returns><see cref="T:System.String"/> object that represents a value of specified response.</returns>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebClient.ReadBinaryResponse(System.Net.WebResponse)">
+            <summary>
+            Reads a binary value of specified response.
+            </summary>
+            <param name="response">The response to read a value from.</param>
+            <returns>Byte array object that represents a value of specified response.</returns>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebClient.CheckExceptionRetryable(System.Net.WebException)">
+            <summary>
+            Checks by exception status if request could be retried.
+            </summary>
+            <param name="exception">
+            The exception.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebClient.GetConnectionString(System.String,System.String,System.Object[])">
+            <summary>
+            Gets the connection string to request the specified resource.
+            </summary>
+            <param name="endpointUri">The endpoint URI.</param>
+            <param name="resourcePath">The resource path.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>The connection string to request the specified resource.</returns>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebClient.LogKnownError(System.Exception,System.String)">
+            <summary>
+            Log the known Error
+            </summary>
+            <param name="exception"></param>
+            <param name="uri"></param>
+        </member>
+        <member name="T:Sitecore.CES.Client.WebRequestFactory">
+            <summary>
+            Defines a factory to create web request.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Client.WebRequestFactory.authHeader">
+            <summary>
+            The authentication header.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Client.WebRequestFactory.authHeaderValue">
+            <summary>
+            The authentication header value.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.Client.WebRequestFactory.AuthHeaderValue">
+            <summary>
+            Gets the authentication header value.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.Client.WebRequestFactory.AuthHeader">
+            <summary>
+            Gets or sets the authentication header.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.Client.WebRequestFactory.Create(System.String)">
+            <summary>
+            Creates a web request to request specified URI.
+            </summary>
+            <param name="requestUri">
+            The URI to request.
+            </param>
+            <returns>
+            <see cref="T:System.Net.WebRequest"/> object that represents a request to specified URI.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.Configuration.Settings">
+            <summary>
+            Defines the settings of the CES functionality.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.Configuration.Settings.MaxDiscoveryServiceRequestAttempts">
+            <summary>
+            Gets the max attempts to request the CES Discovery service to gain available CES endpoints.
+            </summary>
+            <value>
+            The max attempts to request the CES Discovery service to gain available CES endpoints.
+            </value>
+        </member>
+        <member name="P:Sitecore.CES.Configuration.Settings.ScSApiVersion">
+            <summary>
+            Gets the Sitecore Cloud API version.
+            </summary>
+            <value>
+            The Sitecore Cloud API version.
+            </value>
+        </member>
+        <member name="T:Sitecore.CES.Discovery.DiscoveryDefaults">
+            <summary>
+            Defines the defaults for the discovery functionality implementation.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Discovery.DiscoveryDefaults.instance">
+            <summary>
+            The instance of the object that represents the defaults for the discovery functionality.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Discovery.DiscoveryDefaults.endpointSourceFactory">
+            <summary>
+            The factory to create the source of the CES endpoints.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.Discovery.DiscoveryDefaults.#ctor(Sitecore.CES.Discovery.EndpointSourceFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.Discovery.DiscoveryDefaults"/> class.
+            </summary>
+            <param name="endpointSourceFactory">The factory to create the source of the CES endpoints.</param>
+        </member>
+        <member name="P:Sitecore.CES.Discovery.DiscoveryDefaults.Instance">
+            <summary>
+            Gets or sets the instance of the object that represents the defaults for the discovery functionality.
+            </summary>
+            <value>
+            The instance of the object that represents the defaults for the discovery functionality..
+            </value>
+        </member>
+        <member name="M:Sitecore.CES.Discovery.DiscoveryDefaults.GetEndpointSource">
+            <summary>
+            Gets the source of the CES endpoints.
+            </summary>
+            <returns>The source of the CES endpoints.</returns>
+        </member>
+        <member name="T:Sitecore.CES.Discovery.DiscoveryResponseParser">
+            <summary>
+            Implements logic of parsing discovery service response into <see cref="T:System.Collections.Specialized.StringDictionary"/> object.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.Discovery.DiscoveryResponseParser.Parse(System.String)">
+            <summary>
+            Parses the specified discovery service response into <see cref="T:System.Collections.Specialized.StringDictionary"/> object.
+            </summary>
+            <param name="responseStream">The discovery service response to parse.</param>
+            <returns><see cref="T:System.Collections.Specialized.StringDictionary"/> object that represents parsing result.</returns>
+        </member>
+        <member name="M:Sitecore.CES.Discovery.DiscoveryResponseParser.Load(System.String)">
+            <summary>
+            Loads the specified JSON response into <see cref="T:Newtonsoft.Json.Linq.JObject"/>.
+            </summary>
+            <param name="responseStream">The JSON response to load.</param>
+            <returns><see cref="T:Newtonsoft.Json.Linq.JObject"/> object that represents the specified JSON response.</returns>
+        </member>
+        <member name="M:Sitecore.CES.Discovery.DiscoveryResponseParser.Map(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Maps specified <see cref="T:Newtonsoft.Json.Linq.JObject"/> object to <see cref="T:System.Collections.Specialized.StringDictionary"/> object.
+            </summary>
+            <param name="jsonObject"><see cref="T:Newtonsoft.Json.Linq.JObject"/> object to map.</param>
+            <returns><see cref="T:System.Collections.Specialized.StringDictionary"/> object that represents mapping result.</returns>
+        </member>
+        <member name="T:Sitecore.CES.Discovery.EndpointSource">
+            <summary>
+            Implements the source of the CES endpoints.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Discovery.EndpointSource.DiscoveryEndpoint">
+            <summary>
+            The discovery endpoint.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Discovery.EndpointSource.DiscoveryConnector">
+            <summary>
+            The connector to communicate with the discovery service.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.Discovery.EndpointSource.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Sitecore.CES.Discovery.EndpointSource"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.Discovery.EndpointSource.#ctor(System.String,Sitecore.CES.Client.ResourceConnector{System.Collections.Specialized.StringDictionary})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.Discovery.EndpointSource"/> class.
+            </summary>
+            <param name="discoveryEndpoint">The discovery endpoint.</param>
+            <param name="discoveryConnector">The connector to communicate with the discovery service.</param>
+        </member>
+        <member name="P:Sitecore.CES.Discovery.EndpointSource.EndpointCache">
+            <summary>
+            Gets or sets the cache.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.Discovery.EndpointSource.GetEndpoint(System.String)">
+            <summary>
+            Gets the endpoint for the specified service.
+            </summary>
+            <param name="serviceName">The name that represents the specified service.</param>
+            <returns>The endpoint.</returns>
+        </member>
+        <member name="T:Sitecore.CES.Discovery.EndpointSource.CacheEntry`1">
+            <summary>
+            The cache entry.
+            </summary>
+            <typeparam name="T">The value type.</typeparam>
+        </member>
+        <member name="M:Sitecore.CES.Discovery.EndpointSource.CacheEntry`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.Discovery.EndpointSource.CacheEntry`1"/> class.
+            </summary>
+            <param name="value">
+            The value.
+            </param>
+        </member>
+        <member name="P:Sitecore.CES.Discovery.EndpointSource.CacheEntry`1.Value">
+            <summary>
+            Gets the value.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.Discovery.EndpointSourceFactory">
+            <summary>
+            Implements a factory to create the source of the CES endpoints.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Discovery.EndpointSourceFactory.DiscoveryEndpoint">
+            <summary>
+            The discovery endpoint URI.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.Discovery.EndpointSourceFactory.ResourcePath">
+            <summary>
+            The connection strings resource path of the discovery endpoint.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.Discovery.EndpointSourceFactory.Create">
+            <summary>
+            Creates the source of the CES endpoints.
+            </summary>
+            <returns>
+            The source of the CES endpoints.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.DownladBinaryContentParameters">
+            <summary>
+            The <see cref="T:Sitecore.CES.DownladBinaryContentParameters"/> object.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DownladBinaryContentParameters.Headers">
+            <summary>
+            Gets or sets the header parameters.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DownladBinaryContentParameters.ETag">
+            <summary>
+            Gets or sets the e-tag.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.DownloadBinaryContentResponse">
+            <summary>
+            The <see cref="T:Sitecore.CES.DownloadBinaryContentResponse"/>
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.DownloadBinaryContentResponse.#ctor(System.Byte[],System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DownloadBinaryContentResponse"/> class. 
+            </summary>
+            <param name="rawData">
+            The binary data.
+            </param>
+            <param name="tag">
+            The e Tag.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.DownloadBinaryContentResponse.#ctor(System.Byte[],System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.DownloadBinaryContentResponse"/> class. 
+            </summary>
+            <param name="rawData">
+            The binary data.
+            </param>
+            <param name="tag">
+            The e Tag.
+            </param>
+            <param name="customData">
+            Any custom data retrieved by the service.
+            </param>
+        </member>
+        <member name="P:Sitecore.CES.DownloadBinaryContentResponse.RawData">
+            <summary>
+            Gets resource binary data
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DownloadBinaryContentResponse.CustomData">
+            <summary>
+            Gets cusotm data send by the service.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.DownloadBinaryContentResponse.ETag">
+            <summary>
+            Gets the e-tag.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.Pipelines.ParseResponse.ParseResponseArgs`2">
+            <summary>
+            Defines arguments of the parse response pipelines.
+            </summary>
+            <typeparam name="TResponse">The type of the response object.</typeparam>
+            <typeparam name="TResult">The type of the result object.</typeparam>
+        </member>
+        <member name="F:Sitecore.CES.Pipelines.ParseResponse.ParseResponseArgs`2.ResponseStream">
+            <summary>
+            The response stream.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.Pipelines.ParseResponse.ParseResponseArgs`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.Pipelines.ParseResponse.ParseResponseArgs`2"/> class.
+            </summary>
+            <param name="responseStream">The response stream.</param>
+        </member>
+        <member name="P:Sitecore.CES.Pipelines.ParseResponse.ParseResponseArgs`2.Response">
+            <summary>
+            Gets or sets the response object.
+            </summary>
+            <value>
+            The response object.
+            </value>
+        </member>
+        <member name="P:Sitecore.CES.Pipelines.ParseResponse.ParseResponseArgs`2.Result">
+            <summary>
+            Gets or sets the result object.
+            </summary>
+            <value>
+            The result object.
+            </value>
+        </member>
+        <member name="T:Sitecore.CES.Pipelines.ParseResponse.ReadJsonResponse`1">
+            <summary>
+            Reads the service JSON response to the response object.
+            </summary>
+            <typeparam name="T">The type of the result object.</typeparam>
+        </member>
+        <member name="M:Sitecore.CES.Pipelines.ParseResponse.ReadJsonResponse`1.Process(Sitecore.CES.Pipelines.ParseResponse.ParseResponseArgs{Newtonsoft.Json.Linq.JObject,`0})">
+            <summary>
+            Runs the processor.
+            </summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Sitecore.CES.Pipelines.ParseResponse.ReadJsonResponse`1.Load(System.String)">
+            <summary>
+            Loads the specified JSON response into <see cref="T:Newtonsoft.Json.Linq.JObject"/>.
+            </summary>
+            <param name="responseStream">The JSON response to load.</param>
+            <returns><see cref="T:Newtonsoft.Json.Linq.JObject"/> object that represents the specified JSON response.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,611 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Messaging.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Framework.Messaging.DefaultBus">
+            <summary>
+            Defines the name of the default bus; i.e. the name of an <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> when no
+            name is explicitly provided.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.DeferResult`1">
+            <summary>
+            Defines the outcome of the execution of a <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferStrategy"/>.
+            </summary>
+            <typeparam name="TResult">The result type of the work executed inside the strategy.</typeparam>
+        </member>
+        <member name="P:Sitecore.Framework.Messaging.DeferStrategies.DeferResult`1.Deferred">
+            <summary>
+            Identifies if the work was completed successfully or triggered a message deferal.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.Messaging.DeferStrategies.DeferResult`1.Result">
+            <summary>
+            The result of the work, if completed successfully.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.DeferResult`1.Success(`0)">
+            <summary>
+            Creates a <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferResult`1"/> when the work was completed successfully.
+            </summary>
+            <param name="result">The type of the result of the work executed by the strategy.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.DeferResult`1.Defer">
+            <summary>
+            Creates a <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferResult`1"/> when the work was identified to be defered to a tried again at a later point in time.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategy">
+            <summary>
+            The default <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferStrategy"/> implementation that handles the deferral
+            of a message for handling at a later point in time if the result of some work
+            indicates that is failed.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategy.#ctor(Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate,Sitecore.Framework.Messaging.DeferStrategies.IDeferalScheduler)">
+            <summary>
+            Instantiates a new instance of the default <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferStrategy"/> implementation.
+            </summary>
+            <param name="detection">The <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate"/> to be used to decide if a message should be defered when performing work.</param>
+            <param name="scheduler">The <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferalScheduler"/> to be used to calculate the time period a message should be deferred for.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategyExceededException">
+            <summary>
+            The exception thrown by an <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferStrategy"/> when a message has failed
+            to be handled more times than is permitted by the strategy.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategyExceededException.#ctor(System.String,System.Int32)">
+            <summary>
+            Instantiates a new instance of an <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategyExceededException"/>.
+            </summary>
+            <param name="message">The message describing the error.</param>
+            <param name="noOfDeferals">The number of times the message was deferred before the exception was thrown.</param>
+        </member>
+        <member name="P:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategyExceededException.NoOfDeferals">
+            <summary>
+            The number of times the message was deferred before the exception was thrown.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategy`1">
+            <summary>
+            The default <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategy"/> that uses a particular <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate"/>.
+            </summary>
+            <typeparam name="TDetection">A particular type of <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate"/> used by the <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategy"/>.</typeparam>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategy`1.#ctor(`0,Sitecore.Framework.Messaging.DeferStrategies.IDeferalScheduler)">
+            <summary>
+            Instantiates a new instance of the default <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferStrategy"/> implementation.
+            </summary>
+            <param name="detection">The <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate"/> to be used to decide if a message should be defered when performing work.</param>
+            <param name="scheduler">The <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferalScheduler"/> to be used to calculate the time period a message should be deferred for.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.AlwaysDeferOnError">
+            <summary>
+            Causes a message deferral when any type of <see cref="T:System.Exception"/> is thrown.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.AlwaysDeferOnError`1">
+            <summary>
+            Causes a message deferral when a specified type of <see cref="T:System.Exception"/> is thrown.
+            </summary>
+            <typeparam name="TException">The type of <see cref="T:System.Exception"/> that when thrown, will yield a message deferral.</typeparam>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.DeferDetectionBase">
+            <summary>
+            The base implementation for <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate"/> implementations that don't
+            require strongly typed references to message or result objects.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.DeferDetectionBase`2">
+            <summary>
+            The base implementation for <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate"/> implementations
+            that require a strongly typed reference to the message that is being handled, and
+            a strongly typed reference to the result that is returned by downstream components
+            being used in the work performed by an <see cref="T:Sitecore.Framework.Messaging.IMessageHandler"/> when handling a message.
+            </summary>
+            <typeparam name="TMessage">The type of message that is being handled.</typeparam>
+            <typeparam name="TResult">The type of result returned by downstream components of an <see cref="T:Sitecore.Framework.Messaging.IMessageHandler"/>.</typeparam>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.DeferDetectionByMessageBase`1">
+            <summary>
+            The base implementation for <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate"/> implementations
+            that require a strongly typed reference to the message that is being handled.
+            </summary>
+            <typeparam name="TMessage">The type of message that is being handled.</typeparam>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.DeferDetectionByResultBase`1">
+            <summary>
+            The base implementation for <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate"/> implementations
+            that require a strongly typed reference to the result that is returned by downstream components
+            being used in the work performed by an <see cref="T:Sitecore.Framework.Messaging.IMessageHandler"/> when handling a message.
+            </summary>
+            <typeparam name="TResult">The type of result returned by downstream components of an <see cref="T:Sitecore.Framework.Messaging.IMessageHandler"/>.</typeparam>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.DeferDetectionPredicateHelper">
+            <summary>
+            Defines common logic used among <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate"/> implementations.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.NeverDefer">
+            <summary>
+            An <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate"/> implementation that will never indicate a message
+            should be deferred for later delivery.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferalScheduler">
+            <summary>
+            Defines an algorithm for calculating the time to defer the handling of a message based on the number
+            of times the message is being deferred.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.IDeferalScheduler.ScheduleNext(System.Int32)">
+            <summary>
+            Calcuates the time to defer the handling of a message according to how many times
+            the message is deferred.
+            </summary>
+            <param name="deferralCount">The number of times the message is about to be deferred for.</param>
+            <returns>A positive timespan if the message is to be handled again, otherwise default(TimeSpan).</returns>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate">
+            <summary>
+            Defines the detection of a state that indicates a workload should be executed
+            again at a later point in time.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate.ShouldDefer``2(``0,System.Func{``1})">
+            <summary>
+            Decides if the synchronous work, when executed, indicates that it should
+            be executed again at a later point in time.
+            </summary>
+            <typeparam name="TResult">The type of result the work returns.</typeparam>
+            <typeparam name="TMessage"></typeparam>
+            <param name="message">The message for which the work is being undertaken.</param>
+            <param name="work">The work to be executed.</param>
+            <returns>True if the work should be executed again at a later point in time.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate.ShouldDeferAsync``2(``0,System.Func{System.Threading.Tasks.Task{``1}})">
+            <summary>
+            Decides if the asynchronous work, when executed, indicates that it should
+            be executed again at a later point in time.
+            </summary>
+            <typeparam name="TResult">The type of result the work returns.</typeparam>
+            <typeparam name="TMessage"></typeparam>
+            <param name="message">The message for which the work is being undertaken.</param>
+            <param name="work">The work to be executed.</param>
+            <returns>True if the work should be executed again at a later point in time.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferStrategy">
+            <summary>
+            Defines a strategy that will defer the handling of a message to a later point in time.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.IDeferStrategy.ExecuteAsync``2(Sitecore.Framework.Messaging.IMessageBus,``0,Sitecore.Framework.Messaging.IMessageReceiveContext,System.Func{``1})">
+            <summary>
+            Executes synchronous work within a strategy that will defer the message
+            if the work encounters a state that indicates the message handling should be
+            retried at a later time.
+            </summary>
+            <typeparam name="TMessage">The type of the message being handled.</typeparam>
+            <typeparam name="TResult">The type of the result of the work being performed.</typeparam>
+            <param name="bus">The current bus that is receiving the message.</param>
+            <param name="message">The message being handled.</param>
+            <param name="receiveContext">The receive context of the current message.</param>
+            <param name="work">The work to be performed according to the strategy.</param>
+            <returns>A result indicating if the work completed successfully or a deferral state was detected.
+            If an unexpected error occured, the underlying exception will be thrown.  If a deferral state
+            was detected, but the number of delivery attempts exceeds the permitted amount, a <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategyExceededException"/>
+            is thrown.</returns>
+            <exception cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategyExceededException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.IDeferStrategy.ExecuteAsync``2(Sitecore.Framework.Messaging.IMessageBus,``0,Sitecore.Framework.Messaging.IMessageReceiveContext,System.Func{System.Threading.Tasks.Task{``1}})">
+            <summary>
+            Executes asynchronous work within a strategy that will defer the message
+            if the work encounters a state that indicates the message handling should be
+            retried at a later time.
+            </summary>
+            <typeparam name="TMessage">The type of the message being handled.</typeparam>
+            <typeparam name="TResult">The type of the result of the work being performed.</typeparam>
+            <param name="bus">The current bus that is receiving the message.</param>
+            <param name="message">The message being handled.</param>
+            <param name="receiveContext">The receive context of the current message.</param>
+            <param name="work">The work to be performed according to the strategy.</param>
+            <returns>A result indicating if the work completed successfully or a deferral state was detected.
+            If an unexpected error occured, the underlying exception will be thrown.  If a deferral state
+            was detected, but the number of delivery attempts exceeds the permitted amount, a <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategyExceededException"/>
+            is thrown.</returns>
+            <exception cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategyExceededException"></exception>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferStrategy`1">
+            <summary>
+            A marker interface to enable the identification of a <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferStrategy"/> that 
+            uses a particular <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate"/>.
+            </summary>
+            <typeparam name="TDetection">The type of <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferDetectionPredicate"/> used by a <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferStrategy"/>.</typeparam>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.CustomDeferalScheduler">
+            <summary>
+            A message will be deferred according to a predetermined list of time periods.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.CustomDeferalScheduler.#ctor(System.TimeSpan[])">
+            <summary>
+            Instantiates a new instance of <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.CustomDeferalScheduler"/>.
+            </summary>
+            <param name="deferPeriods">The time periods that define the defer periods for a message.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.ExponentialDeferalScheduler">
+            <summary>
+            A message will be deferred by a period that increases incrementally each time, up to 
+            a maximum number of times.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.ExponentialDeferalScheduler.#ctor(System.Int32,System.TimeSpan,System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Instantiates a new instance of <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.ExponentialDeferalScheduler"/>.
+            </summary>
+            <param name="maxDeferalAttempts">The maximum number of times a message will be deferred.</param>
+            <param name="minBackoff">The minimum deferral time.</param>
+            <param name="maxBackoff">The maximum deferral time.</param>
+            <param name="deltaBackoff">The value that will be used to calculate a random delta in the exponential deferral between message handling attempts.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.FixedDeferalScheduler">
+            <summary>
+            A message will be deferred by a fixed period each time, up to a maximum
+            number of times.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.FixedDeferalScheduler.#ctor(System.Int32,System.TimeSpan)">
+            <summary>
+            Instantiates a new instance of <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.FixedDeferalScheduler"/>.
+            </summary>
+            <param name="maxDeferalAttempts">The maximum number of times a message will be deferred.</param>
+            <param name="deferPeriod">The time period that a message will be deferred by each time.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.IncrementalDeferalScheduler">
+            <summary>
+            A message will be deferred for a constantly increasing period each time, up to 
+            a maximum number of times.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.DeferStrategies.IncrementalDeferalScheduler.#ctor(System.Int32,System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Instantiates a new instance of <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IncrementalDeferalScheduler"/>.
+            </summary>
+            <param name="maxDeferalAttempts">The maximum number of times a message will be deferred.</param>
+            <param name="initialDeferPeriod">The time period a message will be deferred after the first delivery attempt.</param>
+            <param name="deferPeriodIncrement">The amount by which the defer period is increased each time a message is deferred.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.DeferStrategies.NoDeferalScheduler">
+            <summary>
+            A message will never be deferred.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.IConcreteBusOwner`1">
+            <summary>
+            Defines the ownership of a concrete bus implementation type.
+            </summary>
+            <typeparam name="TBus">The type of an underlying message bus implementation.</typeparam>
+        </member>
+        <member name="P:Sitecore.Framework.Messaging.IConcreteBusOwner`1.InnerBus">
+            <summary>
+            The concrete bus implementation.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.IMessageBus">
+            <summary>
+            Defines the message bus API used to send and publish messages, and subscribe and unsubscribe
+            from publishers.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBus.Send(System.Object,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Sends a message on the bus with optional header values.
+            </summary>
+            <param name="commandMessage">The message to send.</param>
+            <param name="headers">Optional custom header values to send with the message.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBus.SendAsync(System.Object,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Sends a message asynchronously on the bus with optional header values.
+            </summary>
+            <param name="commandMessage">The message to send.</param>
+            <param name="headers">Optional custom header values to send with the message.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBus.Defer(System.TimeSpan,System.Object,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Sends a message on the bus, specifying that it will not be made available to consumers
+            untill a specified time delay has elapsed.
+            </summary>
+            <param name="delay">The time period after which the message will be available to consumers.</param>
+            <param name="message">The message to send.</param>
+            <param name="headers">Optional custom header values to send with the message.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBus.DeferAsync(System.TimeSpan,System.Object,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Sends a message asynchronously on the bus, specifying that it will not be made available to consumers
+            untill a specified time delay has elapsed.
+            </summary>
+            <param name="delay">The time period after which the message will be available to consumers.</param>
+            <param name="message">The message to send.</param>
+            <param name="headers">Optional custom header values to send with the message.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBus.Subscribe(System.Type)">
+            <summary>
+            Subscribes the current bus to messages of the specified type produced elsewhere.  Configuration
+            will specify where the publisher is located.
+            </summary>
+            <param name="eventType">The message type to subscribe to.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBus.SubscribeAsync(System.Type)">
+            <summary>
+            Subscribes the current bus asynchronously to messages of the specified type produced elsewhere.
+            Configuration will specify where the pbulsiher is located.
+            </summary>
+            <param name="eventType">The message type to subscribe to.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBus.Unsubscribe(System.Type)">
+            <summary>
+            Unsubscribes the current bus to messages of the specified type produced elsehwere.  Configuration
+            will specify where the publisher is located.
+            </summary>
+            <param name="eventType">The message type to unsubscribe from.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBus.UnsubscribeAsync(System.Type)">
+            <summary>
+            Unsubscribes the current bus asynchronously to messages of the specified type produced elsewhere.
+            Configuration will speicfy where the publisher is located.
+            </summary>
+            <param name="eventType">The message type to unsubscribe from.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBus.Publish(System.Object,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Publishes the specified message with optional headers values to all current subscribers.
+            </summary>
+            <param name="eventMessage">The message to send to each subscriber.</param>
+            <param name="headers">Optional header values to send with the message.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBus.PublishAsync(System.Object,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Publishes asynchronously the specified message with optional header values to all current subscribers.
+            </summary>
+            <param name="eventMessage">The message to send to each subscriber.</param>
+            <param name="headers">Optional header values to send with the message.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.IMessageBus`1">
+            <summary>
+            Defines a mechanism to request a named <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> from a container where 
+            the name of the bus can be derived from a <see cref="T:System.Type"/>.
+            </summary>
+            <typeparam name="TBusName">The <see cref="T:System.Type"/> that defines the name of a <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>.</typeparam>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.IMessageBusRegistry">
+            <summary>
+            Defines the registry that holds all the named <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> instances that have been configured.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.Messaging.IMessageBusRegistry.BusNames">
+            <summary>
+            Gets all the names of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>'s that have been registered.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBusRegistry.IsRegistered(System.String)">
+            <summary>
+            Determines if the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> with the specified name exists.
+            </summary>
+            <param name="busName">The name of the bus to find.</param>
+            <returns>True if a bus exists, false otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBusRegistry.IsStarted(System.String)">
+            <summary>
+            Determines if the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> with the specified name has been started.
+            </summary>
+            <param name="busName">The name of the bus to start.</param>
+            <returns>True if the bus is started, false otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBusRegistry.Get(System.String)">
+            <summary>
+            Gets the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> that is registered with the specified name.
+            </summary>
+            <param name="busName">The name of the bus to return.</param>
+            <returns>The <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> instance registered for the supplied name.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageBusRegistry.EnsureIsStarted(System.String)">
+            <summary>
+            Ensures the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> with the specified name is started, and starts the bus
+            if needed.
+            </summary>
+            <param name="busName">The name of the bus to check.</param>
+            <returns>The <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> instance registered for the supplied name.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.IMessageHandler">
+            <summary>
+            Defines a non-generically typed mechanism for identifying a <see cref="T:Sitecore.Framework.Messaging.IMessageHandler`1"/> implementation.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.IMessageHandler`1">
+            <summary>
+            Defines a message handler for a given message type.  <see cref="T:Sitecore.Framework.Messaging.IMessageHandler`1"/>s can 
+            optionally implement <see cref="T:System.IDisposable"/>, which will be called when Handle()
+            has been called (also consider registering the handler as Transient in the container).
+            </summary>
+            <typeparam name="T">The type of message that can be handled.</typeparam>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageHandler`1.Handle(`0,Sitecore.Framework.Messaging.IMessageReceiveContext,Sitecore.Framework.Messaging.IMessageReplyContext)">
+            <summary>
+            Handles a single message.  Returns without error if the message was processed successfully,
+            otherwise an exception should be thrown.
+            </summary>
+            <param name="message">The message to be handled.</param>
+            <param name="receiveContext">The context of the receiving of the message.</param>
+            <param name="replyContext">If appropriate, the context to facilitate replying to the message.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.IMessageReceiveContext">
+            <summary>
+            Defines the data available when a <see cref="T:Sitecore.Framework.Messaging.IMessageHandler`1"/> handles a message.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.Messaging.IMessageReceiveContext.Id">
+            <summary>
+            The unique identifier of the message.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.Messaging.IMessageReceiveContext.Headers">
+            <summary>
+            The key-value headers for the message.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.Messaging.IMessageReceiveContext.SentTime">
+            <summary>
+            The timestamp when the message was sent.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.IMessageReplyContext">
+            <summary>
+            Defines the context of replying to message that is currently being handled by a <see cref="T:Sitecore.Framework.Messaging.IMessageHandler`1"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.IMessageReplyContext.ReplyAsync(System.Object,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Sends a specified message in response to receiving a message.  The reply message is sent 
+            to the address supplied along with the original message.
+            </summary>
+            <param name="replyMessage">The message to send in response to a received message.</param>
+            <param name="headers">Optional header values to include with the message.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusExtensions.Subscribe``1(Sitecore.Framework.Messaging.IMessageBus)">
+            <summary>
+            Subscribes the current bus to messages of the specified type produced elsewhere.  Configuration
+            will specify where the publisher is located.
+            </summary>
+            <typeparam name="TEvent">The message type to subscribe to.</typeparam>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusExtensions.SubscribeAsync``1(Sitecore.Framework.Messaging.IMessageBus)">
+            <summary>
+            Subscribes the current bus asynchronously to messages of the specified type produced elsewhere.
+            Configuration will specify where the pbulsiher is located.
+            </summary>
+            <typeparam name="TEvent">The message type to subscribe to.</typeparam>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusExtensions.Unsubscribe``1(Sitecore.Framework.Messaging.IMessageBus)">
+            <summary>
+            Unsubscribes the current bus to messages of the specified type produced elsehwere.  Configuration
+            will specify where the publisher is located.
+            </summary>
+            <typeparam name="TEvent">The message type to unsubscribe from.</typeparam>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusExtensions.UnsubscribeAsync``1(Sitecore.Framework.Messaging.IMessageBus)">
+            <summary>
+            Unsubscribes the current bus asynchronously to messages of the specified type produced elsewhere.
+            Configuration will speicfy where the publisher is located.
+            </summary>
+            <typeparam name="TEvent">The message type to unsubscribe from.</typeparam>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.MessageBusNameHelper">
+            <summary>
+            Defines methods to generate bus names.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusNameHelper.GenerateName``1">
+            <summary>
+            Generates bus names from a <see cref="T:System.Type"/>.
+            </summary>
+            <typeparam name="TName">The type from which to generate the bus name.</typeparam>
+            <returns>The bus name derived from the supplied type.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusNameHelper.GenerateName(System.Type)">
+            <summary>
+            Generates bus names from a <see cref="T:System.Type"/>.
+            </summary>
+            <param name="tName">The type from which to generate the bus name.</param>
+            <returns>The bus name derived from the supplied type.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusRegistryExtensions.GetBus``1(Sitecore.Framework.Messaging.IMessageBusRegistry)">
+            <summary>
+            Gets the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> registered with the specified name derived from the <typeparamref name="TBusName"/>.
+            </summary>
+            <typeparam name="TBusName">The type that yields the name of the bus.</typeparam>
+            <param name="registry">The message bus registry.</param>
+            <returns>The <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> registerd for the given name, or throws if no bus exists.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusRegistryExtensions.GetBus(Sitecore.Framework.Messaging.IMessageBusRegistry)">
+            <summary>
+            Gets the default <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> registered.
+            </summary>
+            <param name="registry">The message bus registry.</param>
+            <returns>The default <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> registerd or throws if no bus exists.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusRegistryExtensions.EnsureBusStarted``1(Sitecore.Framework.Messaging.IMessageBusRegistry)">
+            <summary>
+            Ensures that the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> registered with the specified name has been started.
+            </summary>
+            <typeparam name="TBusName">The type that yields the name of the bus.</typeparam>
+            <param name="registry">The message bus registry.</param>
+            <returns>The <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> registerd for the given name, or throws if no bus exists.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusRegistryExtensions.EnsureBusStarted(Sitecore.Framework.Messaging.IMessageBusRegistry)">
+            <summary>
+            Ensures that the default <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> registered has been started.
+            </summary>
+            <param name="registry">The message bus registry.</param>
+            <returns>The default <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> registerd, or throws if default bus isn't registered exists.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusRegistryExtensions.GetConcreteBus``2(Sitecore.Framework.Messaging.IMessageBusRegistry)">
+            <summary>
+            Extracts the underlying concrete bus implementation from the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> with the specified name.
+            </summary>
+            <typeparam name="TBusName">The type that yields the name of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> that encapsulates the concrete bus.</typeparam>
+            <typeparam name="TConcreteBus">The type of concrete bus that is expected to be found.</typeparam>
+            <param name="registry">The message bus registry.</param>
+            <returns>The concrete bus contained within the message bus.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusRegistryExtensions.GetConcreteBus``1(Sitecore.Framework.Messaging.IMessageBusRegistry)">
+            <summary>
+            Extracts the underlying concrete bus implementation from the default <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>.
+            </summary>
+            <typeparam name="TConcreteBus">The type of concrete bus that is expected to be found.</typeparam>
+            <param name="registry">The message bus registry.</param>
+            <returns>The concrete bus contained within the message bus.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusRegistryExtensions.GetConcreteBus``1(Sitecore.Framework.Messaging.IMessageBusRegistry,System.String)">
+            <summary>
+            Extracts the underlying concrete bus implementation from the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> with the specified name.
+            </summary>
+            <typeparam name="TConcreteBus">The type of concrete bus that is expected to be found.</typeparam>
+            <param name="registry">The message bus registry.</param>
+            <param name="busName">The name of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> that encapsulates the concrete bus.</param>
+            <returns>The concrete bus contained within the message bus.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageBusRegistryExtensions.TryGetConcreteBus``1(Sitecore.Framework.Messaging.IMessageBusRegistry,System.String,``0@)">
+            <summary>
+            Extracts the underlying concrete bus implementation from the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> with the specified name if
+            the underlying bus is of the specified type.
+            </summary>
+            <typeparam name="TConcreteBus">The type of concrete bus that is expected to be found.</typeparam>
+            <param name="registry">The message bus registry.</param>
+            <param name="busName">The name of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> that encapsulates the concrete bus.</param>
+            <param name="concreteBus">The concrete bus instance if present.</param>
+            <returns>True if the message bus exists with the specified name, and the concrete bus of the expected type was contained within the message bus, false otherwise.</returns>
+        </member>
+    </members>
+</doc>

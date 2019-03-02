@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Processing.Tasks.Messaging.Xmgmt</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Processing.Tasks.Messaging.Xmgmt.RebusConfigurator">
+            <summary>
+            Configurator that is used to configure <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> with Rebus message buses.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.Xmgmt.RebusConfigurator.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <inheritdoc />
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="serviceCollection"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Messaging.Xmgmt.TaskManagerConfigurator">
+            <summary>
+            Configurator that is used to configure <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> with <see cref="T:Sitecore.Processing.Tasks.Messaging.TaskManager"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Tasks.Messaging.Xmgmt.TaskManagerConfigurator.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <inheritdoc />
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="serviceCollection"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="T:Sitecore.Processing.Tasks.Messaging.Xmgmt.XdbSettings">
+            <summary>
+            Experience database settings.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Messaging.Xmgmt.XdbSettings.Enabled">
+            <summary>
+            Gets a value indicating whether the xDB is enabled.
+            </summary>
+            <value>
+              <c>true</c> if xDB license is valid and xDB is enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Tasks.Messaging.Xmgmt.XdbSettings.HasValidLicense">
+            <summary>
+            Gets a value indicating whether the license is valid.
+            </summary>
+            <value>
+            <c>true</c> if the license is valid; otherwise, <c>false</c>.
+            </value>
+        </member>
+    </members>
+</doc>

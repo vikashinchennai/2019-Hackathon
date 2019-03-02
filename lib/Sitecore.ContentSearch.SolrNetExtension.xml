@@ -1,0 +1,584 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.ContentSearch.SolrNetExtension</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.ClusterState">
+            <summary>
+            Cluster state
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Cloud.ClusterState.#ctor(System.Collections.Generic.IDictionary{System.String,Sitecore.ContentSearch.SolrNetExtension.Cloud.Collection})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.ClusterState"/> class.
+            </summary>
+            <param name="collections"><see cref="T:System.Collections.Generic.IDictionary`2"/> represents the list of Solr collections</param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.Cloud.ClusterState.Collections">
+            <summary>
+            <see cref="T:System.Collections.Generic.IDictionary`2"/> of collections in Solr cluster
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.ClusterStateProviders.SolrNodeClusterStateProvider">
+            <summary>
+            An <see cref="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.IClusterStateProvider"/> implementation that reads cluster info directly from Solr node
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Cloud.ClusterStateProviders.SolrNodeClusterStateProvider.#ctor(SolrNet.ISolrConnection,Sitecore.ContentSearch.SolrNetExtension.Cloud.IClusterStateParser)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.ClusterStateProviders.SolrNodeClusterStateProvider"/> class.
+            </summary>
+            <param name="connection">Solr node connection</param>
+            <param name="parser">Cluster state response parser</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Cloud.ClusterStateProviders.SolrNodeClusterStateProvider.GetClusterState(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Get cluster state
+            </summary>
+            <param name="collectionName">Name of collection</param>
+            <param name="paramaters">Extra solr paramaters</param>
+            <returns><see cref="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.ClusterState"/> represents Solr cluster state</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.Collection">
+            <summary>
+            Solr collection
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.IClusterStateParser">
+            <summary>
+            Solr cluster state response parser
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Cloud.IClusterStateParser.Parse(System.String)">
+            <summary>
+            Parse solr cluster state response
+            </summary>
+            <param name="solrResponse">Solr response</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.IClusterStateProvider">
+            <summary>
+            Provides Solr cluster state
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Cloud.IClusterStateProvider.GetClusterState(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Get cluster state
+            </summary>
+            <param name="collectionName">Solr collection name</param>
+            <param name="paramaters">Solr paramaters</param>
+            <returns>Cluster state</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.IReplicaStatusProvider">
+            <summary>
+            Provides information about the SolrCore of the given <see cref="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.Replica"/>
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Cloud.IReplicaStatusProvider.GetReplicaStatus(Sitecore.ContentSearch.SolrNetExtension.Cloud.Replica)">
+            <summary>
+            Gets the SolrCore of the given replica
+            </summary>
+            <param name="replica">The replica</param>
+            <returns>The underline SolrCore</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.JsonClusterStateParser">
+            <summary>
+            Parse Json formatted Solr cluster state command response
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Cloud.JsonClusterStateParser.Parse(System.String)">
+            <summary>
+            Transform the given Json formatted response returned by solr into <see cref="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.ClusterState"/> object
+            </summary>
+            <param name="response"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.Replica">
+            <summary>
+            Solr replica
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.Router">
+            <summary>
+            The router used by solr to route the document into shards
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.Shard">
+            <summary>
+            Solr shard
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Commands.SchemaCommand">
+            <summary>
+            Defines Managed Schema API Command to Solr
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.Commands.SchemaCommand.Elements">
+            <summary>
+            List of Node element representing the solr add-field, delete-field, add-dynamic-field, delete-dynamic-field,
+            add-copy-field, delete-copy-field command send to Solr to managed the solr managed schema
+            Example of single XElement format: <add-field><name>_name</name><type>string</type><stored>true</stored></add-field>
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Commands.SchemaCommand.#ctor(System.Collections.Generic.List{System.Xml.Linq.XElement})">
+            <summary>
+            Constructor to create SchemaCommand
+            </summary>
+            <param name="elements"></param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Commands.SchemaCommand.Execute(SolrNet.ISolrConnection)">
+            <summary>
+            Execute the command by posting to Solr
+            </summary>
+            <param name="connection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Commands.SchemaCommand.Serialize">
+            <summary>
+            Serialize insert/update/delete field command to json string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.DefaultQuerySerializerEx">
+            <summary>
+            Sitecore customized Solr Query Serializer
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.DefaultQuerySerializerEx.#ctor(SolrNet.Impl.ISolrFieldSerializer)">
+            <summary>
+            constructor for serilizer
+            </summary>
+            <param name="fieldSerializer">FieldSerializer</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.DefaultQuerySerializerEx.CanHandleType(System.Type)">
+            <summary>
+            Can handle Type
+            </summary>
+            <param name="t">Type</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.DefaultQuerySerializerEx.Serialize(System.Object)">
+            <summary>
+            Serialize the Query
+            </summary>
+            <param name="q">Query</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrSuggestHandlerResultsParser">
+            <summary>
+            Parse solr suggest handler query reslut.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrSuggestHandlerResultsParser.#ctor(SolrNet.Impl.ISolrHeaderResponseParser)">
+            <summary>
+            Instantiate an object of <see cref="T:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrSuggestHandlerResultsParser"/>
+            </summary>
+            <param name="solrHeaderResponseParser">The response header parser</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrSuggestHandlerResultsParser.Parse(System.Xml.Linq.XDocument)">
+            <summary>
+            Parse solr result
+            </summary>
+            <param name="xml">Xml result received from solr call</param>
+            <returns><see cref="T:Sitecore.ContentSearch.SolrNetExtension.SolrSuggestHandlerQueryResults"/> that represents the query result</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Impl.ResponseParsers.SpellCheckResponseParserEx`1">
+            <summary>
+            Parse to parse solr raw xml response to extract spell check data
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.ResponseParsers.SpellCheckResponseParserEx`1.Parse(System.Xml.Linq.XDocument,SolrNet.Impl.AbstractSolrQueryResults{`0})">
+            <summary>
+            Parse xml to result
+            </summary>
+            <param name="xml">raw solr result in xml</param>
+            <param name="results">parsed solr result</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.ResponseParsers.SpellCheckResponseParserEx`1.Parse(System.Xml.Linq.XDocument,SolrNet.SolrQueryResults{`0})">
+            <summary>
+            Parse xml to solrqueryresult
+            </summary>
+            <param name="xml">raw solr result in xml</param>
+            <param name="results">parseed solr result</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrBasicServerEx`1">
+            <summary>
+            Defines the SolrBasicServerEx type to override SolrBasicServer to provide additional functionality.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrBasicServerEx`1.#ctor(SolrNet.ISolrConnection,Sitecore.ContentSearch.SolrNetExtension.ISolrQueryExecuterEx{`0},SolrNet.ISolrDocumentSerializer{`0},SolrNet.Schema.ISolrSchemaParser,SolrNet.Impl.ISolrHeaderResponseParser,SolrNet.Impl.ISolrQuerySerializer,SolrNet.Impl.ISolrDIHStatusParser,SolrNet.Impl.ISolrExtractResponseParser)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="connection"></param>
+            <param name="queryExecuter"></param>
+            <param name="documentSerializer"></param>
+            <param name="schemaParser"></param>
+            <param name="headerParser"></param>
+            <param name="querySerializer"></param>
+            <param name="dihStatusParser"></param>
+            <param name="extractResponseParser"></param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrBasicServerEx`1.SpellCheck(SolrNet.ISolrQuery,Sitecore.ContentSearch.SolrNetExtension.SpellCheckHandlerQueryOptions)">
+            <summary>
+            Get SolrQueryResults with spellcheck suggestion return
+            </summary>
+            <param name="query"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrBasicServerEx`1.UpdateSchema(System.Collections.Generic.List{System.Xml.Linq.XElement})">
+            <summary>
+            Update solr schema with solr schema api
+            </summary>
+            <param name="elements"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrConnectionEx">
+            <inheritdoc cref="T:SolrNet.Impl.SolrConnection"/> 
+            <inheritdoc cref="T:Sitecore.ContentSearch.SolrNetExtension.ISolrConnectionEx"/> 
+            <summary>
+            Manages HTTP connection with Solr.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrQueryExecuterEx`1">
+            <summary>
+            Defines the SolrQueryExecuterEx type to override SolrQueryExecuter to provide additional functionality.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrQueryExecuterEx`1.#ctor(SolrNet.Impl.ISolrAbstractResponseParser{`0},SolrNet.ISolrConnection,SolrNet.Impl.ISolrQuerySerializer,SolrNet.Impl.ISolrFacetQuerySerializer,SolrNet.Impl.ISolrMoreLikeThisHandlerQueryResultsParser{`0},Sitecore.ContentSearch.SolrNetExtension.ISolrSuggestHandlerResultsParser,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="resultParser"></param>
+            <param name="connection"></param>
+            <param name="querySerializer"></param>
+            <param name="facetQuerySerializer"></param>
+            <param name="mlthResultParser"></param>
+            <param name="suggestHandlerResultsParser"></param>
+            <param name="spellCheckHandler"></param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrQueryExecuterEx`1.Execute(SolrNet.ISolrQuery,Sitecore.ContentSearch.SolrNetExtension.SpellCheckHandlerQueryOptions)">
+            <summary>
+            Get SqolRqueryResults with Spell check suggestion data
+            </summary>
+            <param name="query"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrServerEx`1">
+            <summary>
+            Defines the SolrServerEx type to override SolrServer to provide additional functionality.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrServerEx`1.#ctor(Sitecore.ContentSearch.SolrNetExtension.ISolrBasicOperationsEx{`0},SolrNet.IReadOnlyMappingManager,SolrNet.Mapping.Validation.IMappingValidator)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="basicServer"></param>
+            <param name="mappingManager"></param>
+            <param name="_schemaMappingValidator"></param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrServerEx`1.SpellCheck(SolrNet.ISolrQuery,Sitecore.ContentSearch.SolrNetExtension.SpellCheckHandlerQueryOptions)">
+            <summary>
+            Get SolrQueryResults with SPellCheck
+            </summary>
+            <param name="query"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrServerEx`1.Suggest(Sitecore.ContentSearch.SolrNetExtension.SolrSuggestQuery,Sitecore.ContentSearch.SolrNetExtension.SuggestHandlerQueryOptions)">
+            <summary>
+            Call Solr to retrieve sugestion
+            </summary>
+            <param name="query"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Impl.SolrServerEx`1.UpdateSchema(System.Collections.Generic.List{System.Xml.Linq.XElement})">
+            <summary>
+            Update solr schema with managed schema api
+            </summary>
+            <param name="elements"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.ISolrBasicOperationsEx`1">
+            <summary>
+            Defines contract ISolrBasicOperationsEx 
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.ISolrConnectionEx">
+            <inheritdoc />
+            <summary>
+            Extention for <see cref="T:SolrNet.ISolrConnection"/> that exposes the ServerUrl property publicly.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.ISolrConnectionEx.ServerURL">
+            <summary>
+            URL to Solr
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.ISolrOperationsEx`1">
+            <summary>
+            Defines contract ISolrOperationsEx
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.ISolrQueryExecuterEx`1">
+            <summary>
+            Defines contract ISolrQueryExecuterEx 
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.ISolrQueryExecuterEx`1.Execute(SolrNet.ISolrQuery,Sitecore.ContentSearch.SolrNetExtension.SpellCheckHandlerQueryOptions)">
+            <summary>
+            Execute solr query to get spell check suggestion
+            </summary>
+            <param name="query"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.ISolrSchemaProvider">
+            <summary>
+            Defines a contract for Getting and Updating Solr schema through managed schema api.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.ISolrSchemaProvider.GetManagedSchema">
+            <summary>
+            Get Solr Schema
+            </summary>
+            <param name="collection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.ISolrSchemaProvider.UpdateSchema(System.Collections.Generic.List{System.Xml.Linq.XElement})">
+            <summary>
+            Update Solr schema with schema api
+            </summary>
+            <param name="elements"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.ISolrSpellCheckProvider`1">
+            <summary>
+            Defines contract of ISolrSpellCheckProvider
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.ISolrSpellCheckProvider`1.SpellCheck(SolrNet.ISolrQuery,Sitecore.ContentSearch.SolrNetExtension.SpellCheckHandlerQueryOptions)">
+            <summary>
+            query solr to get spell check suggestion 
+            </summary>
+            <param name="query"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.ISolrSuggestHandlerResultsParser">
+            <summary>
+            Results parser for suggest handler query
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.ISolrSuggestHandlerResultsParser.Parse(System.Xml.Linq.XDocument)">
+            <summary>
+            Parse suggest handler response
+            </summary>
+            <param name="xml">solr response</param>
+            <returns>query results</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Queries.SolrProximityQueryByField">
+            <summary>
+            Supporting Solr Proximity Search
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Queries.SolrProximityQueryByField.#ctor(System.String,System.String,System.Single)">
+            <summary>
+            Solr Poximity Query By Field
+            </summary>
+            <param name="fieldName"></param>
+            <param name="fieldValue"></param>
+            <param name="proximity"></param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.Queries.SolrProximityQueryByField.Proximity">
+            <summary>
+            Proximity
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Schema.SolrManagedSchemaParser">
+            <summary>
+            Defines Solr Managed Schema Result Parser
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Schema.SolrManagedSchemaParser.Parse(System.Xml.Linq.XDocument)">
+            <summary>
+            Parse the solr rest API result back to SolrSchema
+            </summary>
+            <param name="solrSchemaXml"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.Serializers.ProximityQueryByFieldSerializer">
+            <summary>
+            Proximity QueryByField Serializer
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Serializers.ProximityQueryByFieldSerializer.Serialize(Sitecore.ContentSearch.SolrNetExtension.Queries.SolrProximityQueryByField)">
+            <summary>
+            Serialize the Query field
+            </summary>
+            <param name="q">SolrProximityQueryByField</param>
+            <returns>query</returns>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrNetExtension.Serializers.ProximityQueryByFieldSerializer.SpecialCharactersRx">
+            <summary>
+            Imported from QueryByFieldSerialer
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Serializers.ProximityQueryByFieldSerializer.EscapeSpaces(System.String)">
+            <summary>
+            Imported from QueryByFieldSerialer for escaping the Spaces from the value field
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.Serializers.ProximityQueryByFieldSerializer.Quote(System.String)">
+            <summary>
+            adding the quote to the value
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.SolrSuggestHandlerQueryResults">
+            <summary>
+            Represents solr suggest handler query results
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SolrSuggestHandlerQueryResults.ResponseHeader">
+            <summary>
+            Used to parse query header
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SolrSuggestHandlerQueryResults.Suggestions">
+            <summary>
+            <see cref="T:System.Collections.Generic.KeyValuePair`2"/> Represents the suggestion per dictionary.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.SolrSuggestQuery">
+            <summary>
+            Suggest query
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SolrSuggestQuery.Query">
+            <summary>
+            Query string
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrNetExtension.SolrSuggestQuery.#ctor(System.String)">
+            <summary>
+            Creates new instance of <see cref="T:Sitecore.ContentSearch.SolrNetExtension.SolrSuggestQuery"/>
+            </summary>
+            <param name="query">query string</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.SpellCheckHandlerQueryOptions">
+            <summary>
+            Defines class that hold spellcheck query options when querying spellchek in solr
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.SuggestHandlerQueryOptions">
+            <summary>
+            Suggest query options
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestHandlerQueryOptions.Parameters">
+            <summary>
+            Suggest query paramaters
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.SuggestParameters">
+            <summary>
+            Suggest paramaters
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestParameters.Query">
+            <summary>
+            The query to use for suggestion lookups
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestParameters.ContextFilterQuery">
+            <summary>
+            Specifies the Context Filter Query used to filter suggestions based on the context field, if supported by the suggester.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestParameters.Dictionary">
+            <summary>
+            If true, it will reload all suggester indexes.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestParameters.Count">
+            <summary>
+            Specifies the number of suggestions for Solr to return
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestParameters.Build">
+            <summary>
+            If true, it will build the suggester index. 
+            This is likely useful only for initial requests; you would probably not want to build the dictionary on every request, particularly in a production system. 
+            If you would like to keep your dictionary up to date, you should use the buildOnCommit or buildOnOptimize parameter for the search component.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestParameters.Reload">
+            <summary>
+            If true, it will reload the suggester index.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestParameters.BuildAll">
+            <summary>
+            If true, it will build all suggester indexes.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestParameters.ReloadAll">
+            <summary>
+            If true, it will reload all suggester indexes.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.SuggestResult">
+            <summary>
+            Represents suggest result
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestResult.Query">
+            <summary>
+            The original query term
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestResult.NumFound">
+            <summary>
+            Original query term
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestResult.Suggestions">
+            <summary>
+            The original query term
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrNetExtension.SuggestResult.Suggestion">
+            <summary>
+            Represents the suggestion entry
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestResult.Suggestion.Term">
+            <summary>
+            The suggested term
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestResult.Suggestion.Weight">
+            <summary>
+            The weight
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrNetExtension.SuggestResult.Suggestion.Payload">
+            <summary>
+            The payload
+            </summary>
+        </member>
+    </members>
+</doc>

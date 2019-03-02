@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Messaging.Configuration</name>
+    </assembly>
+    <members>
+        <member name="M:Sitecore.Framework.Messaging.Configuration.MessageHandlerConfigBuilder.AddTransient``1">
+            <summary>
+            Registers the specified handler as a transient service.
+            </summary>
+            <typeparam name="THandler">The handler to register.</typeparam>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Configuration.MessageHandlerConfigBuilder.AddSingleton``1">
+            <summary>
+            Registers the specified handler as a singleton service.
+            </summary>
+            <typeparam name="THandler">The handler to register.</typeparam>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Configuration.MessageHandlerConfigBuilder.AddSingleton``1(System.Func{System.IServiceProvider,``0})">
+            <summary>
+            Registers the handler instance as a singleton service.
+            </summary>
+            <typeparam name="THandler">The type of the handler being registered.</typeparam>
+            <param name="factory">The handler instance factory to register.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Configuration.MessageHandlerConfigBuilder.AddSingleton``1(``0)">
+            <summary>
+            Registers the handler instance as a singleton service.
+            </summary>
+            <typeparam name="THandler">The type of the handler being registered.</typeparam>
+            <param name="instance">The handler instance to register.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Configuration.MessageHandlerConfigBuilder.Add(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Registers a handler type as a service.
+            </summary>
+            <param name="handlerType">The handler type to register.</param>
+            <param name="handlerLifetime">The lifetime of the handler.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Configuration.MessageHandlerConfigBuilder.AddAllFromAssemblyOf``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Registers all handlers found in the assembly that contains a specified type.
+            </summary>
+            <typeparam name="T">The type that exists in the assembly for which to look for handlers.</typeparam>
+            <param name="handlerLifetime">The lifetime to use for all handlers that are found when registering in the service collection.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Configuration.MessageHandlerConfigBuilder.AddAllFromAssembly(System.String,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+            Registers all handlers found in a named assembly.
+            </summary>
+            <param name="assemblyString">The name of the assembly in which to search for handlers.</param>
+            <param name="handlerLifetime">The lifetime to use for all handlers that are found when registering in the service collection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Configuration.MessageHandlerConfigBuilder.Remove``1">
+            <summary>
+            Removes any <see cref="T:Sitecore.Framework.Messaging.IMessageHandler`1"/> registrations for the given handler type.
+            </summary>
+            <typeparam name="THandler">The handler type for which to remove registrations.</typeparam>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Configuration.MessageHandlerConfigBuilder.RemoveAllFromAssemblyOf``1">
+            <summary>
+            Removes all <see cref="T:Sitecore.Framework.Messaging.IMessageHandler`1"/> registrations that exist for handlers defined in the assembly that contains the specified type. 
+            </summary>
+            <typeparam name="T">The type that exists in the assembly for which to look for handlers.</typeparam>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Configuration.MessageHandlerConfigBuilder.ApplyTo(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Applies all the configuration actions to the supplied service collection.
+            </summary>
+            <param name="services">The service collection on which to perform the registration actions.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Configuration.MessageHandlerConfigBuilder.GetHandlersInfoInAssembly(System.Reflection.Assembly)">
+            <summary>
+            Returns a dictionary keyed with the Handlers implementation type, and a value of all the message types handled
+            by the handler.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageServiceBuilderExtensions.Handlers(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Action{Sitecore.Framework.Messaging.Configuration.MessageHandlerConfigBuilder})">
+            <summary>
+            Configures the message handlers that are available in the application.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageServiceBuilderExtensions.AddBus(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.String,System.Func{System.IServiceProvider,Sitecore.Framework.Messaging.IMessageBus})">
+            <summary>
+            Registers a named <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> in the current builder. 
+            </summary>
+            <param name="builder">The current message service builder.</param>
+            <param name="busName">A unique name assigned to the bus instance.</param>
+            <param name="busFactory">The factory function used to create the bus.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessagingConfigurationExtensions.Messaging``1(``0)">
+            <summary>
+            Registers the messaging component in the current service collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sitecore"></param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessagingConfigurationExtensions.Messaging``1(``0,System.Action{Sitecore.Framework.Messaging.IMessageServiceBuilder})">
+            <summary>
+            Registers and configures the messaging component in the current service collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="sitecore"></param>
+            <param name="configure">The configuration of the messaging component.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.ServiceProviderExtensions.StartMessageBus(System.IServiceProvider)">
+            <summary>
+            Starts the default <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> registered in the provider.
+            </summary>
+            <param name="provider">The service provider configured for messaging.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.ServiceProviderExtensions.StartMessageBus(System.IServiceProvider,System.String)">
+            <summary>
+            Starts the named <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> registered in the provider.
+            </summary>
+            <param name="provider">The service provider configured for messaging.</param>
+            <param name="busName">The name of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.ServiceProviderExtensions.StartMessageBus``1(System.IServiceProvider)">
+            <summary>
+            Starts the named <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> registered in the provider.
+            </summary>
+            <typeparam name="TBusName">The type that represents the name of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>.</typeparam>
+            <param name="provider">The service provider configured for messaging.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.ServiceProviderExtensions.StartMessageBus``2(System.IServiceProvider)">
+            <summary>
+            Starts the named <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>s registered in the provider.
+            </summary>
+            <typeparam name="TBusName1">The type that represents the name of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>.</typeparam>
+            <typeparam name="TBusName2">The type that represents the name of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>.</typeparam>
+            <param name="provider">The service provider configured for messaging.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.ServiceProviderExtensions.StartMessageBus``3(System.IServiceProvider)">
+            <summary>
+            Starts the named <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>s registered in the provider.
+            </summary>
+            <typeparam name="TBusName1">The type that represents the name of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>.</typeparam>
+            <typeparam name="TBusName2">The type that represents the name of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>.</typeparam>
+            <typeparam name="TBusName3">The type that represents the name of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>.</typeparam>
+            <param name="provider">The service provider configured for messaging.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.ServiceProviderExtensions.StartMessageBuses(System.IServiceProvider)">
+            <summary>
+            Starts all <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>s registered in the provider.
+            </summary>
+            <param name="provider">The service provider configured for messaging.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.ServiceProviderExtensions.StartMessageBusesMatching(System.IServiceProvider,System.String)">
+            <summary>
+            Starts all <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>s with a name matching the expression, registered in the provider.
+            </summary>
+            <param name="provider">The service provider configured for messaging.</param>
+            <param name="busNameRegex">The regular expression to match bus names.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.ServiceProviderExtensions.StartMessageBuses(System.IServiceProvider,System.String[])">
+            <summary>
+            Starts all <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>s with the given name registered in the provider.
+            </summary>
+            <param name="provider">The service provider configured for messaging.</param>
+            <param name="busNames">The list of bus names to start.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+    </members>
+</doc>

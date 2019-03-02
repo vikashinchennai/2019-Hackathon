@@ -1,0 +1,2748 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.ContentSearch.SolrProvider</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Abstractions.BaseSolrSpecificSettings">
+            <summary>
+            Represents Solr specific settings.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.BaseSolrSpecificSettings.ServiceAddress">
+            <summary>
+            Base url of the Solr server.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.BaseSolrSpecificSettings.SolrAddress">
+            <summary>
+            Solr server address.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.BaseSolrSpecificSettings.ConnectionTimeout">
+            <summary>
+            The timeout interval for the Solr server connection in milliseconds.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.BaseSolrSpecificSettings.SendPostRequests">
+            <summary>
+            Specifies whether POST method must always be used to communicate with SOLR. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.BaseSolrSpecificSettings.OptimizeOnRebuildEnabled">
+            <summary>
+            Specifies whether the index optimization command should be run when the rebuild is completed.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.BaseSolrSpecificSettings.EnforceAliasCreation">
+            <summary>
+            Specifies whether index aliases should be created on Solr during the index initialization process.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.BaseSolrSpecificSettings.ReadOnlyStrategyPath">
+            <summary>
+            Path to a strategy which will be set if the instance uses indexes in Read-Only mode. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.BaseSolrSpecificSettings.IndexingInstance">
+            <summary>
+            Name of indexing instance. 
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Abstractions.DefaultSolrSpecificSettings">
+            <summary>
+            Represents implementation of Solr specific settings which is based on Sitecore configuration.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.DefaultSolrSpecificSettings.ServiceAddress">
+            <summary>
+            Base url of the Solr server.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.Abstractions.DefaultSolrSpecificSettings._solrAddress">
+            <summary>
+            Solr server address
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.DefaultSolrSpecificSettings.SolrAddress">
+            <inheritdoc />
+            <summary>
+            Solr server address
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.DefaultSolrSpecificSettings.ConnectionTimeout">
+            <summary>
+            The timeout interval for the Solr server connection in milliseconds.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.DefaultSolrSpecificSettings.SendPostRequests">
+            <summary>
+            Specifies whether POST method must always be used to communicate with SOLR. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.DefaultSolrSpecificSettings.OptimizeOnRebuildEnabled">
+            <summary>
+            Specifies whether the index optimization command should be run when the rebuild is completed.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.DefaultSolrSpecificSettings.EnforceAliasCreation">
+            <summary>
+            Specifies whether index aliases should be created on Solr during the index initialization process.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.DefaultSolrSpecificSettings.ReadOnlyStrategyPath">
+            <summary>
+            Path to a strategy which will be set if the instance uses indexes in Read-Only mode. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.DefaultSolrSpecificSettings.IndexingInstance">
+            <summary>
+            Name of indexing instance. 
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Abstractions.ISolrProviderContextFactory">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Abstractions.ISolrProviderContextFactory.CreateUpdateContext(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex,SolrNet.ISolrOperations{System.Collections.Generic.Dictionary{System.String,System.Object}},Sitecore.ContentSearch.ICommitPolicyExecutor)">
+            <summary>
+            Create update context for solr
+            </summary>
+            <param name="searchIndex">Search Index</param>
+            <param name="solr">Solr Operations</param>
+            <param name="commitPolicyExecutor">CommitPolicyExecutor</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Agents.IsSolrAliveAgent.MessageUninitializedIndexesState(System.Collections.Generic.List{Sitecore.ContentSearch.ISearchIndex})">
+            <summary>
+            Outputs details to logs about what indexes have not been initialized.
+            </summary>
+            <param name="uninitializedIndexes">A list of indexes which have not been initialized yet.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Commands.CollectionCommand">
+            <summary>
+            Base class for SolrCloud commands.
+            Any command should be derived from this class.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Commands.CreateAliasCommand">
+            <summary>
+            Class represents CREATEALIAS command for SolrCloud collections API.
+            The command can be used to create a new or modify existing alias.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.ComputedFields.Coordinate.ComputeFieldValue(Sitecore.ContentSearch.IIndexable)">
+            <summary>
+            Compute Field Value for Coordinate
+            </summary>
+            <param name="indexable"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Converters.SolrIndexFieldSitecoreItemUniqueIDValueConverter">
+            <summary>
+            Defines the SolrIndexFieldSitecoreItemUniqueIDValueConverter type.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Converters.SolrIndexFieldSitecoreItemUniqueIDValueConverter.#ctor(Sitecore.ContentSearch.Converters.IndexFieldItemUriValueConverter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.Converters.SolrIndexFieldSitecoreItemUniqueIDValueConverter"/> class.
+            </summary>
+            <param name="indexFieldItemUriValueConverter">
+            The index field item uri value converter.
+            </param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Converters.SolrIndexFieldSitecoreItemUniqueIDValueConverter.Initialize(Sitecore.ContentSearch.ISearchIndex)">
+            <summary>
+            Initializes the current instance.
+            </summary>
+            <param name="searchIndex">Index of the search.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Converters.SolrIndexFieldStorageValueFormatter">
+            <summary>
+            The solr index field storage value formatter.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Converters.SolrIndexFieldStorageValueFormatter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.Converters.SolrIndexFieldStorageValueFormatter"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Converters.SolrIndexFieldStorageValueFormatter.FormatValueForIndexStorage(System.Object,System.String)">
+            <summary>Formats a value before it is stored in the index.</summary>
+            <param name="value">The value.</param>
+            <param name="fieldName">Name of the field.</param>
+            <returns>The <see cref="T:System.Object" />.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Converters.SolrIndexFieldStorageValueFormatter.ReadFromIndexStorage(System.Object,System.String,System.Type)">
+            <summary>Reads from index storage.</summary>
+            <param name="indexValue">The index value.</param>
+            <param name="fieldName">Name of the field.</param>
+            <param name="destinationType">Type of the destination.</param>
+            <returns>Formatted value from index storage.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="destinationType" /> is null.</exception>
+            <exception cref="T:System.InvalidCastException"><paramref name="indexValue" /> could not be cast to <paramref name="destinationType" />.</exception>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.DefaultContainer.DefaultContainerSolrStartUp">
+            <inheritdoc />
+            <summary>
+            Defines the default (built-in) container for Solr start up. (Currently un-used)
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.DefaultContainer.DefaultContainerSolrStartUp.AddCore(System.String,System.Type,System.String)">
+            <summary>
+            Adds a Solr core.
+            </summary>
+            <param name="coreId">The core id.</param>
+            <param name="documentType">Type of document to store.</param>
+            <param name="coreUrl">The core URL.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.DefaultContainer.DefaultContainerSolrStartUp.Initialize">
+            <summary>
+            Initializes this instance.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.DefaultContainer.DefaultContainerSolrStartUp.BuildCoreAdmin">
+            <summary>
+            Builds the core admin (used to get schema and check stats etc).
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.DefaultContainer.DefaultContainerSolrStartUp.IsSetupValid">
+            <summary>
+            Determines whether the cres have been setup correctly.
+            </summary>
+            <returns>
+              <c>true</c> if the setup is valid; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Sitecore.ContentSearch.SolrProvider.DocumentSerializers.SolrFieldBoostingDictionarySerializer" -->
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Factories.SolrContextFactory">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Factories.SolrContextFactory.#ctor(Sitecore.ContentSearch.Abstractions.Factories.ILinqToIndexFactory)">
+            <summary>
+            Solr context factory
+            </summary>
+            <param name="linqToSolrFactory">Linq to solr factory.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Factories.SolrContextFactory.GetSearchContext(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex,Sitecore.ContentSearch.Security.SearchSecurityOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Factories.SolrContextFactory.GetDeleteContext(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Factories.SolrContextFactory.GetUpdateContext(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Factories.SolrContextFactory.CreateUpdateContext(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex,SolrNet.ISolrOperations{System.Collections.Generic.Dictionary{System.String,System.Object}},Sitecore.ContentSearch.ICommitPolicyExecutor)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Factories.SolrLinqToIndexFactory">
+            <summary>
+            Create Solr Linq to Index
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.Factories.SolrLinqToIndexFactory.queryableFactory">
+            <summary>
+            QueryableFactory
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Factories.SolrLinqToIndexFactory.#ctor(Sitecore.ContentSearch.Linq.Factories.IQueryableFactory)">
+            <summary>
+            Solr context factory
+            </summary>
+            <param name="queryableFactory">Linq to solr factory.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.FieldNames.ISolrFieldConfigurationResolver">
+            <summary>
+            Used to resolve field configuration from content search field map.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.FieldNames.ISolrFieldConfigurationResolver.Resolve(System.String,System.String,System.String,System.String,System.Type,System.Boolean,System.Boolean)">
+            <summary>
+            Resolves the solr field configuration.
+            </summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="normalizedFieldName">Name of the field after been normalized.</param>
+            <param name="returnTypeString">Field return type (Used for computed fields).</param>
+            <param name="fieldType">Sitecore field type.</param>
+            <param name="valueType">The <see cref="T:System.Type"/> of the field value.</param>
+            <param name="resolveByName">If yes, resolve the configuration using the field name.</param>
+            <param name="resolveByTemplateField">If yes, resolve the configuration using the template field.</param>
+            <returns>The <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrSearchFieldConfiguration"/></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.FieldNames.Normalization.DefaultFieldNameNormalizer">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.FieldNames.Normalization.DefaultFieldNameNormalizer.#ctor(Sitecore.ContentSearch.SolrProvider.FieldNames.Normalization.IExtensionStripHelper)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.FieldNames.Normalization.IExtensionStripHelper.StripKnownCultures(System.String)">
+            <summary>
+            Remove known cultures string from the fieldname
+            </summary>
+            <param name="fieldName">Fieldname</param>
+            <returns>Modified FieldName</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.FieldNames.Normalization.IExtensionStripHelper.StripKnownExtensions(System.String)">
+            <summary>
+            Remove known extensions string from the fieldname
+            </summary>
+            <param name="fieldName">Fieldname</param>
+            <returns>Modified FieldName</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.FieldNames.Normalization.IExtensionStripHelper.StripKnownExtensions(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Remove known extensions string from fieldlist
+            </summary>
+            <param name="fields">Fieldlist</param>
+            <returns>FieldList with comma separated</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.FieldNames.Normalization.ExtensionStripHelper">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.FieldNames.Normalization.ExtensionStripHelper.#ctor(Sitecore.ContentSearch.SolrProvider.SolrFieldMap,Sitecore.ContentSearch.SolrProvider.SolrIndexSchema)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.FieldNames.Normalization.ExtensionStripHelper.StripKnownCultures(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.FieldNames.Normalization.ExtensionStripHelper.StripKnownExtensions(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.FieldNames.Normalization.ExtensionStripHelper.StripKnownExtensions(System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.ISolrFieldNameTranslator.Schema">
+            <summary>
+            Gets the schema.
+            </summary>
+            <value>
+            The schema.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.ISolrFieldNameTranslator.FieldMap">
+            <summary>
+            Gets the field map.
+            </summary>
+            <value>
+            The field map.
+            </value>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.ISolrStartUp">
+            <summary>
+            An interface for defining how to start up Solr.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.ISolrStartUp.AddCore(System.String,System.Type,System.String)">
+            <summary>
+            Adds the core.
+            </summary>
+            <param name="coreId">The core id.</param>
+            <param name="documentType">Type of the document.</param>
+            <param name="coreUrl">The core URL.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.ISolrStartUp.IsSetupValid">
+            <summary>
+            Determines whether [is setup valid].
+            </summary>
+            <returns>
+              <c>true</c> if [is setup valid]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1">
+            <summary>
+            The final part in how linq expressions are turned into a Solr query.
+            </summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1.#ctor(Sitecore.ContentSearch.SolrProvider.SolrSearchContext,Sitecore.ContentSearch.Linq.Common.IExecutionContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1" /> class.
+            </summary>
+            <param name="context">The current search context.</param>
+            <param name="executionContext">The current execution context.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1.#ctor(Sitecore.ContentSearch.SolrProvider.SolrSearchContext,Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1" /> class.
+            </summary>
+            <param name="context">The current search context.</param>
+            <param name="executionContexts">The current execution contexts.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1.#ctor(Sitecore.ContentSearch.SolrProvider.SolrSearchContext,Sitecore.ContentSearch.Linq.Common.IExecutionContext[],Sitecore.ContentSearch.Linq.Parsing.IQueryOptimizer,Sitecore.ContentSearch.Linq.Parsing.QueryMapper{Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery},Sitecore.ContentSearch.Linq.Parsing.IIndexValueFormatter,Sitecore.ContentSearch.Linq.Factories.IQueryableFactory,Sitecore.ContentSearch.Linq.Parsing.IExpressionParser)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1.SolrQueryOptionsBuilder">
+            <summary>
+            Gets or sets the solr query options builder.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1.Execute``1(Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery)">
+            <summary>
+            Executes the specified query.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="compositeQuery">The query.</param>
+            <returns>Scalar result.</returns>
+            <exception cref="T:System.InvalidOperationException">Invalid query method</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1.FindElements``1(Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery)">
+            <summary>
+            Finds the elements.
+            </summary>
+            <typeparam name="TElement">The type of the element.</typeparam>
+            <param name="compositeQuery">The query.</param>
+            <returns>List of results</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1.UpdateCulture">
+            <summary>
+            Update culture context
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1.Execute(Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery,System.Type)">
+            <summary>
+            Executes the specified query.
+            </summary>
+            <param name="compositeQuery">The query.</param>
+            <param name="resultType">The type to map to.</param>
+            <returns>Search results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1.ApplyScalarMethods``2(Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery,Sitecore.ContentSearch.SolrProvider.SolrSearchResults{``1},SolrNet.SolrQueryResults{System.Collections.Generic.Dictionary{System.String,System.Object}})">
+            <summary>
+            Applies the scalar methods.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <typeparam name="TDocument">Document</typeparam>
+            <param name="compositeQuery">The query.</param>
+            <param name="processedResults">The processed results.</param>
+            <param name="results">The results.</param>
+            <returns>Scalar value.</returns>
+            <exception cref="T:System.InvalidOperationException">Invalid query method</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.LinqToSolrIndex`1.GetSelectMethod(Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery)">
+            <summary>Gets the select method.</summary>
+            <param name="compositeQuery">The composite query.</param>
+            <returns>Select method</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingConnection">
+            <summary>
+            Logs all calls to Solr.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingConnection.connection">
+            <summary>
+            The connection
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingConnection.Logger">
+            <summary>
+            Logs all calls to Solr.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingConnection.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingConnection" /> class.
+            </summary>
+            <param name="serverUrl">The server URL.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingConnection.Post(System.String,System.String)">
+            <summary>
+            POSTs to Solr
+            </summary>
+            <param name="relativeUrl">Path to post to</param>
+            <param name="s">POST content</param>
+            <returns>The results of the POST operation.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingConnection.PostStream(System.String,System.String,System.IO.Stream,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            POSTs binary to Solr
+            </summary>
+            <param name="relativeUrl">Path to post to</param>
+            <param name="contentType">Request content type (optional)</param>
+            <param name="content">Binary content</param>
+            <param name="getParameters">extra parameters to pass in query string</param>
+            <returns>The results of the POST operation.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingConnection.Get(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            GETs from Solr
+            </summary>
+            <param name="relativeUrl">Path to get from</param>
+            <param name="parameters">Query string parameters</param>
+            <returns>The results of the GET operation.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingSerializer">
+            <summary>
+            Serializes SolrNet objects so they can be logged.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingSerializer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingSerializer" /> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingSerializer.SerializeQuery(SolrNet.ISolrQuery)">
+            <summary>
+            Serializes the query.
+            </summary>
+            <param name="query">The query.</param>
+            <returns>A string representation of the query.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingSerializer.GetAllParameters(SolrNet.Commands.Parameters.QueryOptions)">
+            <summary>
+            Gets all parameters from the options object.
+            </summary>
+            <param name="options">The options.</param>
+            <returns>A collection of parameters</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingSerializer.GetAllSpellCheckHandlerParameters(SolrNet.ISolrQuery,Sitecore.ContentSearch.SolrNetExtension.SpellCheckHandlerQueryOptions)">
+            <summary>
+            
+            </summary>
+            <param name="q"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Logging.SolrLoggingSerializer.GetAllSuggestHandlerParameters(Sitecore.ContentSearch.SolrNetExtension.SolrSuggestQuery,Sitecore.ContentSearch.SolrNetExtension.SuggestHandlerQueryOptions)">
+            <summary>
+            
+            </summary>
+            <param name="query"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Mapping.SolrDocumentPropertyMapper">
+            <summary>
+            Maps a result object to a class type.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Mapping.SolrDocumentPropertyMapper.GetDocumentFieldNames(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Gets the field names in the current document.
+            </summary>
+            <param name="document">The document.</param>
+            <returns>List of fields.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Mapping.SolrDocumentPropertyMapper.ReadDocumentFields(System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator})">
+            <summary>Reads the document fields.</summary>
+            <param name="document">The document.</param>
+            <param name="fieldNames">The field names.</param>
+            <param name="virtualFieldProcessors">The virtual field processors.</param>
+            <returns>The document fields.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Parsers.SolrSchemaParser">
+            <summary>The solr schema parser.</summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Parsers.SolrSchemaParser.Parse(System.Xml.Linq.XDocument)">
+            <summary>The parse.</summary>
+            <param name="solrSchemaXml">The solr schema xml.</param>
+            <returns>The <see cref="T:SolrNet.Schema.SolrSchema"/>The Solr schema.</returns>
+            <exception cref="T:SolrNet.Exceptions.SolrNetException">throws SolrNet exception.</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.FormatQueryFieldValue.ApplyFieldMappingRule.Process(Sitecore.Pipelines.PipelineArgs)">
+            <summary>
+            Runs the processor.
+            </summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.FormatQueryFieldValue.ApplyFieldMappingRule.Escape(System.String,System.String,System.Boolean,System.Collections.ObjectModel.Collection{System.String},System.Collections.ObjectModel.Collection{System.String})">
+            <summary>
+            Escapes the specified field value.
+            </summary>
+            <param name="fieldValue">The field value.</param>
+            <param name="escapedValue">The escaped value.</param>
+            <param name="includeExistingSpecialCharacter">if set to <c>true</c> [include existing special character].</param>
+            <param name="excludeEscapeCharacters">any characters to exclude from escaping</param>
+            <param name="additionalEscapeCharacters">The additional escape characters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.FormatQueryFieldValue.ApplyFieldMappingRule.GetEscapeCharacterSet">
+            <summary>
+            Gets the escape character hash set.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateFields">
+            <summary>
+            Processor for populating Solr Managed Schema through managed schema api
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateFields.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateFields"/> class. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateFields.Process(Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaArgs)">
+            <summary>
+            Process populating sitecore index solr fields
+            </summary>        
+            <param name="args">The <see cref="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaArgs"/></param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateFields.GetHelper(SolrNet.Schema.SolrSchema)">
+            <summary>
+            Get populate helper.
+            </summary>
+            <param name="schema">The schema.</param>
+            <returns>The <see cref="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.ISchemaPopulateHelper"/></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaArgs">
+            <summary>
+            Populate solr managed schema args
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaArgs.#ctor(Sitecore.ContentSearch.ISearchIndex)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaArgs"/> class. 
+            </summary>
+            <param name="index"> The index.</param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaArgs.Index">
+            <summary>
+            Gets the index.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaArgs.Cores">
+            <summary>
+            Gets or sets the Cores.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaPipeline">
+            <summary>
+            The <see cref="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaPipeline"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaPipeline.Run(Sitecore.Abstractions.BaseCorePipelineManager,Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaArgs)">
+            <summary>
+            Runs the specified args.
+            </summary>
+            <param name="pipelineManager">The pipeline manager.</param>
+            <param name="args">The args.</param>
+            <returns>
+            The <see cref="T:System.Boolean" />.
+            </returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaProcessor">
+            <summary>
+            Populate managed schema pipeline processor.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.ReInitializeIndex">
+            <summary>
+            Resolve core names.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.ReInitializeIndex.Process(Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaArgs)">
+            <summary>
+            Process populating sitecore index solr fields
+            </summary>
+            <param name="args">The <see cref="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaArgs"/></param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.ResolveCoreNames">
+            <summary>
+            Resolve core names.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.ResolveCoreNames.Process(Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaArgs)">
+            <summary>
+            Resolves the solr's core names.
+            </summary>
+            <param name="args">The <see cref="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.PopulateManagedSchemaArgs"/></param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.ISchemaPopulateHelper">
+            <summary>
+            Schema populate helper
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.ISchemaPopulateHelper.GetAllFields">
+            <summary>
+            Gets list of added and removed fields, copy fields and dynamic fields to be populated to Solr schema.
+            </summary>
+            <returns>List of all fields</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.ISchemaPopulateHelper.GetAllFieldTypes">
+            <summary>
+            Gets list of added and replaced field types to be populated to the schema.
+            </summary>
+            <returns>List of all fields</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.SchemaPopulateHelper">
+            <summary>
+            Schema populate helper
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.SchemaPopulateHelper.#ctor(SolrNet.Schema.SolrSchema)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.SchemaPopulateHelper"/> class. 
+            </summary>
+            <param name="solrSchema"> Solr schema.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.SchemaPopulateHelper.GetAllFields">
+            <summary>
+            Gets list of added and removed fields, copy fields and dynamic fields to be populated to Solr schema.
+            </summary>
+            <returns>List of all fields</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.SchemaPopulateHelper.GetAllFieldTypes">
+            <summary>
+            Gets list of added and replaced field types to be populated to the schema.
+            </summary>
+            <returns>List of all fields</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.SchemaPopulateHelper.TypeExists(System.String)">
+            <summary>
+            Check if type exists in solr schema.
+            </summary>
+            <param name="type">The type</param>
+            <returns>true if type exists in solr schema, otherwise; false.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.SchemaPopulateHelper.GetRemoveFields">
+            <summary>
+            Enumerates the list of elements that represent all solr fields to be deleted from solr schema 
+            </summary>
+            <returns>
+            List of remove fields.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.SchemaPopulateHelper.GetAddFields">
+            <summary>
+            Enumerates the list of element that represent all the solr fields for adding them into solr schema
+            </summary>
+            <returns>
+            List of add fields.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.SchemaPopulateHelper.GetReplaceFields">
+            <summary>
+            Create a list of element that represent all solr field to be replaced from solr schema 
+            </summary>
+            <returns>
+            The <see cref="T:System.Collections.IEnumerable"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.SchemaPopulateHelper.GetRemoveField(System.String,System.Boolean)">
+            <summary>
+            Populate a single element that represent a solr field or solr dynamic to be remove from solr schema
+            </summary>
+            <param name="name">
+            The name.
+            </param>
+            <param name="isDynamicField">
+            Is dynamic field.
+            </param>
+            <returns>
+            List of fields.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.SchemaPopulateHelper.GetRemoveCopyField(System.String,System.String)">
+            <summary>
+            Populate a single element that represent a solr copy field to be remove from solr schema
+            </summary>
+            <param name="source">
+            The source.
+            </param>
+            <param name="destination">
+            The destination.
+            </param>
+            <returns>
+            The list.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.PopulateSolrSchema.SchemaPopulateHelper.CreateField(System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String,System.Boolean)">
+            <summary>
+            Creates the field.
+            </summary>
+            <param name="name">
+            The name.
+            </param>
+            <param name="type">
+            The type.
+            </param>
+            <param name="required">
+            if set to <c>true</c> [required].
+            </param>
+            <param name="indexed">
+            if set to <c>true</c> [indexed].
+            </param>
+            <param name="stored">
+            if set to <c>true</c> [stored].
+            </param>
+            <param name="multiValued">
+            if set to <c>true</c> [multi valued].
+            </param>
+            <param name="omitNorms">
+            if set to <c>true</c> [omit norms].
+            </param>
+            <param name="termVectors">
+            if set to <c>true</c> [term vectors].
+            </param>
+            <param name="termPositions">
+            if set to <c>true</c> [term positions].
+            </param>
+            <param name="termOffsets">
+            if set to <c>true</c> [term offsets].
+            </param>
+            <param name="defaultValue">
+            The default value.
+            </param>
+            <param name="isDynamic">
+            if set to <c>true</c> [is dynamic].
+            </param>
+            <returns>
+            The <see cref="T:System.Xml.Linq.XElement"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Pipelines.TranslateQuery.ApplySolrTranslation">
+            <summary>
+            The <see cref="T:Sitecore.ContentSearch.Pipelines.TranslateQuery.ApplyProviderTranslation"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.TranslateQuery.ApplySolrTranslation.Process(Sitecore.ContentSearch.Pipelines.TranslateQuery.TranslateQueryArgs)">
+            <summary>Processes the specified args.</summary>
+            <param name="args">The args.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.TranslateQuery.ApplySolrTranslation.Translate(Sitecore.ContentSearch.Pipelines.TranslateQuery.TranslateQueryArgs)">
+            <summary>Gets the facets.</summary>
+            <param name="args">The args.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Pipelines.Loader.InitializeSolrProvider">
+            <summary>
+            Solr provider initializer.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Pipelines.Loader.InitializeSolrProvider.Process(Sitecore.Pipelines.PipelineArgs)">
+            <summary>
+            Performs Solr provider initialization.
+            </summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.Sharding.SolrShardFactory">
+            <summary>
+            The solr shard factory.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.Sharding.SolrShardFactory.CreateShard(Sitecore.ContentSearch.ISearchIndex,System.Int32,System.String,Sitecore.ContentSearch.Sharding.HashRange)">
+            <summary>Creates the shard.</summary>
+            <param name="index">The index.</param>
+            <param name="id">The id.</param>
+            <param name="name">The name.</param>
+            <param name="hashRange">The hash range.</param>
+            <returns>The created shard.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrAnalyticsSearchContext">
+            <summary>
+            The solr analytics search context.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrAnalyticsSearchContext.#ctor(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex,Sitecore.ContentSearch.Security.SearchSecurityOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrAnalyticsSearchContext" /> class.
+            </summary>
+            <param name="index">The index.</param>
+            <param name="options">The options.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrAnalyticsSearchContext.#ctor(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex,Sitecore.ContentSearch.Abstractions.Factories.ILinqToIndexFactory,Sitecore.ContentSearch.Security.SearchSecurityOptions)">
+            <summary>
+            
+            </summary>
+            <param name="index"></param>
+            <param name="linqToIndexFactory"></param>
+            <param name="options"></param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrAnalyticsSearchContext.GetQueryable``1(Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>Gets the queryable.</summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <param name="executionContexts">The execution contexts.</param>
+            <returns> The <see cref="T:System.Linq.IQueryable" />.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrBatchUpdateContext">
+            <summary>
+            Instead of processing each update individually this version groups the updates into batches before bulk submitting them. 
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrBatchUpdateContext.Processed">
+            <summary>
+            Gets or sets the processed <see cref="T:Sitecore.ContentSearch.IIndexableUniqueId"/> items.
+            </summary>
+            <value>
+            The processed <see cref="T:Sitecore.ContentSearch.IIndexableUniqueId"/> items.
+            </value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrBatchUpdateContext.#ctor(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex,SolrNet.ISolrOperations{System.Collections.Generic.Dictionary{System.String,System.Object}},System.Int32,Sitecore.ContentSearch.ICommitPolicyExecutor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrBatchUpdateContext" /> class.
+            </summary>
+            <param name="solrSearchIndex">Index of the solr search.</param>
+            <param name="solr">The solr.</param>
+            <param name="batchSize">Size of the batch.</param>
+            <param name="commitPolicyExecutor">The commit policy executor.</param>
+            <exception cref="T:System.ArgumentNullException">commitPolicyExecutor</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrBatchUpdateContext.AddDocument(System.Object,Sitecore.ContentSearch.Linq.Common.IExecutionContext)">
+            <summary>Adds the document.</summary>
+            <param name="itemToAdd">The item to add.</param>
+            <param name="executionContext">The execution context.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrBatchUpdateContext.AddDocument(System.Object,Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>The add document.</summary>
+            <param name="itemToAdd">The item to add.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrBatchUpdateContext.UpdateDocument(System.Object,System.Object,Sitecore.ContentSearch.Linq.Common.IExecutionContext)">
+            <summary>Updates the document.</summary>
+            <param name="itemToUpdate">The item to update.</param>
+            <param name="criteriaForUpdate">The criteria for update.</param>
+            <param name="executionContext">The execution context.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrBatchUpdateContext.UpdateDocument(System.Object,System.Object,Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>The update document.</summary>
+            <param name="itemToUpdate">The item to update.</param>
+            <param name="criteriaForUpdate">The criteria for update.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrBatchUpdateContext.Delete(Sitecore.ContentSearch.IIndexableUniqueId,Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>The delete by id.</summary>
+            <param name="id">The id.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrBatchUpdateContext.Delete(Sitecore.ContentSearch.IIndexableId,Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>
+            The delete group.
+            </summary>
+            <param name="id">The id.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrCloudIndexSummary">
+            <summary>
+            Index summary of SolrCloud.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrCloudIndexSummary.#ctor(Sitecore.ContentSearch.SolrProvider.ISolrCloudIndex,Sitecore.ContentSearch.SolrNetExtension.Cloud.IClusterStateProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrCloudIndexSummary"/> class.
+            </summary>
+            <param name="index">The index.</param>
+            <param name="clusterStateProvider">Cluster state provider.</param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrCloudIndexSummary.NumberOfDocuments">
+            <summary>
+            Gets the number of documents in the index.
+            </summary>
+            <value>
+            The number of documents of in the index.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrCloudIndexSummary.IsOptimized">
+            <summary>
+            Gets a value indicating whether the index is optimized.
+            </summary>
+            <value>
+              <c>true</c> if the index is optimized; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrCloudIndexSummary.HasDeletions">
+            <summary>
+            Gets a value indicating whether the index has deletions.
+            </summary>
+            <value>
+              <c>true</c> if the index has deletions; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrCloudIndexSummary.IsHealthy">
+            <summary>
+            Gets a value indicating whether the index is healthy.
+            </summary>
+            <value>
+              <c>true</c> if the index is healthy; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrCloudIndexSummary.LastUpdated">
+            <summary>
+            Gets the last updated.
+            </summary>
+            <value>
+            The last updated.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrCloudIndexSummary.NumberOfFields">
+            <summary>
+            Gets the number of fields.
+            </summary>
+            <value>
+            The number of fields.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrCloudIndexSummary.NumberOfTerms">
+            <summary>
+            Gets the number of terms.
+            </summary>
+            <value>
+            The number of terms.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrCloudIndexSummary.IsClean">
+            <summary>
+            Gets a value indicating whether the index is clean.
+            </summary>
+            <value>
+            <c>true</c> if the index is clean; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrConnectors.ISolrCloudConnector">
+            <summary>
+            Provides a single point to communicate with Solr server (SolrCloud support).
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrConnectors.ISolrCloudConnector.CollectionStateReader">
+            <summary>
+            Provides the state of collections.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrConnectors.ISolrConnector">
+            <summary>
+            Provides a single point to communicate with Solr server.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrConnectors.ISolrConnector.IsOnline">
+            <summary>
+            Gets value indicates whether <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrConnectors.ISolrConnector"/> connected to Solr.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrConnectors.ISolrConnector.Initialize(System.String)">
+            <summary>
+            Initialize the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrConnectors.ISolrConnector"/>
+            </summary>
+            <param name="solrAddress">Solr address</param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrConnectors.ISolrConnector.CoreAdmin">
+            <summary>
+            Gets the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrCoreAdminEx"/> object.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrConnectors.ISolrConnector.OperationsFactory">
+            <summary>
+            Gets the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrOperations.ISolrOperationsFactory"/> object.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrConnectors.SolrCloudConnector">
+            <summary>
+            Connector class that uses SolrCloud.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrConnectors.SolrConnector">
+            <inheritdoc />
+            <summary>
+            Connector to solr server (standalone mode).
+            </summary>
+            <remarks>For SolrCloud, Please consider using <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrConnectors.ISolrClusterConnector" />.</remarks>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrConnectors.SolrConnector.InnerConnection">
+            <summary>
+            The connection object.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrConnectors.SolrConnector.VerifyConnectionOnInitialize">
+            <summary>
+            Gets a value indicating whether to verify connection upon <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrConnectors.SolrConnector"/> initialization.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrConnectors.SolrConnector.GetSolrFactory">
+            <summary>
+            Gets solr factory.
+            </summary>
+            <returns>The <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrFactory`1"/> object.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrConnectors.SolrConnector.BuildOperationsFactory(System.String,Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrFactory{System.Collections.Generic.Dictionary{System.String,System.Object}})">
+            <summary>
+            Builds the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrOperations.ISolrOperationsFactory"/>.
+            </summary>
+            <param name="solrAddress">Solr address.</param>
+            <param name="solrFactory">Solr factory.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrConnectors.SolrConnector.BuildCoreAdmin(System.String,Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrFactory{System.Collections.Generic.Dictionary{System.String,System.Object}})">
+            <summary>
+            Builds the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrCoreAdminEx"/>.
+            </summary>
+            <param name="solrAddress">Solr address.</param>
+            <param name="solrFactory">Solr factory.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrConnectors.SolrConnector.TestConnection">
+            <summary>
+            Tests connection state.
+            </summary>
+            <returns>True if connection successful; False otherwise</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrConnectors.SolrConnector.VerifyConnection(System.String)">
+            <summary>
+            Test connection and throws exception in case connection is not successful.
+            </summary>
+            <param name="solrAddress">The solr adress.</param>
+            <remarks>Throws <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrConnectors.Exceptions.SolrConnectorException"/>.</remarks>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrContentSearchManager.ActiveCollection">
+            <summary>
+            Property returns data store property postfix for active collection 
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrContentSearchManager.RebuildCollection">
+            <summary>
+            Property returns data store property postfix for rebuild collection 
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrContentSearchManager.HttpWebRequestFactory">
+            <summary>
+            Gets the instance of <see cref="T:HttpWebAdapters.IHttpWebRequestFactory"/> that is used for Solr web requests.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrContentSearchManager.SolrSettings">
+            <summary>
+            Solr specific settings.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrContentSearchManager.SuggestHandler">
+            <summary>
+            Request handler name for suggest component in Solr
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrContentSearchManager.SpellCheckHandler">
+            <summary>
+            Request handler name for spellcheck component in Solr
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrContentSearchManager.Reset">
+            <summary>
+            Resets all settings to be reloaded from configuration
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrDocumentBuilder">
+            <summary>
+            The solr document builder.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrDocumentBuilder.#ctor(Sitecore.ContentSearch.IIndexable,Sitecore.ContentSearch.IProviderUpdateContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrDocumentBuilder" /> class.
+            </summary>
+            <param name="indexable">The indexable.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrDocumentBuilder.AddField(System.String,System.Object,System.Boolean)">
+            <summary>
+            Adds the field.
+            </summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="fieldValue">The field value.</param>
+            <param name="append">if set to <c>true</c> [appends] to any existing field values.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrDocumentBuilder.AddField(Sitecore.ContentSearch.IIndexableDataField)">
+            <summary>
+            Adds the field.
+            </summary>
+            <param name="field">The field.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrDocumentBuilderOptions">
+            <summary>
+            The solr document builder options.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrDocumentBuilderOptions.copyFields">
+            <summary>
+            The copy fields
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrDocumentBuilderOptions.FieldMap">
+            <summary>
+            Gets or sets the field map.
+            </summary>
+            <value>
+            The field map.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrDocumentBuilderOptions.CopyFields">
+            <summary>
+            Gets collection of field types.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrDocumentBuilderOptions.AddComputedIndexField(System.Xml.XmlNode)">
+            <summary>
+            Adds a computed index field from the configuration node.
+            </summary>
+            <param name="configNode">The config node.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrDocumentBuilderOptions.EnsureComputedFields">
+            <summary>
+            Ensures that the computed fields are in field map.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrFieldMap.AddFieldByFieldName(System.String,System.Type,System.Collections.Generic.IDictionary{System.String,System.String},System.Xml.XmlNode)">
+            <summary>The add field by field name.</summary>
+            <param name="fieldName">The field name.</param>
+            <param name="settingType">The setting type.</param>
+            <param name="attributes">The attributes.</param>
+            <param name="configNode">The config node.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrFieldMap.AddFieldByFieldTypeName(System.Type,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Xml.XmlNode)">
+            <summary>Adds the name of the field by field type.</summary>
+            <param name="settingType">Type of the setting.</param>
+            <param name="fieldTypeNames">The field type names.</param>
+            <param name="attributes">The attributes.</param>
+            <param name="configNode">The config node.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrFieldMap.GetFieldConfiguration(Sitecore.ContentSearch.IIndexableDataField)">
+            <summary>Gets the field crawler.</summary>
+            <param name="field">The field.</param>
+            <returns>The field crawler.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrFieldMap.GetFieldConfiguration(Sitecore.ContentSearch.IIndexableDataField,System.Func{Sitecore.ContentSearch.AbstractSearchFieldConfiguration,System.Boolean})">
+            <summary>Gets the field configuration.</summary>
+            <param name="field">The field.</param>
+            <param name="fieldVisitorFunc">The field visitor function.</param>
+            <returns>The field configuration.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrFieldMap.GetFieldConfigurations(System.String,System.Type)">
+            <summary>
+            Get Field configuration
+            </summary>
+            <param name="fieldName"></param>
+            <param name="returnType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator">
+            <summary>
+            Handles how field names are processed in the system.
+            For Solr this means appending the dynamic field prefixes. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator.#ctor(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator" /> class.
+            </summary>
+            <param name="solrSearchIndex">Index of the solr search.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator.#ctor(Sitecore.ContentSearch.SolrProvider.SolrFieldMap,Sitecore.ContentSearch.SolrProvider.SolrIndexSchema,Sitecore.ContentSearch.Abstractions.ISettings,Sitecore.ContentSearch.SolrProvider.FieldNames.ISolrFieldConfigurationResolver,Sitecore.ContentSearch.SolrProvider.FieldNames.Normalization.IExtensionStripHelper,Sitecore.ContentSearch.SolrProvider.FieldNames.TypeResolving.TemplateFieldTypeResolverFactory,Sitecore.ContentSearch.SolrProvider.FieldNames.ICultureContextGuard,Sitecore.ContentSearch.IDocumentFieldsToTypeMapper)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator.SolrFieldMap">
+            <summary>
+            The field map
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator.SolrSchema">
+            <summary>
+            The index schema
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator.SolrIndex">
+            <summary>
+            The index
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator.Sitecore#ContentSearch#SolrProvider#ISolrFieldNameTranslator#Schema">
+            <summary>
+            Gets the schema.
+            </summary>
+            <value>
+            The schema.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator.Sitecore#ContentSearch#SolrProvider#ISolrFieldNameTranslator#FieldMap">
+            <summary>
+            Gets the field map.
+            </summary>
+            <value>
+            The field map.
+            </value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator.AddCultureContext(System.Globalization.CultureInfo)">
+            <summary>
+            Adds the culture context.
+            </summary>
+            <param name="culture">The culture.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator.GetIndexFieldName(System.Reflection.MemberInfo,System.Globalization.CultureInfo)">
+            <summary>Gets the name of the index field.</summary>
+            <param name="member">The member.</param>
+            <returns>The index field name.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator.MapFieldsToType(System.Collections.Generic.IEnumerable{System.String},System.Type,Sitecore.ContentSearch.MappingTargetType)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrFieldNameTranslator.GetTypeFieldNames(System.String)">
+            <summary>Gets the names of the type field.</summary>
+            <param name="fieldName">Name of the field.</param>
+            <returns>Type field name.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrIndexConfiguration">
+            <summary>
+            The Solr default index configuration.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexConfiguration.IndexDocumentPropertyMapper">
+            <summary>Gets or sets the index document property mapper.</summary>
+            <value>The index document property mapper.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexConfiguration.FieldMap">
+            <summary>
+            Gets or sets the field map.
+            </summary>
+            <value>
+            The field map.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexConfiguration.DocumentOptions">
+            <summary>
+            Gets or sets the document options.
+            </summary>
+            <value>
+            The document options.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexConfiguration.DefaultDateFormat">
+            <summary>Gets the default date format.</summary>
+            <value>The default date format.</value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrIndexConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrIndexConfiguration"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrIndexConfiguration.Initialize(Sitecore.ContentSearch.ISearchIndex)">
+            <summary>Initializes the specified search index.</summary>
+            <param name="searchIndex">Index of the search.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrIndexOperations">
+            <summary>
+            The solr index operations.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrIndexOperations.index">
+            <summary>
+            The solr operations.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrIndexOperations.#ctor(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrIndexOperations" /> class.
+            </summary>
+            <param name="index">The index.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrIndexOperations.#ctor">
+            <summary>
+            Internal constructor for unit testing.
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrIndexOperations"/> class. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrIndexOperations.Update(Sitecore.ContentSearch.IIndexable,Sitecore.ContentSearch.IProviderUpdateContext,Sitecore.ContentSearch.ProviderIndexConfiguration)">
+            <summary>Updates the specified item.</summary>
+            <param name="indexable">The indexable.</param>
+            <param name="context">The update context.</param>
+            <param name="indexConfiguration">The index configuration.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrIndexOperations.Delete(Sitecore.ContentSearch.IIndexable,Sitecore.ContentSearch.IProviderUpdateContext)">
+            <summary>Deletes the specified item.</summary>
+            <param name="indexable">The indexable.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrIndexOperations.Delete(Sitecore.ContentSearch.IIndexableId,Sitecore.ContentSearch.IProviderUpdateContext)">
+            <summary>Deletes the indexables specified id.</summary>
+            <param name="id">The id.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrIndexOperations.Delete(Sitecore.ContentSearch.IIndexableUniqueId,Sitecore.ContentSearch.IProviderUpdateContext)">
+            <summary>Deletes the specified id.</summary>
+            <param name="id">The id.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrIndexOperations.Add(Sitecore.ContentSearch.IIndexable,Sitecore.ContentSearch.IProviderUpdateContext,Sitecore.ContentSearch.ProviderIndexConfiguration)">
+            <summary>Adds the item.</summary>
+            <param name="indexable">The indexable.</param>
+            <param name="context">The context.</param>
+            <param name="indexConfiguration">The index configuration.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrIndexOperations.IndexVersion(Sitecore.ContentSearch.IIndexable,Sitecore.ContentSearch.IProviderUpdateContext)">
+            <summary>
+            Indexes the version.
+            </summary>
+            <param name="indexable"></param>
+            <param name="context"></param>
+            <returns>Document to index.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrIndexSchema">
+            <summary>
+            Represents the schema in Solr.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexSchema.AllCultures">
+            <summary>
+            Gets all cultures defined in the Solr schema.
+            For example, for the "*_t_en" dynamic field, value is "en". 
+            </summary>
+            <value>
+            All cultures.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexSchema.AllCultureSuffixes">
+            <summary>
+            Gets all culture suffixes defined in the Solr schema. 
+            For example, for the "*_t_en" dynamic field, value is "_t_en". 
+            </summary>
+            <value>
+            All culture suffixes.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexSchema.AllFieldNames">
+            <summary>
+            Gets all field names defined in the Solr schema.
+            </summary>
+            <value>
+            All field names in the schema.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexSchema.SolrSchema">
+            <summary>
+            Gets the solr schema.
+            </summary>
+            <value>
+            The solr schema.
+            </value>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary">
+            <summary>
+            The solr index summary implementation of ISearchIndexSummary.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary.coreAdmin">
+            <summary>
+            The core admin
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary.index">
+            <summary>
+            The index
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary.#ctor(SolrNet.Impl.CoreResult,Sitecore.ContentSearch.ISearchIndex)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary"/> class.
+            </summary>
+            <param name="coreAdmin">The core admin.</param>
+            <param name="index">The index.</param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary.NumberOfDocuments">
+            <summary>
+            Gets the number of documents in the index.
+            </summary>
+            <value>
+            The number of documents of in the index.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary.IsOptimized">
+            <summary>
+            Gets a value indicating whether the index is optimized.
+            </summary>
+            <value>
+              <c>true</c> if the index is optimized; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary.HasDeletions">
+            <summary>
+            Gets a value indicating whether the index has deletions.
+            </summary>
+            <value>
+              <c>true</c> if the index has deletions; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary.IsHealthy">
+            <summary>
+            Gets a value indicating whether the index is healthy.
+            </summary>
+            <value>
+              <c>true</c> if the index is healthy; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary.LastUpdated">
+            <summary>
+            Gets the last updated.
+            </summary>
+            <value>
+            The last updated.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary.NumberOfFields">
+            <summary>
+            Gets the number of fields.
+            </summary>
+            <value>
+            The number of fields.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary.NumberOfTerms">
+            <summary>
+            Gets the number of terms.
+            </summary>
+            <value>
+            The number of terms.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrIndexSummary.LastUpdatedTimestamp">
+            <summary>
+            Gets or sets the last updated timestamp.
+            </summary>
+            <value>
+            The last updated timestamp.
+            </value>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultServiceLocator`1">
+            <summary>
+            Default Service Locator
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultServiceLocator`1.Operations">
+            <summary>
+            Gets the operations.
+            </summary>
+            <value>
+            The operations.
+            </value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultServiceLocator`1.#ctor(Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultServiceLocator`1"/> class.
+            </summary>
+            <param name="operations">The operations.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultServiceLocator`1.DoGetInstance(System.Type,System.String)">
+            <summary>
+            When implemented by inheriting classes, this method will do the actual work of resolving
+            the requested service instance.
+            </summary>
+            <param name="serviceType">Type of instance requested.</param>
+            <param name="key">Name of registered service you want. May be null.</param>
+            <returns>
+            The requested service instance.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultServiceLocator`1.DoGetAllInstances(System.Type)">
+            <summary>
+            When implemented by inheriting classes, this method will do the actual work of
+            resolving all the requested service instances.
+            </summary>
+            <param name="serviceType">Type of service requested.</param>
+            <returns>
+            Sequence of service instance objects.
+            </returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrApplication">
+            <summary>
+            Default application that can configure Solr provider using Default IOC.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrApplication.Application_Start">
+            <summary>
+            The Application start event handler.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrFactory`1">
+            <inheritdoc />
+            <summary>
+            Default solr factory.
+            </summary>
+            <typeparam name="T">Type of solr documents</typeparam>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrFactory`1.#ctor(Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator{`0},Sitecore.ContentSearch.SolrProvider.Abstractions.BaseSolrSpecificSettings)">
+            <summary>
+            Creates new instance of <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrFactory`1"/> type.
+            </summary>
+            <param name="locator">The service locator.</param>
+            <param name="solrSettings">Solr specific settings.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1">
+            <summary>
+            This class seems over complicated but its just so it can support the 'GetService' paradigm from the ServiceLocator.
+            </summary>
+            <typeparam name="T">The type you want your Solr data mapped back to. For Sitecore this is *always* Dictionary{string,object}</typeparam>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.KeyedServiceCollection">
+            <summary>
+            Gets the keyed service collection.
+            </summary>
+            <value>
+            The keyed service collection.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.ServiceCollection">
+            <summary>
+            Gets the service collection.
+            </summary>
+            <value>
+            The service collection.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.CoreCollection">
+            <summary>
+            Gets the core collection.
+            </summary>
+            <value>
+            The core collection.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.MappingManager">
+            <summary>
+            Gets or sets the mapping manager.
+            </summary>
+            <value>
+            The mapping manager.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.FieldParser">
+            <summary>
+            Gets or sets the field parser.
+            </summary>
+            <value>
+            The field parser.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.DocumentPropertyVisitor">
+            <summary>
+            Gets or sets the document property visitor.
+            </summary>
+            <value>
+            The document property visitor.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.DocumentResponseParser">
+            <summary>
+            Gets or sets the document response parser.
+            </summary>
+            <value>
+            The document response parser.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.ResponseParser">
+            <summary>
+            Gets or sets the response parser.
+            </summary>
+            <value>
+            The response parser.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.SchemaParser">
+            <summary>
+            Gets or sets the schema parser.
+            </summary>
+            <value>
+            The schema parser.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.HeaderParser">
+            <summary>
+            Gets or sets the header parser.
+            </summary>
+            <value>
+            The header parser.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.DihStatusParser">
+            <summary>
+            Gets or sets the DIH status parser.
+            </summary>
+            <value>
+            The DIH status parser.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.ExtractResponseParser">
+            <summary>
+            Gets or sets the extract response parser.
+            </summary>
+            <value>
+            The extract response parser.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.FieldSerializer">
+            <summary>
+            Gets or sets the field serializer.
+            </summary>
+            <value>
+            The field serializer.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.FacetQuerySerializer">
+            <summary>
+            Gets or sets the facet query serializer.
+            </summary>
+            <value>
+            The facet query serializer.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.MoreLikeThisHandlerQueryResultParser">
+            <summary>
+            Gets or sets the more like this handler query result parser.
+            </summary>
+            <value>
+            The more like this handler query result parser.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.SuggestHandlerQueryResultParser">
+            <summary>
+            Gets or sets the suggest handler query result parser.
+            </summary>
+            <value>
+            The suggest handler query result parser.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.DocumentSerializer">
+            <summary>
+            Gets or sets the document serializer.
+            </summary>
+            <value>
+            The document serializer.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.HttpWebRequestFactory">
+            <summary>
+            Gets or sets the Http Web Request Factory.
+            </summary>
+            <value>
+            The Http Web Request Factory.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.MappingValidator">
+            <summary>
+            Gets or sets the mapping validator.
+            </summary>
+            <value>
+            The mapping validator.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.StatusResponseParser">
+            <summary>
+            Gets or sets the status response parser.
+            </summary>
+            <value>
+            The status response parser.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.HttpCache">
+            <summary>
+            Gets or sets the HTTP cache.
+            </summary>
+            <value>
+            The HTTP cache.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.CoreAdmin">
+            <summary>
+            Gets or sets the core admin.
+            </summary>
+            <value>
+            The core admin.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.SolrFactory">
+            <summary>
+            Gets or sets the solr factory object.
+            </summary>
+            <value>
+            The solr factory.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.SolrConnector">
+            <summary>
+            Gets or sets the solr connector. 
+            </summary>
+            <value>
+            The solr connector.
+            </value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.GetBasicServer(SolrNet.ISolrConnection)">
+            <summary>
+            Gets the basic server.
+            </summary>
+            <param name="connection">The connection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.GetBasicReadOnlyServer(SolrNet.ISolrConnection)">
+            <summary>
+            Gets the basic read only server.
+            </summary>
+            <param name="connection">The connection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.GetServer(SolrNet.ISolrConnection)">
+            <summary>
+            Gets the server.
+            </summary>
+            <param name="connection">The connection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.AddCore(System.String,System.Type,System.String,SolrNet.ISolrConnection)">
+            <summary>
+            Adds the core.
+            </summary>
+            <param name="coreId">The core unique identifier.</param>
+            <param name="documentType">Type of the document.</param>
+            <param name="coreUrl">The core URL.</param>
+            <param name="connection"></param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.BuildCoreAdmin(SolrNet.ISolrConnection)">
+            <summary>
+            Builds the core admin.
+            </summary>
+            <param name="connection">The connection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.GetService(System.Type)">
+            <summary>
+            Gets the service.
+            </summary>
+            <param name="serviceType">Type of the service.</param>
+            <returns></returns>
+            <exception cref="T:System.ApplicationException"></exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.GetService(System.Type,System.String)">
+            <summary>
+            Gets the service.
+            </summary>
+            <param name="serviceType">Type of the service.</param>
+            <param name="key">The key.</param>
+            <returns></returns>
+            <exception cref="T:System.ApplicationException"></exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.DefaultSolrLocator`1.GetService``1">
+            <summary>
+            Gets the service.
+            </summary>
+            <typeparam name="TS">The type of the arguments.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.HttpWebRequestFactoryProvider">
+            <summary>
+            Defines the class who is responsible for deciding which implemntation of <see cref="T:HttpWebAdapters.IHttpWebRequestFactory"/> should be used depending on the configuration
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.IntegrationHelper">
+            <summary>
+            Solr integration helper.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.IntegrationHelper.IsSolrConfigured">
+            <summary>
+            Determines whether Solr provider is already configured.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.IntegrationHelper.ReportDoubleSolrConfigurationAttempt(System.Type)">
+            <summary>
+            Reports an error in case double Solr configuration detected.
+            </summary>
+            <param name="owner">The owner.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrCoreAdminEx">
+            <summary>
+            The SolrCoreAdminEx interface.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrCoreAdminEx.CreateAlias(System.String,System.String)">
+            <summary>
+            The CREATEALIAS action will create a new alias pointing to one or more collections. 
+            If an alias by the same name already exists, this action will replace the existing alias, 
+            effectively acting like an atomic "MOVE" command.
+            </summary>
+            <param name="aliasName">The alias name to be created.</param>
+            <param name="collection">The list of collections to be aliased, separated by commas.</param>
+            <returns> The output will simply be a <see cref="T:SolrNet.ResponseHeader"/>. with details of the time it took to process the request.  </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrCoreAdminEx.SendAndParseHeader(SolrNet.ISolrCommand)">
+            <summary>
+            Sends a command and parses the ResponseHeader.
+            </summary>
+            <param name="cmd">The CMD.</param>
+            <returns/>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrCoreAdminEx.Send(SolrNet.ISolrCommand)">
+            <summary>
+            Sends the specified Command to Solr.
+            </summary>
+            <param name="command">The Command to send.</param>
+            <returns/>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrFactory`1">
+            <summary>
+            Factory class for creating Solr objects
+            </summary>
+            <typeparam name="T">Type of solr documents</typeparam>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrFactory`1.CreateConnection(System.String)">
+            <summary>
+            Factory method for creating solr connection object.
+            </summary>
+            <param name="serverUrl">Connection url</param>
+            <returns>Solr connection</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrFactory`1.CreateServer(SolrNet.ISolrConnection)">
+            <summary>
+            Factory method for creating solr server object
+            </summary>
+            <param name="connection">The solr connection</param>
+            <returns>Solr server.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrFactory`1.CreateBasicServer(SolrNet.ISolrConnection)">
+            <summary>
+            Factory method for creating solr basic server object
+            </summary>
+            <param name="connection">The solr connection</param>
+            <returns>The solr basic server</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrFactory`1.CreateBasicReadOnlyServer(SolrNet.ISolrConnection)">
+            <summary>
+            Factory method for creating solr basic readonly server object
+            </summary>
+            <param name="connection">The solr connection</param>
+            <returns>The solr basic readonly server</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.ISolrFactory`1.CreateCoreAdmin(SolrNet.ISolrConnection)">
+            <summary>
+            Factory method for creating solr core admin object
+            </summary>
+            <param name="connection">The solr connection</param>
+            <returns>The solr core admin</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrCore">
+            <summary>
+            Represents Solr Core basic functionality
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrCore.Id">
+            <summary>
+            Gets the unique identifier.
+            </summary>
+            <value>
+            The unique identifier.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrCore.DocumentType">
+            <summary>
+            Gets the type of the document.
+            </summary>
+            <value>
+            The type of the document.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrCore.Url">
+            <summary>
+            Gets the Solr Server URL.
+            </summary>
+            <value>
+            The Solr Server URL.
+            </value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrCore.#ctor(System.String,System.Type,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrCore"/> class.
+            </summary>
+            <param name="id">The unique identifier.</param>
+            <param name="documentType">Type of the document.</param>
+            <param name="url">The URL.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrCore.#ctor(System.Type,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrCore"/> class.
+            </summary>
+            <param name="documentType">Type of the document.</param>
+            <param name="url">The URL.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrCoreAdminEx">
+            <summary>
+            Solr core administration commands.
+            </summary>
+            <seealso href="http://wiki.apache.org/solr/CoreAdmin"/>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrCoreAdminEx.CreateAlias(System.String,System.String)">
+            <summary>
+            The CREATEALIAS action will create a new alias pointing to one or more collections. 
+            If an alias by the same name already exists, this action will replace the existing alias, 
+            effectively acting like an atomic "MOVE" command.
+            </summary>
+            <param name="aliasName">
+            The alias name to be created.
+            </param>
+            <param name="collection">
+            The list of collections to be aliased, separated by commas.
+            </param>
+            <returns> The output will simply be a <see cref="T:SolrNet.ResponseHeader"/>. with details of the time it took to process the request.  </returns>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrDynamicFieldEx.Type">
+            <summary>
+            Type of field 
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrDynamicFieldEx.Indexed">
+            <summary>
+            Determine if field is indexed
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrDynamicFieldEx.Stored">
+            <summary>
+            Determine if field is stored
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrNetProxy">
+            <summary>
+            This class extend the functionality of <see cref="T:Sitecore.ContentSearch.IProviderSearchContext"/> to provide Solr Query extension. 
+            to use extension methods in the class, simply import this class and code with
+            
+             var index = ContentSearchManager.GetIndex("sitecore_master_index");
+             using (var context = index.CreateSearchContext())
+             {
+                var results = context.GetSpellCheck(new SolrQuery(string.Format("_name:{0}", searchText)), new SpellCheckHandlerQueryOptions());
+             }
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrNetProxy.Query``1(Sitecore.ContentSearch.IProviderSearchContext,System.String,SolrNet.Commands.Parameters.QueryOptions)">
+            <summary>
+            Proxy method to ISolrReadOnlyOperation.Query
+            </summary>
+            <param name="context"></param>
+            <param name="q"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrNetProxy.Query``1(Sitecore.ContentSearch.IProviderSearchContext,SolrNet.ISolrQuery,SolrNet.Commands.Parameters.QueryOptions)">
+            <summary>
+            Proxy method to ISolrReadOnlyOperation.Query overload
+            </summary>
+            <param name="context"></param>
+            <param name="q"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrNetProxy.GetMoreLikeThis``1(Sitecore.ContentSearch.IProviderSearchContext,SolrNet.SolrMLTQuery,SolrNet.Commands.Parameters.MoreLikeThisHandlerQueryOptions)">
+            <summary>
+            Summon solr morelikethis request handler and return results
+            </summary>
+            <param name="context"></param>
+            <param name="q"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrNetProxy.GetSpellCheck(Sitecore.ContentSearch.IProviderSearchContext,SolrNet.ISolrQuery,Sitecore.ContentSearch.SolrNetExtension.SpellCheckHandlerQueryOptions)">
+            <summary>
+            Get SolrQueryResults with spellcheck suggestion results
+            </summary>
+            <param name="context"></param>
+            <param name="q"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrNetIntegration.SolrNetProxy.Suggest(Sitecore.ContentSearch.IProviderSearchContext,Sitecore.ContentSearch.SolrNetExtension.SolrSuggestQuery,Sitecore.ContentSearch.SolrNetExtension.SuggestHandlerQueryOptions)">
+            <summary>
+            Execute suggest queries against solr index
+            </summary>
+            <param name="context">The search context</param>
+            <param name="q"><see cref="T:Sitecore.ContentSearch.SolrNetExtension.SolrSuggestQuery"/> or <see cref="T:System.String"/> that represent the suggest query</param>
+            <param name="options">Query options</param>
+            <returns>Result query</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrOperations.ISolrOperationsFactory">
+            <summary>
+            The SolrOperationsFactory interface.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrOperations.SolrOperationsFactory">
+            <inheritdoc />
+            <summary>
+            The solr operations factory.
+            </summary>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrQueryOptionsBuilder.IQueryOptionsPartBuilder">
+            <summary>
+            Implements a builder class that build a certain part of solr query options object.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrQueryOptionsBuilder.IQueryOptionsPartBuilder.BuildPart(Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery,SolrNet.Commands.Parameters.QueryOptions,Sitecore.ContentSearch.IProviderSearchContext)">
+            <summary>
+            Builds specific part of the provided <see cref="T:SolrNet.Commands.Parameters.QueryOptions"/> object using 
+            the given <see cref="T:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery"/> under the <see cref="T:Sitecore.ContentSearch.IProviderSearchContext"/>
+            </summary>
+            <param name="compositeQuery">The solr query.</param>
+            <param name="queryOptions">Target query options.</param>
+            <param name="context">Search context.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrQueryOptionsBuilder.IQueryOptionsPartBuildersFactory">
+            <summary>
+            Factory of <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrQueryOptionsBuilder.IQueryOptionsPartBuilder"/>
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrQueryOptionsBuilder.IQueryOptionsPartBuildersFactory.CreatePartBuilder(System.String)">
+            <summary>
+            Create part builder.
+            </summary>
+            <param name="partName">The name of part to be build.</param>
+            <returns>Part builder object.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrQueryOptionsBuilder.ISolrQueryOptionsBuilder">
+            <summary>
+            Builder of solr query options.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrQueryOptionsBuilder.ISolrQueryOptionsBuilder.Build(Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery,Sitecore.ContentSearch.IProviderSearchContext)">
+            <summary>
+            Build the <see cref="T:SolrNet.Commands.Parameters.QueryOptions"/> from <see cref="T:Sitecore.ContentSearch.Linq.Solr.SolrCompositeQuery"/>
+            </summary>
+            <param name="compositeQuery">The solr composite query</param>
+            <param name="context">The search context.</param>
+            <returns>Query options object with all the information needed as per the provided query.</returns>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrSearchContext">
+            <summary>
+            The solr search context.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrSearchContext.solrIndex">
+            <summary>The index</summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrSearchContext.contentSearchSettings">
+            <summary>The content search settings</summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrSearchContext.settings">
+            <summary>The settings</summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchContext.#ctor(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex,Sitecore.ContentSearch.Abstractions.Factories.ILinqToIndexFactory,Sitecore.ContentSearch.Security.SearchSecurityOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrSearchContext" /> class.
+            </summary>
+            <param name="index">The index.</param>
+            <param name="linqToIndexFactory">Linq to index factory</param>
+            <param name="options">The options.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchContext.GetQueryable``1(Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>Gets the queryable.</summary>
+            <typeparam name="TItem">The type of the item.</typeparam>
+            <param name="executionContexts">The execution contexts.</param>
+            <returns>
+            The <see cref="T:System.Linq.IQueryable" />.
+            </returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchContext.IsSolrOnline">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchContext.GetTermsByFieldName(System.String,System.String)">
+            <summary>
+            Gets the name of the terms by field.
+            </summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="filter">The filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchContext.GetFacets(System.String,System.String)">
+            <summary>
+            The get facets.
+            </summary>
+            <param name="fieldName">The field name.</param>
+            <param name="filter">The filter.</param>
+            <returns>The <see cref="T:System.Collections.IEnumerable"/>.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchFieldConfiguration.SetNullPlaceholderValue(System.String)">
+            <summary>
+            Sets the null placeholder value.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchFieldConfiguration.SetEmptyStringPlaceholderValue(System.String)">
+            <summary>
+            Sets the empty string placeholder value.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex">
+            <summary>
+            Basic Solr search index object.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.#ctor(System.String,System.String,Sitecore.ContentSearch.Maintenance.IIndexPropertyStore)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="core"></param>
+            <param name="propertyStore"></param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.#ctor(System.String,System.String,Sitecore.ContentSearch.Maintenance.IIndexPropertyStore,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="core"></param>
+            <param name="propertyStore"></param>
+            <param name="group"></param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.#ctor(System.String,System.String,Sitecore.ContentSearch.Maintenance.IIndexPropertyStore,Sitecore.ContentSearch.Abstractions.Factories.IProviderContextFactory,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="core"></param>
+            <param name="propertyStore"></param>
+            <param name="providerContextFactory"></param>
+            <param name="group"></param>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Core">
+            <summary>
+            Solr core name
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.EnableItemLanguageFallback">
+            <summary>
+            Gets a value indicating whether index will store item language fallback values.
+            </summary>
+            <value>
+            <c>true</c> if will store item language fallback values otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.EnableFieldLanguageFallback">
+            <summary>
+            Gets a value indicating whether index will store field language fallback values.
+            </summary>
+            <value>
+            <c>true</c> if index will store field language fallback values; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.LastUpdatedStamp">
+            <summary>
+            Last time the index updated.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.ShardingStrategy">
+            <summary>
+            Sharding strategy.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.ShardFactory">
+            <summary>
+            Shard factory class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Shards">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.UpdateStrategies">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Configuration">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.PropertyStore">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.CommitPolicyExecutor">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Operations">
+            <summary>Gets the index operations.</summary>
+            <value>The index operations.</value>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Summary">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Schema">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.SolrOperations">
+            <summary>
+            Gets or sets the solr operations.
+            </summary>
+            <exception cref="T:Sitecore.Exceptions.ProviderConfigurationException">
+            Thrown when Solr provider is unavailable due to errors in configuration.
+            </exception>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.SolrAdmin">
+            <summary>
+            Gets the solr admin.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.SolrConnector">
+            <summary>
+            The API that used to connect to Solr.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.TemplateIndexName">
+            <summary>
+            Template index name.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Initialize">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.GetSolrFieldNameTranslator">
+            <summary>
+            Create SolrFieldNameTranslator
+            </summary>
+            <returns>SolrFieldNameTranslator</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.AddCrawler(Sitecore.ContentSearch.IProviderCrawler)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.AddStrategy(Sitecore.ContentSearch.Maintenance.Strategies.IIndexUpdateStrategy)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Update(Sitecore.ContentSearch.IIndexableUniqueId)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Update(Sitecore.ContentSearch.IIndexableUniqueId,Sitecore.ContentSearch.IndexingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Update(System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.IIndexableUniqueId})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Update(System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.IIndexableUniqueId},Sitecore.ContentSearch.IndexingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Refresh(Sitecore.ContentSearch.IIndexable)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Refresh(Sitecore.ContentSearch.IIndexable,Sitecore.ContentSearch.IndexingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Delete(Sitecore.ContentSearch.IIndexableId)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Delete(Sitecore.ContentSearch.IIndexableId,Sitecore.ContentSearch.IndexingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Delete(Sitecore.ContentSearch.IIndexableUniqueId)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Delete(Sitecore.ContentSearch.IIndexableUniqueId,Sitecore.ContentSearch.IndexingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Rebuild">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Rebuild(System.Boolean,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Rebuild(Sitecore.ContentSearch.IndexingOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.Reset">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.GetCoreNames">
+            <summary>
+            Retrieves the list of solr core names related to this index.
+            In case of Switch on rebuild indexes, the list will return both: 
+            The core name and the rebuild core name.
+            </summary>
+            <returns>The <see cref="T:System.Collections.Generic.IEnumerable`1"/> names.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.IndexOnlyDocumentCount">
+            <summary>
+            Gets the number of documents in this index.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.OptimizeIndex">
+            <summary>
+            Optimize the Solr index.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.PopulateSolrManagedSchema">
+            <summary>
+            Populate the Solr Managed Schema
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.InitializeSolr">
+            <summary>
+            Initilize Solr integration.
+            </summary>
+            <returns>True if initialized successful</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.InitializeSolrOperation">
+            <summary>
+            Initialize solr operations(s)
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.InitializeSolrAdmin">
+            <summary>
+            Initialize solr admin(s)
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.InitializeSchema">
+            <summary>
+            Initialize solr schema
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.GetIndexSummary">
+            <summary>
+            Gets the index summary.
+            </summary>
+            <returns>The <see cref="T:Sitecore.ContentSearch.ISearchIndexSchema"/> object.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.GetClusterStateProvider">
+            <summary>
+            Gets cloud cluster state provider.
+            </summary>
+            <returns>The <see cref="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.IClusterStateProvider"/> object.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.GetSolrSchema">
+            <summary>
+            Gets the solr schema.
+            </summary>
+            <returns>The <see cref="T:SolrNet.Schema.SolrSchema"/> object.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.RequestStatus">
+            <summary>
+            Request core status
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.PerformRebuild(Sitecore.ContentSearch.IndexingOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex.PerformRebuild(System.Boolean,System.Boolean,Sitecore.ContentSearch.IndexingOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1">
+            <summary>
+            The search results.
+            </summary>
+            <typeparam name="TElement">Search result element type.</typeparam>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.context">
+            <summary>
+            The context.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.searchResults">
+            <summary>
+            The search hits.
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.solrIndexConfiguration">
+            <summary>
+            The solr index configuration
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.mapper">
+            <summary>The mapper</summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.selectMethod">
+            <summary>The select method</summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.executionContexts">
+            <summary>The execution contexts</summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.virtualFieldProcessors">
+            <summary>
+            The virtual field processors
+            </summary>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.numberFound">
+            <summary>
+            The total number of matches found in the index.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.#ctor(Sitecore.ContentSearch.SolrProvider.SolrSearchContext,SolrNet.SolrQueryResults{System.Collections.Generic.Dictionary{System.String,System.Object}},Sitecore.ContentSearch.Linq.Methods.SelectMethod,System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IExecutionContext},System.Collections.Generic.IEnumerable{Sitecore.ContentSearch.Linq.Common.IFieldQueryTranslator})">
+            <summary>
+            Initializes a new instance of the <see cref="!:SolrSearchResults`1" /> struct.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="searchResults">The search results.</param>
+            <param name="selectMethod">The select method.</param>
+            <param name="virtualFieldProcessors">The virtual field processors.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.ElementAt(System.Int32)">
+            <summary>
+            Gets the element at the specified <paramref name="index"/>.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>The element at the specified <paramref name="index"/>.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.ElementAtOrDefault(System.Int32)">
+            <summary>
+            Gets the element at the specified <paramref name="index"/>.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>The element at the specified <paramref name="index"/>.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.Any">
+            <summary>
+            Determines whether the search results contains any elements.
+            </summary>
+            <returns>true if the search results contains any elements; otherwise, false.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.Count">
+            <summary>
+            Returns the number of elements in the search results.
+            </summary>
+            <returns>The number of elements in the search results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.First">
+            <summary>
+            Returns the first element of the search results
+            </summary>
+            <returns>The first element of the search results.</returns>
+            <exception cref="T:System.InvalidOperationException">Sequence contains no elements</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.FirstOrDefault">
+            <summary>
+            Returns the first element of the search results
+            </summary>
+            <returns>The first element of the search results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.Last">
+            <summary>
+            Returns the last element of the search results
+            </summary>
+            <returns>The last element of the search results.</returns>
+            <exception cref="T:System.InvalidOperationException">Sequence contains no elements</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.LastOrDefault">
+            <summary>
+            Returns the last element of the search results
+            </summary>
+            <returns>The last element of the search results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.Single">
+            <summary>
+            Returns the only element of the search results, and throws an exception if there is not exactly one element in the sequence.
+            </summary>
+            <returns>The single element of the search results.</returns>
+            <exception cref="T:System.InvalidOperationException">The input sequence contains more than one element.-or-The input sequence is empty.</exception>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.SingleOrDefault">
+            <summary>
+            Returns the only element of the search results, and throws an exception if there is not exactly one element in the sequence.
+            </summary>
+            <returns>The single element of the search results.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.GetSearchHits">
+            <summary>Gets the search hits.</summary>
+            <returns>The search hits.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrSearchResults`1.GetSearchResults">
+            <summary>
+            Gets the search results.
+            </summary>
+            <returns>The search results.</returns>
+        </member>
+        <member name="F:Sitecore.ContentSearch.SolrProvider.SolrStatus.lockObject">
+            <summary>
+            The lock object.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrStatus.IndexesToInit">
+            <summary>
+            The list of indexes that failed to initialize due to some errors and should be initialized again.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrStatus.SetIndexForInitialization(Sitecore.ContentSearch.ISearchIndex)">
+            <summary>
+            Sets the index that failed to initialize due to some errors and should be initialized again. 
+            </summary>
+            <param name="solrIndex">The index.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrStatus.UnsetIndexForInitialization(Sitecore.ContentSearch.ISearchIndex)">
+            <summary>
+            Unsets the index that has been already initialized. 
+            </summary>
+            <param name="solrIndex">The index.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrStatus.GetIndexesForInitialization">
+            <summary>
+            Gets the list of indexes that failed to initialize due to some errors and should be initialized again. 
+            </summary>
+            <returns>The list of <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrSearchIndex"/> instances.</returns>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SolrUpdateContext.Processed">
+            <summary>
+            Gets or sets the processed <see cref="T:Sitecore.ContentSearch.IIndexableUniqueId"/> items.
+            </summary>
+            <value>
+            The processed <see cref="T:Sitecore.ContentSearch.IIndexableUniqueId"/> items.
+            </value>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrUpdateContext.#ctor(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex,SolrNet.ISolrOperations{System.Collections.Generic.Dictionary{System.String,System.Object}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrUpdateContext" /> class.
+            </summary>
+            <param name="solrSearchIndex">Index of the solr search.</param>
+            <param name="solr">The solr.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrUpdateContext.#ctor(Sitecore.ContentSearch.SolrProvider.SolrSearchIndex,SolrNet.ISolrOperations{System.Collections.Generic.Dictionary{System.String,System.Object}},Sitecore.ContentSearch.ICommitPolicyExecutor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.ContentSearch.SolrProvider.SolrUpdateContext" /> class.
+            </summary>
+            <param name="solrSearchIndex">Index of the solr search.</param>
+            <param name="solr">The solr.</param>
+            <param name="commitPolicy">The commit policy.</param>
+            <param name="commitPolicyExecutor">The commit policy executor.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrUpdateContext.AddDocument(System.Object,Sitecore.ContentSearch.Linq.Common.IExecutionContext)">
+            <summary>Adds the document.</summary>
+            <param name="itemToAdd">The item to add.</param>
+            <param name="executionContext">The execution context.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrUpdateContext.AddDocument(System.Object,Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>The add document.</summary>
+            <param name="itemToAdd">The item to add.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrUpdateContext.UpdateDocument(System.Object,System.Object,Sitecore.ContentSearch.Linq.Common.IExecutionContext)">
+            <summary>Updates the document.</summary>
+            <param name="itemToUpdate">The item to update.</param>
+            <param name="criteriaForUpdate">The criteria for update.</param>
+            <param name="executionContext">The execution context.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrUpdateContext.UpdateDocument(System.Object,System.Object,Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>The update document.</summary>
+            <param name="itemToUpdate">The item to update.</param>
+            <param name="criteriaForUpdate">The criteria for update.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrUpdateContext.Delete(Sitecore.ContentSearch.IIndexableUniqueId,Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>
+            The delete by id.
+            </summary>
+            <param name="id">The id.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrUpdateContext.Delete(Sitecore.ContentSearch.IIndexableId,Sitecore.ContentSearch.Linq.Common.IExecutionContext[])">
+            <summary>
+            The delete group.
+            </summary>
+            <param name="id">The id.</param>
+            <param name="executionContexts">The execution contexts.</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SolrUpdateContext.DeleteInternal(Sitecore.ContentSearch.IIndexableUniqueId)">
+            <summary>
+            Deletes the internal.
+            </summary>
+            <param name="id">The identifier.</param>
+        </member>
+        <member name="T:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex">
+            <summary>
+            Switches cores on SolrCloud using Aliases
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.ActiveCollection">
+            <summary>
+            Gets or sets active Solr main alias name. Previously it was set as the Core property.
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.RebuildCollection">
+            <summary>
+            Gets or sets rebuild Solr main alias name. Previously it was set as the RebuildCollection property.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.GetIndexSummary">
+            <summary>
+            Gets the solr index summay
+            </summary>
+            <returns>The <see cref="T:Sitecore.ContentSearch.ISearchIndexSummary"/> object.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.GetClusterStateProvider">
+            <summary>
+            Gets cloud cluster state provider.
+            </summary>
+            <returns>The <see cref="T:Sitecore.ContentSearch.SolrNetExtension.Cloud.IClusterStateProvider"/> object.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.LoadLastPreservedCoreStates">
+            <summary>
+            Loads last states of active and rebuild collections from property store.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.IsCollectionValid(System.String,System.String[])">
+            <summary>
+            Determines whether [is collection valid] [the specified collection].
+            </summary>
+            <param name="collection">The collection.</param>
+            <param name="validCollections">The valid collections.</param>
+            <returns>True if collection is valid.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.SetAlias(System.String,System.String)">
+            <summary>
+            Sets alias to a specified collection.
+            </summary>
+            <param name="aliasName">Alias name</param>
+            <param name="collection">Collection name</param>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.CreateAlias(System.String,System.String)">
+            <summary>
+            Runs CREATEALIAS action for Solr collections REST API.
+            </summary>
+            <param name="aliasName">Alias name</param>
+            <param name="collection">Collection(s) name. Multiple collections should be separated by comma.</param>
+            <returns>Returns response header</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.SetAliasesConfiguration">
+            <summary>
+            Sets main alias to the active collection and rebuild alias to the rebuild collection.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.EnforceAliasCreation">
+            <summary>
+            Enforce aliases creation
+            </summary>
+            <returns>True if alias creation enforces.</returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.PreserveAliasesCollections">
+            <summary>
+            Writes main alias and rebuild alias values to the index property store.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.SwitchAliasesCollections">
+            <summary>
+            Swaps aliases collections of main and rebuild aliases.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.SwapAfterRebuild">
+            <summary>
+            Swap the collections after rebuild.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrCloudSearchIndex.LogSolrNotRunning">
+            <summary>
+            Log debug messages if solr is not runing
+            </summary>
+        </member>
+        <member name="P:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrSearchIndex.RebuildSolrOperations">
+            <summary>
+            Gets or sets the rebuild solr operations.
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrSearchIndex.InitializeSolrOperation">
+            <summary>
+            Initialize solr operations(s)
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrSearchIndex.InitializeRebuildSolrOperation">
+            <summary>
+            Initializes rebuild solr operation
+            </summary>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrSearchIndex.CreateTemporaryCoreUpdateContext(SolrNet.ISolrOperations{System.Collections.Generic.Dictionary{System.String,System.Object}})">
+            <summary>
+            Create Temporary Core Update Context
+            </summary>
+            <param name="solrOperations">Solr Operations</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.ContentSearch.SolrProvider.SwitchOnRebuildSolrSearchIndex.SwapAfterRebuild">
+            <summary>
+            Swap the cores after rebuild.
+            </summary>
+        </member>
+    </members>
+</doc>

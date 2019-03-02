@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Xdb.ReferenceData.Client.Xmgmt</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Xmgmt.AppSettingsResolver">
+            <summary>
+            A utility class to resolve application settings.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.AppSettingsResolver.Resolve(System.String)">
+            <summary>
+            Resolves a value from application settings.
+            </summary>
+            <param name="appSettingsName">The name of the application setting to resolve.</param>
+            <returns>The raw application setting.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ConfigurableCollection`1">
+            <summary>
+            A collection that can be configured via Sitecore configuration <see cref="T:Sitecore.Configuration.Factory"/>.
+            </summary>
+            <typeparam name="T">Type of an entry in the list. Must be a reference type.</typeparam>
+            <seealso cref="T:System.Collections.Generic.List`1" />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ConfigurableCollection`1.AddConfigurableItem(System.Xml.XmlNode)">
+            <summary>
+            Creates and adds an item based on the configuration specified in the <paramref name="node"/>.
+            </summary>
+            <param name="node">The node.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Xmgmt.DefinitionCacheConfigurator">
+            <summary>
+            Configurator for the reference data cache.
+            </summary>
+            <seealso cref="T:Sitecore.DependencyInjection.IServicesConfigurator" />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.DefinitionCacheConfigurator.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures service collection.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLogger">
+            <summary>
+            Implementation of <see cref="T:Microsoft.Extensions.Logging.ILogger" /> that uses Sitecore logging API.
+            </summary>
+            <seealso cref="T:Microsoft.Extensions.Logging.ILogger" />
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLogger.DefaultStateExceptionFormat">
+            <summary>
+            The default state exception format for logging.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLogger._defaultFormatter">
+            <summary>
+            The default state and exception values formatter.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLogger._logger">
+            <summary>
+            The logger instance returned by Sitecore API.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLogger._logLevelMap">
+            <summary>
+            The map of log levels.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLogger.#ctor(log4net.spi.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLogger"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLogger.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
+            <summary>
+            Aggregates most logging patterns to a single method.
+            </summary>
+            <typeparam name="TState">Type of the entry to be written.</typeparam>
+            <param name="logLevel">Log level.</param>
+            <param name="eventId">Event id.</param>
+            <param name="state">State object.</param>
+            <param name="exception">Exception object.</param>
+            <param name="formatter">The formatter function.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)">
+            <summary>
+            Checks if the given LogLevel is enabled.
+            </summary>
+            <param name="logLevel">The log level.</param>
+            <returns><c>true</c> if the given LogLevel is enabled; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLogger.BeginScope``1(``0)">
+            <summary>
+            Begins a logical operation scope.
+            </summary>
+            <typeparam name="TState">The identifier for the scope.</typeparam>
+            <param name="state">The identifier for the scope.</param>
+            <returns>
+            An IDisposable that ends the logical operation scope on dispose.
+            </returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLogger.GetLogLevel(Microsoft.Extensions.Logging.LogLevel)">
+            <summary>
+            Gets the Sitecore API log level corresponding to the provided log level.
+            </summary>
+            <param name="logLevel">The log level.</param>
+            <returns>Sitecore API log level corresponding to the provided log level.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLoggerProvider">
+            <summary>
+            Sitecore logger provider.
+            </summary>
+            <seealso cref="T:Microsoft.Extensions.Logging.ILoggerProvider" />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLoggerProvider.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLoggerProvider.CreateLogger(System.String)">
+            <summary>
+            Creates a new <see cref="T:Microsoft.Extensions.Logging.ILogger`1" /> instance.
+            </summary>
+            <param name="categoryName">The category name for messages produced by the logger.</param>
+            <returns>Created <see cref="T:Microsoft.Extensions.Logging.ILogger`1" /> instance.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLoggerProvider.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLoggingServicesConfigurator">
+            <summary>
+            Configurator that registers Sitecore logging services in the service collection.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Logging.SitecoreLoggingServicesConfigurator.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers Sitecore logging services in the service collection.
+            </summary>
+            <param name="serviceCollection">The services to configure.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ReferenceDataClientCachingDecoratorConfigurator">
+            <summary>
+            Configurator for the reference data client caching decorators.
+            </summary>
+            <seealso cref="T:Sitecore.DependencyInjection.IServicesConfigurator" />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ReferenceDataClientCachingDecoratorConfigurator.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures service collection.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ReferenceDataClientConfigurator">
+            <summary>
+            Configurator for the reference data client.
+            </summary>
+            <seealso cref="T:Sitecore.DependencyInjection.IServicesConfigurator" />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ReferenceDataClientConfigurator.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures service collection.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Xmgmt.Resources.FactoryCreateReferenceDataClientErrorMessage">
+            <summary>
+              Looks up a localized string similar to Cannot instantiate an instance of reference data client. Please check configuration..
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ServiceCollectionExtensions">
+            <summary>
+            Defines extensions to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ServiceCollectionExtensions.UseReferenceDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient"/> as the client for the reference data store.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ServiceCollectionExtensions.UseReadOnlyReferenceDataClient(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient"/> as the client for the reference data store.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ServiceCollectionExtensions.AddMemoryDefinitionCache(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds the <see cref="T:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache"/> to the service collection.
+            </summary>
+            <param name="serviceCollection">The collection to add the service to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ServiceCollectionExtensions.UseReferenceDataClientCachingDecorator(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator"/> as the client for the reference data store.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ServiceCollectionExtensions.UseReadOnlyReferenceDataClientCachingDecorator(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator"/> as the client for the reference data store.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Xmgmt.ServiceCollectionExtensions.UseLogging(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds logging types to the collection of services.
+            </summary>
+            <param name="services">The services.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Xmgmt.XdbSettings">
+            <summary>
+            Experience database settings.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Xmgmt.XdbSettings.Enabled">
+            <summary>
+            Gets a value indicating whether the xDB is enabled.
+            </summary>
+            <value>
+              <c>true</c> if xDB license is valid and xDB is enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Xmgmt.XdbSettings.HasValidLicense">
+            <summary>
+            Gets a value indicating whether the license is valid.
+            </summary>
+            <value>
+            <c>true</c> if the license is valid; otherwise, <c>false</c>.
+            </value>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Common.WildcardMatch</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Framework.Common.WildcardMatch">
+            <summary>
+            A simple and light string matching expression, supporting basic use of wildcards, typically for matching fully qualified class names.  
+            Static extension methods define the valid forms of wilcard expressions.
+            </summary>
+            <remarks>Supporting: *, prefix*, *suffix, *token*, prefix*suffix, exactValue, - (empty value)</remarks>
+        </member>
+        <member name="M:Sitecore.Framework.Common.WildcardMatch.Evaluate(System.String)">
+            <summary>
+            Executes the wildcard match for a string value.
+            </summary>
+            <param name="value">The value to evaluate.</param>
+            <returns>True if the wildcard expression matched the value, false otherwise.</returns>
+        </member>
+        <member name="P:Sitecore.Framework.Common.WildcardMatch.Identifier">
+            <summary>
+            The deterministic string representation of the predicate.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Common.WildcardMatch.Parse(System.String)">
+            <summary>
+            Creates a wildcard match for a valid wildcard string expression.
+            Supporting: *, prefix*, *suffix, *token*, prefix*suffix, exactValue, - (empty value) 
+            </summary>
+            <param name="wildcardExpression">A basic regular expression to match string values.  Use of the explicit static extension methods is preferred.</param>
+            <returns>If the pattern is valid a new match object is returned, otherwise an exception is thrown.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown if the wildcard expression is not valid.</exception>
+        </member>
+        <member name="M:Sitecore.Framework.Common.WildcardMatch.EqualTo(System.String)">
+            <summary>
+            Creates a match object that will match an exact value.  The operation is not case sensitive.
+            </summary>
+            <param name="exactMatch">The exact value to match.</param>
+            <returns>A new wildcard expression object.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Common.WildcardMatch.Named(System.Type)">
+            <summary>
+            Creates a match object that will match values created for a given type.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Common.WildcardMatch.Named``1">
+            <summary>
+            Creates a match object that will match values created for a given type.
+            </summary>
+            <typeparam name="T">The type for which the string value was created.</typeparam>
+            <returns>A new match object.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Common.WildcardMatch.StartingWith(System.String)">
+            <summary>
+            Creates a match object that will match values with a given prefix.  The operation is not case sensitive.
+            The string representation of this operation is : prefix*
+            </summary>
+            <param name="prefix">The prefix of the values to match.</param>
+            <returns>A new match object.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Common.WildcardMatch.EndingWith(System.String)">
+            <summary>
+            Creates a match object that will match values with a given suffix.  The operation is not case sensitive.
+            The string representation of this operation is : *suffix
+            </summary>
+            <param name="suffix">The suffix of the values to match.</param>
+            <returns>A new match object.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Common.WildcardMatch.StartingEndingWith(System.String,System.String)">
+            <summary>
+            Creates a match objects that will match values with a given prefix and suffix.  The operation is not case sensitive.
+            The string representation of this operation is : prefix*suffix
+            </summary>
+            <param name="prefix">The prefix of the values to match.</param>
+            <param name="suffix">The suffix of the values to match.</param>
+            <returns>A new match object.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Common.WildcardMatch.Containing(System.String)">
+            <summary>
+            Creates a match object that will match values containing a token.  The operation is not case sensitive.
+            The string representation of this operation is : *token*
+            </summary>
+            <param name="token">The token to match in the value.</param>
+            <returns>A new match object.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Common.WildcardMatch.All">
+            <summary>
+            Creates a match object that will match all values.
+            The string representation of this operation is : *
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Common.WildcardMatch.MatchingUnnamed">
+            <summary>
+            Creates a match object that will match empty values.
+            The string representation of this operation is : -
+            </summary>
+            <returns>A new match object.</returns>
+        </member>
+        <member name="M:System.WildcardMatchStringExtensions.ToMatch(System.String)">
+            <summary>
+            Creates a wildcard match for a valid wildcard string expression.
+            Supporting: *, prefix*, *suffix, *token*, prefix*suffix, exactValue, - (empty value) 
+            </summary>
+            <param name="wildcardExpression">A basic regular expression to match string values.  Use of the explicit static extension methods is preferred.</param>
+            <returns>If the pattern is valid a new match object is returned, otherwise an exception is thrown.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown if the wildcard expression is not valid.</exception>
+        </member>
+        <member name="M:System.WildcardMatchStringExtensions.ToEqualsToMatch(System.String)">
+            <summary>
+            Creates a match object that will match an exact value.  The operation is not case sensitive.
+            </summary>
+            <param name="value">The exact value to match.</param>
+            <returns>A new wildcard expression object.</returns>
+        </member>
+        <member name="M:System.WildcardMatchStringExtensions.ToStartsWithMatch(System.String)">
+            <summary>
+            Creates a match object that will match values with a given prefix.  The operation is not case sensitive.
+            The string representation of this operation is : prefix*
+            </summary>
+            <param name="prefix">The prefix of the values to match.</param>
+            <returns>A new match object.</returns>
+        </member>
+        <member name="M:System.WildcardMatchStringExtensions.ToEndsWithMatch(System.String)">
+            <summary>
+            Creates a match object that will match values with a given suffix.  The operation is not case sensitive.
+            The string representation of this operation is : *suffix
+            </summary>
+            <param name="suffix">The suffix of the values to match.</param>
+            <returns>A new match object.</returns>
+        </member>
+        <member name="M:System.WildcardMatchStringExtensions.ToStartsEndsWithMatch(System.String,System.String)">
+            <summary>
+            Creates a match objects that will match values with a given prefix and suffix.  The operation is not case sensitive.
+            The string representation of this operation is : prefix*suffix
+            </summary>
+            <param name="prefix">The prefix of the values to match.</param>
+            <param name="suffix">The suffix of the values to match.</param>
+            <returns>A new match object.</returns>
+        </member>
+        <member name="M:System.WildcardMatchTypeExtensions.ToMatch(System.Type)">
+            <summary>
+            Creates a match object that will match values created for a given type.
+            </summary>
+        </member>
+    </members>
+</doc>

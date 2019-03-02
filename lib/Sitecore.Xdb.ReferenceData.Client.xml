@@ -1,0 +1,775 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Xdb.ReferenceData.Client</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Cache.CacheKeyGenerator">
+            <summary>
+            Generates cache keys for model objects.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.CacheKeyGenerator.GenerateCacheKey(Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria)">
+            <summary>
+            Generate a cache key for the provided <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria"/>.
+            </summary>
+            <param name="criteria">The criteria to generate the cache key for.</param>
+            <returns>The generated cache key.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.CacheKeyGenerator.GenerateCacheKey(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Generate a cache key for the provided <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey"/>.
+            </summary>
+            <param name="key">The key to generate the cache key for.</param>
+            <param name="latestActiveOnly">Indicates whether the result set will include all versions of definitions or only the latest active version.</param>
+            <param name="pageNumber">The page number to generate the cache key for.</param>
+            <param name="pageSize">The page size to generate the cache key for.</param>
+            <returns>The generated cache key.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache">
+            <summary>
+            Defines a cache used to temporarily store definitions.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache.Add``1(System.String,``0)">
+            <summary>
+            Add a definition to the cache.
+            </summary>
+            <param name="key">The key used to identify the definition within the cache.</param>
+            <param name="definition">
+            The <see cref="T:Sitecore.Xdb.ReferenceData.Core.BaseDefinition" /> to cache.
+            </param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache.Add``1(System.String,Sitecore.Xdb.ReferenceData.Core.ResultSet{``0})">
+            <summary>
+            Add a <see cref="T:Sitecore.Xdb.ReferenceData.Core.ResultSet`1" /> to the cache.
+            </summary>
+            <param name="key">The key used to identify the definition within the cache.</param>
+            <param name="resultSet">
+            The <see cref="T:Sitecore.Xdb.ReferenceData.Core.ResultSet`1" /> to cache.
+            </param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache.Add(System.String,Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey)">
+            <summary>
+            Add a <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey" /> to the cache.
+            </summary>
+            <param name="key">The key used to identify the definition type within the cache.</param>
+            <param name="typeKey">
+            The <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey" /> to cache.
+            </param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache.GetDefinition``1(System.String)">
+            <summary>
+            Get a previously added definition from the cache.
+            </summary>
+            <typeparam name="TDefinition">The type of the definition being retrieved.</typeparam>
+            <param name="key">The key used to identify the definition within the cache.</param>
+            <returns>The definition if found, otherwise null.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache.GetResultSet``1(System.String)">
+            <summary>
+            Get a previously added <see cref="T:Sitecore.Xdb.ReferenceData.Core.ResultSet`1" /> from the cache.
+            </summary>
+            <typeparam name="TDefinition">The type of a single definition in the result set being retrieved.</typeparam>
+            <param name="key">The key used to identify the result set within the cache.</param>
+            <returns>The result set if found, otherwise null.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache.GetDefinitionType(System.String)">
+            <summary>
+            Get a previously added <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey" /> from the cache.
+            </summary>
+            <param name="key">The key used to identify the definition type within the cache.</param>
+            <returns>The definition type key if found, otherwise null.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache.Clear">
+            <summary>
+            Clears all entries from the cache.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache.Remove(System.String)">
+            <summary>
+            Remove a definition from the cache.
+            </summary>
+            <param name="key">The key used to identify the definition within the cache.</param>
+            <returns>True if the definition was found and removed, otherwise false.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache">
+            <summary>
+            A <see cref="T:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache"/> implementation which stores entries in memory.
+            </summary>
+            <remarks>This type is thread safe.</remarks>
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.EntryLifetimeConfigurationKey">
+            <summary>
+            The key of entry lifetime configuration setting.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.EntryLifetimeConfigurationDefaultValue">
+            <summary>
+            The default value of entry lifetime configuration setting.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.#ctor(System.String)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="entryLifetime">The lifetime of entries in the cache.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.#ctor(System.TimeSpan)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="entryLifetime">The lifetime of entries in the cache.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache"/> class.
+            </summary>
+            <param name="configuration">The set of key/value application configuration properties.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.Cache">
+            <summary>
+            The internal cache to store entries in.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.EntryLifetime">
+            <summary>
+            The lifetime of entries in the cache.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.CacheLock">
+            <summary>
+            Represents a lock that is used to manage access to a resource, allowing multiple threads for reading or exclusive access for writing.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.Add``1(System.String,``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.Add``1(System.String,Sitecore.Xdb.ReferenceData.Core.ResultSet{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.Add(System.String,Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.GetDefinition``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.GetResultSet``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.GetDefinitionType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.Remove(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.Dispose">
+            <summary>
+            Perform cleanup before destroying this instance.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.Dispose(System.Boolean)">
+            <summary>
+            Perform cleanup before destroying this instance.
+            </summary>
+            <param name="disposing">Determines if managed resources should be disposed.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Cache.MemoryDefinitionCache.AddObject(System.String,System.Object)">
+            <summary>
+            Adds the object to the cache.
+            </summary>
+            <param name="key">The key used to identify the object in the cache.</param>
+            <param name="valueToCache">The object to cache.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReadOnlyReferenceDataClient">
+            <summary>
+            An implementation of <see cref="T:Sitecore.Xdb.ReferenceData.Core.IReadOnlyReferenceDataClient"/> which is not configured and does nothing.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.ReferenceData.Core.IReadOnlyReferenceDataClient" />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReadOnlyReferenceDataClient.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.NotConfiguredReadOnlyReferenceDataClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReadOnlyReferenceDataClient"/> class.
+            </summary>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReadOnlyReferenceDataClient.GetDefinitionTypeAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReadOnlyReferenceDataClient.GetDefinitionType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReadOnlyReferenceDataClient.GetDefinitionAsync``2(Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReadOnlyReferenceDataClient.GetDefinition``2(Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReadOnlyReferenceDataClient.GetDefinitionsAsync``2(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria},System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReadOnlyReferenceDataClient.GetDefinitions``2(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria},System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReadOnlyReferenceDataClient.GetDefinitionsByTypeAsync``2(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey,System.Boolean,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReadOnlyReferenceDataClient.GetDefinitionsByType``2(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey,System.Boolean,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient">
+            <summary>
+            An implementation of <see cref="T:Sitecore.Xdb.ReferenceData.Core.IReferenceDataClient"/> which is not configured and does nothing.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient"/> class.
+            </summary>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.EnsureDefinitionTypeAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.EnsureDefinitionType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.DeleteDefinitionTypeAsync(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.DeleteDefinitionType(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.SaveAsync``2(Sitecore.Xdb.ReferenceData.Core.Definition{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.Save``2(Sitecore.Xdb.ReferenceData.Core.Definition{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.SaveAsync``2(Sitecore.Xdb.ReferenceData.Core.Collections.IDefinitionCollection{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.Save``2(Sitecore.Xdb.ReferenceData.Core.Collections.IDefinitionCollection{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.DeleteAsync(Sitecore.Xdb.ReferenceData.Core.DefinitionKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.Delete(Sitecore.Xdb.ReferenceData.Core.DefinitionKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.DeleteAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionKey})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.NotConfiguredReferenceDataClient.Delete(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionKey})">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.QueryStringParameterKeys">
+            <summary>
+            Parameter keys used in the query string.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.Client.QueryStringParameterKeys.LatestActiveOnly">
+            <summary>
+            The "latestActiveOnly" key.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.Client.QueryStringParameterKeys.TypeKey">
+            <summary>
+            The "typeKey" key.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.Client.QueryStringParameterKeys.PageNumber">
+            <summary>
+            The "pageNumber" key.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.Client.QueryStringParameterKeys.PageSize">
+            <summary>
+            The "pageSize" key.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.Client.QueryStringParameterKeys.Name">
+            <summary>
+            The "name" key.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient">
+            <summary>
+            A concrete implementation of the <see cref="T:Sitecore.Xdb.ReferenceData.Core.IReadOnlyReferenceDataClient"/>. Used by external code (such as the Marketing Operations API).
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.ReferenceData.Core.IReadOnlyReferenceDataClient" />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="configuration">The <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> to read configuration from.</param>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.#ctor(System.Uri,Microsoft.Extensions.Configuration.IConfiguration,Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="serviceAddress">The address of the controller hosting the service.</param>
+            <param name="configuration">The <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> to read configuration from.</param>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.#ctor(Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,System.Uri,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="serviceAddress">The address of the controller hosting the service.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.#ctor(Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="serviceAddress">The address of the controller hosting the service.</param>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient"/> after creation.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.#ctor(Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="serviceAddress">The address of the controller hosting the service.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.#ctor(Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="serviceAddress">The address of the controller hosting the service.</param>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient"/> after creation.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.#ctor(Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,System.String,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="serviceAddress">The address of the controller hosting the service.</param>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient"/> after creation.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.DefinitionConverter">
+            <summary>
+            Gets or sets the converter used to convert between definition and definition envelope.
+            </summary>
+            <value>
+            The converter used to convert between definition and definition envelope.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.Logger">
+            <summary>
+            The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.GetDefinitionTypeAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.GetDefinitionType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.GetDefinitionAsync``2(Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.GetDefinition``2(Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.GetDefinitionsAsync``2(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria},System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.GetDefinitions``2(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria},System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.GetDefinitionsByTypeAsync``2(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey,System.Boolean,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.GetDefinitionsByType``2(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey,System.Boolean,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClient.EnsureRoutePrefixRemoved(System.Uri)">
+            <summary>
+            Ensures and removes, if needed, <see cref="F:Sitecore.Xdb.ReferenceData.Client.Routes.RoutePrefix"/> from <paramref name="baseUri"/>.
+            </summary>
+            <param name="baseUri">The base URI to remove <see cref="F:Sitecore.Xdb.ReferenceData.Client.Routes.RoutePrefix"/> from.</param>
+            <returns>The base URI without <see cref="F:Sitecore.Xdb.ReferenceData.Client.Routes.RoutePrefix"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator">
+            <summary>
+            A decorator for <see cref="T:Sitecore.Xdb.ReferenceData.Core.IReadOnlyReferenceDataClient"/> which caches definitions.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.ReferenceData.Core.IReadOnlyReferenceDataClient" />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator.#ctor(Sitecore.Xdb.ReferenceData.Core.IReadOnlyReferenceDataClient,Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator"/> class.
+            </summary>
+            <param name="innerReadOnlyReferenceDataClient">The <see cref="T:Sitecore.Xdb.ReferenceData.Core.IReadOnlyReferenceDataClient"/> being decorated.</param>
+            <param name="definitionCache">The <see cref="T:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache"/> used to cache definitions in.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator.InnerReadOnlyReferenceDataClient">
+            <summary>
+            The <see cref="T:Sitecore.Xdb.ReferenceData.Core.IReadOnlyReferenceDataClient"/> being decorated.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator.DefinitionCache">
+            <summary>
+            The <see cref="T:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache"/> used to cache definitions in.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator.GetDefinitionTypeAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator.GetDefinitionType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator.GetDefinitionAsync``2(Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator.GetDefinition``2(Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator.GetDefinitionsAsync``2(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria},System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator.GetDefinitions``2(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria},System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator.GetDefinitionsByTypeAsync``2(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey,System.Boolean,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReadOnlyReferenceDataHttpClientCachingDecorator.GetDefinitionsByType``2(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey,System.Boolean,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient">
+            <summary>
+            A <see cref="T:Sitecore.Xdb.ReferenceData.Core.IReferenceDataClient"/> which calls over HTTP to an endpoint. Used by external code (such as the Marketing Operations API).
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.ReferenceData.Core.IReferenceDataClient" />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="configuration">The <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> to read configuration from.</param>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.#ctor(System.Uri,Microsoft.Extensions.Configuration.IConfiguration,Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="serviceAddress">The address of the controller hosting the service.</param>
+            <param name="configuration">The <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> to read configuration from.</param>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.#ctor(Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,System.Uri,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="serviceAddress">The address of the controller hosting the service.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.#ctor(Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="serviceAddress">The address of the controller hosting the service.</param>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient"/> after creation.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.#ctor(Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="serviceAddress">The address of the controller hosting the service.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.#ctor(Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="serviceAddress">The address of the controller hosting the service.</param>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient"/> after creation.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.#ctor(Sitecore.Xdb.ReferenceData.Core.Converter.IDefinitionEnvelopeConverter,System.String,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient"/> class.
+            </summary>
+            <param name="definitionConverter">The converter used to convert between definition and definition envelope.</param>
+            <param name="serviceAddress">The address of the controller hosting the service.</param>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient"/> after creation.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.EnsureDefinitionTypeAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.EnsureDefinitionType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.DeleteDefinitionTypeAsync(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.DeleteDefinitionType(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.SaveAsync``2(Sitecore.Xdb.ReferenceData.Core.Definition{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.Save``2(Sitecore.Xdb.ReferenceData.Core.Definition{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.SaveAsync``2(Sitecore.Xdb.ReferenceData.Core.Collections.IDefinitionCollection{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.Save``2(Sitecore.Xdb.ReferenceData.Core.Collections.IDefinitionCollection{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.DeleteAsync(Sitecore.Xdb.ReferenceData.Core.DefinitionKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.Delete(Sitecore.Xdb.ReferenceData.Core.DefinitionKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.DeleteAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionKey})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.Delete(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionKey})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClient.IsExpectedResult(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Determines if the response message contains a result which is valid and expected.
+            </summary>
+            <param name="message">The message to check.</param>
+            <returns>True if the result is valid and should be passed back to the caller, or false if the response is not valid.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator">
+            <summary>
+            A decorator for <see cref="T:Sitecore.Xdb.ReferenceData.Core.IReferenceDataClient"/> which caches definitions.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.ReferenceData.Core.IReferenceDataClient" />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.#ctor(Sitecore.Xdb.ReferenceData.Core.IReferenceDataClient,Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator"/> class.
+            </summary>
+            <param name="innerReferenceDataClient">The <see cref="T:Sitecore.Xdb.ReferenceData.Core.IReferenceDataClient"/> being decorated.</param>
+            <param name="definitionCache">The <see cref="T:Sitecore.Xdb.ReferenceData.Client.Cache.IDefinitionCache"/> used to cache definitions in.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.InnerReferenceDataClient">
+            <summary>
+            The <see cref="T:Sitecore.Xdb.ReferenceData.Core.IReferenceDataClient"/> being decorated.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.EnsureDefinitionTypeAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.EnsureDefinitionType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.DeleteDefinitionTypeAsync(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.DeleteDefinitionType(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.SaveAsync``2(Sitecore.Xdb.ReferenceData.Core.Definition{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.Save``2(Sitecore.Xdb.ReferenceData.Core.Definition{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.SaveAsync``2(Sitecore.Xdb.ReferenceData.Core.Collections.IDefinitionCollection{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.Save``2(Sitecore.Xdb.ReferenceData.Core.Collections.IDefinitionCollection{``0,``1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.DeleteAsync(Sitecore.Xdb.ReferenceData.Core.DefinitionKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.Delete(Sitecore.Xdb.ReferenceData.Core.DefinitionKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.DeleteAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionKey})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.ReferenceDataHttpClientCachingDecorator.Delete(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionKey})">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.CacheEntryInvalidType">
+            <summary>
+              Looks up a localized string similar to The cache entry was not of the correct type..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.DeleteBatchNotComplete">
+            <summary>
+              Looks up a localized string similar to Delete batch did not complete successfully..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.DeleteDefinitionTypeNotComplete">
+            <summary>
+              Looks up a localized string similar to Delete definition type did not complete successfully.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.DeleteNotComplete">
+            <summary>
+              Looks up a localized string similar to Delete did not complete successfully..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.EnsureDefinitionTypeNotComplete">
+            <summary>
+              Looks up a localized string similar to Ensure definition type did not complete successfully..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.GetDefinitionTypeNotComplete">
+            <summary>
+              Looks up a localized string similar to Get definition type did not complete successfully..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.GetNotComplete">
+            <summary>
+              Looks up a localized string similar to Get definitions did not complete..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.MissingDeleteOperationResult">
+            <summary>
+              Looks up a localized string similar to Missing delete operation result for the definition {0}.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.MissingSaveOperationResult">
+            <summary>
+              Looks up a localized string similar to Missing save operation result for the definition {0}.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.ReferenceDataClientNotConfigured">
+            <summary>
+              Looks up a localized string similar to Reference data client is not configured..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.SaveBatchNotComplete">
+            <summary>
+              Looks up a localized string similar to Save batch did not complete successfully..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Resources.SaveNotComplete">
+            <summary>
+              Looks up a localized string similar to Save did not complete successfully..
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.Client.Routes">
+            <summary>
+            Defines fully qualified URIs for each of the controller actions.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.Client.Routes.RoutePrefix">
+            <summary>
+            The route prefix for Reference Data web endpoints.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.Client.Routes.#ctor(System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.Client.Routes"/> class.
+            </summary>
+            <param name="baseAddress">The base address.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Routes.GetDefinitionType">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> to retrieve a definition type.
+            </summary>
+            <value>
+            The <see cref="T:System.Uri"/> to retrieve a definition type.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Routes.EnsureDefinitionType">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> to add or retrieve a definition type.
+            </summary>
+            <value>
+            The <see cref="T:System.Uri"/> to add or retrieve a definition type.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Routes.DeleteDefinitionType">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> to delete a definition type.
+            </summary>
+            <value>
+            The <see cref="T:System.Uri"/> to delete a definition type.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Routes.SaveBatch">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> to save multiple definitions.
+            </summary>
+            <value>
+            The <see cref="T:System.Uri"/> to save multiple definitions.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Routes.DeleteBatch">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> to delete multiple definitions.
+            </summary>
+            <value>
+            The <see cref="T:System.Uri"/> to delete multiple definitions.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Routes.GetBatch">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> to get multiple definitions.
+            </summary>
+            <value>
+            The <see cref="T:System.Uri"/> to get multiple definitions.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.Client.Routes.GetByType">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> to get a page of definitions for the given definition type.
+            </summary>
+            <value>
+            The <see cref="T:System.Uri"/> to get a page of definitions for the given definition type.
+            </value>
+        </member>
+    </members>
+</doc>

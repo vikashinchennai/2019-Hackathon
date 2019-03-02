@@ -1,0 +1,604 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.UpdateCenter.ServiceClient</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.UpdateCenter.ServiceClient.ClientServiceConfiguration">
+            <summary>
+            The configuration of the Service Client.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.ClientServiceConfiguration.PackageManagementServiceUrlSetting">
+            <summary>
+            The package management service URL setting name
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ClientServiceConfiguration.#ctor(Sitecore.Abstractions.BaseSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.ServiceClient.ClientServiceConfiguration"/> class.
+            </summary>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.ClientServiceConfiguration.BaseSettings">
+            <summary>
+            Gets the base settings.
+            </summary>
+            <value>
+            The base settings.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ClientServiceConfiguration.GetServiceEndPoint">
+            <summary>
+            Gets the service end point.
+            </summary>
+            <returns>The package management service end point.</returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.ServiceClient.Extensions.ServiceCollectionExtensions">
+            <summary>
+            Registers absraction implementations from ClientServices project.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.Extensions.ServiceCollectionExtensions.AddUpdatePackageRepository(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers Package Repository abstraction implementation from ClientServices project.
+            </summary>
+            <param name="services">The services.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.Extensions.ServiceCollectionExtensions.AddAuthenticationProvider(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers Authentication abstraction implementation from ClientServices project.
+            </summary>
+            <param name="services">The services.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.ServiceClient.Extensions.VersionInfoExtension">
+            <summary>
+            Extension methods for VersionInfo.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.Extensions.VersionInfoExtension.ToRouteString(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Converts specified VersionInfo class to the route string that will be passed to the package management service.
+            </summary>
+            <param name="version">The version.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.ServiceClient.HttpServiceClient">
+            <summary>
+            Http client that defines an API to connect to the service using Http protocol.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.HttpServiceClient.ExecuteGetRequestAsync``1(System.Uri)">
+            <summary>
+            Executes the get request asynchronous.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI.</param>
+            <returns></returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.HttpServiceClient.ExecutePostRequest``1(System.Uri,System.Net.Http.HttpContent)">
+            <summary>
+            Executes the post request.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI.</param>
+            <param name="content">The content.</param>
+            <returns></returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.HttpServiceClient.DownloadFileAsync(System.Uri,Sitecore.UpdateCenter.Core.Authentication.SecurityToken,System.Action{System.Object,System.ComponentModel.ProgressChangedEventArgs})">
+            <summary>
+            Downloads the file asynchronous.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="securityToken">The security token.</param>
+            <param name="downloadProgressTracker">The download progress tracker.</param>
+            <returns></returns>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.HttpServiceClient.AssertResponseMessage(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Asserts the response message.
+            </summary>
+            <param name="response">The response.</param>
+            <exception cref="T:Sitecore.UpdateCenter.Core.Exceptions.UnauthorizedRequestException"></exception>
+            <exception cref="T:System.Net.Http.HttpRequestException"></exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.HttpServiceClient.ConvertResponseAsync``1(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Converts the response asynchronous.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="response">The response.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.HttpServiceClient.CreateProgressHandler">
+            <summary>
+            Creates the progress handler.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.HttpServiceClient.InitializeHttpMessageHandler(System.Net.Http.Handlers.ProgressMessageHandler)">
+            <summary>
+            Initializes the HTTP message handler.
+            </summary>
+            <param name="handler">The handler.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.HttpServiceClient.GetHttpClientWithProgressHandler(System.Net.Http.Handlers.ProgressMessageHandler)">
+            <summary>
+            Gets new instance of the HTTP client with progress handler.
+            </summary>
+            <param name="httpProgressHandler">The HTTP progress handler.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.HttpServiceClient.GetHttpClient">
+            <summary>
+            Gets new instance of <see cref="T:System.Net.Http.HttpClient"/> without <see cref="T:System.Net.Http.Handlers.ProgressMessageHandler"/>
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.ServiceClient.Models.PackageInfo">
+            <summary>
+            Define the package info.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.Models.PackageInfo.Name">
+            <summary>
+            Package name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.Models.PackageInfo.Version">
+            <summary>
+            Package version.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.Models.PackageInfo.Size">
+            <summary>
+            Package size.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.Models.PackageInfo.MetaInfo">
+            <summary>
+            Package meta information.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.ServiceClient.Models.PackageMetaInfo">
+            <summary>
+            Defines the package meta info.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.Models.PackageMetaInfo.Properties">
+            <summary>
+            Package meta info custom name value properties
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.Models.PackageMetaInfo.PostSteps">
+            <summary>
+            Package meta info post steps collection
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.Models.PackageMetaInfo.PreSteps">
+            <summary>
+            Package meta info pre steps collection
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.ServiceClient.Models.PostStepInfo">
+            <summary>
+            Defines the post step info.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.Models.PostStepInfo.Name">
+            <summary>
+            The post step name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.Models.PostStepInfo.Description">
+            <summary>
+            The post step description.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.ServiceClient.Models.PreStepInfo">
+            <summary>
+            Defines the pre step info.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.Models.PreStepInfo.Name">
+            <summary>
+            The prestep name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.Models.PreStepInfo.Description">
+            <summary>
+            The prestep description description.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.UpdatesRoutePrefix">
+            <summary>
+            Defines route prefix to API that works with updates.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.HotfixesRoutePrefix">
+            <summary>
+            Defines route prefix to API that works with hotfixes.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.AuthorizationTokenRoutePrefix">
+            <summary>
+            Defines route prefix to API that works with authorization.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.DownloadHotfixesRoutePrefix">
+            <summary>
+            Defines route prefix to API that allows downloading hotfix packages.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.DownloadUpdatesRoutePrefix">
+            <summary>
+            Defines route prefix to API that allows downloading update packages.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetLatestModuleUpdatePackagePathPattern">
+            <summary>
+            Route format for getting latest module update package url
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetLatestModuleHotfixPackagePathPattern">
+            <summary>
+            Route format for getting latest module hotfix package url
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetLatestPlatformPackagePathPattern">
+            <summary>
+            Route format for getting latest platform update package url.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetPlatformPackagesPathPattern">
+            <summary>
+            Route format for getting platform hotfixes or updates packages url.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetModulePackagesPathPattern">
+            <summary>
+            Route format for getting module hotfixes or updates packages url.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetLatestPlatformHotfixPackagePathPattern">
+            <summary>
+            Route format for getting latest platform hotfix package url.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetPlatformHotfixPackagesPathPattern">
+            <summary>
+            Route format for getting platform hotfix packages url.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetPlatformHotfixPackagePathPattern">
+            <summary>
+            Route format for getting the specified path packahe for the specified platform version.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetModuleHotfixPackagesPathPattern">
+            <summary>
+            Route format for getting module hotfix packages url.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetModuleHotfixPackagePathPattern">
+            <summary>
+            Route format for getting specific module hotfix package url.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetModuleUpdatePackagePathPattern">
+            <summary>
+            Route format for getting specific module update package url.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetPlatformUpdatePackagePathPattern">
+            <summary>
+            Route format for getting specific platform update package url.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.RouteFactory.PackageManagementServiceEndpoint">
+            <summary>
+            Defines base url to PackageManagamentService
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetModuleLatestUpdateUrl(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Returns url for getting latest module update 
+            with format {0}/modules/{1}/{2}/latest
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The package source version.</param>
+            <returns>Formatted url.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetPlatformLatestUpdateUrl(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Returns url for getting latest platform update 
+            with format {0}/platform/latest
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <returns>Formatted url.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetPlatformUpdatesUrl(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Returns url for getting platform updates
+            with format {0}/platform
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <returns>Formatted url.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetModuleUpdatesUrl(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Returns url for getting module updates
+            with format {0}/modules/{1}/{2}
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The package source version.</param>
+            <returns>Formatted url.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetModuleLatestHotfixUrl(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Returns url for getting latest module hotfix
+            with format module/{0}/{1}/latest
+            </summary>
+            <param name="moduleVersion">The module version.</param>
+            <returns>
+            Formatted url.
+            </returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetPlatformLatestHotfixUrl(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Returns url for getting latest platform hotfix 
+            with format platform/{0}/latest
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <returns>Formatted url.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetPlatformHotfixesUrl(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Returns url for getting platform hotfixes 
+            with format platform/{0}
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <returns>Formatted url.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetModuleHotfixesUrl(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Returns url for getting module hotfixes 
+            with format module/{0}/{1}
+            </summary>
+            <param name="moduleVersion">The module version.</param>
+            <returns>Formatted url.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetDownloadModuleHotfixPackageUrl(Sitecore.VersionManagement.VersionInfo,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion)">
+            <summary>
+            Returns url for downloading module hotfix
+            with format module/{0}/{1}/{2}
+            </summary>
+            <param name="moduleVersion">The module version.</param>
+            <param name="modulePackageVersionToDownload">The module version to download.</param>
+            <returns>
+            Formatted url.
+            </returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetDownloadPlatformHotfixPackageUrl(Sitecore.VersionManagement.VersionInfo,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion)">
+            <summary>
+            Returns url for downloading platform hotfix
+            with format platform/{0}/{1}
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="platformPackageVersionToDownload">The platform version to download.</param>
+            <returns>
+            Formatted url.
+            </returns>
+            <exception cref="T:System.IO.InvalidDataException">Specified versions must have the same platform name.</exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetDownloadModuleUpdatePackageUrl(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion)">
+            <summary>
+            Returns url for downloading module update
+            with format {0}/module/{1}/{2}/{3}
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The module version.</param>
+            <param name="modulePackageVersionToDownload">The module version to download.</param>
+            <returns>
+            Formatted url.
+            </returns>
+            <exception cref="T:System.IO.InvalidDataException">Specified versions must have the same module name.</exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.GetDownloadPlatformUpdatePackageUrl(Sitecore.VersionManagement.VersionInfo,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion)">
+            <summary>
+            Returns url for downloading platform update
+            with format {0}/platform/{1}
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="packageVersionToDownload">The package version to download.</param>
+            <returns>
+            Formatted url.
+            </returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.RouteFactory.ConvertToUri(System.String)">
+            <summary>
+            Converts string url to <see cref="T:System.Uri"/> instance.
+            </summary>
+            <param name="url">The url.</param>
+            <returns><see cref="T:System.Uri"/> representation of passed string url.</returns>
+            <exception cref="T:System.UriFormatException">When cannot create <see cref="T:System.Uri"/> from passed string url.</exception>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.ServiceClient.ServiceAuthenticationProvider">
+            <summary>
+            The implementation of the AuthenticationProvider abstraction that wotks with Package Management Service.
+            </summary>
+            <seealso cref="T:Sitecore.UpdateCenter.Core.Authentication.AuthenticationProvider" />
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceAuthenticationProvider.#ctor(Sitecore.UpdateCenter.ServiceClient.RouteFactory,Sitecore.UpdateCenter.ServiceClient.HttpServiceClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.ServiceClient.ServiceAuthenticationProvider"/> class.
+            </summary>
+            <param name="routeFactory">The route factory.</param>
+            <param name="httpServiceClient">The HTTP service client.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.ServiceAuthenticationProvider.RouteFactory">
+            <summary>
+            Gets the route factory that is responsible for generating endpoint Uris.
+            </summary>
+            <value>
+            The route factory.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.ServiceAuthenticationProvider.HttpServiceClient">
+            <summary>
+            Gets the HTTP service client.
+            </summary>
+            <value>
+            The HTTP service client.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceAuthenticationProvider.GetUserSecurityTokenAsync(Sitecore.UpdateCenter.Core.Authentication.UserCredentials)">
+            <summary>
+            Gets the user security token asynchronous.
+            </summary>
+            <param name="credentials">The credentials.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceAuthenticationProvider.CreateHttpContent(Sitecore.UpdateCenter.Core.Authentication.UserCredentials)">
+            <summary>
+            Creates HTTP Content with the specified credentials.
+            </summary>
+            <param name="credentials">The credentials.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository">
+            <summary>
+            The implementation of update package repository abstraction that works with package management service.
+            </summary>
+            <seealso cref="T:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository" />
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.#ctor(Sitecore.UpdateCenter.ServiceClient.RouteFactory,Sitecore.UpdateCenter.ServiceClient.HttpServiceClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository"/> class.
+            </summary>
+            <param name="routeFactory">The route factory.</param>
+            <param name="httpServiceClient">The HTTP service client.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.RouteFactory">
+            <summary>
+            Gets the route factory.
+            </summary>
+            <value>
+            The route factory.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.HttpServiceClient">
+            <summary>
+            Gets the HTTP service client.
+            </summary>
+            <value>
+            The HTTP service client.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.GetModuleLatestUpdatePackageInfoAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the latest update package information for the specified module installed on the specified platform.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The module version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.GetPlatformLatestUpdatePackageInfoAsync(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the latest update package information for the platform with the specified version.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.GetPlatformLatestHotfixPackageInfoAsync(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the latest hotfix package information for the platform with the specified version.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.GetModuleLatestHotfixPackageInfoAsync(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the latest hotfix package information for the specifid module version.
+            </summary>
+            <param name="moduleVersion">The module version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.GetModuleUpdatePackagesInfoAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the module update packages information asynchronous.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The module version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.GetPlatformUpdatePackagesInfoAsync(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the platform update packages information asynchronous.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.GetPlatformHotfixPackagesInfoAsync(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the platform hotfix packages information asynchronous.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.GetModuleHotfixPackagesInfoAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the module hotfix packages information asynchronous.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The module version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.DownloadPlatformUpdatePackageAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion,Sitecore.UpdateCenter.Core.Authentication.SecurityToken,System.Action{System.Object,System.ComponentModel.ProgressChangedEventArgs})">
+            <summary>
+            Downloads the platform update package asynchronous.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="packageVersionToDownload">The package version to download.</param>
+            <param name="securityToken">The security token.</param>
+            <param name="downloadProgressTracker">The download progress tracker.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.DownloadModuleUpdatePackageAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion,Sitecore.UpdateCenter.Core.Authentication.SecurityToken,System.Action{System.Object,System.ComponentModel.ProgressChangedEventArgs})">
+            <summary>
+            Downloads the module update package asynchronous.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The module version.</param>
+            <param name="packageVersionToDownload">The package version to download.</param>
+            <param name="securityToken">The security token.</param>
+            <param name="downloadProgressTracker">The download progress tracker.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.DownloadPlatformHotfixPackageAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion,Sitecore.UpdateCenter.Core.Authentication.SecurityToken,System.Action{System.Object,System.ComponentModel.ProgressChangedEventArgs})">
+            <summary>
+            Downloads the platform hotfix package asynchronous.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="packageVersionToDownload">The package version to download.</param>
+            <param name="securityToken">The security token.</param>
+            <param name="downloadProgressTracker">The download progress tracker.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.ServiceClient.ServiceUpdatePackageRepository.DownloadModuleHotfixPackageAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion,Sitecore.UpdateCenter.Core.Authentication.SecurityToken,System.Action{System.Object,System.ComponentModel.ProgressChangedEventArgs})">
+            <summary>
+            Downloads the module hotfix package asynchronous.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The module version.</param>
+            <param name="packageVersionToDownload">The package version to download.</param>
+            <param name="securityToken">The security token.</param>
+            <param name="downloadProgressTracker">The download progress tracker.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

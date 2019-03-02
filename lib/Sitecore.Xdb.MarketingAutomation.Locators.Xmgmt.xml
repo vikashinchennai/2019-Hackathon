@@ -1,0 +1,489 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Configuration.ItemActivityDescriptorLocatorConfigurator">
+            <summary>
+            Configurator for the activity descriptor locator.
+            </summary>
+            <seealso cref="T:Sitecore.DependencyInjection.IServicesConfigurator" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Configuration.ItemActivityDescriptorLocatorConfigurator.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures service collection.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Configuration.ServiceCollectionExtensions">
+            <summary>
+            Defines extensions to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Configuration.ServiceCollectionExtensions.UseItemActivityDescriptorLocator(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds the <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator"/> to the service collection.
+            </summary>
+            <param name="serviceCollection">The collection to add the service to.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator">
+            <summary>
+            Locator which locates <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor"/> in the content tree.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.IActivityDescriptorLocator" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.#ctor(System.String,System.Guid,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator"/> class.
+            </summary>
+            <param name="databaseName">Name of the database to locate activity descriptors.</param>
+            <param name="activityTypeFolderId">The ID of the folder to locate activity descriptors.</param>
+            <param name="logger">The logger used to log messages.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.#ctor(Sitecore.Data.Database,System.Guid,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator" /> class.
+            </summary>
+            <param name="database">The database to locate activity descriptors.</param>
+            <param name="activityTypeFolderId">The ID of the folder to locate activity descriptors.</param>
+            <param name="logger">The logger used to log messages.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.Database">
+            <summary>
+            The database to locate activity descriptors.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.ActivityTypeFolderId">
+            <summary>
+            The ID of the folder to locate activity descriptors.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.Logger">
+            <summary>
+            The logger used to log messages.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.GetDescriptor(System.Guid,System.Globalization.CultureInfo)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.GetAllDescriptors(System.Globalization.CultureInfo,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.GetDescriptorsByClassification(System.Globalization.CultureInfo,System.Guid,System.Guid,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.ToActivityDescriptor(Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem,System.Globalization.CultureInfo)">
+            <summary>
+            Converts <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem" /> to <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor" />.
+            </summary>
+            <param name="activityTypeItem">The activity type item to convert.</param>
+            <param name="culture">The culture to get the descriptor in.</param>
+            <returns>The result of conversion.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.ToActivityPathDescriptor(Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathItem)">
+            <summary>
+            Converts <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathItem"/> to <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityPathDescriptor"/>.
+            </summary>
+            <param name="activityPathItem">The activity path item to convert.</param>
+            <returns>The result of conversion.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.ToActivityParameterDescriptor(Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem)">
+            <summary>
+            Converts <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem"/> to <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityParameterDescriptor"/>.
+            </summary>
+            <param name="activityParameterItem">The activity parameter item to convert.</param>
+            <returns>The result of conversion.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.GetActivityTypeFolderItem">
+            <summary>
+            Gets the folder item to locate activity types.
+            </summary>
+            <returns>The activity type folder item, or <c>null</c> if the item wasn't found.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.GetClassification(Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem)">
+            <summary>
+            Gets the classification of the activity type.
+            </summary>
+            <param name="activityTypeItem">The activity type item to get the classification for.</param>
+            <returns>The classification of the activity type, or an empty value if the classification was not found.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.GetActivityParameterDescriptors(Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem)">
+            <summary>
+            Gets the activity parameter descriptors.
+            </summary>
+            <param name="activityTypeItem">The activity type item to get the parameter descriptors for.</param>
+            <returns>The activity parameter descriptors, or an empty list if the parameter were not found.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.ItemActivityDescriptorLocator.GetActivityPathDescriptors(Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem)">
+            <summary>
+            Gets the activity path descriptors.
+            </summary>
+            <param name="activityTypeItem">The activity type item to get the path descriptors for.</param>
+            <returns>The activity path descriptors, or an empty list if the paths were not found.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterFolderTemplateIds">
+            <summary>
+            IDs of "Activity Parameter Folder" template.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterFolderTemplateIds.ActivityParameterFolder">
+            <summary>
+            ID of "Activity Parameter Folder" template.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem">
+            <summary>
+            "Activity Parameter" item.
+            </summary>
+            <seealso cref="T:Sitecore.Data.Items.CustomItem" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem.#ctor(Sitecore.Data.Items.Item)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem"/> class.
+            </summary>
+            <param name="innerItem">Inner item.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem.Key">
+            <summary>
+            The exact name of the property exposed on the activity implementation class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem.Name">
+            <summary>
+            The human readable name of the parameter.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem.Description">
+            <summary>
+            Description of the parameter and what it does.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem.Required">
+            <summary>
+            Indicates whether the parameter must be populated.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem.EditorId">
+            <summary>
+            The ID of the editor used to edit this parameter.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem.EditorParameters">
+            <summary>
+            Parameters to pass to the editor.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem.op_Implicit(Sitecore.Data.Items.Item)~Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem">
+            <summary>
+            Performs an implicit conversion from <see cref="T:Sitecore.Data.Items.Item"/> to <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem"/>.
+            </summary>
+            <param name="item">The item to convert.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem.ToActivityParameterItem(Sitecore.Data.Items.Item)">
+            <summary>
+            Converts <see cref="T:Sitecore.Data.Items.Item"/> to <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterItem"/>.
+            </summary>
+            <param name="item">The item to convert.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterTemplateIds">
+            <summary>
+            IDs of "Activity Parameter" template.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterTemplateIds.ActivityParameter">
+            <summary>
+            ID of "Activity Parameter" template.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterTemplateIds.Key">
+            <summary>
+            ID of "Key" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterTemplateIds.Name">
+            <summary>
+            ID of "Name" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterTemplateIds.Description">
+            <summary>
+            ID of "Description" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterTemplateIds.Required">
+            <summary>
+            ID of "Required" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterTemplateIds.EditorId">
+            <summary>
+            ID of "Editor ID" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityParameterTemplateIds.EditorParameters">
+            <summary>
+            ID of "Editor Parameters" field.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathFolderTemplateIds">
+            <summary>
+            IDs of "Activity Path Folder" template.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathFolderTemplateIds.ActivityPathFolder">
+            <summary>
+            ID of "Activity Path Folder" template.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathItem">
+            <summary>
+            "Activity Path" item.
+            </summary>
+            <seealso cref="T:Sitecore.Data.Items.CustomItem" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathItem.#ctor(Sitecore.Data.Items.Item)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathItem"/> class.
+            </summary>
+            <param name="innerItem">Inner item.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathItem.Key">
+            <summary>
+            The key of the path.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathItem.Name">
+            <summary>
+            The human readable name of the path.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathItem.op_Implicit(Sitecore.Data.Items.Item)~Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathItem">
+            <summary>
+            Performs an implicit conversion from <see cref="T:Sitecore.Data.Items.Item"/> to <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathItem"/>.
+            </summary>
+            <param name="item">The item to convert.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathItem.ToActivityPathItem(Sitecore.Data.Items.Item)">
+            <summary>
+            Converts <see cref="T:Sitecore.Data.Items.Item"/> to <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathItem"/>.
+            </summary>
+            <param name="item">The item to convert.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathTemplateIds">
+            <summary>
+            IDs of "Activity Path" template.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathTemplateIds.ActivityPath">
+            <summary>
+            ID of "Activity Path" template.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathTemplateIds.Key">
+            <summary>
+            ID of "Key" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityPathTemplateIds.Name">
+            <summary>
+            ID of "Name" field.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeFolderTemplateIds">
+            <summary>
+            IDs of "Activity Type Folder" template.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeFolderTemplateIds.ActivityTypeFolder">
+            <summary>
+            ID of "Activity Type Folder" template.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem">
+            <summary>
+            "Activity Type" item.
+            </summary>
+            <seealso cref="T:Sitecore.Data.Items.CustomItem" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem.#ctor(Sitecore.Data.Items.Item)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem"/> class.
+            </summary>
+            <param name="innerItem">Inner item.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem.Name">
+            <summary>
+            The human readable name of the activity type.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem.Description">
+            <summary>
+            Description of the activity type and what it does.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem.IconPath">
+            <summary>
+            The icon used to represent this activity type.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem.ImplementationType">
+            <summary>
+            The full .net type (including namespace and assembly) of the type implementing the activity.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem.Classification">
+            <summary>
+            Indicates how the activity type has been classified in different taxonomies.
+            </summary>
+            <value>
+            The classification.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem.Dependencies">
+            <summary>
+            Dependent activities which must be included in the plan before this activity.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem.EditorId">
+            <summary>
+            The ID of the editor used to edit the properties of the activity.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem.EditorParameters">
+            <summary>
+            Parameters to pass to the editor.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem.op_Implicit(Sitecore.Data.Items.Item)~Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem">
+            <summary>
+            Performs an implicit conversion from <see cref="T:Sitecore.Data.Items.Item"/> to <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem"/>.
+            </summary>
+            <param name="item">The item to convert.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem.ToActivityTypeItem(Sitecore.Data.Items.Item)">
+            <summary>
+            Converts <see cref="T:Sitecore.Data.Items.Item"/> to <see cref="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeItem"/>.
+            </summary>
+            <param name="item">The item to convert.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeTemplateIds">
+            <summary>
+            IDs of "Activity Type" template.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeTemplateIds.ActivityType">
+            <summary>
+            ID of "Activity Type" template.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeTemplateIds.Name">
+            <summary>
+            ID of "Name" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeTemplateIds.Description">
+            <summary>
+            ID of "Description" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeTemplateIds.Icon">
+            <summary>
+            ID of "Icon" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeTemplateIds.ImplementationType">
+            <summary>
+            ID of "Implementation Type" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeTemplateIds.Classification">
+            <summary>
+            ID of "Classification" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeTemplateIds.Dependencies">
+            <summary>
+            ID of "Dependencies" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeTemplateIds.EditorId">
+            <summary>
+            ID of "Editor ID" field.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.ActivityTypeTemplateIds.EditorParameters">
+            <summary>
+            ID of "Editor Parameters" field.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.TaxonomyFolderTemplateIds">
+            <summary>
+            IDs of "Taxonomy Folder" template.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.TaxonomyFolderTemplateIds.TaxonomyFolder">
+            <summary>
+            ID of "Taxonomy Folder" template.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.TaxonomyTemplateIds">
+            <summary>
+            IDs of "Taxonomy" template.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.TaxonomyTemplateIds.Taxonomy">
+            <summary>
+            ID of "Taxonomy" template.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.TaxonomyValueTemplateIds">
+            <summary>
+            IDs of "Taxonomy Value" template.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.AutomationPlans.Model.TaxonomyValueTemplateIds.TaxonomyValue">
+            <summary>
+            ID of "Taxonomy Value" template.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.Resources.CannotInstantiateObject">
+            <summary>
+              Looks up a localized string similar to Cannot instantiate object configured at {0}..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.Resources.ErrorCreatingActivityDescriptorFromItem">
+            <summary>
+              Looks up a localized string similar to Error creating ActivityDescriptor from item &apos;{0}&apos;..
+            </summary>
+        </member>
+    </members>
+</doc>

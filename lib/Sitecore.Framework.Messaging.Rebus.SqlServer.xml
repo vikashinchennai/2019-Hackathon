@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Messaging.Rebus.SqlServer</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.SqlServer.DataBus.SchemaInstaller">
+            <summary>
+            Provides simple utility methods for installing Rebus SQLServer DataBus schema.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.DataBus.SchemaInstaller.EnsureInstalled(System.String,System.String)">
+            <summary>
+            Ensures the SQLServer DataBus table is created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.DataBus.SchemaInstaller.EnsureInstalled(System.String,System.String,Rebus.Logging.LogLevel)">
+            <summary>
+            Ensures the SQLServer DataBus table is created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+            <param name="logLevel">The minimum application log level.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.DataBus.SchemaInstaller.EnsureInstalled(System.String,System.String,Rebus.Logging.IRebusLoggerFactory)">
+            <summary>
+            Ensures the SQLServer DataBus table is created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+            <param name="rebusLoggerFactory">The logger factory to use for the work.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.SqlServer.Sagas.SchemaInstaller">
+            <summary>
+            Provides simple utility methods for installing Rebus SQLServer Saga schema.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Sagas.SchemaInstaller.EnsureInstalled(System.String,System.String,System.String)">
+            <summary>
+            Ensures the SQLServer Saga tables are created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+            <param name="indexTableName">The index table name, optionally including the schema name.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Sagas.SchemaInstaller.EnsureInstalled(System.String,System.String,System.String,Rebus.Logging.LogLevel)">
+            <summary>
+            Ensures the SQLServer Saga tables are created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+            <param name="indexTableName">The index table name, optionally including the schema name.</param>
+            <param name="logLevel">The minimum application log level.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Sagas.SchemaInstaller.EnsureInstalled(System.String,System.String,System.String,Rebus.Logging.IRebusLoggerFactory)">
+            <summary>
+            Ensures the SQLServer Saga tables are created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+            <param name="indexTableName">The index table name, optionally including the schema name.</param>
+            <param name="rebusLoggerFactory">The logger factory to use for the work.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.SqlServer.Subscriptions.SchemaInstaller">
+            <summary>
+            Provides simple utility methods for installing Rebus SQLServer Subscriptions schema.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Subscriptions.SchemaInstaller.EnsureInstalled(System.String,System.String)">
+            <summary>
+            Ensures the SQLServer Subscriptions table is created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Subscriptions.SchemaInstaller.EnsureInstalled(System.String,System.String,Rebus.Logging.LogLevel)">
+            <summary>
+            Ensures the SQLServer Subscriptions table is created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+            <param name="logLevel">The minimum application log level.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Subscriptions.SchemaInstaller.EnsureInstalled(System.String,System.String,Rebus.Logging.IRebusLoggerFactory)">
+            <summary>
+            Ensures the SQLServer Subscriptions table is created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+            <param name="rebusLoggerFactory">The logger factory to use for the work.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.SqlServer.Timeouts.SchemaInstaller">
+            <summary>
+            Provides simple utility methods for installing Rebus SQLServer Timeouts schema.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Timeouts.SchemaInstaller.EnsureInstalled(System.String,System.String)">
+            <summary>
+            Ensures the SQLServer Timeouts table is created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Timeouts.SchemaInstaller.EnsureInstalled(System.String,System.String,Rebus.Logging.LogLevel)">
+            <summary>
+            Ensures the SQLServer Timeouts table is created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+            <param name="logLevel">The minimum application log level.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Timeouts.SchemaInstaller.EnsureInstalled(System.String,System.String,Rebus.Logging.IRebusLoggerFactory)">
+            <summary>
+            Ensures the SQLServer Timeouts table is created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+            <param name="rebusLoggerFactory">The logger factory to use for the work.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.SqlServer.Transport.SchemaInstaller">
+            <summary>
+            Provides simple utility methods for installing Rebus SQLServer Transport schema.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Transport.SchemaInstaller.EnsureInstalled(System.String,System.String)">
+            <summary>
+            Ensures the SQLServer Transport table is created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Transport.SchemaInstaller.EnsureInstalled(System.String,System.String,Rebus.Logging.LogLevel)">
+            <summary>
+            Ensures the SQLServer Transport table is created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+            <param name="logLevel">The minimum application log level.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Transport.SchemaInstaller.EnsureInstalled(System.String,System.String,Rebus.Logging.IRebusLoggerFactory)">
+            <summary>
+            Ensures the SQLServer Transport table is created in the specified database in the connection string.
+            </summary>
+            <param name="connectionString">The connection string used to install the SQL schema.</param>
+            <param name="tableName">The table name, optionally including the schema name.</param>
+            <param name="rebusLoggerFactory">The logger factory to use for the work.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Transport.SqlServerBatchTransportConfigurationExtensions.UseSqlServerBatchTransport(Rebus.Config.StandardConfigurer{Sitecore.Framework.Messaging.Rebus.Gateway.IBatchTransport},System.Func{System.Threading.Tasks.Task{Rebus.SqlServer.IDbConnection}},System.String,System.String)">
+            <summary>
+            Configures Rebus to use SQL Server as its transport. The table specified by <paramref name="tableName"/> will be used to
+            store messages, and the "queue" specified by <paramref name="inputQueueName"/> will be used when querying for messages.
+            The message table will automatically be created if it does not exist.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.SqlServer.Transport.SqlServerBatchTransportConfigurationExtensions.UseSqlServerBatchTransport(Rebus.Config.StandardConfigurer{Sitecore.Framework.Messaging.Rebus.Gateway.IBatchTransport},System.String,System.String,System.String)">
+            <summary>
+            Configures Rebus to use SQL Server as its transport. The table specified by <paramref name="tableName"/> will be used to
+            store messages, and the "queue" specified by <paramref name="inputQueueName"/> will be used when querying for messages.
+            The message table will automatically be created if it does not exist.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServicesExtensions.AddSqlServerConfigurators(Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices)">
+            <summary>
+            Registers support for reading configuration for Azure specific implementations (i.e. Azure Service Bus transport).
+            </summary>
+            <param name="rebusConfigServices"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Configuration.SqlServerTransportConfigurationExtensions.UseSqlServer(Rebus.Config.StandardConfigurer{Rebus.Transport.ITransport},System.Func{System.Threading.Tasks.Task{Rebus.SqlServer.IDbConnection}},System.String,System.String,System.Func{Sitecore.Framework.TransientFaultHandling.IRetryer})">
+            <summary>
+            Configures Rebus to use SQL Server as its transport. The "queue" specified by <paramref name="inputQueueName"/> will be used when querying for messages.
+            The table specified by <paramref name="tableName"/> will be used to store messages.
+            </summary>s
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Configuration.SqlServerTransportConfigurationExtensions.UseSqlServer(Rebus.Config.StandardConfigurer{Rebus.Transport.ITransport},System.String,System.String,System.String,System.Func{Sitecore.Framework.TransientFaultHandling.IRetryer})">
+            <summary>
+            Configures Rebus to use SQL Server as its transport. The "queue" specified by <paramref name="inputQueueName"/> will be used when querying for messages.
+            The table specified by <paramref name="tableName"/> will be used to store messages.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Configuration.SqlServerTransportConfigurationExtensions.UseSqlServerAsOneWayClient(Rebus.Config.StandardConfigurer{Rebus.Transport.ITransport},System.Func{System.Threading.Tasks.Task{Rebus.SqlServer.IDbConnection}},System.String,System.Func{Sitecore.Framework.TransientFaultHandling.IRetryer})">
+            <summary>
+            Configures Rebus to use SQL Server to transport messages as a one-way client (i.e. will not be able to receive any messages).
+            The table specified by <paramref name="tableName"/> will be used to store messages.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Configuration.SqlServerTransportConfigurationExtensions.UseSqlServerAsOneWayClient(Rebus.Config.StandardConfigurer{Rebus.Transport.ITransport},System.String,System.String,System.Func{Sitecore.Framework.TransientFaultHandling.IRetryer})">
+            <summary>
+            Configures Rebus to use SQL Server to transport messages as a one-way client (i.e. will not be able to receive any messages).
+            The table specified by <paramref name="tableName"/> will be used to store messages.
+            </summary>
+        </member>
+    </members>
+</doc>

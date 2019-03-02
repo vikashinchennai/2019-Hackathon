@@ -1,0 +1,654 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Marketing.Automation.ActivityDescriptors</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.ConditionalParameterConverter">
+            <summary>
+            Parameter converter for creating ruleset xml for Threepwood conditions
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.ConditionalParameterConverter.#ctor(Sitecore.Marketing.Segmentation.RuleXmlConverter.IRuleXmlConverter,Sitecore.Abstractions.BaseLog,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.ConditionalParameterConverter"/> class
+            </summary>
+            <param name="converter">Converter used to convert between the old and new ruleset xml format</param>
+            <param name="logger">Logger</param>
+            <param name="editorParameters">Any parameters to the editor</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.ConditionalParameterConverter.ConvertToViewModel(System.Object)">
+            <summary>
+            Convert the domain model value into a view model value
+            </summary>
+            <param name="value">The domain model value</param>
+            <returns>The view model value</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.ConditionalParameterConverter.ConvertToDomainModel(System.String)">
+            <summary>
+            Convert the view model value into a domain model value
+            </summary>
+            <param name="value">The view model value</param>
+            <returns>The domain model value</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.CampaignRepository">
+            <summary>
+            The repository to get campaign activities.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.CampaignRepository.#ctor(Sitecore.Marketing.Definitions.IDefinitionManager{Sitecore.Marketing.Definitions.Campaigns.ICampaignActivityDefinition},Sitecore.Abstractions.BaseLog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.CampaignRepository"/> class.
+            </summary>
+            <param name="manager">The campaign definition manager.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.CampaignRepository.GetById(System.Guid,System.String)">
+            <summary>
+            Gets an <see cref="T:Sitecore.Marketing.Definitions.Campaigns.ICampaignActivityDefinition"/> by its id.
+            </summary>
+            <param name="id">The id of the campaign activity.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.CampaignActivityViewModel"/> for the <see cref="T:Sitecore.Marketing.Definitions.Campaigns.ICampaignActivityDefinition"/> 
+            if the campaign activity is found. If not, null is returned.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.CampaignRepository.GetAll(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all <see cref="T:Sitecore.Marketing.Definitions.Campaigns.ICampaignActivityDefinition"/>.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.CampaignActivityViewModel"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ContactListRepository">
+            <summary>
+            A read-only repository to receive contact lists.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ContactListRepository.#ctor(Sitecore.Marketing.Definitions.IDefinitionManager{Sitecore.Marketing.Definitions.ContactLists.IContactListDefinition},Sitecore.Abstractions.BaseLog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ContactListRepository"/>.
+            </summary>
+            <param name="manager">The contact list definition manager.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ContactListRepository.GetById(System.Guid,System.String)">
+            <summary>
+            Gets a <see cref="T:Sitecore.Marketing.Definitions.ContactLists.IContactListDefinition"/> by its id.
+            </summary>
+            <param name="id">The definition id of the contact list.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel"/> for the <see cref="T:Sitecore.Marketing.Definitions.ContactLists.IContactListDefinition"/> 
+            if the contact list is found. If not, null is returned.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ContactListRepository.GetAll(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all <see cref="T:Sitecore.Marketing.Definitions.ContactLists.IContactListDefinition"/> of type <see cref="F:Sitecore.Marketing.Definitions.ContactLists.ListType.ContactList"/>.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.EventRepository">
+            <summary>
+            A repository to get events.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.EventRepository.#ctor(Sitecore.Marketing.Definitions.IDefinitionManager{Sitecore.Marketing.Definitions.Events.IEventDefinition},Sitecore.Abstractions.BaseLog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.EventRepository"/> class.
+            </summary>
+            <param name="manager">The event definition manager.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.EventRepository.GetById(System.Guid,System.String)">
+            <summary>
+            Gets an <see cref="T:Sitecore.Marketing.Definitions.Events.IEventDefinition"/> by its id.
+            </summary>
+            <param name="id">The definition id of the event.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel"/> for the <see cref="T:Sitecore.Marketing.Definitions.Events.IEventDefinition"/> 
+            if the event is found. If not, null is returned.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.EventRepository.GetAll(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all <see cref="T:Sitecore.Marketing.Definitions.Events.IEventDefinition"/>.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.GoalRepository">
+            <summary>
+            A repository to get goals.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.GoalRepository.#ctor(Sitecore.Marketing.Definitions.IDefinitionManager{Sitecore.Marketing.Definitions.Goals.IGoalDefinition},Sitecore.Abstractions.BaseLog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.GoalRepository"/> class.
+            </summary>
+            <param name="manager">The goal definition manager.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.GoalRepository.GetById(System.Guid,System.String)">
+            <summary>
+            Gets an <see cref="T:Sitecore.Marketing.Definitions.Goals.IGoalDefinition"/> by its id.
+            </summary>
+            <param name="id">The definition id of the goal.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.GoalDefinitionViewModel"/> for the <see cref="T:Sitecore.Marketing.Definitions.Goals.IGoalDefinition"/> 
+            if the goal is found. If not, null is returned.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.GoalRepository.GetAll(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all <see cref="T:Sitecore.Marketing.Definitions.Goals.IGoalDefinition"/>.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.GoalDefinitionViewModel"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ICampaignRepository">
+            <summary>
+            Interface for the campaign repository
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ICampaignRepository.GetById(System.Guid,System.String)">
+            <summary>
+            Gets an <see cref="T:Sitecore.Marketing.Definitions.Campaigns.ICampaignActivityDefinition"/> by its id.
+            </summary>
+            <param name="id">The id of the campaign activity.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.CampaignActivityViewModel"/> for the <see cref="T:Sitecore.Marketing.Definitions.Campaigns.ICampaignActivityDefinition"/> 
+            if the campaign activity is found. If not, null is returned.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ICampaignRepository.GetAll(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all <see cref="T:Sitecore.Marketing.Definitions.Campaigns.ICampaignActivityDefinition"/>.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.CampaignActivityViewModel"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IContactListRepository">
+            <summary>
+            Interface for the contact list repository.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IContactListRepository.GetById(System.Guid,System.String)">
+            <summary>
+            Gets a <see cref="T:Sitecore.Marketing.Definitions.ContactLists.IContactListDefinition"/> by its id.
+            </summary>
+            <param name="id">The definition id of the contact list.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel"/> for the <see cref="T:Sitecore.Marketing.Definitions.ContactLists.IContactListDefinition"/> 
+            if the contact list is found. If not, null is returned.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IContactListRepository.GetAll(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all <see cref="T:Sitecore.Marketing.Definitions.ContactLists.IContactListDefinition"/>.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IEventRepository">
+            <summary>
+            Interface for the event repository.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IEventRepository.GetById(System.Guid,System.String)">
+            <summary>
+            Gets an <see cref="T:Sitecore.Marketing.Definitions.Events.IEventDefinition"/> by its id.
+            </summary>
+            <param name="id">The definition id of the event.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel"/> for the <see cref="T:Sitecore.Marketing.Definitions.Events.IEventDefinition"/> 
+            if the event is found. If not, null is returned.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IEventRepository.GetAll(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all <see cref="T:Sitecore.Marketing.Definitions.Events.IEventDefinition"/>.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IGoalRepository">
+            <summary>
+            Interface for the goal repository.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IGoalRepository.GetById(System.Guid,System.String)">
+            <summary>
+            Gets an <see cref="T:Sitecore.Marketing.Definitions.Goals.IGoalDefinition"/> by its id.
+            </summary>
+            <param name="id">The definition id of the goal.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.GoalDefinitionViewModel"/> for the <see cref="T:Sitecore.Marketing.Definitions.Goals.IGoalDefinition"/> 
+            if the goal is found. If not, null is returned.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IGoalRepository.GetAll(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all <see cref="T:Sitecore.Marketing.Definitions.Goals.IGoalDefinition"/>.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.GoalDefinitionViewModel"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IOutcomeRepository">
+            <summary>
+            Interface for the outcome repository.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IOutcomeRepository.GetById(System.Guid,System.String)">
+            <summary>
+            Gets an <see cref="T:Sitecore.Marketing.Definitions.Outcomes.Model.IOutcomeDefinition"/> by its id.
+            </summary>
+            <param name="id">The definition id of the outcome.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.OutcomeDefinitionViewModel"/> for the <see cref="T:Sitecore.Marketing.Definitions.Outcomes.Model.IOutcomeDefinition"/> 
+            if the outcome is found. If not, null is returned.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IOutcomeRepository.GetAll(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all <see cref="T:Sitecore.Marketing.Definitions.Outcomes.Model.IOutcomeDefinition"/>.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.OutcomeDefinitionViewModel"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IProfileRepository">
+            <summary>
+            Interface for the profile repository.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IProfileRepository.GetById(System.Guid,System.String)">
+            <summary>
+            Gets a <see cref="T:Sitecore.Marketing.Definitions.Profiles.IProfileDefinition"/> by its id.
+            </summary>
+            <param name="id">The definition id of the profile.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileDefinitionViewModel"/> for the <see cref="T:Sitecore.Marketing.Definitions.Profiles.IProfileDefinition"/> 
+            if the profile is found. If not, null is returned.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.IProfileRepository.GetAll(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all <see cref="T:Sitecore.Marketing.Definitions.Profiles.IProfileDefinition"/>.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileDefinitionViewModel"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.OutcomeRepository">
+            <summary>
+            A repository to get outcomes.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.OutcomeRepository.#ctor(Sitecore.Marketing.Definitions.IDefinitionManager{Sitecore.Marketing.Definitions.Outcomes.Model.IOutcomeDefinition},Sitecore.Abstractions.BaseLog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.OutcomeRepository"/> class.
+            </summary>
+            <param name="manager">The outcome definition manager.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.OutcomeRepository.GetById(System.Guid,System.String)">
+            <summary>
+            Gets an <see cref="T:Sitecore.Marketing.Definitions.Outcomes.Model.IOutcomeDefinition"/> by its id.
+            </summary>
+            <param name="id">The definition id of the outcome.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.OutcomeDefinitionViewModel"/> for the <see cref="T:Sitecore.Marketing.Definitions.Outcomes.Model.IOutcomeDefinition"/> 
+            if the outcome is found. If not, null is returned.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.OutcomeRepository.GetAll(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all <see cref="T:Sitecore.Marketing.Definitions.Outcomes.Model.IOutcomeDefinition"/>.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.OutcomeDefinitionViewModel"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ProfileRepository">
+            <summary>
+            A read-only repository to receive a profiles.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ProfileRepository.#ctor(Sitecore.Marketing.Definitions.IDefinitionManager{Sitecore.Marketing.Definitions.Profiles.IProfileDefinition},Sitecore.Abstractions.BaseLog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ProfileRepository"/>.
+            </summary>
+            <param name="manager">The profile definition manager.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ProfileRepository.GetById(System.Guid,System.String)">
+            <summary>
+            Gets a <see cref="T:Sitecore.Marketing.Definitions.Profiles.IProfileDefinition"/> by its Id.
+            </summary>
+            <param name="id">The definition Id of the profile.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileDefinitionViewModel"/> for the <see cref="T:Sitecore.Marketing.Definitions.Profiles.IProfileDefinition"/> 
+            if the profile is found. If not, null is returned.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Data.ProfileRepository.GetAll(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all <see cref="T:Sitecore.Marketing.Definitions.Profiles.IProfileDefinition"/>.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <param name="pageSize">The page size.</param>
+            <param name="pageNumber">The page number.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileDefinitionViewModel"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.CampaignDefinitionViewModelExtensions">
+            <summary>
+            Extension methods for <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.CampaignActivityViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.CampaignDefinitionViewModelExtensions.ToViewModel(Sitecore.Marketing.Definitions.Campaigns.ICampaignActivityDefinition)">
+            <summary>
+            Creates an instance of a <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.CampaignActivityViewModel"/> from an <see cref="T:Sitecore.Marketing.Definitions.Campaigns.ICampaignActivityDefinition"/>.
+            </summary>
+            <param name="campaignActivity">The campaign activity definition.</param>
+            <returns>A view model representation of type <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.CampaignActivityViewModel"/> of the campaign activity definition.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.ContactListDefinitionViewModelExtensions">
+            <summary>
+            Extension methods for <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.ContactListDefinitionViewModelExtensions.ToViewModel(Sitecore.Marketing.Definitions.ContactLists.IContactListDefinition)">
+            <summary>
+            Creates an instance of a <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel"/> from a <see cref="T:Sitecore.Marketing.Definitions.ContactLists.IContactListDefinition"/>.
+            </summary>
+            <param name="contactListDefinition">The contact list definition.</param>
+            <returns>A view model representation of type <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel"/> of the contact list definition.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.EventDefinitionViewModelExtensions">
+            <summary>
+            Extension methods for <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.EventDefinitionViewModelExtensions.ToViewModel(Sitecore.Marketing.Definitions.Events.IEventDefinition)">
+            <summary>
+            Creates an instance of a <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel"/> from a <see cref="T:Sitecore.Marketing.Definitions.Events.IEventDefinition"/>.
+            </summary>
+            <param name="eventDefinition">The event definition.</param>
+            <returns>A view model representation of type <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel"/> of the event definition.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.GoalDefinitionViewModelExtensions">
+            <summary>
+            Extension methods for <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.GoalDefinitionViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.GoalDefinitionViewModelExtensions.ToViewModel(Sitecore.Marketing.Definitions.Goals.IGoalDefinition)">
+            <summary>
+            Creates an instance of a <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.GoalDefinitionViewModel"/> from a <see cref="T:Sitecore.Marketing.Definitions.Goals.IGoalDefinition"/>.
+            </summary>
+            <param name="goalDefinition">The goal definition.</param>
+            <returns>A view model representation of type <see cref="T:Sitecore.Marketing.Definitions.Goals.IGoalDefinition"/> of the goal definition.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.OutcomeDefinitionViewModelExtensions">
+            <summary>
+            Extension methods for <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.OutcomeDefinitionViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.OutcomeDefinitionViewModelExtensions.ToViewModel(Sitecore.Marketing.Definitions.Outcomes.Model.IOutcomeDefinition)">
+            <summary>
+            Creates an instance of a <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.OutcomeDefinitionViewModel"/> from a <see cref="T:Sitecore.Marketing.Definitions.Outcomes.Model.IOutcomeDefinition"/>.
+            </summary>
+            <param name="outcomeDefinition">The outcome definition.</param>
+            <returns>A view model representation of type <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.OutcomeDefinitionViewModel"/> of the outcome definition.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.ProfileDefinitionViewModelExtensions">
+            <summary>
+            Extension methods for <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileDefinitionViewModel"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.ProfileDefinitionViewModelExtensions.ToViewModel(Sitecore.Marketing.Definitions.Profiles.IProfileDefinition)">
+            <summary>
+            Creates an instance of a <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileDefinitionViewModel"/> from a <see cref="T:Sitecore.Marketing.Definitions.Profiles.IProfileDefinition"/>.
+            </summary>
+            <param name="profileDefinition">The profile definition.</param>
+            <returns>A view model representation of type <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileDefinitionViewModel"/> of the profile definition.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Extensions.ProfileDefinitionViewModelExtensions.ToViewModel(Sitecore.Marketing.Definitions.Profiles.IProfileKeyDefinition)">
+            <summary>
+            Creates an instance of a <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileKeyDefinitionViewModel"/> from a <see cref="T:Sitecore.Marketing.Definitions.Profiles.IProfileKeyDefinition"/>.
+            </summary>
+            <param name="profileKeyDefinition">The profile key definition.</param>
+            <returns>A view model representation of type <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileKeyDefinitionViewModel"/> of the profile key definition.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.CampaignActivityViewModel">
+            <summary>
+            The view model for a <see cref="T:Sitecore.Marketing.Definitions.Campaigns.ICampaignActivityDefinition"/>.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.CampaignActivityViewModel.Id">
+            <summary>
+            The Id of the campaign activity.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.CampaignActivityViewModel.Name">
+            <summary>
+            The name of the campaign activity.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel">
+            <summary>
+            The view model for a <see cref="T:Sitecore.Marketing.Definitions.ContactLists.IContactListDefinition"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.#ctor(System.Collections.Generic.IDictionary{System.Guid,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel"/> class.
+            </summary>
+            <param name="customValues">The custom values.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.Id">
+            <summary>
+            The Id of the contact list.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.Name">
+            <summary>
+            The contact list name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.CreatedDate">
+            <summary>
+            Time of creation.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.CreatedBy">
+            <summary>
+            List created by.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.Description">
+            <summary>
+            The contact list description.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.IsActive">
+            <summary>
+            Is the list active.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.Owner">
+            <summary>
+            The list owner.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.IsSegmentedList">
+            <summary>
+            Is the list a segmented list
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.Version">
+            <summary>
+            The list version.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.CultureName">
+            <summary>
+            The list culture name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.CustomValues">
+            <summary>
+            The list custom values.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.LastModifiedBy">
+            <summary>
+            Who last modified the list.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ContactListDefinitionViewModel.LastModifiedDate">
+            <summary>
+            Time list was last modified.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel">
+            <summary>
+            The view model for a <see cref="T:Sitecore.Marketing.Definitions.Events.IEventDefinition"/>.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel.Id">
+            <summary>
+            The Id of the event.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel.Name">
+            <summary>
+            The name of the event.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel.Description">
+            <summary>
+            The description of the event.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel.ValuePoints">
+            <summary>
+            The event points value.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel.IsActive">
+            <summary>
+            Whether this event is active or not.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel.IsSystem">
+            <summary>
+            Whether this event is system or not.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.EventDefinitionViewModel.CultureName">
+            <summary>
+            The culture name of the event.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.GoalDefinitionViewModel">
+            <summary>
+            The view model for a <see cref="T:Sitecore.Marketing.Definitions.Goals.IGoalDefinition"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.OutcomeDefinitionViewModel">
+            <summary>
+            The view model for a <see cref="T:Sitecore.Marketing.Definitions.Outcomes.Model.IOutcomeDefinition"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileDefinitionViewModel">
+            <summary>
+            The view model for a <see cref="T:Sitecore.Marketing.Definitions.Profiles.IProfileDefinition"/>.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileDefinitionViewModel.Id">
+            <summary>
+            The Id of the profile.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileDefinitionViewModel.Name">
+            <summary>
+            The name of the profile.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileDefinitionViewModel.Description">
+            <summary>
+            The description of the profile.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileDefinitionViewModel.Keys">
+            <summary>
+            The profile keys.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileKeyDefinitionViewModel">
+            <summary>
+            The view model for a <see cref="T:Sitecore.Marketing.Definitions.Profiles.IProfileKeyDefinition"/>.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileKeyDefinitionViewModel.Id">
+            <summary>
+            The profile key id
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileKeyDefinitionViewModel.Name">
+            <summary>
+            The name of the profile key.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileKeyDefinitionViewModel.MinValue">
+            <summary>
+            The min value of the profile key.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileKeyDefinitionViewModel.MaxValue">
+            <summary>
+            The max value of the profile key.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Model.ProfileKeyDefinitionViewModel.DefaultValue">
+            <summary>
+            The default value of the profile key
+            </summary>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Resources.ConditionCouldNotBeConvertedToViewModel">
+            <summary>
+              Looks up a localized string similar to Condition could not be converted to view model.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.ActivityDescriptors.Resources.ConditionHasNoName">
+            <summary>
+              Looks up a localized string similar to Condition has no name. Assigning default empty name.
+            </summary>
+        </member>
+    </members>
+</doc>

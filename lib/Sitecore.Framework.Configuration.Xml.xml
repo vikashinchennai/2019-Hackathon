@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Configuration.Xml</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.Extensions.Configuration.InMemoryConfigurationExtensions.AddInMemoryXml(Microsoft.Extensions.Configuration.IConfigurationBuilder,System.String)">
+            <summary>
+            Adds the in-memory XML configuration provider that uses <paramref name="xml"/>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/> to add to</param>
+            <param name="xml">The xml string that will be used by the provider</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/>.</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.Configuration.InMemoryConfigurationExtensions.AddInMemoryXml(Microsoft.Extensions.Configuration.IConfigurationBuilder,System.Action{Sitecore.Framework.Configuration.Xml.InMemoryXmlConfigurationSource})">
+            <summary>
+            Adds the in-memory XML configuration provider configured using <paramref name="configureSource"/>
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/> to add to</param>
+            <param name="configureSource">The configuration action used to pass the XML content</param>
+            <returns>The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder"/>.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,368 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.UpdateCenter.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.UpdateCenter.Core.Authentication.AuthenticationProvider">
+            <summary>
+            The abstraction that introduces an API for getting user token for further processing and including into download requests.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Authentication.AuthenticationProvider.GetUserSecurityTokenAsync(Sitecore.UpdateCenter.Core.Authentication.UserCredentials)">
+            <summary>
+            Gets the user security token.
+            </summary>
+            <param name="credentials">The credentials.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Core.Authentication.SecurityToken">
+            <summary>
+            Represents access token for download actions.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Authentication.SecurityToken.Access_Token">
+            <summary>
+            Gets or sets the access token.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Authentication.SecurityToken.Token_Type">
+            <summary>
+            Gets or sets the token type.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Authentication.SecurityToken.Expires_In">
+            <summary>
+            Gets or sets expiration timeout.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Authentication.SecurityToken.Error">
+            <summary>
+            Gets or sets error.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Core.Authentication.UserCredentials">
+            <summary>
+            The user credentials model.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Authentication.UserCredentials.UserName">
+            <summary>
+            Gets or sets the user name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Authentication.UserCredentials.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Exceptions.PlatformVersionNotSupportedException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Core.Exceptions.PlatformVersionNotSupportedException" /> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Exceptions.PlatformVersionNotSupportedException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Core.Exceptions.PlatformVersionNotSupportedException" /> class.
+            </summary>
+            <param name="message">The exception message.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Exceptions.PlatformVersionNotSupportedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Core.Exceptions.PlatformVersionNotSupportedException" /> class.
+            </summary>
+            <param name="message">The exception message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Exceptions.PlatformVersionNotSupportedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Core.Exceptions.PlatformVersionNotSupportedException" /> class with serialized data.</summary>
+            <param name="info">The object that holds the serialized object data. </param>
+            <param name="context">The contextual information about the source or destination. </param>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Core.Exceptions.UnauthorizedRequestException">
+            <summary>
+            An exceptions thrown when request failed due to the authorization error.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Exceptions.UnauthorizedRequestException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Core.Exceptions.UnauthorizedRequestException"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Exceptions.UnauthorizedRequestException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Core.Exceptions.UnauthorizedRequestException"/> class.
+            </summary>
+            <param name="message">The exception message.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Exceptions.UnauthorizedRequestException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Core.Exceptions.UnauthorizedRequestException"/> class.
+            </summary>
+            <param name="message">The exception message.</param>
+            <param name="inner">The inner exception.</param>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageInfo">
+            <summary>
+            The update package information.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageInfo.Name">
+            <summary>
+            Package name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageInfo.Version">
+            <summary>
+            Package version.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageInfo.Size">
+            <summary>
+            Package size.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageInfo.MetaInfo">
+            <summary>
+            Package meta information.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageMetaInfo">
+            <summary>
+            The update package metadata information.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageMetaInfo.Properties">
+            <summary>
+            Package meta info properties
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageMetaInfo.PostSteps">
+            <summary>
+            Package meta info post steps collection
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageMetaInfo.PreSteps">
+            <summary>
+            Package meta info pre steps collection
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackagePostStepInfo">
+            <summary>
+            The post step information to be applied after update package installation.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackagePostStepInfo.Name">
+            <summary>
+            The post step name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackagePostStepInfo.Description">
+            <summary>
+            The post step description.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackagePreStepInfo">
+            <summary>
+            The pre step information to be applied before update package installation.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackagePreStepInfo.Name">
+            <summary>
+            The step name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackagePreStepInfo.Description">
+            <summary>
+            The step description.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository">
+            <summary>
+            The abstraction for getting information about available update packages and hotfixes.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository.GetModuleLatestUpdatePackageInfoAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the latest available update package information for the specified module with the specified version installed on top of the specified platform version.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The module version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository.GetPlatformLatestUpdatePackageInfoAsync(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the latest awailable update package information for the platform with the specified version.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository.GetPlatformLatestHotfixPackageInfoAsync(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the latest awailable hotfix update package information for the platform with the specified version.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository.GetModuleLatestHotfixPackageInfoAsync(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the latest awailable hotfix update package information for the specified module version.
+            </summary>
+            <param name="moduleVersion">The module version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository.GetModuleUpdatePackagesInfoAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the awailable update packages information for the specified module version installed on top of the specified platform version.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The module version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository.GetPlatformUpdatePackagesInfoAsync(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the awailable update packages information for the specified platform version.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository.GetPlatformHotfixPackagesInfoAsync(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the awailable hotfix packages information for the specified platform version.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository.GetModuleHotfixPackagesInfoAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Gets the awailable hotfix packages information for the specified module version installed on top of the specified platform version.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The module version.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository.DownloadPlatformUpdatePackageAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion,Sitecore.UpdateCenter.Core.Authentication.SecurityToken,System.Action{System.Object,System.ComponentModel.ProgressChangedEventArgs})">
+            <summary>
+            Downloads the platform update package archive that contains update package itself and package metadata file.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="packageVersionToDownload">The package version to download.</param>
+            <param name="securityToken">The security token.</param>
+            <param name="downloadProgressTracker">The download progress tracker.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository.DownloadModuleUpdatePackageAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion,Sitecore.UpdateCenter.Core.Authentication.SecurityToken,System.Action{System.Object,System.ComponentModel.ProgressChangedEventArgs})">
+            <summary>
+            Downloads the module update package archive that contains update package itself and package metadata file.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The module version.</param>
+            <param name="packageVersionToDownload">The package version to download.</param>
+            <param name="securityToken">The security token.</param>
+            <param name="downloadProgressTracker">The download progress tracker.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository.DownloadPlatformHotfixPackageAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion,Sitecore.UpdateCenter.Core.Authentication.SecurityToken,System.Action{System.Object,System.ComponentModel.ProgressChangedEventArgs})">
+            <summary>
+            Downloads the platform hotfix update package archive that contains update package itself and package metadata file.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="packageVersionToDownload">The package version to download.</param>
+            <param name="securityToken">The security token.</param>
+            <param name="downloadProgressTracker">The download progress tracker.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository.DownloadModuleHotfixPackageAsync(Sitecore.VersionManagement.VersionInfo,Sitecore.VersionManagement.VersionInfo,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion,Sitecore.UpdateCenter.Core.Authentication.SecurityToken,System.Action{System.Object,System.ComponentModel.ProgressChangedEventArgs})">
+            <summary>
+            Downloads the module hotfix update package archive that contains update package itself and package metadata file.
+            </summary>
+            <param name="platformVersion">The platform version.</param>
+            <param name="moduleVersion">The module version.</param>
+            <param name="packageVersionToDownload">The package version to download.</param>
+            <param name="securityToken">The security token.</param>
+            <param name="downloadProgressTracker">The download progress tracker.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion">
+            <summary>
+            The update package version.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion" /> class.
+            </summary>
+            <param name="major">The major number.</param>
+            <param name="minor">The minor number.</param>
+            <param name="patch">The patch number.</param>
+            <param name="hotfix">The hotfix number.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion.NullVersion">
+            <summary>
+            Gets the null version object.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion.Major">
+            <summary>
+            Gets or sets the major number.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion.Minor">
+            <summary>
+            Gets or sets the minor number.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion.Patch">
+            <summary>
+            Gets or sets the patch number.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion.Hotfix">
+            <summary>
+            Gets or sets the hotfix number.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion.Equals(System.Object)">
+            <summary>
+            Returns a boolean indicating if the passed in object is Equal to this.
+            </summary>
+            <param name="obj">The object to compare.</param>
+            <returns>The value indicating whether object is Equals to this.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion.Equals(Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion)">
+            <summary>
+            Returns a boolean indicating if the passed in object is Equal to this.
+            </summary>
+            <param name="version">The version to compare.</param>
+            <returns>The value indicating whether object is Equals to this.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion.op_Equality(Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion)">
+            <summary>
+            Returns a boolean indicating if objects are equal.
+            </summary>
+            <param name="leftPackageVersion">The left operand.</param>
+            <param name="rightPackageVersion">The right operand.</param>
+            <returns>The value indicating whether object are equal.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion.op_Inequality(Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion)">
+            <summary>
+            Returns a boolean indicating if objects are not equal.
+            </summary>
+            <param name="leftPackageVersion">The left operand.</param>
+            <param name="rightPackageVersion">The right operand.</param>
+            <returns>The value indicating whether object are not equal.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion.ToVersionString">
+            <summary>
+            Returns a string which represents the object instance.
+            </summary>
+            <returns>The string representation of <see cref="T:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion"/> object.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion.GetHashCode">
+            <summary>
+            Returns the hash code for the <see cref="T:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion"/> instance.
+            </summary>
+            <returns>The hash code.</returns>
+        </member>
+    </members>
+</doc>

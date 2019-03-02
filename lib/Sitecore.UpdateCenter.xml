@@ -1,0 +1,1697 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.UpdateCenter</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.UpdateCenter.Attributes.SitecoreItemBasedAuthorizeAttribute">
+            <summary>
+            Attribute to authorize Sitecore user which will also respect security restriction that set on related Sitecore item.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.Attributes.SitecoreItemBasedAuthorizeAttribute._sitecoreSecurityResolver">
+            <summary>
+            Instance of <see cref="T:Sitecore.UpdateCenter.Security.BaseSitecoreSecurityResolver"/> that comes from <see cref="T:Sitecore.DependencyInjection.ServiceLocator"/>.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Attributes.SitecoreItemBasedAuthorizeAttribute.SitecoreSecurityResolver">
+            <summary>
+            Gets the instance of <see cref="T:Sitecore.UpdateCenter.Security.BaseSitecoreSecurityResolver"/>.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Attributes.SitecoreItemBasedAuthorizeAttribute.ItemId">
+            <summary>
+            Gets or sets item id which contains security restrictions.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Attributes.SitecoreItemBasedAuthorizeAttribute.DatabaseName">
+            <summary>
+            Database that store item with security restrictions.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Attributes.SitecoreItemBasedAuthorizeAttribute.IsAuthorized(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            Determines whether the specified action context is authorized.
+            </summary>
+            <param name="actionContext">The action context.</param>
+            <returns>
+            True if user has rights to read related item. Otherwise we rely on logic in base attribute.
+            </returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Attributes.UpdateCenterSitecoreItemBasedAuthorizeAttribute">
+            <summary>
+            Attribute to authorize Sitecore user which will also respect security restriction that set on related Sitecore item.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Attributes.UpdateCenterSitecoreItemBasedAuthorizeAttribute.#ctor">
+            <summary>
+            Initialize new instance of <see cref="T:Sitecore.UpdateCenter.Attributes.UpdateCenterSitecoreItemBasedAuthorizeAttribute"/> with default values for UpdateCenter
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Controllers.DownloadController">
+            <summary>
+            The controller for download package actions required by UpdateCenter.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.DownloadController.#ctor(Sitecore.UpdateCenter.Services.PackageManagementService,Sitecore.UpdateCenter.Services.DownloadManagementService,Sitecore.UpdateCenter.Services.PackageFileService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Controllers.DownloadController"/> class.
+            </summary>
+            <param name="packageManagementService">The package management service.</param>
+            <param name="downloadManagementService">The download management service.</param>
+            <param name="packageFileService">The package file service.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Controllers.DownloadController.DownloadManagementService">
+            <summary>
+            Gets the package management service.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Controllers.DownloadController.PackageManagementService">
+            <summary>
+            Gets the update center service
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Controllers.DownloadController.PackageFileService">
+            <summary>
+            Gets the package file service.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.DownloadController.DownloadUpdate(Sitecore.UpdateCenter.Models.DownloadPackageViewModel)">
+            <summary>
+            Download update package from service by <see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/>, asynchronously.
+            </summary>
+            <param name="downloadPackageViewModel"></param>
+            <returns>Path to downloaded package as a content of <see cref="T:System.Web.Http.IHttpActionResult"/>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.DownloadController.Progress(Sitecore.UpdateCenter.Models.DownloadProgressViewModel)">
+            <summary>
+            Gets the download progress status in percent
+            </summary>
+            <returns><c>-1</c> if TotalBytes is null; otherwise<c>curent download progress</c> as content of <see cref="T:System.Web.Http.IHttpActionResult"/>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.ModuleManagementController.InstalledModules">
+            <summary>
+            Gets the list of modules installed into the solution.
+            </summary>
+            <returns>Collection of <see cref="T:Sitecore.UpdateCenter.Models.ModuleInfo"/> as a content of <see cref="T:System.Web.Http.IHttpActionResult"/>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.PackageInstallationController.#ctor(Sitecore.UpdateCenter.Services.InstallPackageService,Sitecore.UpdateCenter.Services.PackageFileService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Controllers.PackageInstallationController"/> class.
+            </summary>
+            <param name="installPackageService">The install package service.</param>
+            <param name="packageFileService">The package file service.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Controllers.PackageInstallationController.InstallPackageService">
+            <summary>
+            Gets the install package service.
+            </summary>
+            <value>
+            The install package service.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Controllers.PackageInstallationController.PackageFileService">
+            <summary>
+            Gets the package file service.
+            </summary>
+            <value>
+            The package file service.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.PackageInstallationController.InstallUpdate(Sitecore.UpdateCenter.Models.PackageInstallationOptions)">
+            <summary>
+            Installs update package.
+            </summary>
+            <param name="installationOptions">The package installation options.</param>
+            <returns><see cref="T:Sitecore.UpdateCenter.Models.PackageInstallationOptions"/> object.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.PackageInstallationController.RunPostSteps(Sitecore.UpdateCenter.Models.PackagePostStepOptions)">
+            <summary>
+            Execute post installation steps of the update package.
+            </summary>
+            <param name="postStepOptions">The post installation steps options.</param>
+            <returns><see cref="T:System.Web.Http.IHttpActionResult"/> object.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.PackageInstallationController.GetInstallationStatus(Sitecore.UpdateCenter.Models.PackageInstallationStatusOptions)">
+            <summary>
+            Returns status of update package installation.
+            </summary>
+            <param name="installationStatusOptions">The installation status options.</param>
+            <returns><see cref="T:Sitecore.UpdateCenter.Models.PackageInstallationStatus"/> object.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.PackageManagementController.#ctor(Sitecore.UpdateCenter.Services.PackageManagementService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Controllers.PackageManagementController"/> class.
+            </summary>
+            <param name="packageManagementService">The package management service.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Controllers.PackageManagementController.PackageManagementService">
+            <summary>
+            Gets the update center service
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.PackageManagementController.LatestPackagesList">
+            <summary>
+            Gets the latest update package for platform, asynchronously.
+            </summary>
+            <returns>The instance<see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/> as a content of <see cref="T:System.Web.Http.IHttpActionResult"/></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.PackageManagementController.ModulePackages">
+            <summary>
+            Gets the update packages for all installed modules, asynchronously.
+            </summary>
+            <returns>Collection of <see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/> as a content of <see cref="T:System.Web.Http.IHttpActionResult"/></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.PackageManagementController.PlatformPackages">
+            <summary>
+            Gets the available update packages for platform, asynchronously.
+            </summary>
+            <returns>Collection of <see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/> as a content of <see cref="T:System.Web.Http.IHttpActionResult"/>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.PackageManagementController.HotfixPackages">
+            <summary>
+            Gets the available hotfix packages for all installed modules and platform, asynchronously.
+            </summary>
+            <returns>Collection of <see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/> as a content of <see cref="T:System.Web.Http.IHttpActionResult"/>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.PackageManagementController.LatestModulesPackage">
+            <summary>
+            Gets the collection of latest modules package, asynchronously.
+            </summary>
+            <returns>Collection of <see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/> as a content of <see cref="T:System.Web.Http.IHttpActionResult"/>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.PackageManagementController.LatestPlatformPackage">
+            <summary>
+            Gets the latest update package for platform, asynchronously.
+            </summary>
+            <returns>The instance<see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/> as a content of <see cref="T:System.Web.Http.IHttpActionResult"/></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.PackageManagementController.LatestHotfixPackages">
+            <summary>
+            Gets the latest hotfix packages for modules and platform, asynchronously.
+            </summary>
+            <returns>Collection of <see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/> as a content of <see cref="T:System.Web.Http.IHttpActionResult"/>.</returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Controllers.UpdateCenterAuthenticationController">
+            <summary>
+            The authentication controller, responsible for authenticating user via package management service.
+            </summary>
+            <seealso cref="T:Sitecore.Services.Infrastructure.Web.Http.ServicesApiController" />
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.UpdateCenterAuthenticationController.#ctor(Sitecore.UpdateCenter.Core.Authentication.AuthenticationProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Controllers.UpdateCenterAuthenticationController"/> class.
+            </summary>
+            <param name="authenticationProvider">The authentication provider.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Controllers.UpdateCenterAuthenticationController.AuthenticationProvider">
+            <summary>
+            Gets the authentication provider.
+            </summary>
+            <value>
+            The authentication provider.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.UpdateCenterAuthenticationController.LogOn(Sitecore.UpdateCenter.Models.UserModel)">
+            <summary>
+            Send the token request to package management service.
+            </summary>
+            <param name="logOnModel">The log on model.</param>
+            <returns>
+            The access token.
+            </returns>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Controllers.UpdateModeController.BaseLog">
+            <summary>
+            Gets the base log.
+            </summary>
+            <value>
+            The base log.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Controllers.UpdateModeController.UpdateModeSwitchingService">
+            <summary>
+            Gets the update mode switcher.
+            </summary>
+            <value>
+            The update mode switcher.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.UpdateModeController.UpdateModeState">
+            <summary>
+            Gets the state of the update mode.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.UpdateModeController.EnterUpdateMode">
+            <summary>
+            Enters the update mode.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.UpdateModeController.ExitUpdateMode">
+            <summary>
+            Exits the update mode.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.UpdateModeController.GetCurrentHttpContext">
+            <summary>
+            Gets the current HTTP context.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Controllers.UploadController">
+            <summary>
+            The controller for actions required by Update Center application.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.Controllers.UploadController.UploadFileKey">
+            <summary>
+            The upload file key name.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.UploadController.Upload">
+            <summary>
+            Upload file on the server, asynchronously.
+            </summary>
+            <returns>Path to uploaded file as a content of <see cref="T:System.Web.Http.IHttpActionResult"/>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.UploadController.IsUploadRequestValid">
+            <summary>
+            Verifies whether upload request can be processed by the controller.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Controllers.UploadController.ExtractUploadPackageInfo">
+            <summary>
+            Extracts the update package information from the upload request.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Filters.HttpRequestExceptionFilterAttribute">
+            <summary>
+            Represents the attribute for the exception filter.
+            </summary>
+            <seealso cref="T:System.Web.Http.Filters.ExceptionFilterAttribute" />
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Filters.HttpRequestExceptionFilterAttribute.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            Raises the exception event.
+            </summary>
+            <param name="actionExecutedContext">The context for the action.</param>
+            <exception cref="T:System.Web.Http.HttpResponseException"></exception>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Filters.PlatformVersionNotSupportedExceptionFilterAttribute">
+            <summary>
+            Represents the attributes for the exception filter.
+            </summary>
+            <seealso cref="T:System.Web.Http.Filters.ExceptionFilterAttribute" />
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Filters.PlatformVersionNotSupportedExceptionFilterAttribute.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            Raises the exception event.
+            </summary>
+            <param name="actionExecutedContext">The context for the action.</param>
+            <exception cref="T:System.Web.Http.HttpResponseException"></exception>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Filters.UnauthorizedRequestExceptionFilterAttribute">
+            <summary>
+            An exception filter for the <see cref="T:Sitecore.UpdateCenter.Core.Exceptions.UnauthorizedRequestException"/> type.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Filters.UnauthorizedRequestExceptionFilterAttribute.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            Raises the exception event.
+            </summary>
+            <param name="actionExecutedContext">
+            The context for the action.
+            </param>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Filters.UriFormatExceptionFilterAttribute">
+            <summary>
+            Represents the attributes for the exception filter.
+            </summary>
+            <seealso cref="T:System.Web.Http.Filters.ExceptionFilterAttribute" />
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Filters.UriFormatExceptionFilterAttribute.OnException(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            Raises the exception event.
+            </summary>
+            <param name="actionExecutedContext">The context for the action.</param>
+            <exception cref="T:System.Web.Http.HttpResponseException"></exception>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.AccessTokenModel">
+            <summary>
+            Represents access token for download actions.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.AccessTokenModel.Access_Token">
+            <summary>
+            Gets or sets the access token.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.AccessTokenModel.Token_Type">
+            <summary>
+            Gets or sets the token type.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.AccessTokenModel.Expires_In">
+            <summary>
+            Gets or sets expiration timeout.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.AccessTokenModel.Error">
+            <summary>
+            Gets or sets error.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.DownloadPackageViewModel">
+            <summary>
+            The View model for storing data of the package to be downloaded.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Models.DownloadPackageViewModel.#ctor(System.String,Sitecore.UpdateCenter.Models.PackageInfo,Sitecore.UpdateCenter.Models.AccessTokenModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Models.DownloadPackageViewModel"/> class.
+            </summary>
+            <param name="downloadPackageInfoKey">The download package information key.</param>
+            <param name="packageInfo">The package information.</param>
+            <param name="accessToken">The access token.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.DownloadPackageViewModel.PackageInfo">
+            <summary>
+            Gets the package information.
+            </summary>
+            <value>
+            The package information.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.DownloadPackageViewModel.DownloadPackageInfoKey">
+            <summary>
+            Gets the download package information key.
+            </summary>
+            <value>
+            The download package information key.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.DownloadPackageViewModel.AccessToken">
+            <summary>
+            Gets the access token.
+            </summary>
+            <value>
+            The access token.
+            </value>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.DownloadProgressViewModel">
+            <summary>
+            View model for storing download key that comes from UI
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.DownloadProgressViewModel.DownloadKey">
+            <summary>
+            Unique download key from client side
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.Extensions.AccessTokenModelExtensions">
+            <summary>
+            Extension methods for AccessTokenModel entity.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Models.Extensions.AccessTokenModelExtensions.ToSecurityToken(Sitecore.UpdateCenter.Models.AccessTokenModel)">
+            <summary>
+            Converts AccessTokenModel entity into the security token.
+            </summary>
+            <param name="tokenModel">The token model.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.Extensions.DownloadPackageViewModelExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Sitecore.UpdateCenter.Models.DownloadPackageViewModel"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Models.Extensions.DownloadPackageViewModelExtensions.ToServiceModel(Sitecore.UpdateCenter.Models.DownloadPackageViewModel)">
+            <summary>
+            Converts <see cref="T:Sitecore.UpdateCenter.Models.DownloadPackageViewModel"/> object into the <see cref="T:Sitecore.UpdateCenter.Services.Models.ServiceDownloadPackageInfo"/> object.
+            </summary>
+            <param name="model">The instance of the <see cref="T:Sitecore.UpdateCenter.Models.DownloadPackageViewModel"/> class.</param>
+            <returns>The instance of the <see cref="T:Sitecore.UpdateCenter.Services.Models.ServiceDownloadPackageInfo"/> class.</returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.Extensions.ModuleInfoExtensions">
+            <summary>
+            Presentation module info model extension methods.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Models.Extensions.ModuleInfoExtensions.ToPresentation(Sitecore.UpdateCenter.Services.Models.ServiceModuleInfo)">
+            <summary>
+            To the presentation.
+            </summary>
+            <param name="serviceModuleInfo">The service module information.</param>
+            <returns>The mapped presentation module info.</returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.Extensions.PackageInfoExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Models.Extensions.PackageInfoExtensions.ToPresentationModel(Sitecore.UpdateCenter.Services.Models.ServicePackageInfo)">
+            <summary>
+            Converts <see cref="T:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo"/> object into the <see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/> object.
+            </summary>
+            <param name="servicePackage">The instance of the <see cref="T:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo"/> class.</param>
+            <returns>The instance of the <see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/> class.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Models.Extensions.PackageInfoExtensions.ToPresentationModel(Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageInfo,Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Converts <see cref="T:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageInfo"/> object into the <see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/> object.
+            </summary>
+            <param name="updatePackage">The instance of the <see cref="T:Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageInfo"/> class.</param>
+            <param name="installedPackageVersion">The instance of the <see cref="T:Sitecore.VersionManagement.VersionInfo"/> class.</param>
+            <returns>The instance of the <see cref="T:Sitecore.UpdateCenter.Models.PackageInfo"/> class.</returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.Extensions.PackagePostStepStatusExtensions">
+            <summary>
+            The post step installation status model extensions.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Models.Extensions.PackagePostStepStatusExtensions.ToPresentationModel(Sitecore.UpdateCenter.Services.Models.ServicePostStepInstallationStatus)">
+            <summary>
+            Converts ServicePostStepInstallationStatus to the presentation model.
+            </summary>
+            <param name="serviceStatus">The service status.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.Extensions.SecurityTokenExtensions">
+            <summary>
+            The model extensions methods for Security token entity.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Models.Extensions.SecurityTokenExtensions.ToPresentationModel(Sitecore.UpdateCenter.Core.Authentication.SecurityToken)">
+            <summary>
+            Converts the specified SecurityToken to the presentation model.
+            </summary>
+            <param name="token">The token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.Extensions.UpdatePackageVersionExtensions">
+            <summary>
+            Model extensions methods for UpdatePackageVersion class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Models.Extensions.UpdatePackageVersionExtensions.ToShortString(Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageVersion)">
+            <summary>
+            Represents the specified VersiobInfo parameter as formatted version string.
+            </summary>
+            <param name="version">The version.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.Extensions.UserModelExtensions">
+            <summary>
+            The exception methods for UserModel class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Models.Extensions.UserModelExtensions.ToUserCredentials(Sitecore.UpdateCenter.Models.UserModel)">
+            <summary>
+            Converts UserModel into UserCredentials.
+            </summary>
+            <param name="user">The user.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.Extensions.VersionInfoExtension">
+            <summary>
+            Model extensions methods for VersionInfo class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Models.Extensions.VersionInfoExtension.ToShortString(Sitecore.VersionManagement.VersionInfo)">
+            <summary>
+            Represents the specified VersiobInfo parameter as formatted version string.
+            </summary>
+            <param name="version">The version.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.ModuleInfo">
+            <summary>
+            The module information presentation model
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.ModuleInfo.Name">
+            <summary>
+            Gets or sets the module name.
+            </summary>
+            <value>
+            The module name.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.ModuleInfo.Version">
+            <summary>
+            Gets or sets the module version.
+            </summary>
+            <value>
+            The module version.
+            </value>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.PackageInfo">
+            <summary>
+            Define the package info.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInfo.Name">
+            <summary>
+            Package name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInfo.Version">
+            <summary>
+            Package version.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInfo.InstalledVersion">
+            <summary>
+            Installed version.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInfo.Size">
+            <summary>
+            Package size.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInfo.IsHotfixPackage">
+            <summary>
+            The value indicating whether package is hotfix.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInfo.IsPlatformPackage">
+            <summary>
+            The value indicating whether package is update for platform.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInfo.MetaInfo">
+            <summary>
+            Package meta information.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.PackageInstallationOptions">
+            <summary>
+            Represents options of update package installation.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Models.PackageInstallationOptions.#ctor(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Models.PackageInstallationOptions"/> class.
+            </summary>
+            <param name="relativePackagePath">The path to package.</param>
+            <param name="updateFiles">The value indicating whether files should be updated.</param>
+            <param name="updateItems">The value indicating whether items should be updated.</param>
+            <param name="cleanUpDatabase">The value indicating whether database should be cleaned up.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationOptions.RelativePackagePath">
+            <summary>
+            Gets or sets the relative package path.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationOptions.UpdateFiles">
+            <summary>
+            Gets or sets a value indicating whether execute files commands from package.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationOptions.UpdateItems">
+            <summary>
+            Gets or sets a value indicating whether execute items commands from package.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationOptions.CleanUpDatabase">
+            <summary>
+            Gets or sets a value indicating whether Event Queue and History table should be cleaned up before installation.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.PackageInstallationStatus">
+            <summary>
+            Represents status of update package installation.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationStatus.IsFinished">
+            <summary>
+            Gets or sets a value indicating whether package installation is finished.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationStatus.IsSucceeded">
+            <summary>
+            Gets or sets a value indicating whether package installation is succeeded.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationStatus.ProcessedCommandsCount">
+            <summary>
+            Gets or sets processed commands count.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationStatus.TotalCommandsCount">
+            <summary>
+            Gets or sets total commands count.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationStatus.PackageName">
+            <summary>
+            Gets or sets the package name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationStatus.RelativePackagePath">
+            <summary>
+            Gets or sets the package path.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationStatus.HistoryFolderName">
+            <summary>
+            Gets or sets the history folder path.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationStatus.JobHandle">
+            <summary>
+            Gets or sets the update installation job handle.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.PackageInstallationStatusOptions">
+            <summary>
+            Represents options of update package installation status.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationStatusOptions.HistoryFolderName">
+            <summary>
+            Gets or sets the history folder name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageInstallationStatusOptions.JobHandle">
+            <summary>
+            Gets or sets the update installation job handle.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.PackageMetaInfo">
+            <summary>
+            Defines the package meta info.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageMetaInfo.Properties">
+            <summary>
+            Package meta info properties
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageMetaInfo.PostSteps">
+            <summary>
+            Package meta info post steps collection
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackageMetaInfo.PreSteps">
+            <summary>
+            Package meta info pre steps collection
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.PackagePostStepOptions">
+            <summary>
+            Represents options of post installation steps execution.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackagePostStepOptions.RelativePackagePath">
+            <summary>
+            Gets or sets the relative package path.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackagePostStepOptions.HistoryFolderName">
+            <summary>
+            Gets or sets the history folder name.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.PackagePostStepStatus">
+            <summary>
+            Present status of post-step's installation
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackagePostStepStatus.Success">
+            <summary>
+            Gets or sets a value indicating whether post-step installation is finished.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackagePostStepStatus.PackageName">
+            <summary>
+            Gets or sets the name of the package.
+            </summary>
+            <value>
+            The name of the package.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PackagePostStepStatus.HistoryFolderName">
+            <summary>
+            Gets or sets the name of the installation history folder.
+            </summary>
+            <value>
+            The name of the installation history folder.
+            </value>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.PostStepInfo">
+            <summary>
+            Defines the post step info.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PostStepInfo.Name">
+            <summary>
+            The name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PostStepInfo.Description">
+            <summary>
+            The description.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.PreStepInfo">
+            <summary>
+            Defines the pre step info.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PreStepInfo.Name">
+            <summary>
+            The name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.PreStepInfo.Description">
+            <summary>
+            The description.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Models.UserModel">
+            <summary>
+            Represents model for the login form.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.UserModel.UserName">
+            <summary>
+            Gets or sets the user name.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Models.UserModel.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Security.BaseSitecoreSecurityResolver">
+            <summary>
+            Base class that check whether current <see cref="T:System.Web.Http.Controllers.HttpActionContext"/> is authorized.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Security.BaseSitecoreSecurityResolver.IsContextAuthorized(System.Web.Http.Controllers.HttpActionContext,Sitecore.Data.ID,System.String)">
+            <summary>
+            Determines whether the specified action context is authorized.
+            </summary>
+            <param name="actionContext">The action context.</param>
+            <param name="id">The application item id.</param>
+            <param name="databaseName">The database name.</param>
+            <returns>True <see cref="T:System.Web.Http.Controllers.HttpActionContext"/> is authorized. Otherwise <c>false</c>.</returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Security.DefaultSitecoreSecurityResolver">
+            <summary>
+            Default implementation of <see cref="T:Sitecore.UpdateCenter.Security.BaseSitecoreSecurityResolver"/> that check whether current <see cref="T:System.Web.Http.Controllers.HttpActionContext"/> is authorized.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.Security.DefaultSitecoreSecurityResolver._itemManager">
+            <summary>
+            Instance of <see cref="T:Sitecore.Abstractions.BaseItemManager"/>.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.Security.DefaultSitecoreSecurityResolver._factory">
+            <summary>
+            Instance of <see cref="T:Sitecore.Abstractions.BaseFactory"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Security.DefaultSitecoreSecurityResolver.#ctor(Sitecore.Abstractions.BaseItemManager,Sitecore.Abstractions.BaseFactory)">
+            <summary>
+            Initialize new instance of <see cref="T:Sitecore.UpdateCenter.Security.DefaultSitecoreSecurityResolver"/>.
+            </summary>
+            <param name="itemManager">The item manager.</param>
+            <param name="baseFactory">The factory.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Security.DefaultSitecoreSecurityResolver.IsContextAuthorized(System.Web.Http.Controllers.HttpActionContext,Sitecore.Data.ID,System.String)">
+            <summary>
+            Determines whether the specified action context is authorized.
+            </summary>
+            <param name="actionContext">The action context.</param>
+            <param name="id">The application item id.</param>
+            <param name="databaseName">The database name.</param>
+            <returns><c>true</c> <see cref="T:System.Web.Http.Controllers.HttpActionContext"/> is authorized. Otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Security.DefaultSitecoreSecurityResolver.ReceiveApplicationItem(Sitecore.Data.ID,System.String)">
+            <summary>
+            Gets the related application item by its id and database name.
+            </summary>
+            <param name="id">The application item id.</param>
+            <param name="databaseName">The database name.</param>
+            <returns><c><see cref="T:Sitecore.Data.Items.Item"/></c> if item by path was found; otherwise, <c>null</c>.</returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.DownloadManagementService">
+            <summary>
+            The service that is responsible for tracking package downloading progress.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.DownloadManagementService.ActiveDownloads">
+            <summary>
+            Gets the active downloads.
+            </summary>
+            <value>
+            The active downloads.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.DownloadManagementService.RegisterNewDownloadProcess(System.String)">
+            <summary>
+            Initialize new download
+            </summary>
+            <param name="key">Key that will represent new <see cref="T:Sitecore.UpdateCenter.Services.Download.DownloadProcessInfo"/> instance.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.DownloadManagementService.SetDownloadedFilePath(System.String,System.String)">
+            <summary>
+            Sets the path to downloaded package in <see cref="T:Sitecore.UpdateCenter.Services.Download.DownloadProcessInfo"/> by key
+            </summary>
+            <param name="key">The key.</param>
+            <param name="path">Downloaded package path.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.DownloadManagementService.CompleteDownloadProcess(System.String)">
+            <summary>
+            Sets <see cref="T:Sitecore.UpdateCenter.Services.Download.DownloadPackageState"/> to finished state for <see cref="T:Sitecore.UpdateCenter.Services.Download.DownloadProcessInfo"/> by key
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.DownloadManagementService.GetDownloadProgress(System.String)">
+            <summary>
+            Gets the download progress of <see cref="T:Sitecore.UpdateCenter.Services.Download.DownloadProcessInfo"/> by key
+            </summary>
+            <param name="key">The key.</param>
+            <returns><c>zero or higher</c> if <see cref="T:Sitecore.UpdateCenter.Services.DownloadManagementService"/> has such key; otherwise<c>-1</c></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.DownloadManagementService.GetDownloadState(System.String)">
+            <summary>
+            Gets the state of the download process.
+            </summary>
+            <param name="key">The download process key.</param>
+            <returns>The download process state.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.DownloadManagementService.SetDownloadProgress(System.String,System.Double)">
+            <summary>
+            Sets the download package progress of <see cref="T:Sitecore.UpdateCenter.Services.Download.DownloadProcessInfo"/> by key
+            </summary>
+            <param name="key">The key.</param>
+            <param name="progress">The progress.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.DownloadManagementService.SetDownloadProgressState(System.String,Sitecore.UpdateCenter.Services.Download.DownloadPackageState)">
+            <summary>
+            Sets the state of the download progress.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="state">The state.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.DownloadManagementService.GetProcessInfo(System.String)">
+            <summary>
+            Gets the process information.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.Download.DownloadProcessInfo">
+            <summary>
+            The download process progress information.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Download.DownloadProcessInfo.DownloadProgress">
+            <summary>
+            Gets or sets the download progress in percentages.
+            </summary>
+            <value>
+            The download progress.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Download.DownloadProcessInfo.DownloadedFilePath">
+            <summary>
+            Gets or sets the downloaded file path.
+            </summary>
+            <value>
+            The downloaded file path.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Download.DownloadProcessInfo.DownloadState">
+            <summary>
+            Gets or sets the state of the download process.
+            </summary>
+            <value>
+            The state of the download.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.Download.DownloadProcessInfo.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Services.Download.DownloadProcessInfo"/> class.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.Extensions.VersionManagementServiceExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.Extensions.VersionManagementServiceExtension.GetPlatformVersion(Sitecore.VersionManagement.BaseVersionManagementService)">
+            <summary>
+            Gets current platform version, asynchronously.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.InstallPackageService">
+            <summary>
+            Service that is responsible for installing the specified update package.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.StartInstallation(Sitecore.Update.PackageInstallationInfo,Sitecore.UpdateCenter.Services.Models.ServicePackageInstallationOptions)">
+            <summary>
+            Starts update package installation.
+            </summary>
+            <param name="installationInfo">The installation info.</param>
+            <param name="installationOptions">The installation options.</param>
+            <returns>The installation job.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.RunPostSteps(Sitecore.UpdateCenter.Services.Models.ServicePackagePostStepOptions)">
+            <summary>
+            Execute post installation steps of the update package.
+            </summary>
+            <param name="postStepOptions">The post installation steps options</param>
+            <returns>
+              <see cref="T:Sitecore.UpdateCenter.Services.Models.ServicePostStepInstallationStatus" />Status of post-step installation
+            </returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.ExecutePackagePostStep(System.String,System.String)">
+            <summary>
+            Executes the package post step.
+            </summary>
+            <param name="packagePath">The package path.</param>
+            <param name="historyPath">The history path.</param>
+            <exception cref="T:System.InvalidOperationException">
+            </exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.GetInstallationStatus(Sitecore.Handle,System.String)">
+            <summary>
+            Returns status of update package installation
+            </summary>
+            <param name="jobHandle">The handle of the update installation job.</param>
+            <param name="historyPath">The installation history path.</param>
+            <returns><see cref="T:Sitecore.UpdateCenter.Services.Models.ServicePackageInstallationStatus"/> Status of package installation</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.GetRelativeUpdateHistoryPath(System.String)">
+            <summary>
+            Gets the relative update history path.
+            </summary>
+            <param name="absoluteUpdateHistoryPath">The absolute update history path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.GetAbsoluteUpdateHistoryPath(System.String)">
+            <summary>
+            Gets the absolute path update history location.
+            </summary>
+            <param name="relativeUpdateHistoryPath">The relative update history path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.GetJob(Sitecore.Handle)">
+            <summary>
+            Returns the job instance by job handle.
+            </summary>
+            <param name="jobHandle">The job handle.</param>
+            <returns>The job.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.GetCommandsCount(Sitecore.Update.PackageInstallationInfo)">
+            <summary>
+            Returns the count of command in the package.
+            </summary>
+            <param name="installationInfo">The package installation information.</param>
+            <returns>The count of command in the package</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.GetPackageInstaller(Sitecore.Update.Installer.Utils.UpgradeAction)">
+            <summary>
+            Gets the installer.
+            </summary>
+            <param name="action">The action.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.LoadPackageMetadata(System.String)">
+            <summary>
+            Loads the package meta data.
+            </summary>
+            <param name="packagePath">The package path.</param>
+            <returns>The update package meta-data.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.GetStatusFilePath(System.String,Sitecore.Data.ID)">
+            <summary>
+            Gets the status file path.
+            </summary>
+            <param name="historyFolderPath">The history folder path.</param>
+            <param name="statusFileId">The status file identifier.</param>
+            <returns>The path to the installation files status file.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.FindStatusFile(System.String)">
+            <summary>
+            Finds the status file.
+            </summary>
+            <param name="historyPath">The history path.</param>
+            <returns>The path to the installation files status file.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.InstallPackageService.GetInstallationStatus(System.String)">
+            <summary>
+            Returns the installation status from status file.
+            </summary>
+            <param name="statusFilePath">The status file path.</param>
+            <returns>The installation status.</returns>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServiceModuleInfo.VersionInfo">
+            <summary>
+            Gets or sets module <see cref="P:Sitecore.UpdateCenter.Services.Models.ServiceModuleInfo.VersionInfo"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo">
+            <summary>
+            Define the service package info.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo.PackageInfo">
+            <summary>
+            Gets or sets the package info.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo.InstalledPackageVersion">
+            <summary>
+            Gets or sets the installed package version.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo.IsHotfixPackage">
+            <summary>
+            Gets or sets value indicating whether package is hotfix.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo.IsPlatformPackage">
+            <summary>
+            Gets or sets value indicating whether package is update for platform.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackageInstallationOptions.CleanUpDatabase">
+            <summary>
+            Gets or sets a value indicating whether Event Queue and History table should be cleaned up before installation.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackageInstallationStatus.IsFinished">
+            <summary>
+            Gets or sets a value indicating whether package installation is finished.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackageInstallationStatus.IsSucceeded">
+            <summary>
+            Gets or sets a value indicating whether package installation is succeeded.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackageInstallationStatus.ProcessedCommandsCount">
+            <summary>
+            Gets or sets processed commands count.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackageInstallationStatus.TotalCommandsCount">
+            <summary>
+            Gets or sets total commands count.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackageInstallationStatus.PackagePath">
+            <summary>
+            Gets or sets the package path.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackageInstallationStatus.HistoryFolderName">
+            <summary>
+            Gets or sets the history folder path.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackageInstallationStatus.JobHandle">
+            <summary>
+            Gets or sets the update installation job handle.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackagePostStepOptions.PackagePath">
+            <summary>
+            Gets or sets the package path.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePackagePostStepOptions.HistoryPath">
+            <summary>
+            Gets or sets the history folder path.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePostStepInstallationStatus.Success">
+            <summary>
+            Gets or sets a value indicating whether post-step installation is finished.
+            </summary>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePostStepInstallationStatus.PackagePath">
+            <summary>
+            Gets or sets the path to the update package.
+            </summary>
+            <value>
+            The path to the update package.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.Models.ServicePostStepInstallationStatus.InstallationHistoryFolderPath">
+            <summary>
+            Gets or sets the path to the installation history folder.
+            </summary>
+            <value>
+            The path to the installation history folder.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.ModulesService.GetInstalledModules">
+            <summary>
+            Gets latest available modules update packages, asynchronously.
+            </summary>
+            <returns>Available collection of <see cref="T:Sitecore.VersionManagement.VersionInfo"/>.</returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.PackageFileService">
+            <summary>
+            Defines helper for working with HTTP and file system.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageFileService.SavePackageContentToFileSystemAsync(System.String,System.IO.Stream)">
+            <summary>
+            Saves content of stream to file, asynchronously.
+            </summary>
+            <param name="fileName">Name of the file.</param>
+            <param name="stream">The stream.</param>
+            <returns>
+            The path to file on the file system with stream written to it.
+            </returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageFileService.WriteStreamToFileAsync(System.IO.Stream,System.String)">
+            <summary>
+            Writes stream content to file by its path, asynchronously.
+            </summary>
+            <param name="stream">Instance of <see cref="T:System.IO.Stream"/>.</param>
+            <param name="filePath">Path to file.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageFileService.UnpackArchive(System.String)">
+            <summary>
+            Unpacks update package archive into its current directory.
+            </summary>
+            <param name="filePath">The path to update package archive.</param>
+            <returns>The path to extracted update package.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageFileService.GetAbsoluteFilePath(System.String)">
+            <summary>
+            Maps the relative file path to the absolute path in packages root.
+            </summary>
+            <param name="relativeFilePath">The relative file path.</param>
+            <returns>The absolute file path.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageFileService.GetRelativeFilePath(System.String)">
+            <summary>
+            Gets the relative file path.
+            </summary>
+            <param name="absolutePath">The absolute path.</param>
+            <returns>The relative path.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageFileService.GeneratePackageFilePath(System.String)">
+            <summary>
+            Get path where file will be saved, if some of directories in path didn't exist this method will create them, asynchronously.
+            </summary>
+            <param name="fileName">File name.</param>
+            <returns>The package path.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageFileService.IsPathRooted(System.String)">
+            <summary>
+            Determines whether the specified path is rooted.
+            </summary>
+            <param name="path">The path.</param>
+            <returns><c>true</c> is the specified path is rooted.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageFileService.GetPackagesRootPath">
+            <summary>
+            Gets the packages root path.
+            </summary>
+            <returns>The path to the packages folder.</returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.PackageManagementService">
+            <summary>
+            Service for working with update packages
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageManagementService.#ctor(Sitecore.VersionManagement.BaseVersionManagementService,Sitecore.UpdateCenter.Core.Repositories.Packages.UpdatePackageRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Services.PackageManagementService"/> class.
+            </summary>
+            <param name="versionManagementService">The version management service.</param>
+            <param name="updatePackageRepository">The update package repository.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.PackageManagementService.VersionManagementService">
+            <summary>
+            Gets the version management service.
+            </summary>
+            <value>
+            The version management service.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.PackageManagementService.PackageRepository">
+            <summary>
+            Gets the package repository.
+            </summary>
+            <value>
+            The package repository.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageManagementService.DownloadPackage(Sitecore.UpdateCenter.Services.Models.ServiceDownloadPackageInfo,Sitecore.UpdateCenter.Core.Authentication.SecurityToken,System.Action{System.Object,System.ComponentModel.ProgressChangedEventArgs})">
+            <summary>
+            Downloads update package, asynchronously.
+            </summary>
+            <param name="packageInfo">The package information.</param>
+            <param name="securityToken">The security token.</param>
+            <param name="downloadProgressTracker">The download progress tracker.</param>
+            <returns>
+            Path to downloaded file.
+            </returns>
+            <exception cref="T:System.IO.InvalidDataException">
+            Cannot parse requested update package version for downloading. Specified version is:  + (packageInfo.Version ?? NULL)
+            or
+            Module to download update package for is not installed on the platform. Module name: + packageInfo.Name
+            </exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageManagementService.GetModulesLatestUpdatePackages">
+            <summary>
+            Gets latest available modules update packages, asynchronously.
+            </summary>
+            <returns>Available collection of <see cref="T:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo"/>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageManagementService.GetPlatformLatestUpdatePackage">
+            <summary>
+            Gets latest available platform update package, asynchronously.
+            </summary>
+            <returns>Available <see cref="T:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo"/>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageManagementService.GetLatestHotfixPackages">
+            <summary>
+            Gets latest available hotfix packages for the platform and installed modules.
+            </summary>
+            <returns>Available collection of <see cref="T:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo"/>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageManagementService.GetModulesUpdatePackages">
+            <summary>
+            Gets update packages collection for each installed modules, asynchronously.
+            </summary>
+            <returns>Available collection of <see cref="T:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo"/>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageManagementService.GetPlatformUpdatePackages">
+            <summary>
+            Gets collections of update packages for platform, asynchronously.
+            </summary>
+            <returns>Available collection of <see cref="T:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo"/>.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.PackageManagementService.GetHotfixPackages">
+            <summary>
+            Gets collection of hotfix packages for each modules and platform.
+            </summary>
+            <returns>Available collection of <see cref="T:Sitecore.UpdateCenter.Services.Models.ServicePackageInfo"/>.</returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService">
+            <summary>
+            Contains the logic for entering or exiting the update mode.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.UpdateLayerName">
+            <summary>
+            The name of the update layer.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.UpdateLayerLocation">
+            <summary>
+            The location of the update layer.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.SyncObject">
+            <summary>
+            The object used for synchronizing switching to modes.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.#ctor(Sitecore.UpdateCenter.Services.UpdateMode.ConfigurationProviderHelper,Sitecore.Abstractions.BaseSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService" /> class.
+            </summary>
+            <param name="providerHelper">The provider helper.</param>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.#ctor(Sitecore.UpdateCenter.Services.UpdateMode.ConfigurationProviderHelper,Sitecore.Abstractions.BaseSettings,System.Collections.Generic.ICollection{Sitecore.UpdateCenter.Services.UpdateMode.Commands.ISwitchUpdateModeCommand})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService" /> class.
+            </summary>
+            <param name="providerHelper">The provider helper.</param>
+            <param name="settings">The settings.</param>
+            <param name="commands">The commands.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.UpdateModeSwitchingCommands">
+            <summary>
+            Gets the update commands.
+            </summary>
+            <value>
+            The update commands.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.ProviderHelper">
+            <summary>
+            Gets the provider helper.
+            </summary>
+            <value>
+            The provider helper.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.Settings">
+            <summary>
+            Gets the Sitecore settings.
+            </summary>
+            <value>
+            The Sitecore settings.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.GetCurrentUpdateMode">
+            <summary>
+            Gets the current update mode.
+            </summary>
+            <returns>The update mode.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.SwitchTo(Sitecore.UpdateCenter.Services.UpdateMode.UpdateModeState,System.Web.HttpContextBase)">
+            <summary>
+            Switches to the specified update mode.
+            </summary>
+            <param name="state">The update mode state.</param>
+            <param name="context">The context.</param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.DoSwitchTo(Sitecore.UpdateCenter.Services.UpdateMode.UpdateModeState,System.Web.HttpContextBase)">
+            <summary>
+            Performs the switching action.
+            </summary>
+            <param name="state">The state.</param>
+            <param name="context">The context.</param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.EnterUpdateMode(System.Web.HttpContextBase)">
+            <summary>
+            Switches to the update mode.
+            </summary>
+            <param name="context">The HTTP context.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.ExitUpdateMode(System.Web.HttpContextBase)">
+            <summary>
+            Exits the update mode.
+            </summary>
+            <param name="context">The HTTP context.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.CleanupUpdateLayerConfiguration(System.String)">
+            <summary>
+            Cleanups the update layer configuration.
+            </summary>
+            <param name="layerPath">The layer path.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.TryAddUpdateLayer(Sitecore.Configuration.IConfigurationLayerProvider)">
+            <summary>
+            Add update layer to the layers collection of the specified provider.
+            </summary>
+            <param name="provider">The provider.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.IsAllowedInUpdateMode(Sitecore.Configuration.IConfigurationLayer)">
+            <summary>
+            Determines whether the specified layer is allowed to be enabled in Update mode.
+            </summary>
+            <param name="layer">The layer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateModeSwitchingService.MapPath(System.String,System.Web.HttpContextBase)">
+            <summary>
+            Maps the path.
+            </summary>
+            <param name="relativePath">The relative path.</param>
+            <param name="context">The context.</param>
+            <returns>Mapped server path.</returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.UpdateMode.Commands.DisableAnalyticsCommand">
+            <summary>
+            Command that disables the Sitecore Experience Database (xDB).
+            </summary>
+            <seealso cref="T:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand" />
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.DisableAnalyticsCommand.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Services.UpdateMode.Commands.DisableAnalyticsCommand"/> class.
+            </summary>
+            <param name="relativePatchFolderPath">The relative patch folder path.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.UpdateMode.Commands.DisableAnalyticsCommand.PatchFileName">
+            <summary>
+            Gets the name of the patch file.
+            </summary>
+            <value>
+            The name of the patch file.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.DisableAnalyticsCommand.GetPatchContent(System.Web.HttpContextBase)">
+            <summary>
+            Gets the content of the patch.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>
+            The content of the patch file.
+            </returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.UpdateMode.Commands.ISwitchUpdateModeCommand">
+            <summary>
+            Command that performs configuration step when entering \ exiting update mode.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.ISwitchUpdateModeCommand.EnterUpdateMode(System.Web.HttpContextBase)">
+            <summary>
+            Performs action when entering update mode.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.ISwitchUpdateModeCommand.ExitUpdateMode(System.Web.HttpContextBase)">
+            <summary>
+            Performs action when exiting update mode.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand">
+            <summary>
+            Base class for commands that perform patch logic.
+            </summary>
+            <seealso cref="T:Sitecore.UpdateCenter.Services.UpdateMode.Commands.ISwitchUpdateModeCommand" />
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand.RelativePatchFolderPath">
+            <summary>
+            Gets the relative patch folder path.
+            </summary>
+            <value>
+            The relative patch folder path.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand"/> class.
+            </summary>
+            <param name="relativePatchFolderPath">The relative patch folder path.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand.EnterUpdateMode(System.Web.HttpContextBase)">
+            <summary>
+            Performs action when entering update mode.
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand.ExitUpdateMode(System.Web.HttpContextBase)">
+            <summary>
+            Performs action when exiting update mode.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand.CreateFile(System.String,System.Web.HttpContextBase)">
+            <summary>
+            Creates the file in the specified location and with the specified content.
+            </summary>
+            <param name="content">The file content.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand.GetPatchFilePath(System.Web.HttpContextBase)">
+            <summary>
+            Gets the patch file path.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>The path to the patch file.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand.MapPath(System.String,System.Web.HttpContextBase)">
+            <summary>
+            Maps the path.
+            </summary>
+            <param name="relativePath">The relative path.</param>
+            <param name="context">The context.</param>
+            <returns>Mapped server path.</returns>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand.PatchFileName">
+            <summary>
+            Gets the name of the patch file.
+            </summary>
+            <value>
+            The name of the patch file.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand.GetPatchContent(System.Web.HttpContextBase)">
+            <summary>
+            Gets the content of the patch.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>The content of the patch file.</returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchDataFolderLocationCommand">
+            <summary>
+            Creates patch for Data folder location.
+            </summary>
+            <seealso cref="T:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchConfigurationCommand" />
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchDataFolderLocationCommand.#ctor(Sitecore.Abstractions.BaseSettings,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchDataFolderLocationCommand" /> class.
+            </summary>
+            <param name="settings">The Sitecore settings.</param>
+            <param name="relativePatchFolderPath">The relative patch folder path.</param>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchDataFolderLocationCommand.Settings">
+            <summary>
+            Gets the Sitecore settings.
+            </summary>
+            <value>
+            The settings.
+            </value>
+        </member>
+        <member name="P:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchDataFolderLocationCommand.PatchFileName">
+            <summary>
+            Gets the name of the patch file.
+            </summary>
+            <value>
+            The name of the patch file.
+            </value>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.Commands.PatchDataFolderLocationCommand.GetPatchContent(System.Web.HttpContextBase)">
+            <summary>
+            Gets the content of the patch.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>
+            The content of the patch file.
+            </returns>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.UpdateMode.ConfigurationProviderHelper">
+            <summary>
+            The helper class that introduce API for working with layered configuration provider.
+            </summary>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.ConfigurationProviderHelper.GetConfigurationProvider">
+            <summary>
+            Gets the configuration provider.
+            </summary>
+            <returns>Current configuration provder.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.ConfigurationProviderHelper.SaveConfigurationProvider(Sitecore.Configuration.IConfigurationLayerProvider)">
+            <summary>
+            Saves the configuration provider.
+            </summary>
+            <param name="provider">The provider.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException">Cannot get serializer to the configuration provider.</exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.ConfigurationProviderHelper.BackupConfigurationProvider(System.String)">
+            <summary>
+            Backups the configuration provider.
+            </summary>
+            <param name="backupRoot">The backup root.</param>
+            <returns>The path to the backup of the configuration provider (layers.config).</returns>
+            <exception cref="T:System.ArgumentException">Backup root cannot be null or empty.</exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.ConfigurationProviderHelper.RestoreConfigurationProvider(System.String)">
+            <summary>
+            Restores the configuration for the configuration provider (Layers.config).
+            </summary>
+            <param name="backupRoot">The backup root.</param>
+            <returns>The path to the restored configuration provider (layers.config).</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.ConfigurationProviderHelper.SaveConfigurationProvider(Sitecore.Configuration.IConfigurationLayerProvider,System.String)">
+            <summary>
+            Saves the configuration provider.
+            </summary>
+            <param name="provider">The provider.</param>
+            <param name="filePath">The file path where configuration provider will be saved.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException">Cannot get serializer to the configuration provider.</exception>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.ConfigurationProviderHelper.GetLayersConfigurationFilePath">
+            <summary>
+            Gets the layers configuration file path.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.ConfigurationProviderHelper.GetBackupLayerConfigurationFilePath(System.String)">
+            <summary>
+            Gets the backup layer configuration file path.
+            </summary>
+            <param name="backupRoot">The backup root.</param>
+            <returns>The path to the backup file of the configuration for configuration provider.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.ConfigurationProviderHelper.GetLayeredConfiguration">
+            <summary>
+            Gets the layered configuration.
+            </summary>
+            <returns>The layered Sitecore configuration.</returns>
+        </member>
+        <member name="M:Sitecore.UpdateCenter.Services.UpdateMode.ConfigurationProviderHelper.GetProviderSerializer">
+            <summary>
+            Gets the provider serializer.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.Services.UpdateMode.UpdateModeState">
+            <summary>
+            Describes the update mode state.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.Services.UpdateMode.UpdateModeState.Disabled">
+            <summary>
+            The update mode is disabled.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.Services.UpdateMode.UpdateModeState.Enabled">
+            <summary>
+            The update mode is enabled.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.UpdateCenterConstants">
+            <summary>
+            Defines UpdateCenter constants.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.UpdateCenterConstants.ApplicationItemId">
+            <summary>
+            Defines id of UpdateCenter application item.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.UpdateCenterConstants.ApplicationItemDatabaseName">
+            <summary>
+            Defines database name of UpdateCenter application item.
+            </summary>
+        </member>
+        <member name="T:Sitecore.UpdateCenter.UpdateCenterTextsConstants">
+            <summary>
+            Defines UpdateCenter localization texts constants.
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.UpdateCenterTextsConstants.PlatformVersionIsNotSupportedException">
+            <summary>
+            Message for <see cref="T:Sitecore.UpdateCenter.Core.Exceptions.PlatformVersionNotSupportedException"/>
+            </summary>
+        </member>
+        <member name="F:Sitecore.UpdateCenter.UpdateCenterTextsConstants.RequestToPackageManagementServiceFailedException">
+            <summary>
+            Message for <see cref="T:System.Net.Http.HttpRequestException"/>
+            </summary>
+        </member>
+    </members>
+</doc>

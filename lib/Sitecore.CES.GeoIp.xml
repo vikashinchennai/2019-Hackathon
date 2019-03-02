@@ -1,0 +1,306 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.CES.GeoIp</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.CES.GeoIp.Caching.GeoIpCache">
+            <summary>
+            The Geo IP cache.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Caching.GeoIpCache.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.Caching.GeoIpCache"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Caching.GeoIpCache.#ctor(System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.Caching.GeoIpCache"/> class.
+            </summary>
+            <param name="cacheSize">
+            The cache size.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Caching.GeoIpCache.Get(System.String)">
+            <summary>
+            Gets <see cref="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation"/> from cache.
+            </summary>
+            <param name="ip">
+            The IP address.
+            </param>
+            <returns>
+            The <see cref="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation"/>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Caching.GeoIpCache.Add(System.String,Sitecore.CES.GeoIp.Core.Model.WhoIsInformation)">
+            <summary>
+            Adds <see cref="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation"/> to the cache.
+            </summary>
+            <param name="ip">
+            The IP address.
+            </param>
+            <param name="value">
+            The <see cref="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation"/> value.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Caching.GeoIpCache.GetDataLength(Sitecore.CES.GeoIp.Core.Model.WhoIsInformation)">
+            <summary>
+            Gets data length of the WhoIsInformation instance.
+            </summary>
+            <param name="whoIsInformation">
+            The <see cref="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation"/>.
+            </param>
+            <returns>
+            The <see cref="T:System.Int64"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.Caching.GeoIpCacheManager">
+            <summary>
+            The Geo IP cache manager.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.Caching.GeoIpCacheManager.synchLock">
+            <summary>
+            The synch lock.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.Caching.GeoIpCacheManager.geoIpCache">
+            <summary>
+            The IP geo information cache.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Caching.GeoIpCacheManager.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Sitecore.CES.GeoIp.Caching.GeoIpCacheManager"/> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Caching.GeoIpCacheManager.GeoIpCache">
+            <summary>
+            Gets or sets the cache.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.Configuration.Settings">
+            <summary>
+            Defines the settings of the CES Geo IP functionality.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Configuration.Settings.GeoIpServiceName">
+            <summary>
+            Gets the name of the CES Geo IP service.
+            </summary>
+            <value>
+            The name of the CES Geo IP service.
+            </value>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Configuration.Settings.GeoIpCacheSize">
+            <summary>
+            Gets the size of the IP geo information cache.
+            </summary>
+            <value>
+            The size of the IP geo information cache.
+            </value>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Configuration.Settings.LocalFilterIpRangesFilePath">
+            <summary>
+            Gets the path of the locally stored file with filter Ip ranges.
+            </summary>
+            <value>
+            The path of the locally stored file with filter Ip ranges.
+            </value>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Configuration.Settings.GeoIpCacheExpiryTime">
+            <summary>
+            Gets a value that indicates whether the IP geo information cache entry should be evicted if it has not been accessed in a given span of time.
+            </summary>
+            <value>
+            The value that indicates whether the IP geo information cache entry should be evicted if it has not been accessed in a given span of time.
+            </value>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.CsvFileBasedIpRangesLoaderFactory">
+            <summary>
+            Defines the factory to create implemtation of the <see cref="T:Sitecore.CES.GeoIp.IpFiltering.IIpRangesLoader"/> interface that operates with local stored file with filter IP ranges.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.GeoIpResponseParser">
+            <summary>
+            Implements logic of parsing geo IP service response into <see cref="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation"/> object.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.GeoIpResponseParser.Parse(System.String)">
+            <summary>
+            Parses the specified geo IP service response into <see cref="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation"/> object.
+            </summary>
+            <param name="responseStream">The geo IP service response to parse.</param>
+            <returns><see cref="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation"/> object that represents parsing result.</returns>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.ILocalIpRangesLoaderFactory.Create(System.String)">
+            <summary>
+            Create implemtation of the <see cref="T:Sitecore.CES.GeoIp.IpFiltering.IIpRangesLoader"/> interface that operates with local stored file with filter IP ranges.
+            </summary>
+            <param name="ipRangesFilePath">The target path of a local file with filter IP ranges.</param>
+            <returns>An implementation of the <see cref="T:Sitecore.CES.GeoIp.IpFiltering.IIpRangesLoader"/> interface.</returns>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.IpRangesFilterResponseParser">
+            <summary>
+            Defines parser for the response of the IP filter ranges request.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.IpRangesFilterResponseParser.Parse(System.String)">
+            <summary>
+            Parses the response of the IP filter ranges request.
+            </summary>
+            <param name="responseStream">The response stream.</param>
+            <returns>The original response without modifications.</returns>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.IpRangesLoader">
+            <summary>
+            Defines a loader of ip ranges
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.IpRangesLoader.#ctor(Sitecore.CES.Client.ResourceConnector{System.String},Sitecore.CES.GeoIp.ILocalIpRangesLoaderFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.IpRangesLoader"/> class.
+            </summary>
+            <param name="ipRangesConnector">The ip ranges connector.</param>
+            <param name="localIpRangesLoaderFactory">The local IP ranges loader factory..</param>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.IpRangesLoader.#ctor(Sitecore.CES.Client.ResourceConnector{System.String},Sitecore.CES.Discovery.EndpointSource,Sitecore.CES.GeoIp.ILocalIpRangesLoaderFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.IpRangesLoader"/> class.
+            </summary>
+            <param name="ipRangesConnector">The ip ranges connector.</param>
+            <param name="endpointSource">The service endpoint source.</param>
+            <param name="localIpRangesLoaderFactory">The local IP ranges loader factory..</param>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.Pipelines.GeoIpPipelineNames">
+            <summary>
+            Defines pipeline names for geo IP feature.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.Pipelines.GeoIpPipelineNames.ParseGeoIpResponse">
+            <summary>
+            The name of parse geo IP response pipeline.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.Pipelines.GeoIpPipelineNames.HandleLookupError">
+            <summary>
+            The name of handle lookup error pipeline.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.Pipelines.HandleLookupError.HandleLookupErrorArgs">
+            <summary>
+            Defines arguments of the handle lookup error pipeline.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Pipelines.HandleLookupError.HandleLookupErrorArgs.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.Pipelines.HandleLookupError.HandleLookupErrorArgs"/> class.
+            </summary>
+            <param name="exception">The exception to handle.</param>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Pipelines.HandleLookupError.HandleLookupErrorArgs.Exception">
+            <summary>
+            Gets or sets the exception to handle.
+            </summary>
+            <value>
+            The exception to handle.
+            </value>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Pipelines.HandleLookupError.HandleLookupErrorArgs.CacheFallback">
+            <summary>
+            Gets or sets a value indicating whether cache fallback.
+            </summary>
+        </member>
+        <member name="P:Sitecore.CES.GeoIp.Pipelines.HandleLookupError.HandleLookupErrorArgs.Fallback">
+            <summary>
+            Gets or sets the fallback IP geo information.
+            </summary>
+            <value>
+            The fallback IP geo information.
+            </value>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.Pipelines.HandleLookupError.IpAddressNotFound">
+            <summary>
+            Handles IP address not found error.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.Pipelines.HandleLookupError.IpAddressNotFound.IpAddressNotFoundMessage">
+            <summary>
+            The 'IP address not found' message.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Pipelines.HandleLookupError.IpAddressNotFound.Process(Sitecore.CES.GeoIp.Pipelines.HandleLookupError.HandleLookupErrorArgs)">
+            <summary>
+            Runs the processor.
+            </summary>
+            <param name="args">The arguments <see cref="T:Sitecore.CES.GeoIp.Pipelines.HandleLookupError.HandleLookupErrorArgs"/>.</param>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.Pipelines.ParseResponse.MapGeoIpResponse">
+            <summary>
+            Maps the geo IP service JSON response to the result object.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Pipelines.ParseResponse.MapGeoIpResponse.Process(Sitecore.CES.Pipelines.ParseResponse.ParseResponseArgs{Newtonsoft.Json.Linq.JObject,Sitecore.CES.GeoIp.Core.Model.WhoIsInformation})">
+            <summary>
+            Runs the processor.
+            </summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.Pipelines.ParseResponse.MapGeoIpResponse.Map(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Maps specified <see cref="T:Newtonsoft.Json.Linq.JObject"/> object to <see cref="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation"/> object.
+            </summary>
+            <param name="jsonObject"><see cref="T:Newtonsoft.Json.Linq.JObject"/> object to map.</param>
+            <returns><see cref="T:Sitecore.CES.GeoIp.Core.Model.WhoIsInformation"/> object that represents mapping result.</returns>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.SitecoreProvider">
+            <summary>
+            Defines a provider to get geographic information for IP address from CES.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.SitecoreProvider.GeoIpConnector">
+            <summary>
+            The Geo IP connector.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.SitecoreProvider.IpFilter">
+            <summary>
+            The IP filter.
+            </summary>
+        </member>
+        <member name="F:Sitecore.CES.GeoIp.SitecoreProvider.EndpointSource">
+            <summary>
+            The endpoint source.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.SitecoreProvider.#ctor(Sitecore.CES.Client.ResourceConnector{Sitecore.CES.GeoIp.Core.Model.WhoIsInformation},Sitecore.CES.GeoIp.IpFiltering.IpFilter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.SitecoreProvider"/> class.
+            </summary>
+            <param name="geoIpConnector">The Geo IP connector.</param>
+            <param name="ipFilter">The IP filter.</param>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.SitecoreProvider.#ctor(Sitecore.CES.Client.ResourceConnector{Sitecore.CES.GeoIp.Core.Model.WhoIsInformation},Sitecore.CES.GeoIp.IpFiltering.IIpFilter,Sitecore.CES.Discovery.EndpointSource)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.SitecoreProvider"/> class.
+            </summary>
+            <param name="geoIpConnector">
+            The Geo IP connector.
+            </param>
+            <param name="ipFilter">
+            The IP filter.
+            </param>
+            <param name="endpointSource">
+            The endpoint source.
+            </param>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.SitecoreProvider.GetWhoIsInformationByIp(System.String)">
+            <summary>
+            Gets geographic information for the specified IP address.
+            </summary>
+            <param name="ip">The IP address.</param>
+            <returns>The geographic information for the specified IP address.</returns>
+        </member>
+    </members>
+</doc>

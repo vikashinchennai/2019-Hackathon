@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.AutomationReportingClientConfigurator">
+            <summary>
+            Configurator for the automation reporting client.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.AutomationReportingClientConfigurator.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures service collection.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.ConfigurableCollection`1">
+            <summary>
+            A collection that can be configured via Sitecore configuration <see cref="T:Sitecore.Configuration.Factory"/>.
+            </summary>
+            <typeparam name="T">Type of an entry in the list. Must be a reference type.</typeparam>
+            <seealso cref="T:System.Collections.Generic.List`1" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.ConfigurableCollection`1.AddConfigurableItem(System.Xml.XmlNode)">
+            <summary>
+            Creates and adds an item based on the configuration specified in the <paramref name="node"/>.
+            </summary>
+            <param name="node">The node.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.Resources.FactoryCreateAutomationReportingClientErrorMessage">
+            <summary>
+              Looks up a localized string similar to Cannot instantiate an instance of automation reporting client. Please check configuration..
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.ServiceCollectionExtensions">
+            <summary>
+            Defines extensions to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.ServiceCollectionExtensions.UseAutomationReportingClient(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers the <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient"/> as the client for automation reporting web API.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.XdbSettings">
+            <summary>
+            Experience database settings.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.XdbSettings.Enabled">
+            <summary>
+            Gets a value indicating whether the xDB is enabled.
+            </summary>
+            <value>
+              <c>true</c> if xDB license is valid and xDB is enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.XdbSettings.HasValidLicense">
+            <summary>
+            Gets a value indicating whether the license is valid.
+            </summary>
+            <value>
+            <c>true</c> if the license is valid; otherwise, <c>false</c>.
+            </value>
+        </member>
+    </members>
+</doc>

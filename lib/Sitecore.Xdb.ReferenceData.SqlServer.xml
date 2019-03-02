@@ -1,0 +1,933 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Xdb.ReferenceData.SqlServer</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.DefinitionBatchResultAggregator`1">
+            <summary>
+            Represents an aggregator, which collects definition batch results.
+            </summary>
+            <typeparam name="TStatus">The type of the status of the operation.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.DefinitionBatchResultAggregator`1.#ctor(Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.IOperationStatusAggregator{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.DefinitionBatchResultAggregator`1" /> class.
+            </summary>
+            <param name="operationStatusAggregator">The aggregator, which is used to combine two statuses into one.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.DefinitionBatchResultAggregator`1.OperationStatusAggregator">
+            <summary>
+            Gets the aggregator, which is used to combine two statuses into one.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.DefinitionBatchResultAggregator`1.OperationResults">
+            <summary>
+            Gets the operation results.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.DefinitionBatchResultAggregator`1.AllSuccess">
+            <summary>
+            Gets a value indicating whether all results are successful.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.DefinitionBatchResultAggregator`1.Results">
+            <summary>
+            Gets the collected results.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.DefinitionBatchResultAggregator`1.AggregateResult(System.Guid,Sitecore.Xdb.ReferenceData.Core.Results.OperationResult{Sitecore.Xdb.ReferenceData.Core.DefinitionKey,`0},System.Boolean,System.Globalization.CultureInfo)">
+            <summary>
+            Creates and aggregates an operation result with the collected ones.
+            </summary>
+            <param name="definitionInstanceId">The definition instance identifier.</param>
+            <param name="result">The result to aggregate into the batch.</param>
+            <param name="success">Whether the result is successful or not.</param>
+            <param name="culture">The culture for the result. Use <see cref="P:System.Globalization.CultureInfo.InvariantCulture"/> if the result is not culture-specific.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.DeleteDefinitionOperationStatusAggregator">
+            <summary>
+            Represents an aggregator, which combines two delete statuses into one.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.DeleteDefinitionOperationStatusAggregator.Aggregate(Sitecore.Xdb.ReferenceData.Core.Results.DeleteStatus,Sitecore.Xdb.ReferenceData.Core.Results.DeleteStatus)">
+            <summary>
+            Combines two delete statuses into one according to the order of precedence:
+            <see cref="F:Sitecore.Xdb.ReferenceData.Core.Results.DeleteStatus.Fail"/>
+            <see cref="F:Sitecore.Xdb.ReferenceData.Core.Results.DeleteStatus.FailNotFound"/>
+            <see cref="F:Sitecore.Xdb.ReferenceData.Core.Results.DeleteStatus.Success"/>
+            </summary>
+            <param name="status1">The status 1.</param>
+            <param name="status2">The status 2.</param>
+            <returns>
+            The result status.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.FailureDefinitionBatchResultAggregator`1">
+            <summary>
+            Represents an aggregator, which contains empty results of a failure batch.
+            </summary>
+            <typeparam name="TStatus">The type of the status of the operation.</typeparam>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.FailureDefinitionBatchResultAggregator`1.AllSuccess">
+            <summary>
+            Gets a value indicating whether all results are successful.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.FailureDefinitionBatchResultAggregator`1.Results">
+            <summary>
+            Gets the collected results.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.FailureDefinitionBatchResultAggregator`1.AggregateResult(System.Guid,Sitecore.Xdb.ReferenceData.Core.Results.OperationResult{Sitecore.Xdb.ReferenceData.Core.DefinitionKey,`0},System.Boolean,System.Globalization.CultureInfo)">
+            <summary>
+            Creates and aggregates an operation result with the collected ones.
+            </summary>
+            <param name="definitionInstanceId">The definition instance identifier.</param>
+            <param name="result">The result to aggregate into the batch.</param>
+            <param name="success">Whether the result is successful or not.</param>
+            <param name="culture">The culture for the result. Use <see cref="P:System.Globalization.CultureInfo.InvariantCulture"/> if the result is not culture-specific.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.IDefinitionBatchResultAggregator`1">
+            <summary>
+            Defines an aggregator, which collects definition batch results.
+            </summary>
+            <typeparam name="TStatus">The type of the status of the operation.</typeparam>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.IDefinitionBatchResultAggregator`1.AllSuccess">
+            <summary>
+            Gets a value indicating whether all results are successful.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.IDefinitionBatchResultAggregator`1.Results">
+            <summary>
+            Gets the collected results.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.IDefinitionBatchResultAggregator`1.AggregateResult(System.Guid,Sitecore.Xdb.ReferenceData.Core.Results.OperationResult{Sitecore.Xdb.ReferenceData.Core.DefinitionKey,`0},System.Boolean,System.Globalization.CultureInfo)">
+            <summary>
+            Creates and aggregates an operation result with the collected ones.
+            </summary>
+            <param name="definitionInstanceId">The definition instance identifier.</param>
+            <param name="result">The result to aggregate into the batch.</param>
+            <param name="success">Whether the result is successful or not.</param>
+            <param name="culture">The culture for the result. Use <see cref="P:System.Globalization.CultureInfo.InvariantCulture"/> if the result is not culture-specific.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.IOperationStatusAggregator`1">
+            <summary>
+            Defines an aggregator, which combines two statuses into one.
+            </summary>
+            <typeparam name="TStatus">The type of the status of the operation.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.IOperationStatusAggregator`1.Aggregate(`0,`0)">
+            <summary>
+            Combines two statuses into one.
+            </summary>
+            <param name="status1">The status 1.</param>
+            <param name="status2">The status 2.</param>
+            <returns>The result status.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.SaveDefinitionOperationStatusAggregator">
+            <summary>
+            Represents an aggregator, which combines two save statuses into one.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.SaveDefinitionOperationStatusAggregator.Aggregate(Sitecore.Xdb.ReferenceData.Core.Results.SaveStatus,Sitecore.Xdb.ReferenceData.Core.Results.SaveStatus)">
+            <summary>
+            Combines two save statuses into one according to the order of precedence:
+            <see cref="F:Sitecore.Xdb.ReferenceData.Core.Results.SaveStatus.Fail"/>
+            <see cref="F:Sitecore.Xdb.ReferenceData.Core.Results.SaveStatus.SuccessNew"/>
+            <see cref="F:Sitecore.Xdb.ReferenceData.Core.Results.SaveStatus.SuccessUpdate"/>
+            </summary>
+            <param name="status1">The status 1.</param>
+            <param name="status2">The status 2.</param>
+            <returns>
+            The result status.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Collections.DefinitionOperationResultDictionary`1">
+            <summary>
+            A dictionary holding results of a definition batch of operations.
+            </summary>
+            <typeparam name="TStatus">The type of the status of the operation.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Collections.DefinitionOperationResultDictionary`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.SqlServer.Collections.DefinitionOperationResultDictionary`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Collections.DefinitionOperationResultDictionary`1.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> holding the data of the instance.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> in which the serialization occurred.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Collections.DefinitionOperationResultReadOnlyDictionary`1">
+            <summary>
+            A dictionary holding results of a definition batch of operations.
+            </summary>
+            <typeparam name="TStatus">The type of the status of the operation.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Collections.DefinitionOperationResultReadOnlyDictionary`1.#ctor(Sitecore.Xdb.ReferenceData.SqlServer.Collections.DefinitionOperationResultDictionary{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.ReferenceData.SqlServer.Collections.DefinitionOperationResultReadOnlyDictionary`1"/> class.
+            </summary>
+            <param name="dictionary">The dictionary holding the entries.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Collections.DefinitionOperationResultReadOnlyDictionary`1.ToOperationResultCollection">
+            <summary>
+            Converts to <see cref="T:Sitecore.Xdb.ReferenceData.Core.Collections.OperationResultCollection`2"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionsCommand">
+            <summary>
+            Executes the Delete command.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionsCommand.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionsCommand.Keys">
+            <summary>
+            Gets or sets the keys of the definitions to delete.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionsCommand.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionsCommand.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionsCommand.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionsCommand.ExecuteAndProcessResults(System.Data.IDbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionTypeCommand">
+            <summary>
+            Executes the DeleteDefinitionType command.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionTypeCommand.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionTypeCommand.DefinitionTypeKey">
+            <summary>
+            Gets or sets the Definition Type Key.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionTypeCommand.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionTypeCommand.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionTypeCommand.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.DeleteDefinitionTypeCommand.ExecuteAndProcessResults(System.Data.IDbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Commands.EnsureDefinitionTypeCommand">
+            <summary>
+            Executes the EnsureDefinitionType command.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.EnsureDefinitionTypeCommand.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.EnsureDefinitionTypeCommand.DefinitionTypeName">
+            <summary>
+            Gets or sets the name of the definition type.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.EnsureDefinitionTypeCommand.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.EnsureDefinitionTypeCommand.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.EnsureDefinitionTypeCommand.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.EnsureDefinitionTypeCommand.ExecuteAndProcessResults(System.Data.IDbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetByDefinitionTypesCommand">
+            <summary>
+            Executes the GetByDefinitionTypes command.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetByDefinitionTypesCommand.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetByDefinitionTypesCommand.DefinitionTypeKey">
+            <summary>
+            Gets or sets the Definition Type Key.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetByDefinitionTypesCommand.LatestActiveOnly">
+            <summary>
+            Gets or sets whether to only retrieve the latest active definitions, or all versions of the definition.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetByDefinitionTypesCommand.PageNumber">
+            <summary>
+            Gets or sets the page number of the results to get.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetByDefinitionTypesCommand.PageSize">
+            <summary>
+            Gets or sets the size of a page of results.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetByDefinitionTypesCommand.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetByDefinitionTypesCommand.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetByDefinitionTypesCommand.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetByDefinitionTypesCommand.ExecuteAndProcessResults(System.Data.IDbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionsCommand">
+            <summary>
+            Executes the GetDefinitions command.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionsCommand.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionsCommand.Criteria">
+            <summary>
+            Gets or sets the <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria"/> of the definitions to retrieve.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionsCommand.LatestActiveOnly">
+            <summary>
+            Gets or sets whether to only retrieve the latest active definition.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionsCommand.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionsCommand.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionsCommand.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionsCommand.ExecuteAndProcessResults(System.Data.IDbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionTypeCommand">
+            <summary>
+            Executes the GetDefinitionType command.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionTypeCommand.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionTypeCommand.DefinitionTypeName">
+            <summary>
+            Gets or sets the name of the definition type.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionTypeCommand.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionTypeCommand.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionTypeCommand.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.GetDefinitionTypeCommand.ExecuteAndProcessResults(System.Data.IDbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionCulturesCommand">
+            <summary>
+             Executes the SaveDefinitionCultures command.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionCulturesCommand.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionCulturesCommand.Records">
+            <summary>
+            Gets or sets the collection of <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionRecord"/> to save.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionCulturesCommand.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionCulturesCommand.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionCulturesCommand.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionCulturesCommand.ExecuteAndProcessResults(System.Data.IDbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommand">
+            <summary>
+            Executes SaveDefinitions and SaveDefinitionCultures commands.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommand.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommand.ConnectionString">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommand.Logger">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommand.TvpConverter">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommand.RetryManager">
+            <summary>
+            The <see cref="T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code during transient faults.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommand.Records">
+            <summary>
+            Gets or sets the collection of <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionRecord"/> to save.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommand.Execute">
+            <summary>
+            Executes the command.
+            </summary>
+            <returns>The <see cref="T:Sitecore.Xdb.ReferenceData.Core.Results.SaveDefinitionsBatchResult"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommonDataCommand">
+            <summary>
+            Executes the SaveDefinitions command.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommonDataCommand.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommonDataCommand.Records">
+            <summary>
+            Gets or sets the collection of <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionRecord"/> to save.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommonDataCommand.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommonDataCommand.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommonDataCommand.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SaveDefinitionsCommonDataCommand.ExecuteAndProcessResults(System.Data.IDbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SqlServerReferenceDataProviderCommand`1">
+            <summary>
+            A command which executes against SQL server.
+            </summary>
+            <typeparam name="TReturn">The type of the return data from the command execution.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SqlServerReferenceDataProviderCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="connectionString">
+            The string used to open a connection to the SQL server.
+            </param>
+            <param name="logger">The logger to log informational messages to.</param>
+            <param name="tvpConverter">
+            The<see cref="T:Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter" /> used to convert model objects to TVPs.
+            </param>
+            <param name="retryManager">
+            The<see cref="T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code during transient faults.
+            </param>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SqlServerReferenceDataProviderCommand`1.ConnectionString">
+            <summary>
+            Gets the string used to open a connection to the SQL server.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SqlServerReferenceDataProviderCommand`1.Logger">
+            <summary>
+            Gets the logger to log informational messages to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SqlServerReferenceDataProviderCommand`1.TvpConverter">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter"/> used to convert model objects to TVPs.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SqlServerReferenceDataProviderCommand`1.RetryManager">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.Sql.Common.IRetryManager"/> used to execute commands against the DB.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SqlServerReferenceDataProviderCommand`1.StoredProcedureName">
+            <summary>
+            Gets the name of the stored procedure to execute.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SqlServerReferenceDataProviderCommand`1.FailureValue">
+            <summary>
+            The value to return when a failure occurs.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SqlServerReferenceDataProviderCommand`1.Execute">
+            <summary>
+            Execute the command.
+            </summary>
+            <returns>The output from the command execution.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SqlServerReferenceDataProviderCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <summary>
+            Sets parameters into the parameter collection.
+            </summary>
+            <param name="parameters">The parameter collection to set the parameters into.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Commands.SqlServerReferenceDataProviderCommand`1.ExecuteAndProcessResults(System.Data.IDbCommand)">
+            <summary>
+            Executes the command and processes the results.
+            </summary>
+            <param name="command">The command to execute.</param>
+            <returns>The processed results from the command execution.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionBatchResultParser`1">
+            <summary>
+            Parses definition batch results from an <see cref="T:System.Data.IDataReader"/> and passes it to a <see cref="T:Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.IDefinitionBatchResultAggregator`1"/>.
+            </summary>
+            <typeparam name="TStatus">The type of the status.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionBatchResultParser`1.#ctor(System.Data.IDataReader,Sitecore.Xdb.ReferenceData.SqlServer.Aggregators.IDefinitionBatchResultAggregator{`0})">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.IDataReader" /> to read the record data from.</param>
+            <param name="batchResultAggregator">The batch result aggregator, which collects the batch results.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionBatchResultParser`1.DataReader">
+            <summary>
+            Gets the <see cref="T:System.Data.IDataReader"/> to read the record data from.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionBatchResultParser`1.BatchResultAggregator">
+            <summary>
+            Gets the batch result aggregator used to collect the batch results.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionBatchResultParser`1.ParseBatch">
+            <summary>
+            Parse the batch result from the reader ans pass it to the batch result aggregator.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionBatchResultParser`1.GenerateStatus(System.Boolean,System.String)">
+            <summary>
+            Generates the status based on the parameters passed in.
+            </summary>
+            <param name="success">Indicates whether the results is a success.</param>
+            <param name="message">The message from the result</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionBatchResultParser`1.CreateResult(Sitecore.Xdb.ReferenceData.Core.DefinitionKey,`0,System.String)">
+            <summary>
+            Create a single result within the batch.
+            </summary>
+            <param name="key">The <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionKey"/> for the result.</param>
+            <param name="status">The status of the result.</param>
+            <param name="message">The message of the result.</param>
+            <returns>The created result.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionKeyRecordParser">
+            <summary>
+            A parser which parses <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionKey"/>s.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionKeyRecordParser.ParseKey(System.Data.IDataReader)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionRecordParser">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionRecord"/>s from an <see cref="T:System.Data.IDataReader"/>
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionRecordParser.#ctor(System.Data.IDataReader)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.IDataReader"/> to read the record data from.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionRecordParser.DataReader">
+            <summary>
+            Gets the <see cref="T:System.Data.IDataReader"/> to read the record data from.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionRecordParser.ParseDefinitionRecords">
+            <summary>
+            Parse definition records from the reader.
+            </summary>
+            <returns>The properly parsed records.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionRow">
+            <summary>
+            A single definition row from the database.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionRow.#ctor">
+            <summary>
+            Create a new instance
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionRow.Id">
+            <summary>
+            Gets or sets the ID.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionRow.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionRow.TypeId">
+            <summary>
+            Gets or sets the type ID.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionRow.IsActive">
+            <summary>
+            Gets or sets whether the definition is active.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionRow.LastModified">
+            <summary>
+            Gets or sets the last modified date.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.DefinitionRow.CommonData">
+            <summary>
+            Gets or sets the common data for the definition.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.DeleteDefinitionBatchResultParser">
+            <summary>
+            Parses a batch of <see cref="T:Sitecore.Xdb.ReferenceData.Core.Results.DeleteStatus"/> results from an <see cref="T:System.Data.IDataReader"/>
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.DeleteDefinitionBatchResultParser.#ctor(System.Data.IDataReader)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.IDataReader" /> to read the record data from.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.DeleteDefinitionBatchResultParser.GenerateStatus(System.Boolean,System.String)">
+            <summary>
+            Generates the status based on the parameters passed in.
+            </summary>
+            <param name="success">Indicates whether the results is a success.</param>
+            <param name="message">The message from the result</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.DeleteDefinitionBatchResultParser.CreateResult(Sitecore.Xdb.ReferenceData.Core.DefinitionKey,Sitecore.Xdb.ReferenceData.Core.Results.DeleteStatus,System.String)">
+            <summary>
+            Create a single result within the batch.
+            </summary>
+            <param name="key">The <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionKey"/> for the result.</param>
+            <param name="status">The status of the result.</param>
+            <param name="message">The message of the result.</param>
+            <returns>The created result.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.IDefinitionKeyRecordParser">
+            <summary>
+            Defines a parser that parses definition keys..
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.IDefinitionKeyRecordParser.ParseKey(System.Data.IDataReader)">
+            <summary>
+            Parses a <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionKey" /> from an <see cref="T:System.Data.IDataReader" />.
+            </summary>
+            <param name="reader">
+            The<see cref="T:System.Data.IDataReader" /> to read the key data from.
+            </param>
+            <returns>The parsed key, or null if the key could not be parsed.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter">
+            <summary>
+            Defines a type which performs conversion of model types to TVPs.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter.ToDefinitionsTable(Sitecore.Xdb.ReferenceData.Core.DefinitionRecord)">
+            <summary>
+            Convert non-culture specific fields of a <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionRecord" /> to a <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="record">The record to convert.</param>
+            <returns>
+            The<see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter.ToDefinitionCultureBatchTable(Sitecore.Xdb.ReferenceData.Core.DefinitionRecord)">
+            <summary>
+            Convert culture specific fields of a <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionRecord" /> to an enumeration of
+            <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="record">The record to convert.</param>
+            <returns>
+            An enumeration of <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter.ToDefinitionKeysTable(Sitecore.Xdb.ReferenceData.Core.DefinitionKey)">
+            <summary>
+            Convert a <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionKey" /> to a <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="key">The key to convert.</param>
+            <returns>
+            The<see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter.ToDefinitionCriteriaTable(Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria)">
+            <summary>
+            Convert a <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria" /> to a <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="criteria">The criteria to convert.</param>
+            <returns>
+            The<see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Resources.ConfigurationSectionArgumentName">
+            <summary>
+              Looks up a localized string similar to Configuration section {0}.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Resources.CultureFailedWithMessage">
+            <summary>
+              Looks up a localized string similar to Culture &apos;{0}&apos; failed with message &apos;{1}&apos;.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Resources.DefinitionTypeIDNullFromEnsureDefinitionType">
+            <summary>
+              Looks up a localized string similar to Failed to retrieve definition type ID from EnsureDefinitionType.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Resources.SQLCommunicationError">
+            <summary>
+              Looks up a localized string similar to An error occurred while communicating with the SQL Server.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Resources.UnknownConnectionString">
+            <summary>
+              Looks up a localized string similar to Unable to find connection string with name &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.SaveDefinitionBatchResultParser">
+            <summary>
+            Parses a batch of <see cref="T:Sitecore.Xdb.ReferenceData.Core.Results.SaveStatus"/> results from an <see cref="T:System.Data.IDataReader"/>
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SaveDefinitionBatchResultParser.#ctor(System.Data.IDataReader)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.IDataReader" /> to read the record data from.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SaveDefinitionBatchResultParser.GenerateStatus(System.Boolean,System.String)">
+            <summary>
+            Generates the status based on the parameters passed in.
+            </summary>
+            <param name="success">Indicates whether the results is a success.</param>
+            <param name="message">The message from the result</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SaveDefinitionBatchResultParser.CreateResult(Sitecore.Xdb.ReferenceData.Core.DefinitionKey,Sitecore.Xdb.ReferenceData.Core.Results.SaveStatus,System.String)">
+            <summary>
+            Create a single result within the batch.
+            </summary>
+            <param name="key">The <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionKey"/> for the result.</param>
+            <param name="status">The status of the result.</param>
+            <param name="message">The message of the result.</param>
+            <returns>The created result.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider">
+            <summary>
+            An <see cref="T:Sitecore.Xdb.ReferenceData.Core.Repository.IReferenceDataProvider"/> implementation that uses SQL Server for data persistence.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.ConnectionStringOrNameConfigurationSectionName">
+            <summary>
+            The name of the connection string or name configuration section.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="configuration">The set of key/value application configuration properties.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1" /> instance to log messages to.</param>
+            <param name="retryManager">The <see cref="T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code during transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="connectionStringOrName">The connection string or a name of the connection string used to connect to the SQL server.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="retryManager">The <see cref="T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code during transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="configuration">The set of key/value application configuration properties.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="tvpConverter">The <see cref="T:Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.</param>
+            <param name="retryManager">The <see cref="T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code during transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider},Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="connectionStringOrName">The connection string or a name of the connection string used to connect to the SQL server.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="tvpConverter">The <see cref="T:Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.</param>
+            <param name="retryManager">The <see cref="T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code during transient faults.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.ConnectionString">
+            <summary>
+            Gets the string used to open a connection to the SQL server.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.Logger">
+            <summary>
+            Gets the <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.TvpConverter">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.ReferenceData.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.RetryManager">
+            <summary>
+            The <see cref="T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code during transient faults.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.Dispose">
+            <summary>
+            Perform cleanup before destroying this instance.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.GetDefinitionType(System.String)">
+            <summary>
+            Retrieves a definition type by name.
+            </summary>
+            <param name="name">The case-sensitive name of the definition type.</param>
+            <returns>The key of the existing definition type, or null if the definition type doesn’t exist.</returns>
+            <remarks>Name comparison is case-sensitive.</remarks>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.EnsureDefinitionType(System.String)">
+            <summary>
+            Gets or creates a definition type by name.
+            </summary>
+            <param name="name">The case-sensitive name of the definition.</param>
+            <returns>The key of the definition type.</returns>
+            <remarks>Name comparison is case-sensitive.</remarks>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.GetDefinitionRecords(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria},System.Boolean)">
+            <summary>
+            Gets a batch of <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionRecord"/> from the store.
+            </summary>
+            <param name="criteria">The criteria for the definitions to retrieve.</param>
+            <param name="latestActiveOnly">Determines whether only the latest active definitions should be retrieved, or all versions.</param>
+            <returns>The definitions that where found from the criteria.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.GetDefinitionRecordsByType(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Gets a page of <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionRecord"/> of definitions that are of the specified type.
+            </summary>
+            <param name="typeKey">The key of the definition types to retrieve.</param>
+            <param name="latestActiveOnly">Determines whether only the latest active definitions should be retrieved, or all versions.</param>
+            <param name="pageNumber">The number of the page of results to retrieve.</param>
+            <param name="pageSize">The size of each page of results.</param>
+            <returns>The page of <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionRecord"/> results.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.DeleteDefinitionType(Sitecore.Xdb.ReferenceData.Core.DefinitionTypeKey)">
+            <summary>
+            Deletes an existing definition type.
+            </summary>
+            <param name="key">The key of the definition type to delete.</param>
+            <returns>A value indicating the status of the operation.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.Save(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionRecord})">
+            <summary>
+            Saves a batch of <see cref="T:Sitecore.Xdb.ReferenceData.Core.DefinitionRecord"/> to the store.
+            </summary>
+            <param name="records">The records to save.</param>
+            <returns>The results of the operation.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.Delete(System.Collections.Generic.IEnumerable{Sitecore.Xdb.ReferenceData.Core.DefinitionKey})">
+            <summary>
+            Deletes a batch of definitions from the store.
+            </summary>
+            <param name="keys">The keys of the definitions to delete.</param>
+            <returns>The results of the operation.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.Dispose(System.Boolean)">
+            <summary>
+            Perform cleanup before destroying this instance.
+            </summary>
+            <param name="disposing">Determines if managed resources should be disposed.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.ExtractConnectionStringOrName(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Extracts the connection string or name from the configuration.
+            </summary>
+            <param name="configuration">The configuration to extract from.</param>
+            <returns>The connection string.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.SqlServerReferenceDataProvider.ResolveConnectionString(System.String)">
+            <summary>
+            Resolves the connection string.
+            </summary>
+            <param name="connectionStringOrName">The connection string or a name of the connection string used to connect to the SQL server.</param>
+            <returns>The connection string.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.TvpConverter">
+            <summary>
+            A converter which converts from model types to TVPs.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.TvpConverter.ToDefinitionsTable(Sitecore.Xdb.ReferenceData.Core.DefinitionRecord)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.TvpConverter.ToDefinitionCultureBatchTable(Sitecore.Xdb.ReferenceData.Core.DefinitionRecord)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.TvpConverter.ToDefinitionKeysTable(Sitecore.Xdb.ReferenceData.Core.DefinitionKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.TvpConverter.ToDefinitionCriteriaTable(Sitecore.Xdb.ReferenceData.Core.DefinitionCriteria)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

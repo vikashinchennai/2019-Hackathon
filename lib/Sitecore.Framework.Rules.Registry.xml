@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Rules.Registry</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig">
+            <summary>
+            Defines the configuration for discovering entities available in the application.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig.ExcludeTypes(System.Predicate{System.Type})">
+            <summary>
+            Registers a filter used to exclude types that are being discovered from the sources.
+            </summary>
+            <param name="typePredicate">A filter that excludes a type from being discovered.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig.AddSource(System.Func{System.Collections.Generic.IEnumerable{System.Type}})">
+            <summary>
+            Adds a source that provides types to be discovered.  The order in which types are registered is significant.
+            The first sources that are added, have the lowest significance.
+            </summary>
+            <param name="scanner"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.ExcludeTypes(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig,System.String)">
+            <summary>
+            Prevents the types whose full name matches the expression from being discovered by the registry.
+            </summary>
+            <param name="options"></param>
+            <param name="typeNameWildcardMatch">The <see cref="T:Sitecore.Framework.Common.WildcardMatch"/> expression to match types to be excluded.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.ExcludeTypes(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig,Sitecore.Framework.Common.WildcardMatch)">
+            <summary>
+            Prevents the types whose full name matches the expression from being discovered by the registry.
+            </summary>
+            <param name="options"></param>
+            <param name="typeNameWildcardMatch">The <see cref="T:Sitecore.Framework.Common.WildcardMatch"/> expression to match types to be excluded.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.ExcludeTypes(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig,System.Type[])">
+            <summary>Prevents the supplied entity types from being discovered by the registry.</summary>
+            <param name="options">The Type Scanning Config to omit entities from.</param>
+            <param name="entityTypes">The types to be omitted.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.ExcludeType``1(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig)">
+            <summary>Prevents the supplied entity type from being discovered by the registry.</summary>
+            <typeparam name="TEntity">The entity type to be omitted.</typeparam>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.ExcludeNamespaceMatching(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig,System.Predicate{System.String})">
+            <summary>
+            Prevents any types whose namespace matches the expression from being discovered by the registry.
+            </summary>
+            <param name="options"></param>
+            <param name="namespacePredicate">The predicate to match namespaces of types to be excluded.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.ExcludeNamespaceMatching(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig,System.String)">
+            <summary>
+            Prevents any types whose namespace matches the expression from being discovered by the registry.
+            </summary>
+            <param name="options"></param>
+            <param name="namespaceWildcardMatch">The <see cref="T:Sitecore.Framework.Common.WildcardMatch"/> expression to match namespaces of types to be excluded.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.ExcludeNamespaceMatching(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig,Sitecore.Framework.Common.WildcardMatch)">
+            <summary>
+            Prevents any types whose namespace matches the expression from being discovered by the registry.
+            </summary>
+            <param name="options"></param>
+            <param name="namespaceWildcardMatch">The <see cref="T:Sitecore.Framework.Common.WildcardMatch"/> expression to match namespaces of types to be excluded.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.ExcludeNamespacesOf(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig,System.Type[])">
+            <summary>
+            Prevents any types which share the same namespace as any of the specified types.
+            </summary>
+            <param name="options"></param>
+            <param name="typesInNamespaces">The types that yield the namespaces used for type exclusion.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.ExcludeNamespaceOf``1(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig)">
+            <summary>
+            Prevents any types which share the same namespace as the specified type.
+            </summary>
+            <param name="options"></param>
+            <typeparam name="TEntity">The type that yields the namespace used for type exclusion.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.RegisterAssembly(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig,System.Reflection.Assembly)">
+            <summary>
+            Registers an assembly from which entities will be discovered.  The order in which assemblies are registered
+            is significant.
+            </summary>
+            <param name="options"></param>
+            <param name="assembly">The assembly in which to discover entities.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.RegisterThisAssembly(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig)">
+            <summary>
+            Registers the calling assembly as a source from which entities will be discovered.  The order in which assemblies are registered
+            is significant.
+            </summary>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.RegisterAssemblyOf(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig,System.Type)">
+            <summary>
+            Registers the assembly of the specified type as a source from which entities will be discovered.  The order in which assemblies are registered
+            is significant.
+            </summary>
+            <param name="options"></param>
+            <param name="type">The type that yields an assembly to be registered for discovery.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.RegisterAssemblyOf``1(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig)">
+            <summary>
+            Registers the assembly of the specified type as a source from which entities will be discovered.  The order in which assemblies are registered
+            is significant.
+            </summary>
+            <typeparam name="TEntity">The type that yields an assembly to be registered for discovery.</typeparam>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.ReflectionDiscoveryConfigExtensions.RegisterAssemblyOf``1(Sitecore.Framework.Rules.Registry.IReflectionDiscoveryConfig,``0)">
+            <summary>
+            Registers the assembly of the specified object's type as a source from which entities will be discovered.  The order in which assemblies are registered
+            is significant.
+            </summary>
+            <typeparam name="TEntity">The type that yields an assembly to be registered for discovery.</typeparam>
+            <param name="options"></param>
+            <param name="obj">The object that yields a type that yields an assembly to be registered for discovery.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

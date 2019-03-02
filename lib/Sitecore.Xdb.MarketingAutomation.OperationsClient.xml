@@ -1,0 +1,399 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Xdb.MarketingAutomation.OperationsClient</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient">
+            <summary>
+            A web API client implementation of <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient"/>.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.EndpointConnectionStringName">
+            <summary>
+            The name of the connection string holding the URL for the endpoint to communicate with.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient" /> class.
+            </summary>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient},Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient" /> class.
+            </summary>
+            <param name="logger">The logger to log messages to.</param>
+            <param name="configuration">The configuration to load from.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.#ctor(System.Uri,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient" /> class.
+            </summary>
+            <param name="serviceBaseAddress">The address of the controller hosting the service.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.#ctor(System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient"/> class.
+            </summary>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient"/> after creation.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.#ctor(System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient"/> class.
+            </summary>
+            <param name="serviceBaseAddress">The address of the controller hosting the service.</param>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient"/> after creation.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.#ctor(System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient"/> class.
+            </summary>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.#ctor(System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient"/> class.
+            </summary>
+            <param name="serviceBaseAddress">The address of the controller hosting the service.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.#ctor(System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient" /> class.
+            </summary>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient" /> after creation.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.#ctor(System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient},Sitecore.XConnect.Client.Configuration.IModelConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient" /> class.
+            </summary>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient" /> after creation.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The logger to log messages to.</param>
+            <param name="clientModel">The model to use when sending xConnect models to the server.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.#ctor(System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient" /> class.
+            </summary>
+            <param name="serviceBaseAddress">The address of the controller hosting the service.</param>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient" /> after creation.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.#ctor(System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient},Sitecore.XConnect.Client.Configuration.IModelConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient" /> class.
+            </summary>
+            <param name="serviceBaseAddress">The address of the controller hosting the service.</param>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient" /> after creation.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The logger to log messages to.</param>
+            <param name="clientModel">The model to use when sending xConnect models to the server.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.Logger">
+            <summary>
+            The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> to log messages to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.JsonSerializerSettings">
+            <summary>
+            Gets the settings to use during (de)serialization.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.ServiceAddressFromConnectionString">
+            <summary>
+            Gets the service URI from the default connection string.
+            </summary>
+            <returns>The URI for the service, or null if the connection string couldn't be found or couldn't be parsed.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.CreateSerializerSettings(Sitecore.XConnect.Client.Configuration.IModelConfiguration)">
+            <summary>
+            Create the serializer settings.
+            </summary>
+            <param name="clientModel">The model configuration used to communicate with the xConnect server.</param>
+            <returns>The settings to use for serialization.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.EnrollInPlanDirectAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.EnrollmentRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.EnrollInPlanDirect(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.EnrollmentRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.RegisterLiveEventAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.LiveEventRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.RegisterLiveEvent(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.LiveEventRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.PurgeFromPlanAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.PurgeFromPlanRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.PurgeFromPlan(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.PurgeFromPlanRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.PurgeFromAllPlansAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.PurgeFromAllPlansRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.PurgeFromAllPlans(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.PurgeFromAllPlansRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.SeedPlanAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.SeedPlanRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.SeedPlan(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.SeedPlanRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.CreateRequestContent``1(``0)">
+            <summary>
+            Create the <see cref="T:System.Net.Http.HttpContent"/> for the request, with the provided object in the body.
+            </summary>
+            <typeparam name="T">The type of the object to format into the body of the request.</typeparam>
+            <param name="content">The object to format into the body of the request.</param>
+            <returns>The content to be sent.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.CreateResponseContentAsync``1(System.Net.Http.HttpContent)">
+            <summary>
+            Create the object from the response.
+            </summary>
+            <typeparam name="T">The type of the object to create from the response content.</typeparam>
+            <param name="httpContent">The <see cref="T:System.Net.Http.HttpContent"/> received in response.</param>
+            <returns>The object from the response.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.AutomationOperationsClient.EnsureRoutePrefixRemoved(System.Uri)">
+            <summary>
+            Ensures and removes, if needed, <see cref="F:Sitecore.Xdb.MarketingAutomation.OperationsClient.OperationRoutes.DefaultRoutePrefix"/> from <paramref name="baseUri"/>.
+            </summary>
+            <param name="baseUri">The base URI to remove <see cref="F:Sitecore.Xdb.MarketingAutomation.OperationsClient.OperationRoutes.DefaultRoutePrefix"/> from.</param>
+            <returns>The base URI without <see cref="F:Sitecore.Xdb.MarketingAutomation.OperationsClient.OperationRoutes.DefaultRoutePrefix"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient">
+            <summary>
+            Defines a client which communicates with the Automation Operations web endpoint, to execute operations from outside the Automation Engine.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient.EnrollInPlanDirectAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.EnrollmentRequest})">
+            <summary>
+            Enroll a list of contacts directly into a plan and optionally an activity within that plan. Entry conditions for the plan are not executed.
+            </summary>
+            <param name="enrollments">The requests to log work items for.</param>
+            <returns>Whether the batch was successful, and the results for each request.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient.EnrollInPlanDirect(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.EnrollmentRequest})">
+            <summary>
+            Enroll a list of contacts directly into a plan and optionally an activity within that plan. Entry conditions for the plan are not executed.
+            </summary>
+            <param name="enrollments">The requests to log work items for.</param>
+            <returns>Whether the batch was successful, and the results for each request.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient.RegisterLiveEventAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.LiveEventRequest})">
+            <summary>
+            Registers a batch of live events and schedules them for processing by the engine.
+            </summary>
+            <param name="events">The events to log work items for.</param>
+            <returns>Whether the batch was successful, and the results for each request.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient.RegisterLiveEvent(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.LiveEventRequest})">
+            <summary>
+            Registers a batch of live events and schedules them for processing by the engine.
+            </summary>
+            <param name="events">The events to log work items for.</param>
+            <returns>Whether the batch was successful, and the results for each request.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient.PurgeFromPlanAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.PurgeFromPlanRequest})">
+            <summary>
+            Removes a batch of contacts from a single plan.
+            </summary>
+            <param name="purges">The purges to perform.</param>
+            <returns>Whether the batch was successful, and the results for each request.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient.PurgeFromPlan(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.PurgeFromPlanRequest})">
+            <summary>
+            Removes a batch of contacts from a single plan.
+            </summary>
+            <param name="purges">The purges to perform.</param>
+            <returns>Whether the batch was successful, and the results for each request.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient.PurgeFromAllPlansAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.PurgeFromAllPlansRequest})">
+            <summary>
+            Removes a contact from the engine completely.
+            </summary>
+            <param name="purges">The purges to perform.</param>
+            <returns>Whether the batch was successful, and the results for each request.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient.PurgeFromAllPlans(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.PurgeFromAllPlansRequest})">
+            <summary>
+            Removes a contact from the engine completely.
+            </summary>
+            <param name="purges">The purges to perform.</param>
+            <returns>Whether the batch was successful, and the results for each request.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient.SeedPlanAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.SeedPlanRequest})">
+            <summary>
+            Seeds a set of plans with enrollments.
+            </summary>
+            <param name="requests">The requests to process.</param>
+            <returns>Whether the batch was successful, and the results for each request.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient.SeedPlan(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.SeedPlanRequest})">
+            <summary>
+            Seeds a set of plans with enrollments.
+            </summary>
+            <param name="requests">The requests to process.</param>
+            <returns>Whether the batch was successful, and the results for each request.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient">
+            <summary>
+            An implementation of <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient"/> which is not configured and does nothing.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient"/> class.
+            </summary>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient.EnrollInPlanDirect(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.EnrollmentRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient.EnrollInPlanDirectAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.EnrollmentRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient.PurgeFromAllPlans(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.PurgeFromAllPlansRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient.PurgeFromAllPlansAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.PurgeFromAllPlansRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient.PurgeFromPlan(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.PurgeFromPlanRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient.PurgeFromPlanAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.PurgeFromPlanRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient.RegisterLiveEvent(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.LiveEventRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient.RegisterLiveEventAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.LiveEventRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient.SeedPlanAsync(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.SeedPlanRequest})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.NotConfiguredAutomationOperationsClient.SeedPlan(System.Collections.Generic.IEnumerable{Sitecore.Xdb.MarketingAutomation.Core.Requests.SeedPlanRequest})">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.OperationRoutes">
+            <summary>
+            Defines fully qualified URIs for each of the controller actions.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.OperationsClient.OperationRoutes.DefaultRoutePrefix">
+            <summary>
+            The default route prefix for the Web API controllers.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.OperationsClient.OperationRoutes.#ctor(System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.OperationRoutes"/> class.
+            </summary>
+            <param name="baseAddress">The base address to create the other Uris from.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.OperationRoutes.PutEnrollment">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> to log work items to create new enrollments.
+            </summary>
+            <value>
+            The <see cref="T:System.Uri"/> to log work items to create new enrollments.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.OperationRoutes.DeleteContact">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> to purge a contact from the engine completely.
+            </summary>
+            <value>
+            The <see cref="T:System.Uri"/> to purge a contact from the engine completely.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.OperationRoutes.DeleteContactFromPlan">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> to purge a contact from a plan.
+            </summary>
+            <value>
+            The <see cref="T:System.Uri"/> to purge a contact from a plan.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.OperationRoutes.PutLiveEvent">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> to put a batch of live events.
+            </summary>
+            <value>
+            The <see cref="T:System.Uri"/> to put a batch of live events.
+            </value>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.OperationRoutes.PutSeedPlan">
+            <summary>
+            Gets the <see cref="T:System.Uri"/> to put a batch of seed plan requests.
+            </summary>
+            <value>
+            The <see cref="T:System.Uri"/> to put a batch of seed plan requests.
+            </value>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.Resources.AutomationOperationsClientNotConfigured">
+            <summary>
+              Looks up a localized string similar to Automation operations client is not configured..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.Resources.EnrollInPlanDirectNotComplete">
+            <summary>
+              Looks up a localized string similar to Enroll in plan direct did not complete successfully..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.Resources.PurgeFromAllPlansNotComplete">
+            <summary>
+              Looks up a localized string similar to Purge from all plans did not complete successfully..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.Resources.PurgeFromPlanNotComplete">
+            <summary>
+              Looks up a localized string similar to Purge from plan did not complete successfully..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.Resources.RegisterLiveEventNotComplete">
+            <summary>
+              Looks up a localized string similar to Register live event did not complete successfully..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.OperationsClient.Resources.SeedPlanNotComplete">
+            <summary>
+              Looks up a localized string similar to Seed plan did not complete successfully.
+            </summary>
+        </member>
+    </members>
+</doc>

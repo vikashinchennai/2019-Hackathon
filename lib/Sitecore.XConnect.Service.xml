@@ -1,0 +1,839 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.XConnect.Service</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.XConnect.Service.CalculatedFacetHandler`1">
+            <summary>
+            Base class for updating calculated facets on contacts based on their interactions.
+            </summary>
+            <typeparam name="TContactFacet">The type of the contact facet.</typeparam>
+            <seealso cref="T:Sitecore.XConnect.Service.Plugins.IXConnectServicePlugin" />
+        </member>
+        <member name="M:Sitecore.XConnect.Service.CalculatedFacetHandler`1.#ctor(System.String,System.Collections.Generic.IEnumerable{Sitecore.XConnect.Service.InteractionFacetDependency})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.CalculatedFacetHandler`1" /> class.
+            </summary>
+            <param name="contactFacetName">Name of the calculated contact facet.</param>
+            <param name="interactionFacets">Optional list of interaction facets involved in the update.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.CalculatedFacetHandler`1.ContactFacetName">
+            <summary>
+            Gets the name of the calculated facet on contacts.
+            </summary>
+            <value>
+            The name of the contact facet.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.CalculatedFacetHandler`1.InteractionFacets">
+            <summary>
+            Gets the interaction facets that may or must be included in the update.
+            If one or more required facets are not present on the interaction, the calculated facet will not be updated.
+            These facets can be accessed with the Entity.GetFacet methods on the interaction when updating.
+            </summary>
+            <value>
+            The interaction facets.
+            </value>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.CalculatedFacetHandler`1.UpdateFacet(`0,Sitecore.XConnect.Interaction)">
+            <summary>
+            Updates the facet given a new interaction.
+            </summary>
+            <param name="currentFacet">The current version of the contact's calculated facet where changes can be applied based on the interaction.</param>
+            <param name="interaction">The interaction.</param>
+            <returns><c>true</c> if the facet was changed; <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.CalculatedFacetHandler`1.CreateInitialFacet">
+            <summary>
+            Creates the facet with initial values if the calculated facet does not yet exist.
+            </summary>
+            <returns>The initial facet</returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.ContactMergeResult">
+            <summary>
+            The return value from the <see cref="M:Sitecore.XConnect.Service.IContactMergeHandler.GetResult(System.Collections.Generic.IReadOnlyCollection{Sitecore.XConnect.Operations.IXdbOperation})"/> method.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.ContactMergeResult.#ctor(Sitecore.XConnect.Operations.SaveResultStatus,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.ContactMergeResult"/> class.
+            </summary>
+            <param name="status">The status.</param>
+            <param name="exception">The exception, if status is not <see cref="F:Sitecore.XConnect.Operations.SaveResultStatus.Success"/>.</param>
+            <exception cref="T:System.ArgumentException">Exception is not allowed with success status</exception>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.ContactMergeResult.Status">
+            <summary>
+            Gets the status of the merge operation given the operation(s) that were executed.
+            </summary>
+            <value>
+            The status.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.ContactMergeResult.Exception">
+            <summary>
+            Gets the exception that describes the status if it is not <see cref="F:Sitecore.XConnect.Operations.SaveResultStatus.Success"/>.
+            </summary>
+            <value>
+            The exception.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.ContactMergeResult.Success">
+            <summary>
+            A <see cref="T:Sitecore.XConnect.Service.ContactMergeResult"/> with success status.
+            </summary>
+            <value>
+            The success.
+            </value>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.ContactRecordMapper">
+            <summary>
+            Maps <see cref="T:Sitecore.XConnect.Operations.EntityOperation`1"/>s to <see cref="T:Sitecore.Xdb.Collection.Model.ContactDataRecord"/>s in <see cref="T:Sitecore.XConnect.Service.RepositorySaveOperationInvoker"/>.
+            </summary>    
+        </member>
+        <member name="T:Sitecore.XConnect.Service.ConvertFacetGetsToEntityGetsInvoker">
+            <summary>
+                Converts <see cref="T:Sitecore.XConnect.Operations.GetFacetOperation`1"/> operations to <see cref="T:Sitecore.XConnect.Operations.IGetEntityOperation"/>s with expand options, and maps their results back to the get
+                facet operations.
+            </summary>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.DataRecordMapper`2">
+            <summary>
+                Maps XConnect's operations to repository's data records in <see cref="T:Sitecore.XConnect.Service.RepositorySaveOperationInvoker"/>.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TDataRecord">The type of the data record.</typeparam>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.DataRecordMapper`2.GetRecord(Sitecore.XConnect.IEntityReference{`0})">
+            <summary>
+                Gets the data record associated with the given entity reference, or an unchanged data record if the entity has no
+                changes.
+                Do not call this method before all entities of this record mappers type for a <see cref="T:Sitecore.XConnect.Operations.XdbOperationBatch" /> have
+                been mapped
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.DeviceProfileRecordMapper">
+            Maps <see cref="T:Sitecore.XConnect.Operations.EntityOperation`1"/>s to <see cref="T:Sitecore.Xdb.Collection.Model.DeviceProfileDataRecord"/>s in <see cref="T:Sitecore.XConnect.Service.RepositorySaveOperationInvoker"/>.
+        </member>
+        <member name="T:Sitecore.XConnect.Service.EntityMapper">
+            <summary>
+                Maps data records to entities and facets.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.EntityMapper.UpdateProviderManagedFields(Sitecore.Xdb.Collection.Model.DataRecord,Sitecore.XConnect.Entity)">
+            <summary>
+            Updates the provider managed fields, that is, ID, concurrency token, and last modified.
+            </summary>
+            <param name="record">The record.</param>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.EntityReferenceComparer">
+            <summary>
+            Compares <see cref="T:Sitecore.XConnect.IEntityReference"/>s by entity type and ID. Also Contact ID for <see cref="T:Sitecore.XConnect.IInteractionReference"/>.
+            References to new entities are compared by reference (that is, instances must equal)
+            </summary>    
+        </member>
+        <member name="M:Sitecore.XConnect.Service.EntityReferenceComparer.Equals(Sitecore.XConnect.IEntityReference,Sitecore.XConnect.IEntityReference)">
+            <summary>
+            Determines whether two objects of type <see ref="IEntityReference" /> are equal.
+            </summary>
+            <param name="x">The first object to compare.</param>
+            <param name="y">The second object to compare.</param>
+            <returns>
+            true if the specified objects are equal; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.EntityReferenceComparer.GetHashCode(Sitecore.XConnect.IEntityReference)">
+            <summary>
+            Returns a hash code for the specified instance.
+            </summary>
+            <param name="obj">The instance.</param>
+            <returns>
+            A hash code for the specified instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.ExponentialBackoffStrategy">
+            <summary>
+            A <see cref="T:Sitecore.XConnect.RetryStrategy"/> that uses exponential backoff for pausing (https://en.wikipedia.org/wiki/Exponential_backoff)
+            </summary>
+            <seealso cref="T:Sitecore.XConnect.RetryStrategy" />
+        </member>
+        <member name="M:Sitecore.XConnect.Service.ExponentialBackoffStrategy.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.ExponentialBackoffStrategy"/> class.
+            </summary>
+            <param name="options">The runtime configuration options sent via dependency injection.</param>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.FacetRecordMapper">
+            <summary>
+                Maps XConnect's operations to repository's data records
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.FacetRecordMapper.TryConnectInteractionToContactRecordsForMergeOperation(Sitecore.XConnect.Service.Operations.SetInteractionMergeInfoOperation,Sitecore.Xdb.Collection.Model.InteractionDataRecord)">
+            <remarks>
+             Setting <see cref="T:Sitecore.XConnect.Collection.ContactMergeModel.InteractionMergeInfo"/> facet doesn't change the interaction itself,
+             so there is no operation for the interaction and no corresponding <see cref="T:Sitecore.Xdb.Collection.Model.InteractionDataRecord"/>.
+             Saving anything in storage requires a root object, which is a <see cref="T:Sitecore.Xdb.Collection.Model.ContactDataRecord"/> in this case.
+             So, that is why we need the code below, i.e. we create stub record for the contact,
+             and then we interconnect the records (<see cref="T:Sitecore.Xdb.Collection.Model.ContactDataRecord"/> and <see cref="T:Sitecore.Xdb.Collection.Model.InteractionDataRecord"/> <paramref name="dataRecord"/>), so the facet can be saved.
+             </remarks>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.ICalculatedFacetHandler">
+            <summary>
+            Update calculated facets on contacts based on their interactions.
+            </summary>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.ICalculatedFacetHandler.ContactFacetName">
+            <summary>
+            Gets the name of the calculated facet on contacts.
+            </summary>
+            <value>
+            The name of the contact facet.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.ICalculatedFacetHandler.InteractionFacets">
+            <summary>
+            Gets the interaction facets that may or must be included in the update.
+            If one or more required facets are not present on the interaction, the calculated facet will not be updated.
+            These facets can be accessed with the Entity.GetFacet methods on the interaction when updating.
+            </summary>
+            <value>
+            The interaction facets.
+            </value>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.ICalculatedFacetHandler.UpdateFacet(Sitecore.XConnect.Facet,Sitecore.XConnect.Interaction)">
+            <summary>
+            Updates the facet given a new interaction.
+            </summary>
+            <param name="currentFacet">The current version of the contact's calculated facet where changes can be applied based on the interaction.</param>
+            <param name="interaction">The interaction.</param>
+            <returns><c>true</c> if the facet was changed; <c>false</c> otherwise</returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.ICalculatedFacetHandler.CreateInitialFacet">
+            <summary>
+            Creates the facet with initial values if the calculated facet does not yet exist.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.IContactMergeHandler">
+            <summary>
+            Provides the logic for some aspect of merging two contacts.
+            Multiple <see cref="T:Sitecore.XConnect.Service.IContactMergeHandler"/> are expected when contacts are merged, and they are executed in the order they are registered in the <see cref="T:Sitecore.XConnect.Service.XdbCollectionServiceConfig"/>.
+            </summary>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.IContactMergeHandler.SourceExpandOptions">
+            <summary>
+            Gets the expand options that loads the data required for source contact in the logic implemented in this <see cref="T:Sitecore.XConnect.Service.IContactMergeHandler"/>.
+            </summary>
+            <value>
+            The source's expand options.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.IContactMergeHandler.TargetExpandOptions">
+            <summary>
+            Gets the expand options that loads the data required for target contact in the logic implemented in this <see cref="T:Sitecore.XConnect.Service.IContactMergeHandler"/>.
+            </summary>
+            <value>
+            The target's expand options.
+            </value>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.IContactMergeHandler.CreateMergeOperations(Sitecore.XConnect.Contact,Sitecore.XConnect.Contact)">
+            <summary>
+            Creates the operations that, when executed, will update the target contact as required by the logic implemented in this <see cref="T:Sitecore.XConnect.Service.IContactMergeHandler"/>.
+            </summary>
+            <param name="source">The source contact loaded with at least the required expand options.</param>
+            <param name="target">The target contact loaded with at least the required expand options.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.IContactMergeHandler.GetResult(System.Collections.Generic.IReadOnlyCollection{Sitecore.XConnect.Operations.IXdbOperation})">
+            <summary>
+            Gets the result from the operations returned by this handlers <see cref="M:Sitecore.XConnect.Service.IContactMergeHandler.CreateMergeOperations(Sitecore.XConnect.Contact,Sitecore.XConnect.Contact)"/> method.
+            </summary>        
+            <returns>
+            The result given the succeeded operations
+            </returns>        
+        </member>
+        <member name="T:Sitecore.XConnect.Service.IDataRecordMapper">
+            <summary>
+                Maps operations to data records when <see cref="T:Sitecore.XConnect.Service.XdbCollectionService" /> is executing a batch.
+            </summary>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.IdentifierOperationWithContactEntity">
+            <summary>
+            A <see cref="T:Sitecore.XConnect.Operations.IXdbOperation"/> that loads the concurrency token for the target contact if not present for contact identifier operations
+            </summary>    
+        </member>
+        <member name="T:Sitecore.XConnect.Service.IndexerSchemaInfoProvider">
+            <summary>
+            Provides model information to <see cref="T:Sitecore.Xdb.Collection.Indexing.IIndexer"/>.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.Collection.Indexing.ISchemaReader" />
+        </member>
+        <member name="M:Sitecore.XConnect.Service.IndexerSchemaInfoProvider.#ctor(Sitecore.XConnect.Schema.XdbModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.IndexerSchemaInfoProvider"/> class.
+            </summary>
+            <param name="model">The model.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.IndexerSchemaInfoProvider.GetAllFacetKeys(Sitecore.Xdb.Collection.Indexing.EntityType)">
+            <summary>
+            Gets a list of all the facet keys included in all model versions.
+            </summary>
+            <param name="entityType">The type of the entity with the associated facet keys.</param>
+            <returns>
+            The list of facet keys.
+            </returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.InteractionFacetDependency">
+            <summary>
+            A interaction facet that may or must be included when an <see cref="T:Sitecore.XConnect.Service.ICalculatedFacetHandler"/> updates a calculated facet.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.InteractionFacetDependency.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.InteractionFacetDependency"/> class.
+            </summary>
+            <param name="facetName">Name of the interaction facet.</param>
+            <param name="required">if set to <c>true</c> the calculated facet will not be updated unless this facet is present on the interaction.</param>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.InteractionFacetDependency.Required">
+            <summary>
+            Gets a value indicating whether the facet is required. If so, the calculated facet will not be updated unless the facet is presesnt on the interaction.
+            </summary>
+            <value>
+              <c>true</c> if required; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.InteractionFacetDependency.FacetName">
+            <summary>
+            Gets the name of the interaction facet to include when updating the calculated facet.
+            </summary>
+            <value>
+            The name of the facet.
+            </value>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.InteractionRecordMapper">
+            Maps <see cref="T:Sitecore.XConnect.Operations.EntityOperation`1"/>s to <see cref="T:Sitecore.Xdb.Collection.Model.InteractionDataRecord"/>s in <see cref="T:Sitecore.XConnect.Service.RepositorySaveOperationInvoker"/>.
+        </member>
+        <member name="T:Sitecore.XConnect.Service.IXConnectServicePluginConfig">
+            <summary>
+            Classes implementing this interface can add logic to the <see cref="T:Sitecore.XConnect.Service.XdbCollectionServiceConfig"/>'s event handlers.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.IXConnectServicePluginConfig.Register(Sitecore.XConnect.XdbContextConfiguration)">
+            <summary>
+            Registers event handlers in the specified configuration.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.IXConnectServicePluginConfig.Unregister">
+            <summary>
+            Unregisters event handlers added in the <see cref="M:Sitecore.XConnect.Service.IXConnectServicePluginConfig.Register(Sitecore.XConnect.XdbContextConfiguration)" /> method.
+            </summary>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.MappingHelpers">
+            <summary>
+            Helpers methods to map between XConnect and Repository objects
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MappingHelpers.ToContactExpandOptions(Sitecore.XConnect.ExpandOptions)">
+            <summary>
+            Maps XConnect expand options to repository expand options.
+            </summary>
+            <param name="expandOptions">The XConnnect expand options.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MappingHelpers.ToInteractionExpandOptions(Sitecore.XConnect.ExpandOptions)">
+            <summary>
+            Maps XConnect expand options to repository expand options.
+            </summary>
+            <param name="expandOptions">The XConnnect expand options.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MappingHelpers.ToDeviceProfileExpandOptions(Sitecore.XConnect.ExpandOptions)">
+            <summary>
+            Maps XConnect expand options to repository expand options.
+            </summary>
+            <param name="expandOptions">The XConnnect expand options.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MappingHelpers.GetEntityType(Sitecore.Xdb.Collection.Model.DataRecord)">
+            <summary>
+            Gets matching the XConnect <see cref="T:Sitecore.XConnect.EntityType" /> for a given <see cref="T:Sitecore.Xdb.Collection.Model.DataRecord" />
+            </summary>
+            <param name="record">The record.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Unknown data record type</exception>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MappingHelpers.ToSaveResultStatus(Sitecore.Xdb.Collection.Failures.SaveFailureType)">
+            <summary>
+            Maps repositories <see cref="T:Sitecore.Xdb.Collection.Failures.SaveFailureType"/> enumeration to XConnect's <see cref="T:Sitecore.XConnect.Operations.SaveResultStatus"/>,
+            </summary>
+            <param name="failureType">Type of the failure.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MappingHelpers.MarksDeleted(Sitecore.Xdb.Collection.Model.FacetContent)">
+            <summary>
+            Determines whether the facet content marks a deleted facet.
+            </summary>
+            <param name="content">The content.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.MergeContactFacetsHandler">
+            <summary>
+            Copies facets that are only set for the source contact to the target contact.
+            </summary>
+            <seealso cref="T:Sitecore.XConnect.Service.IContactMergeHandler" />
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MergeContactFacetsHandler.#ctor(Sitecore.XConnect.Schema.XdbModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.MergeContactFacetsHandler"/> class.
+            </summary>
+            <param name="model">The model.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.MergeContactFacetsHandler.SourceExpandOptions">
+            <summary>
+            Gets the expand options that loads the data required for source contact in the logic implemented in this <see cref="T:Sitecore.XConnect.Service.IContactMergeHandler" />.
+            </summary>
+            <value>
+            The source's expand options.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.MergeContactFacetsHandler.TargetExpandOptions">
+            <summary>
+            Gets the expand options that loads the data required for target contact in the logic implemented in this <see cref="T:Sitecore.XConnect.Service.IContactMergeHandler" />.
+            </summary>
+            <value>
+            The target's expand options.
+            </value>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MergeContactFacetsHandler.CreateMergeOperations(Sitecore.XConnect.Contact,Sitecore.XConnect.Contact)">
+            <summary>
+            Creates the operations that, when executed, will update the target contact as required by the logic implemented in this <see cref="T:Sitecore.XConnect.Service.IContactMergeHandler" />.
+            </summary>
+            <param name="source">The source contact loaded with at least the required expand options.</param>
+            <param name="target">The target contact loaded with at least the required expand options.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">
+            </exception>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MergeContactFacetsHandler.GetResult(System.Collections.Generic.IReadOnlyCollection{Sitecore.XConnect.Operations.IXdbOperation})">
+            <summary>
+            Gets the result from the operations returned by this handlers <see cref="M:Sitecore.XConnect.Service.MergeContactFacetsHandler.CreateMergeOperations(Sitecore.XConnect.Contact,Sitecore.XConnect.Contact)" /> method.
+            </summary>
+            <param name="operations">The operations to get result from.</param>
+            <returns>
+            The result given the succeeded operations
+            </returns>
+        </member>
+        <member name="F:Sitecore.XConnect.Service.MergeContactsInvoker.ContactMergeHandlerOperation._operations">
+            <summary>
+            The operations added by the handlers
+            </summary>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.MergingCalculatedFacetHandler`1">
+            <summary>
+            A <see cref="T:Sitecore.XConnect.Service.ICalculatedFacetHandler"/> that supports contact merges
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MergingCalculatedFacetHandler`1.#ctor(System.String,System.Collections.Generic.IEnumerable{Sitecore.XConnect.Service.InteractionFacetDependency})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.MergingCalculatedFacetHandler`1"/> class.
+            </summary>
+            <param name="contactFacetName">Name of the calculated contact facet.</param>
+            <param name="interactionFacets">Optional list of interaction facets involved in the update.</param>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.MergingCalculatedFacetHandler`1.SourceExpandOptions">
+            <summary>
+            Gets the expand options that loads the data required for source contact in the logic implemented in this <see cref="T:Sitecore.XConnect.Service.IContactMergeHandler" />.
+            </summary>
+            <value>
+            The source's expand options.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.MergingCalculatedFacetHandler`1.TargetExpandOptions">
+            <summary>
+            Gets the expand options that loads the data required for target contact in the logic implemented in this <see cref="T:Sitecore.XConnect.Service.IContactMergeHandler" />.
+            </summary>
+            <value>
+            The target's expand options.
+            </value>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MergingCalculatedFacetHandler`1.CreateMergeOperations(Sitecore.XConnect.Contact,Sitecore.XConnect.Contact)">
+            <summary>
+            Creates the operations that, when executed, will update the target contact as required by the logic implemented in this <see cref="T:Sitecore.XConnect.Service.IContactMergeHandler" />.
+            </summary>
+            <param name="source">The source contact loaded with at least the required expand options.</param>
+            <param name="target">The target contact loaded with at least the required expand options.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">
+            </exception>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MergingCalculatedFacetHandler`1.GetResult(System.Collections.Generic.IReadOnlyCollection{Sitecore.XConnect.Operations.IXdbOperation})">
+            <summary>
+            Gets the result from the operations returned by this handler's <see cref="M:Sitecore.XConnect.Service.MergingCalculatedFacetHandler`1.CreateMergeOperations(Sitecore.XConnect.Contact,Sitecore.XConnect.Contact)" /> method.
+            </summary>
+            <param name="operations"></param>
+            <returns>
+            The result given the succeeded operations
+            </returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.MergingCalculatedFacetHandler`1.Merge(`0,`0)">
+            <summary>
+            Updates the target facet with the information in the source facet
+            </summary>
+            <param name="source">The source.</param>
+            <param name="target">The target.</param>
+            <returns><c>true</c> if the target facet was changed; <c>false</c> otherwise</returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.Operations.CopyFacetOperation">
+            <summary>
+            Used to copy a facet to a target entity.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.Operations.CopyFacetOperation.#ctor(Sitecore.XConnect.FacetReference,Sitecore.XConnect.Facet)">
+            <summary>
+            Initializes a new instance of <see cref="T:Sitecore.XConnect.Service.Operations.CopyFacetOperation"/>.
+            </summary>
+            <param name="facetReference">The target facet reference.</param>
+            <param name="facet">The facet to set on the target.</param>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.Operations.CopyFacetOperation.OperationType">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.XConnect.Service.Operations.CopyFacetOperation`1">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.XConnect.Service.Operations.CopyFacetOperation`1.#ctor(Sitecore.XConnect.FacetReference,`0)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.XConnect.Service.Operations.CopyFacetOperation`1.Facet">
+            <summary>
+            Gets the facet to copy with this operation.
+            </summary>
+            <value>
+            The facet.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.Operations.CopyFacetOperation`1.Result">
+            <summary>
+            Gets the result returned from the provider when this operation has completed.
+            If an exception prevented the provider to return a result this is null, even if the operation has completed.
+            </summary>
+            <value> The result.</value>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.Operations.CopyFacetOperation`1.Complete(Sitecore.XConnect.Operations.SaveResultStatus,Sitecore.XConnect.Facet)">
+            <summary>
+            Marks the operation as completed (either succeeded or failed) based on the result from the provider.
+            </summary>
+            <param name="status">The status returned from the provider.</param>
+            <param name="currentVersion">The current version of the facet, or null depending on status.</param>
+            <exception cref="T:System.ArgumentException">Invalid facet type for this operation</exception>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.Operations.CopyFacetOperation`1.CreateFacetResult(Sitecore.XConnect.Operations.SaveResultStatus,Sitecore.XConnect.Facet)">
+            <summary>
+            Creates a facet result given the specified facet. Allows generic type in typed SetFacet operation
+            </summary>
+            <param name="status">The status.</param>
+            <param name="facet">The facet.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.Operations.DeferredFacetOperation">
+            <summary>
+            Executes a deferred facet operation on the entity.
+            The operation can be used as a successor of a previous operation, when its result is required in this deferred operation.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.Operations.DeferredFacetOperation.#ctor(Sitecore.XConnect.FacetReference)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.Operations.DeferredFacetOperation"/>.
+            </summary>
+            <param name="target">The target.</param>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.Operations.DeferredFacetOperation.FacetReference">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.XConnect.Service.Operations.DeferredFacetOperation.Facet">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.XConnect.Service.Operations.SetInteractionMergeInfoOperation">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.XConnect.Service.Operations.SetInteractionMergeInfoOperation.#ctor(Sitecore.XConnect.FacetReference,System.ValueTuple{Sitecore.XConnect.Interaction,System.DateTime},System.Func{System.ValueTuple{Sitecore.XConnect.Interaction,System.DateTime},Sitecore.XConnect.Facet})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.Operations.SetInteractionMergeInfoOperation"/>.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="requiredData">The data required to create the facet.</param>
+            <param name="facetFactoryMethod">The method creating the facet using the required data.</param>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.Operations.SetInteractionMergeInfoOperation.Facet">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.XConnect.Service.RepositoryFieldNameRewriter">
+            <summary>
+            Maps xConnect property names to repository's names
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.RepositoryFieldNameRewriter.GetElementType(System.Type)">
+            <summary>
+            Gets the element type of a the given type if it is a collection type.
+            </summary>
+            <param name="clrType">Type.</param>
+            <returns>The element type if the type is a collection type</returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.RepositoryGetInvoker">
+            <summary>
+            Maps <see cref="T:Sitecore.XConnect.Operations.IGetEntityOperation"/> to get requests in a <see cref="T:Sitecore.Xdb.Collection.IRepository"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.RepositorySaveOperationInvoker">
+            <summary>
+            Maps supported, mutating entity and facet operations to a <see cref="T:Sitecore.Xdb.Collection.ChangeSet"/> that is saved in a <see cref="T:Sitecore.Xdb.Collection.IRepository"/>
+            Supported operations
+            <see cref="T:Sitecore.XConnect.Operations.AddContactOperation"/>, <see cref="T:Sitecore.XConnect.Operations.AddInteractionOperation"/>, <see cref="T:Sitecore.XConnect.Operations.AddDeviceProfileOperation"/>,
+            </summary>
+            <seealso cref="T:Sitecore.XConnect.Operations.XdbOperationInvoker" />
+        </member>
+        <member name="M:Sitecore.XConnect.Service.RepositorySaveOperationInvoker.MapRecords``3(Sitecore.XConnect.Service.DataRecordMapper{``0,``1},System.Collections.Generic.IEnumerable{``2})">
+            <summary>
+                Unit test extension point.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.RepositorySaveOperationInvoker.MapRecords``1(Sitecore.XConnect.Service.FacetRecordMapper,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+                Unit test extension point.
+            </summary>
+            <typeparam name="TOperation">The type of the operation.</typeparam>
+            <param name="mapper">The mapper.</param>
+            <param name="operations">The operations.</param>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.RepositorySaveOperationInvoker.MapRecords``1(Sitecore.XConnect.Service.ContactIdentifierRecordMapper,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+                Unit test extension point.
+            </summary>
+            <typeparam name="TOperation">The type of the operation.</typeparam>
+            <param name="mapper">The mapper.</param>
+            <param name="operations">The operations.</param>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.RepositorySearchInvoker">
+            <summary>
+            Executes search operations against an <see cref="T:Sitecore.Xdb.Collection.IRepository"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.RepositorySearchInvoker.#ctor(Sitecore.Xdb.Collection.IRepository,Sitecore.XConnect.Service.EntityMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.RepositorySearchInvoker"/> class.
+            </summary>
+            <param name="repository">The repository.</param>
+            <param name="mapper">The mapper.</param>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.RepositorySearchInvoker.WaitTimeout">
+            <summary>
+            Gets or sets the maximum time to wait for search consitency.
+            </summary>
+            <value>
+            The wait timeout.
+            </value>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.RepositorySearchInvoker.Execute(System.Collections.Generic.IEnumerable{Sitecore.XConnect.Operations.XdbSearchOperation},System.Threading.CancellationToken)">
+            <summary>
+            Executes the specified operations.
+            </summary>
+            <param name="operations">The operations.</param>
+            <param name="cancellationToken">The cancellation token to cancel the operation</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.RightToBeForgottenHandler">
+            <summary>
+            Handles <see cref="T:Sitecore.XConnect.Operations.RightToBeForgottenOperation"/> by adding other operations to clear facets and identifiers
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.RightToBeForgottenHandler.ClearPiiProperties(Sitecore.XConnect.XObject,System.Boolean)">
+            <summary>
+            Clears all PII sensitive properties on the specified object
+            </summary>
+            <param name="xobject">The xobject.</param>
+            <param name="isPiiObject">if the type itself or the facet definition for the type is marked as PII.</param>
+            <returns>
+              <c>true</c> if any property was cleared; <c>false</c> otherwise
+            </returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.RightToBeForgottenHandler.IsPiiProperty(Sitecore.XConnect.Schema.XdbProperty,System.Boolean)">
+            <summary>
+            Determines whether the specified property contains PII sensitive information.
+            </summary>
+            <param name="property">The property.</param>
+            <param name="includeProperties">If true, the method checks the type's properties also.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.RightToBeForgottenHandler.IsPiiType(Sitecore.XConnect.Schema.XdbObjectType,System.Boolean)">
+            <summary>
+            Determines whether the type is marked as PII sensitive or, optionally, has one or more PII sensitive properties
+            </summary>
+            <param name="type">The type.</param>
+            <param name="includeProperties">if set to <c>true</c> the type will also be checked for PII properties.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.SerializationHelpers">
+            <summary>
+            Maps between <see cref="T:Newtonsoft.Json.Linq.JObject"/>s and <see cref="T:Sitecore.XConnect.XObject"/>
+            </summary>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.XConnectServicePluginConfig">
+            <summary>
+            Combines multiple <see cref="T:Sitecore.XConnect.Service.Plugins.IXConnectServicePlugin"/>.
+            </summary>
+            <seealso cref="T:Sitecore.XConnect.Service.IXConnectServicePluginConfig" />
+        </member>
+        <member name="M:Sitecore.XConnect.Service.XConnectServicePluginConfig.#ctor(System.Collections.Generic.IEnumerable{Sitecore.XConnect.Service.Plugins.IXConnectServicePlugin})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.XConnectServicePluginConfig"/> class.
+            </summary>
+            <param name="plugins">The plugins.</param>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.XConnectServicePluginConfig.Register(Sitecore.XConnect.XdbContextConfiguration)">
+            <summary>
+            Registers the event handlers from the combined <see cref="T:Sitecore.XConnect.Service.Plugins.IXConnectServicePlugin"/>s in the specified configuration.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.XConnectServicePluginConfig.Unregister">
+            <summary>
+            Unregisters event handlers added in the <see cref="M:Sitecore.XConnect.Service.XConnectServicePluginConfig.Register(Sitecore.XConnect.XdbContextConfiguration)" /> method.
+            </summary>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.XdbCollectionService">
+            <summary>
+                <see cref="T:Sitecore.XConnect.XdbContext"/> that executes operations against an <see cref="T:Sitecore.Xdb.Collection.IRepository"/>.
+                This class should not be used directly. Use the xDB Service Layer over HTTP via the XConnect client.
+            </summary>
+            <seealso cref="T:Sitecore.XConnect.XdbContext" />
+        </member>
+        <member name="M:Sitecore.XConnect.Service.XdbCollectionService.#ctor(Sitecore.XConnect.Service.XdbCollectionServiceConfig,Sitecore.XConnect.Diagnostics.Telemetry.IPerformanceCounters)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.XdbCollectionService" /> class.
+            </summary>
+            <param name="config">The configuration for the collection service.</param>
+            <param name="counters">The performance counters.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.XdbCollectionService.Configuration">
+            <summary>
+            Gets the <see cref="T:Sitecore.XConnect.Operations.XdbContextConfiguration" /> used by this instance.
+            </summary>
+            <value>
+            The configuration.
+            </value>
+        </member>
+        <member name="T:Sitecore.XConnect.Service.XdbCollectionServiceConfig">
+            <summary>
+            The configuration for <see cref="T:Sitecore.XConnect.Service.XdbCollectionService"/>
+            </summary>
+            <seealso cref="T:Sitecore.XConnect.XdbContextConfiguration" />
+        </member>
+        <member name="M:Sitecore.XConnect.Service.XdbCollectionServiceConfig.#ctor(Sitecore.XConnect.Schema.XdbModel,Sitecore.Xdb.Collection.IRepository,System.Collections.Generic.IEnumerable{Sitecore.XConnect.Service.ICalculatedFacetHandler},System.Collections.Generic.IEnumerable{Sitecore.XConnect.Service.IContactMergeHandler},Sitecore.XConnect.Service.IXConnectServicePluginConfig,System.IServiceProvider,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.XdbCollectionServiceConfig"/> class.
+            </summary>
+            <param name="model">The model.</param>
+            <param name="repository">The repository.</param>
+            <param name="calculatedFacetHandlers">The calculated facet handlers.</param>
+            <param name="contactMergeHandlers">The contact merge handlers.</param>
+            <param name="pluginConfig">The plugin configuration.</param>
+            <param name="provider">The service provider to pass to retry strategy contstructor</param>
+            <param name="options">The runtime configuration options used to load retry strategy</param>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.XdbCollectionServiceConfig.#ctor(Sitecore.XConnect.Schema.XdbModel,Sitecore.Xdb.Collection.IRepository,System.Collections.Generic.IEnumerable{Sitecore.XConnect.Service.ICalculatedFacetHandler},System.Collections.Generic.IEnumerable{Sitecore.XConnect.Service.IContactMergeHandler},Sitecore.XConnect.Service.IXConnectServicePluginConfig,Sitecore.XConnect.RetryStrategy,System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.XConnect.Service.XdbCollectionServiceConfig"/> class.
+            </summary>
+            <param name="model">The model.</param>
+            <param name="repository">The repository.</param>
+            <param name="calculatedFacetHandlers">The calculated facet handlers.</param>
+            <param name="contactMergeHandlers">The contact merge handlers.</param>
+            <param name="pluginConfig">The plugin configuration.</param>
+            <param name="retryStrategy">The retry strategy.</param>
+            <param name="searchIndexingWaitTimeout">The search indexing wait timeout.</param>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.XdbCollectionServiceConfig.CurrentModel">
+            <summary>
+            Gets the <see>
+                    <cref>T:Sitecore.XConnect.Schema.XdbModel</cref>
+                </see>
+                for the <see cref="T:Sitecore.XConnect.Service.XdbCollectionService" />s using this configuration.        
+            </summary>
+            <value>
+            The model.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.XdbCollectionServiceConfig.Repository">
+            <summary>
+            Gets the repository for the <see cref="T:Sitecore.XConnect.Service.XdbCollectionService"/> using this configuration.
+            </summary>
+            <value>
+            The repository.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.XdbCollectionServiceConfig.CalculatedFacetHandlers">
+            <summary>
+            Gets the calculated facet handlers.
+            </summary>
+            <value>
+            The calculated facet handlers.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.XdbCollectionServiceConfig.ContactMergeHandlers">
+            <summary>
+            Gets the contact merge handlers.
+            </summary>
+            <value>
+            The contact merge handlers.
+            </value>
+        </member>
+        <member name="P:Sitecore.XConnect.Service.XdbCollectionServiceConfig.SearchIndexingWaitTimeout">
+            <summary>
+            Gets or sets the maximum time to wait for search consitency.
+            </summary>
+            <value>
+            The wait timeout.
+            </value>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.XdbCollectionServiceConfig.GetRetryStrategyFromConfig(Microsoft.Extensions.Configuration.IConfiguration,System.IServiceProvider)">
+            <summary>
+            Gets the <see cref="T:Sitecore.XConnect.RetryStrategy"/> value from the <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/>.
+            </summary>
+            <param name="options">The <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> object.</param>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.XdbCollectionServiceConfig.GetSearchIndexingWaitTimeoutFromConfig(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Gets the <see cref="P:Sitecore.XConnect.Service.XdbCollectionServiceConfig.SearchIndexingWaitTimeout"/> value from the <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/>.
+            </summary>
+            <param name="options">The <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.XConnect.Service.XdbCollectionServiceConfig.OnOperationCompleted(Sitecore.XConnect.IXdbContext,Sitecore.XConnect.Operations.XdbOperationEventArgs)">
+            <summary>
+            Raises the <see>
+                    <cref>E:OperationCompleted</cref>
+                </see>
+                event.
+            </summary>
+            <param name="context">The context raising the event.</param>
+            <param name="e">The <see>
+                    <cref>T:Sitecore.XConnect.Operations.XdbOperationEventArgs</cref>
+                </see>
+                instance containing the event data.</param>
+        </member>
+    </members>
+</doc>

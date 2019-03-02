@@ -1,0 +1,28 @@
+﻿
+@*@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sample</title>
+</head>
+<body>
+    <div>
+        <ul>
+            @foreach (var menuItem in @Model.MenuItems)
+            {
+                <li class="@(menuItem.IsActive ? "selected" : string.Empty)">
+                    @using (BeginRenderLink(menuItem, x => x.Link))
+                    {
+                        <span>@menuItem.Link.Title</span>
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+</body>
+</html>*@

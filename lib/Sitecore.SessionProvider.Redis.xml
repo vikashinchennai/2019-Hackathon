@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.SessionProvider.Redis</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.SessionProvider.Redis.HashFields">
+            <summary>
+            Defines names of the hash fields used to store internal information.
+            </summary>
+        </member>
+        <member name="F:Sitecore.SessionProvider.Redis.HashFields.ExpirationTime">
+            <summary>
+            The expiration time.
+            </summary>
+        </member>
+        <member name="F:Sitecore.SessionProvider.Redis.HashFields.SessionTimeout">
+            <summary>
+            The session timeout.
+            </summary>
+        </member>
+        <member name="F:Sitecore.SessionProvider.Redis.HashFields.WriteLock">
+            <summary>
+            The write lock.
+            </summary>
+        </member>
+        <member name="F:Sitecore.SessionProvider.Redis.HashFields.EmptyData">
+            <summary>
+            The empty data.
+            </summary>
+        </member>
+        <member name="T:Sitecore.SessionProvider.Redis.ICacheConnection">
+            <summary>
+            Defines methods to operate with session data in the Redis cache.
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.ICacheConnection.TakeWriteLockAndGetExpiredData(System.String,System.DateTime,System.DateTime,System.Int32,System.Web.SessionState.ISessionStateItemCollection@,System.Int32@)">
+            <summary>
+            Takes a write lock and gets data of the specified session if it is expired.
+            </summary>
+            <param name="sessionId">
+            The session id.
+            </param>
+            <param name="signalTime">
+            The signal time to compare the session expiration time with.
+            </param>
+            <param name="lockTime">
+            The write lock time.
+            </param>
+            <param name="expirationTimeout">
+            The expiration timeout.
+            </param>
+            <param name="data">
+            The session data.
+            </param>
+            <param name="sessionTimeout">
+            The session timeout.
+            </param>
+            <returns>
+            Returns <c>true</c> if data of the specified session is expired and obtained; otherwise <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.ICacheConnection.CheckAndUpdateDataExpirationTime(System.String,System.DateTime)">
+            <summary>
+            Determines whether data of the specified session is expired.
+            </summary>
+            <param name="sessionId">The session id.</param>
+            <param name="signalTime">The signal time to compare the session expiration time with.</param>
+            <returns>Returns <c>true</c> if data of the specified session is expired; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.ICacheConnection.GetExpirationCandidateSessionIds(System.DateTime)">
+            <summary>
+            Gets ids of sessions that are candidates to be expired from the Redis cache.
+            </summary>
+            <param name="signalTime">The signal time to compare the session expiration time with.</param>
+            <returns>
+            The ids of sessions cached in the Redis cache.
+            </returns>
+        </member>
+        <member name="T:Sitecore.SessionProvider.Redis.IRedisClientConnection">
+            <summary>
+            Defines methods to perform operations over the Redis cache.
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.IRedisClientConnection.HashGet(System.String,System.String[])">
+            <summary>
+            Returns the values associated with the specified fields in the hash stored at key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="hashFields">The hash fields.</param>
+            <returns>The values associated with the specified fields in the hash stored at key.</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.IRedisClientConnection.ParseDateTimeValue(System.Object)">
+            <summary>
+            Parses the date time value from the Redis cache.
+            </summary>
+            <param name="value">The date time value.</param>
+            <returns>The date time value from the Redis cache.</returns>
+        </member>
+        <member name="T:Sitecore.SessionProvider.Redis.KeyGenerator">
+            <summary>
+            Operates key names used to store session data.
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.KeyGenerator.ExtractId(System.String)">
+            <summary>
+            Extracts session id from the specified key.
+            </summary>
+            <param name="key">
+            The key.
+            </param>
+            <returns>
+            The session id.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.KeyGenerator.GetKeys(System.String,System.String)">
+            <summary>
+            Gets <see cref="T:Sitecore.SessionProvider.Redis.KeyGenerator"/> for the specified session id and application name.
+            </summary>
+            <param name="sessionId">
+            The session id.
+            </param>
+            <param name="applicationName">
+            The application name.
+            </param>
+            <returns>
+            The <see cref="T:Sitecore.SessionProvider.Redis.KeyGenerator"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.SessionProvider.Redis.RedisConnectionWrapper">
+            <summary>
+            Provides methods to operate with session data in the Redis cache.
+            </summary>
+        </member>
+        <member name="F:Sitecore.SessionProvider.Redis.RedisConnectionWrapper.WriteLockAndGetExpiredDataScript">
+            <summary>
+            The script to take a write lock and get data of the specified session if it is expired..
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.RedisConnectionWrapper.TakeWriteLockAndGetExpiredData(System.String,System.DateTime,System.DateTime,System.Int32,System.Web.SessionState.ISessionStateItemCollection@,System.Int32@)">
+            <summary>
+            Takes a write lock and gets data of the specified session if it is expired.
+            </summary>
+            <param name="sessionId">
+            The session id.
+            </param>
+            <param name="signalTime">
+            The signal time to compare the session expiration time with.
+            </param>
+            <param name="lockTime">
+            The write lock time.
+            </param>
+            <param name="expirationTimeout">
+            The expiration timeout.
+            </param>
+            <param name="data">
+            The session data.
+            </param>
+            <param name="sessionTimeout">
+            The session timeout.
+            </param>
+            <returns>
+            Returns <c>true</c> if data of the specified session is expired and obtained; otherwise <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.RedisConnectionWrapper.CheckAndUpdateDataExpirationTime(System.String,System.DateTime)">
+            <summary>
+            Determines whether data of the specified session is expired.
+            </summary>
+            <param name="sessionId">The session id.</param>
+            <param name="signalTime">The signal time to compare the session expiration time with.</param>
+            <returns>Returns <c>true</c> if data of the specified session is expired; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.RedisConnectionWrapper.GetExpirationCandidateSessionIds(System.DateTime)">
+            <summary>
+            Gets ids of sessions that are candidates to be expired from the Redis cache.
+            </summary>
+            <param name="signalTime">The signal time to compare the session expiration time with.</param>
+            <returns>
+            The ids of sessions cached in the Redis cache.
+            </returns>
+        </member>
+        <member name="T:Sitecore.SessionProvider.Redis.RedisProviderResource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.Redis.RedisProviderResource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.Redis.RedisProviderResource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.Redis.RedisProviderResource.ClassNotFound">
+            <summary>
+              Looks up a localized string similar to The specified class &apos;{0}&apos; could not be loaded.  Please make sure that the value specified is an assembly qualified class name..
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.Redis.RedisProviderResource.ConnectionStringException">
+            <summary>
+              Looks up a localized string similar to Either use the combination of parameters &quot;settingsClassName&quot; and &quot;settingsMethodName&quot; to provide the value of connection string or use the parameter &quot;connectionString&quot; but not both..
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.Redis.RedisProviderResource.MethodNotFound">
+            <summary>
+              Looks up a localized string similar to The specified method &apos;{0}&apos; on the class &apos;{1}&apos; could not be found or does meet the required method signature. Please make sure that it exists, is public and doesn&apos;t take any parameters..
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.Redis.RedisProviderResource.MethodNotStatic">
+            <summary>
+              Looks up a localized string similar to The specified method &apos;{0}&apos; on the class &apos;{1}&apos; does not match the required method signature. The method must be defined as \&quot;static\&quot;..
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.Redis.RedisProviderResource.MethodWrongReturnType">
+            <summary>
+              Looks up a localized string similar to The specified method &apos;{0}&apos; on the class &apos;{1}&apos; does not match the required method signature. The method must have a return type of \&quot;{2}\&quot;..
+            </summary>
+        </member>
+        <member name="T:Sitecore.SessionProvider.Redis.RedisSessionStateProvider">
+            <summary>
+            The session state provider that uses Redis cache as session storage.
+            </summary>
+        </member>
+        <member name="P:Sitecore.SessionProvider.Redis.RedisSessionStateProvider.LastException">
+            <summary>
+            We do not want to throw exception from session state provider because this will break customer application and they can't get chance to handel it.
+            So if exception occurs because of some problem we store it in HttpContext using a key that we know and return null to customer. Now, when customer
+            get null from any of session operation they should call this method to identify if there was any exception and because of that got null.
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.RedisSessionStateProvider.SetItemExpireCallback(System.Web.SessionState.SessionStateItemExpireCallback)">
+            <summary>
+            Sets a reference to the <see cref="T:System.Web.SessionState.SessionStateItemExpireCallback" /> delegate for the <c>Session_OnEnd</c>
+            event defined in the <c>Global.asax</c> file.
+            </summary>
+            <param name="expireCallback">The <see cref="T:System.Web.SessionState.SessionStateItemExpireCallback" /> delegate for the <c>Session_OnEnd</c> event defined in the
+            <c>Global.asax</c> file.</param>
+            <returns>
+            <c>true</c> if the session-state store provider supports calling the <c>Session_OnEnd</c> event; otherwise,
+            <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.RedisSessionStateProvider.OnProcessExpiredItems(System.DateTime)">
+            <summary>
+            Executes <c>Session_OnEnd</c> event for expired sessions and removes them from the session storage.
+            </summary>
+            <param name="signalTime">
+            The signal time to compare the session expiration time with.
+            </param>
+            <returns>
+            Returns <c>null</c>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.SessionProvider.Redis.StackExchangeClientConnection">
+            <summary>
+            Implements methods to perform operations over the Redis cache.
+            </summary>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.StackExchangeClientConnection.HashGet(System.String,System.String[])">
+            <summary>
+            Returns the values associated with the specified fields in the hash stored at key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="hashFields">The hash fields.</param>
+            <returns>The values associated with the specified fields in the hash stored at key.</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.StackExchangeClientConnection.ParseDateTimeValue(System.Object)">
+            <summary>
+            Parses the date time value from the Redis cache.
+            </summary>
+            <param name="value">The date time value.</param>
+            <returns>The date time value from the Redis cache.</returns>
+        </member>
+        <member name="M:Sitecore.SessionProvider.Redis.StackExchangeClientConnection.RetryLogic(System.Func{System.Object})">
+            <summary>
+            If retry timout is provide than we will retry first time after 20 ms and after that every 1 sec till retry timout is expired or we get value.
+            </summary>
+        </member>
+    </members>
+</doc>

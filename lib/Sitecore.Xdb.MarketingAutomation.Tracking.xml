@@ -1,0 +1,901 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Xdb.MarketingAutomation.Tracking</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactAutomationCampaignBaseCondition`1">
+            <summary>
+            A base class for classic Sitecore rules engine conditions which evaluate 
+            whether the contact is currently or was in a given automation campaign
+             or activity of an automation campaign.
+            </summary>
+            <typeparam name="T">The type of the context</typeparam>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactAutomationCampaignBaseCondition`1._regex">
+            <summary>
+            Regular expression pattern to find GUID within string.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactAutomationCampaignBaseCondition`1.Definition">
+            <summary>
+            Gets or sets the definition in specific format.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactAutomationCampaignBaseCondition`1.TryParse(System.String,System.UInt32)">
+            <summary>
+            Tries to find the string representation of a GUID within definition
+            and to convert its globally unique identifier (GUID) equivalent. 
+            A return value indicates whether the conversion succeeded.
+            </summary>
+            <param name="definition">Id of an automation plan.</param>
+            <param name="skip">Skip matches.</param>
+            <returns>
+            Conversion result with value.
+            true if 
+            was converted successfully; otherwise, false.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactAutomationCampaignBaseCondition`1.ParsingResult">
+            <summary>
+            Defines ParsingResult.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactAutomationCampaignBaseCondition`1.ParsingResult.#ctor(System.Boolean,System.Guid)">
+            <summary>
+            Instantiates <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactAutomationCampaignBaseCondition`1.ParsingResult"/>
+            </summary>
+            <param name="isParsed">Is definition parsed.</param>
+            <param name="value">Parsed value.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactAutomationCampaignBaseCondition`1.ParsingResult.IsParsed">
+            <summary>
+            Gets true if definition is parsed;
+            otherwise - false.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactAutomationCampaignBaseCondition`1.ParsingResult.Value">
+            <summary>
+            Gets parsed value.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactHasBeenInAutomationCampaignCondition`1">
+            <summary>
+            A classic Sitecore rules engine condition which evaluates 
+            whether the contact has ever been in a given automation campaign.
+            </summary>
+            <typeparam name="T">The type of the context</typeparam>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactHasBeenInAutomationCampaignCondition`1.ExitStart">
+            <summary>
+            Provides access to the <see cref="P:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactHasBeenInAutomationCampaignCondition`1.ExitStartDateTime"/> property as a string.
+            </summary>
+            <remarks>Used to allow setting this property from the DateTime macro.</remarks>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactHasBeenInAutomationCampaignCondition`1.ExitStartDateTime">
+            <summary>
+            Gets or sets the start of the date range the contact must have exited the plan from.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactHasBeenInAutomationCampaignCondition`1.ExitEnd">
+            <summary>
+            Provides access to the <see cref="P:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactHasBeenInAutomationCampaignCondition`1.ExitEndDateTime"/> property as a string.
+            </summary>
+            <remarks>Used to allow setting this property from the DateTime macro.</remarks>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactHasBeenInAutomationCampaignCondition`1.ExitEndDateTime">
+            <summary>
+            Gets or sets the end of the date range the contact must have exited the plan till.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactHasBeenInAutomationCampaignCondition`1.Execute(`0)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactIsEnrolledInActivityOfAutomationCampaignCondition`1">
+            <summary>
+            A classic Sitecore rules engine condition which evaluates 
+            whether the contact is currently waiting in specific activity
+            of a given automation campaign.
+            </summary>
+            <typeparam name="T">The type of the context</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactIsEnrolledInActivityOfAutomationCampaignCondition`1.Execute(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactIsEnrolledInActivityOfAutomationCampaignCondition`1.IsContactEnrolledInActivity(Sitecore.Analytics.Tracking.Contact,System.Guid,System.Guid)">
+            <summary>
+            Indicates whether the specified contact is enrolled in the activity of the specified plan.
+            </summary>
+            <param name="contact">The contact to check the facet from.</param>
+            <param name="automationPlanDefinitionId">Id of the automation plan that contains needed activity.</param>
+            <param name="activityId">The activity which the contact could be enrolled in.</param>
+            <returns>true if contact is enrolled in &lt;paramref name="activityId" /&gt;; otherwise, false.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactIsInAutomationCampaignCondition`1">
+            <summary>
+            A classic Sitecore rules engine condition which evaluates 
+            whether the contact is currently in a given automation campaign.
+            </summary>
+            <typeparam name="T">The type of the context</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Conditions.ContactIsInAutomationCampaignCondition`1.Execute(`0)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Dialogs.SelectPlanActivityPage">
+            <summary>
+            Code-behind for XAML dialog to show select pairs
+            of the "automation plan/automation activity".
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Tracking.Dialogs.SelectPlanActivityPage.Activities">
+            <summary>
+            Activities grid.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Dialogs.SelectPlanActivityPage.OK_Click">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Dialogs.SelectPlanActivityPage.OnInit(System.EventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Dialogs.SelectPlanActivityPage.OnLoad(System.EventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Dialogs.SelectPlanActivityPageType">
+            <summary>
+            Defines whether list of plans
+            or plan/activities to show.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Tracking.Dialogs.SelectPlanActivityPageType.SelectPlan">
+            <summary>
+            Show list of plans.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Tracking.Dialogs.SelectPlanActivityPageType.SelectActivity">
+            <summary>
+            Show list of plan/activities.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Extensions.ContactExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Sitecore.Analytics.Tracking.Contact"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Extensions.ContactExtensions.GetPlanEnrollmentCache(Sitecore.Analytics.Tracking.Contact)">
+            <summary>
+            Gets the facet containing the contact's current enrollments.
+            </summary>
+            <param name="contact">The contact to load the facet from.</param>
+            <returns>The facet if available, otherwise null.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Extensions.ContactExtensions.GetPlanExitCache(Sitecore.Analytics.Tracking.Contact)">
+            <summary>
+            Gets the facet containing the list of automation plans the contact has previously been enrolled in.
+            </summary>
+            <param name="contact">The contact to load the facet from.</param>
+            <returns>The facet if available, otherwise null.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Extensions.ContactExtensions.GetXConnectFacets(Sitecore.Analytics.Tracking.Contact)">
+            <summary>
+            Gets the XConnect Facets for the contact.
+            </summary>
+            <param name="contact">The contact to get the facets for.</param>
+            <returns>The facets from the contact.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Extensions.ContactExtensions.AddOrReplaceFacet(System.Collections.Generic.IReadOnlyDictionary{System.String,Sitecore.XConnect.Facet},System.String,Sitecore.XConnect.Facet)">
+            <summary>
+            Add or replace a facet.
+            </summary>
+            <param name="existing">The existing facets to add or replace within.</param>
+            <param name="facetName">The name of the facet to add or replace.</param>
+            <param name="newFacet">The facet value to set for the facet.</param>
+            <returns>A new collection of facets to replace the old one.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Filters.ActivityFilter">
+            <summary>
+            Filter activities of automation campaigns.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Filters.ActivityFilter.Validate(Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor)">
+            <summary>
+            Check if activity type is as needed
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Filters.ActivityFilter.Empty">
+            <summary>
+            Get used for cases if no filtering is needed
+            </summary>
+            <returns>
+            Instance of <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Filters.EmptyActivityFilter"/>
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Filters.ActivityFilter.DelayListeners">
+            <summary>
+            Get used for cases if only Delay or Listeners ativity types are needed
+            </summary>
+            <returns>
+            Instance of <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Filters.DelayListenersFilter"/>
+            </returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Filters.DelayListenersFilter">
+            <summary>
+            Get used for cases if only Delay or Listeners ativity types are needed
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Tracking.Filters.DelayListenersFilter._taxonomyId">
+            <summary>
+            /sitecore/system/Settings/Analytics/Marketing Automation/Activity Types/Taxonomies/Display
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Tracking.Filters.DelayListenersFilter._taxonomyValueId">
+            <summary>
+            /sitecore/system/Settings/Analytics/Marketing Automation/Activity Types/Taxonomies/Activity Functional Type/Rules Macro
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Filters.DelayListenersFilter.Validate(Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Filters.EmptyActivityFilter">
+            <summary>
+            Get used for cases if no filtering is needed
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Filters.EmptyActivityFilter.Validate(Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.Model.IActivityDescriptor)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Macros.AutomationActivityMacro">
+            <summary>
+            The rule macro to show all automation plans with underlying activities
+            with possibility to select the pair "{AutomationPlanId}_{ActivityId}".
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Tracking.Macros.AutomationActivityMacro.SelectActivityDialogUrl">
+            <summary>
+            Url to the "Select Activity" filter dialog.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Macros.AutomationActivityMacro.Execute(System.Xml.Linq.XElement,System.String,Sitecore.Text.UrlString,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Models.AutomationActivityModel">
+            <summary>
+            The model to show and select the pair "{AutomationPlanId}_{ActivityId}".
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Models.AutomationActivityModel.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Models.AutomationActivityModel"/>
+            </summary>
+            <param name="title">
+            The title in the "AutomationPlanName > ActivityName" format.
+            </param>
+            <param name="value">
+            The value in the "{AutomationPlanId}_{ActivityId}" format.
+            </param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Models.AutomationActivityModel.Title">
+            <summary>
+            Gets the title in the 
+            "AutomationPlanName > ActivityName" format.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Models.AutomationActivityModel.Value">
+            <summary>
+            Gets the value in the 
+            "{AutomationPlanId}_{ActivityId}" format.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterOutcome.LiveOutcomeInspector">
+            <summary>
+            A processor for the <see cref="T:Sitecore.Analytics.Pipelines.RegisterOutcome.RegisterOutcomePipeline"/> pipeline which inspects for live events 
+            and kicks off the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventPipeline"/> when one is found.
+            </summary>
+            <seealso cref="T:Sitecore.Analytics.Pipelines.RegisterOutcome.RegisterOutcomeProcessor" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterOutcome.LiveOutcomeInspector.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterOutcome.LiveOutcomeInspector"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterOutcome.LiveOutcomeInspector.#ctor(Sitecore.Abstractions.BaseCorePipelineManager,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterOutcome.LiveOutcomeInspector})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterOutcome.LiveOutcomeInspector"/> class.
+            </summary>
+            <param name="corePipeline">Core pipeline that is used to run pipelines.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterOutcome.LiveOutcomeInspector.CorePipeline">
+            <summary>
+            Core pipeline that is used to run pipelines.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterOutcome.LiveOutcomeInspector.Logger">
+            <summary>
+            The logger to log messages to.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterOutcome.LiveOutcomeInspector.Process(Sitecore.Analytics.Pipelines.RegisterOutcome.RegisterOutcomeArgs)">
+            <summary>
+            Runs the processor with specified arguments.
+            </summary>
+            <param name="args">The arguments to run the processor with.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterPageEvent.LivePageEventInspector">
+            <summary>
+            A processor for the <see cref="T:Sitecore.Analytics.Pipelines.RegisterPageEvent.RegisterPageEventPipeline"/> pipeline which inspects for live events 
+            and kicks off the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventPipeline"/> when one is found.
+            </summary>
+            <seealso cref="T:Sitecore.Analytics.Pipelines.RegisterPageEvent.RegisterPageEventProcessor" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterPageEvent.LivePageEventInspector.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterPageEvent.LivePageEventInspector"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterPageEvent.LivePageEventInspector.#ctor(Sitecore.Abstractions.BaseCorePipelineManager,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterPageEvent.LivePageEventInspector})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterPageEvent.LivePageEventInspector"/> class.
+            </summary>
+            <param name="corePipeline">Core pipeline that is used to run pipelines.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterPageEvent.LivePageEventInspector.CorePipeline">
+            <summary>
+            Core pipeline that is used to run pipelines.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterPageEvent.LivePageEventInspector.Logger">
+            <summary>
+            The logger to log messages to.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.RegisterPageEvent.LivePageEventInspector.Process(Sitecore.Analytics.Pipelines.RegisterPageEvent.RegisterPageEventArgs)">
+            <summary>
+            Runs the processor with specified arguments.
+            </summary>
+            <param name="args">The arguments to run the processor with.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.AddCurrentInteraction">
+            <summary>
+            A SubmitLiveAutomationEvent pipeline processor which adds the whole current interaction to the data for the live event.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.ISubmitLiveAutomationEventProcessor" />
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.AddCurrentInteraction.ConvertToXConnectInteractionPipelineName">
+            <summary>
+            The name of the "convertToXConnectInteraction" pipeline.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.AddCurrentInteraction.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.AddCurrentInteraction"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.AddCurrentInteraction.#ctor(Sitecore.Abstractions.BaseCorePipelineManager,Sitecore.Analytics.Processing.IXdbContextFactory,Sitecore.Marketing.Definitions.DefinitionManagerFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.AddCurrentInteraction"/> class.
+            </summary>
+            <param name="corePipeline">Core pipeline that is used to run pipelines.</param>
+            <param name="contextFactory">The <see cref="T:Sitecore.Analytics.Processing.IXdbContextFactory"/> that is used to create <see cref="T:Sitecore.XConnect.IXdbContext"/>.</param>
+            <param name="definitionManagerFactory">The definition manager factory that is used to access Marketing Operations API.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.AddCurrentInteraction.CorePipeline">
+            <summary>
+            Core pipeline that is used to run pipelines.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.AddCurrentInteraction.ContextFactory">
+            <summary>
+            The <see cref="T:Sitecore.Analytics.Processing.IXdbContextFactory"/> that is used to create <see cref="T:Sitecore.XConnect.IXdbContext"/>.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.AddCurrentInteraction.DefinitionManagerFactory">
+            <summary>
+            The definition manager factory that is used to access Marketing Operations API.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.AddCurrentInteraction.Process(Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.EnsureContact">
+            <summary>
+            A SubmitLiveAutomationEvent pipeline processor which creates the contact (if it's new) before processing.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.ISubmitLiveAutomationEventProcessor" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.EnsureContact.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.EnsureContact"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.EnsureContact.#ctor(Sitecore.Analytics.Tracking.ContactManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.EnsureContact"/> class.
+            </summary>
+            <param name="contactManager">The contact manager that is used to submit contacts to xDB.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.EnsureContact.ContactManager">
+            <summary>
+            The contact manager that is used to submit contacts to xDB.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.EnsureContact.Process(Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.EnsureContact.IsNewContact(Sitecore.Analytics.Tracking.Contact)">
+            <summary>
+            Determines whether contact is new (does not exist in xDB).
+            </summary>
+            <param name="contact">The contact to check.</param>
+            <returns>
+              <c>true</c> if the contact is new; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilteringSubmitLiveAutomationEventProcessor">
+            <summary>
+            A <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.ISubmitLiveAutomationEventProcessor"/> which only runs for configured source events.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.ISubmitLiveAutomationEventProcessor" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilteringSubmitLiveAutomationEventProcessor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilteringSubmitLiveAutomationEventProcessor"/> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilteringSubmitLiveAutomationEventProcessor.IncludeForEvents">
+            <summary>
+            The IDs of current event definitions this processor will run for.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilteringSubmitLiveAutomationEventProcessor.ExcludeForEvents">
+            <summary>
+            The IDs of current event definitions this processor will not run for.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilteringSubmitLiveAutomationEventProcessor.Process(Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilteringSubmitLiveAutomationEventProcessor.ShouldRun(Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs)">
+            <summary>
+            Determines if the processor should run or not.
+            </summary>
+            <param name="args">The arguments being populated.</param>
+            <returns>Indicates whether the processor should run.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilteringSubmitLiveAutomationEventProcessor.UpdatePayload(Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs)">
+            <summary>
+            Updates the payload properties of the args.
+            </summary>
+            <param name="args">The arguments being populated.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionEvents">
+            <summary>
+            A SubmitLiveAutomationEvent pipeline processor which filters interaction events in the live event.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionEvents.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionEvents"/> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionEvents.IncludeEvents">
+            <summary>
+            The IDs of event definitions to include only.
+            </summary>
+            <remarks>
+            If this property is populated, only events based on these definition IDs will be included.
+            </remarks>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionEvents.ExcludeEvents">
+            <summary>
+            The IDs of event definitions to exclude.
+            </summary>
+            <remarks>
+            Events with the same definition ID will not be added to the live event.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionEvents.UpdatePayload(Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionEvents.ShouldIncludeEvent(Sitecore.XConnect.Event)">
+            <summary>
+            Determines if the event should be included in the live event data or not.
+            </summary>
+            <param name="subjectEvent">The event to inspect for inclusion.</param>
+            <returns>Indicates whether the event should be included.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionFacets">
+            <summary>
+            A SubmitLiveAutomationEvent pipeline processor which filters interaction facets in the live event.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionFacets.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionFacets"/> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionFacets.IncludeFacetNames">
+            <summary>
+            The names of interaction facets to include to the interaction.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionFacets.UpdatePayload(Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.FilterInteractionFacets.ShouldIncludeFacet(System.String,Sitecore.XConnect.Facet)">
+            <summary>
+            Determines if the facet should be included in the live event data or not.
+            </summary>
+            <param name="facetKey">The key of the facet to inspect for inclusion.</param>
+            <param name="facet">The facet to inspect for inclusion.</param>
+            <returns>Indicates whether the facet should be included.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.ISubmitLiveAutomationEventProcessor">
+            <summary>
+            Defines a processor for the SubmitLiveAutomationEvent pipeline.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.ISubmitLiveAutomationEventProcessor.Process(Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs)">
+            <summary>
+            Execute the processor.
+            </summary>
+            <param name="args">The arguments to process with.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SetContactId">
+            <summary>
+            A SubmitLiveAutomationEvent pipeline processor which sets the ID of the target contact.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SetContactId.#ctor">
+            <summary>
+            Create a new instance.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SetContactId.#ctor(Sitecore.Analytics.Processing.IXdbContextFactory)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="contextFactory">The <see cref="T:Sitecore.Analytics.Processing.IXdbContextFactory"/> that is used to create <see cref="T:Sitecore.XConnect.IXdbContext"/>.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SetContactId.ContextFactory">
+            <summary>
+            The <see cref="T:Sitecore.Analytics.Processing.IXdbContextFactory"/> that is used to create <see cref="T:Sitecore.XConnect.IXdbContext"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SetContactId.Process(Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SetContactId.GetXConnectIdForContact(Sitecore.Analytics.Tracking.Contact)">
+            <summary>
+            Gets the XConnect ID for a tracker contact.
+            </summary>
+            <param name="contact">The contact to get the xConnect ID for.</param>
+            <returns>The xConnect ID for the contact.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs">
+            <summary>
+            Arguments for the SubmitLiveAutomationEvent pipeline.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs.#ctor(Sitecore.Analytics.Tracking.Contact,Sitecore.Analytics.Tracking.CurrentInteraction,System.Guid)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs" /> class.
+            </summary>
+            <param name="contact">The contact who triggered the event.</param>
+            <param name="interaction">The interaction in which the event was triggered.</param>
+            <param name="eventDefinitionId">The ID of the definition of the current event that was triggered.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs"/> class.
+            </summary>
+            <param name="info">The serialized data.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs.SourceContact">
+            <summary>
+            The contact who triggered the event.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs.SourceInteraction">
+            <summary>
+            The interaction in which the event was triggered.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs.SourceEventDefinitionId">
+            <summary>
+            The ID of the definition of the current event that was triggered.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs.TargetContactId">
+            <summary>
+            The ID of the target contact to process the event for.
+            </summary>
+            <remarks>This contact must already exist in xDB.</remarks>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs.TargetInteraction">
+            <summary>
+            The target interaction to process with.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs.TargetCustomValues">
+            <summary>
+            Custom values to include with the live event registration.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs.UpdatedEnrollments">
+            <summary>
+            The enrollments which where updated as a result of processing the live event.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventPipeline">
+            <summary>
+            Pipeline that submits live automation event to Marketing Automation engine.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventPipeline.PipelineName">
+            <summary>
+            Name of the pipeline.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventPipeline._corePipeline">
+            <summary>
+            Core pipeline that is used to run pipelines.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventPipeline.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventPipeline"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventPipeline.#ctor(Sitecore.Abstractions.BaseCorePipelineManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventPipeline"/> class.
+            </summary>
+            <param name="corePipeline">Core pipeline that is used to run pipelines.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventPipeline.Run(Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs)">
+            <summary>
+            Runs the pipeline with specified arguments.
+            </summary>
+            <param name="args">The arguments to run the pipeline with.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveEvent">
+            <summary>
+            Submits the live event to the Automation Engine.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.ISubmitLiveAutomationEventProcessor" />
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveEvent._client">
+            <summary>
+            The <see cref="T:Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient"/> to use for event submission.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveEvent.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveEvent"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveEvent.#ctor(Sitecore.Xdb.MarketingAutomation.OperationsClient.IAutomationOperationsClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveEvent"/> class.
+            </summary>
+            <param name="automationClient">The client to submit the event through.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveEvent.Process(Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveEvent.GetClient">
+            <summary>
+            Gets the client used to submit the event.
+            </summary>
+            <returns>The client to use.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveOutcomeEventArgs">
+            <summary>
+            Arguments for the SubmitLiveAutomationEvent pipeline that hold <see cref="T:Sitecore.Analytics.Model.OutcomeData"/>.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveOutcomeEventArgs.#ctor(Sitecore.Analytics.Tracking.Contact,Sitecore.Analytics.Tracking.CurrentInteraction,Sitecore.Analytics.Model.OutcomeData)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveOutcomeEventArgs"/> class.
+            </summary>
+            <param name="contact">The contact who triggered the event.</param>
+            <param name="interaction">The interaction in which the event was triggered.</param>
+            <param name="outcomeData">The current outcome that was triggered.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveOutcomeEventArgs.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveOutcomeEventArgs"/> class.
+            </summary>
+            <param name="info">The serialized data.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveOutcomeEventArgs.SourceOutcomeData">
+            <summary>
+            The current outcome that was triggered.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveOutcomeEventArgs.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLivePageEventDataEventArgs">
+            <summary>
+            Arguments for the SubmitLiveAutomationEvent pipeline that hold <see cref="T:Sitecore.Analytics.Model.PageEventData"/>.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLivePageEventDataEventArgs.#ctor(Sitecore.Analytics.Tracking.Contact,Sitecore.Analytics.Tracking.CurrentInteraction,Sitecore.Analytics.Model.PageEventData)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLivePageEventDataEventArgs"/> class.
+            </summary>
+            <param name="contact">The contact who triggered the event.</param>
+            <param name="interaction">The interaction in which the event was triggered.</param>
+            <param name="pageEventData">The current event that was triggered.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLivePageEventDataEventArgs.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLivePageEventDataEventArgs"/> class.
+            </summary>
+            <param name="info">The serialized data.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLivePageEventDataEventArgs.SourcePageEventData">
+            <summary>
+            The current event that was triggered.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLivePageEventDataEventArgs.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.UpdateTrackerFacets">
+            <summary>
+            A SubmitLiveAutomationEvent pipeline processor which updates the tracker facets if enrollments have been updated.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.UpdateTrackerFacets.Process(Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.SubmitLiveAutomationEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.UpdateTrackerFacets.ShouldUpdateFacets(Sitecore.Xdb.MarketingAutomation.Core.Collections.IActivityEnrollmentUpdateCollection)">
+            <summary>
+            Determines whether the enrollment facets on the tracker should be updated.
+            </summary>
+            <param name="updatedEnrollments">The enrollments which have been updated.</param>
+            <returns>True if the tracker facets should be updated.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.UpdateTrackerFacets.UpdateFacetCache(Sitecore.Xdb.MarketingAutomation.Core.Collections.IActivityEnrollmentUpdateCollection,Sitecore.Analytics.Tracking.Contact)">
+            <summary>
+            Updates the tracker facets with the provided enrollments.
+            </summary>
+            <param name="updatedEnrollments">The updated enrollments which should be updated in the cache.</param>
+            <param name="contact">The contact to udpate the facets on.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.UpdateTrackerFacets.UpdateFacetCache(Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentUpdate,Sitecore.Analytics.Tracking.Contact)">
+            <summary>
+            Updates the tracker facets with the provided enrollment.
+            </summary>
+            <param name="updatedEnrollment">The enrollment to be updated into the cache.</param>
+            <param name="contact">The contact to udpate the facets on.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.UpdateTrackerFacets.AddEnrollment(Sitecore.Xdb.MarketingAutomation.Core.Processing.AddedActivityEnrollment,Sitecore.Analytics.Tracking.Contact)">
+            <summary>
+            Add a new enrollment to the tracker facets.
+            </summary>
+            <param name="enrollment">The enrollment to add to the cache.</param>
+            <param name="contact">The contact to update the facets of.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.UpdateTrackerFacets.TransitionEnrollment(Sitecore.Xdb.MarketingAutomation.Core.Processing.TransitionedActivityEnrollment,Sitecore.Analytics.Tracking.Contact)">
+            <summary>
+            Transitions an existing enrollment in the facets.
+            </summary>
+            <param name="enrollment">The enrollment to transition.</param>
+            <param name="contact">The contact to update the facets of.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.UpdateTrackerFacets.RemoveEnrollment(Sitecore.Xdb.MarketingAutomation.Core.Processing.RemovedActivityEnrollment,Sitecore.Analytics.Tracking.Contact)">
+            <summary>
+            Remove an enrollment from the current enrollments cache and update the exited plans cache.
+            </summary>
+            <param name="enrollment">The enrollment to remove.</param>
+            <param name="contact">The contact to update the facets of.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.UpdateTrackerFacets.GetPlanEnrollmentCache(Sitecore.Analytics.Tracking.Contact)">
+            <summary>
+            Gets the facet to update with current enrollments.
+            </summary>
+            <param name="contact">The contact to load the facet from.</param>
+            <returns>The facet to be updated.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.UpdateTrackerFacets.GetPlanExitCache(Sitecore.Analytics.Tracking.Contact)">
+            <summary>
+            Gets the facet to update with removed enrollments.
+            </summary>
+            <param name="contact">The contact to load the facet from.</param>
+            <returns>The facet to be updated.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Pipelines.SubmitLiveAutomationEvent.UpdateTrackerFacets.FindEnrollmentCacheEntry(Sitecore.XConnect.Collection.Model.AutomationPlanEnrollmentCache,Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey)">
+            <summary>
+            Finds the first matching enrollment cache entry which matches the provided enrollment key.
+            </summary>
+            <param name="cache">The cache to search.</param>
+            <param name="key">The key to match on.</param>
+            <returns>The first matching entry, or null if the entry wasn't found.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Providers.AutomationActivityModelProvider">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Providers.AutomationActivityModelProvider.#ctor(Sitecore.Marketing.Definitions.IDefinitionManager{Sitecore.Marketing.Definitions.AutomationPlans.Model.IAutomationPlanDefinition},Sitecore.Xdb.MarketingAutomation.Locators.AutomationPlans.IActivityDescriptorLocator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Providers.AutomationActivityModelProvider"/>
+            </summary>
+            <param name="automationPlanDefinitionManager">Automation plan definition manager.</param>
+            <param name="activityDescriptorLocator">Activity descriptor locator.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Providers.AutomationActivityModelProvider.GetPlans(System.Globalization.CultureInfo)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Providers.AutomationActivityModelProvider.GetActivities(System.Globalization.CultureInfo,Sitecore.Xdb.MarketingAutomation.Tracking.Filters.ActivityFilter)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Providers.IAutomationActivityModelProvider">
+            <summary>
+            The provider to get all automation plans or
+            automation plans with corresponding activities.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Providers.IAutomationActivityModelProvider.GetPlans(System.Globalization.CultureInfo)">
+            <summary>
+            Gets all automation plans.
+            </summary>
+            <param name="cultureInfo">Culture information.</param>
+            <returns>
+            The collection of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Models.AutomationActivityModel"/>
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.Tracking.Providers.IAutomationActivityModelProvider.GetActivities(System.Globalization.CultureInfo,Sitecore.Xdb.MarketingAutomation.Tracking.Filters.ActivityFilter)">
+            <summary>
+            Gets all automation plans with corresponding activities.
+            </summary>
+            <param name="cultureInfo">Culture information.</param>
+            <param name="activityFilter">Filter for activities of automation campaigns.</param>
+            <returns>
+            The collection of the <see cref="T:Sitecore.Xdb.MarketingAutomation.Tracking.Models.AutomationActivityModel"/>
+            </returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.Tracking.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Resources.ContactNotInitialized">
+            <summary>
+              Looks up a localized string similar to Tracker.Contact is not initialized.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Resources.FailedToRunSubmitLiveAutomationEventPipeline">
+            <summary>
+              Looks up a localized string similar to Failed to run &quot;submitLiveAutomationEvent&quot; pipeline..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.Tracking.Resources.TrackerNotInitialized">
+            <summary>
+              Looks up a localized string similar to Tracker.Current is not initialized.
+            </summary>
+        </member>
+    </members>
+</doc>

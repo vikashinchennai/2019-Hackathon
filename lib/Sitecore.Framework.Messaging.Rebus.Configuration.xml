@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Messaging.Rebus.Configuration</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices">
+            <summary>
+            Allows for the registration of configuration support for messaging vendor implementations in use (i.e. SqlServer, Azure).
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayClientBus``1(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer,Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer},System.Action{Rebus.Bus.IBus}[])">
+            <summary>
+            Registers a Gateway Client bus as the default <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> using a specified
+            <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSink"/> implementation.  The sink must be registered in the container
+            as its concrete type (not as an <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSink"/>).
+            </summary>
+            <typeparam name="TSink">The type of sink used for the Gateway Client.</typeparam>
+            <param name="builder">The current builder.</param>
+            <param name="configureGatewayClient">The Gateway Client configuration.</param>
+            <param name="busStartupActions">A collection of actions to run after the bus starts up.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayClientBus``2(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer,Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer},System.Action{Rebus.Bus.IBus}[])">
+            <summary>
+            Registers a Gateway Client <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> with the supplied name using a specified
+            <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSink"/> implementation.  The sink must be registered in the container
+            as its concrete type (not as an <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSink"/>).
+            </summary>
+            <typeparam name="TBusName">The type used to specify the name of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>.</typeparam>
+            <typeparam name="TSink">The type of sink used for the Gateway Client.</typeparam>
+            <param name="builder">The current builder.</param>
+            <param name="configureGatewayClient">The Gateway Client configuration.</param>
+            <param name="busStartupActions">A collection of actions to run after the bus starts up.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayClientBus``1(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.String,System.Func{Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer,Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer},System.Action{Rebus.Bus.IBus}[])">
+            <summary>
+            Registers a Gateway Client <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> with the supplied name using a specified
+            <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSink"/> implementation.  The sink must be registered in the container
+            as its concrete type (not as an <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSink"/>).
+            </summary>
+            <typeparam name="TSink">The type of sink used for the Gateway Client.</typeparam>
+            <param name="builder">The current builder.</param>
+            <param name="busName">The name to assign to the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> being registered.</param>
+            <param name="configureGatewayClient">The Gateway Client configuration.</param>
+            <param name="busStartupActions">A collection of actions to run after the bus starts up.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayClientBus``1(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.String,System.Func{System.IServiceProvider,Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer,Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer},System.Action{Rebus.Bus.IBus}[])">
+            <summary>
+            Registers a Gateway Client <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> with the supplied name using a specified
+            <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSink"/> implementation.  The sink must be registered in the container
+            as its concrete type (not as an <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSink"/>).
+            </summary>
+            <typeparam name="TSink">The type of sink used for the Gateway Client.</typeparam>
+            <param name="builder">The current builder.</param>
+            <param name="busName">The name to assign to the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> being registered.</param>
+            <param name="configureGatewayClient">The Gateway Client configuration to be executed at the time the bus is first requested from the container.</param>
+            <param name="busStartupActions">A collection of actions to run after the bus starts up.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayClientBuses(Sitecore.Framework.Messaging.IMessageServiceBuilder,Microsoft.Extensions.Configuration.IConfiguration,System.Action{Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices})">
+            <summary> 
+            Adds one or more named Rebus Gateway Client instances in the current service collection according to supplied Rebus configuration.
+            </summary> 
+            <param name="builder">The current message service builder.</param> 
+            <param name="configuration">The <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> that contains the Rebus configuration for one or more named Gateway Client buses.</param> 
+            <param name="rebusConfigServices">Allows for registration of configuration support for messaging vendor implementations in use (i.e. AddSqlServerConfigurators(), AddAzureConfigurators()).</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayClientBuses(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{System.IServiceProvider,Microsoft.Extensions.Configuration.IConfiguration},System.Action{Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices})">
+            <summary> 
+            Adds one or more named Rebus Gateway Client instances in the current service collection according to supplied Rebus configuration.
+            </summary> 
+            <param name="builder">The current message service builder.</param> 
+            <param name="configurationFactory">Provides the <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> that contains the Rebus configuration for one or more named Gateway Client buses.</param> 
+            <param name="rebusConfigServices">Allows for registration of configuration support for messaging vendor implementations in use (i.e. AddSqlServerConfigurators(), AddAzureConfigurators()).</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayClientBus(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{System.IServiceProvider,Microsoft.Extensions.Configuration.IConfigurationSection},System.Action{Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices})">
+            <summary> 
+            Adds a named Rebus Gateway Client instance in the current service collection according to supplied Rebus configuration.
+            </summary> 
+            <param name="builder">The current message service builder.</param> 
+            <param name="configurationFactory">Provides the <see cref="T:Microsoft.Extensions.Configuration.IConfigurationSection"/> that contains the Rebus configuration for a named Gateway Client bus.</param> 
+            <param name="rebusConfigServices">Allows for registration of configuration support for messaging vendor implementations in use (i.e. AddSqlServerConfigurators(), AddAzureConfigurators()).</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayServerBus(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer,Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer},System.Action{Rebus.Bus.IBus}[])">
+            <summary>
+            Registers a Gateway Server as the default <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>.
+            </summary>
+            <param name="builder">The current builder.</param>
+            <param name="configureGatewayServer">The Gateway Server configuration.</param>
+            <param name="busStartupActions">A collection of actions to run after the bus starts up.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayServerBus``1(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer,Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer},System.Action{Rebus.Bus.IBus}[])">
+            <summary>
+            Registers a Gateway Server <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> with the supplied name.
+            </summary>
+            <typeparam name="TBusName">The type used to specify the name of the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/>.</typeparam>
+            <param name="builder">The current builder.</param>
+            <param name="configureGatewayServer">The Gateway Server configuration.</param>
+            <param name="busStartupActions">A collection of actions to run after the bus starts up.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayServerBus(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.String,System.Func{Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer,Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer},System.Action{Rebus.Bus.IBus}[])">
+            <summary>
+            Registers a Gateway Server <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> with the supplied name.
+            </summary>
+            <param name="builder">The current builder.</param>
+            <param name="busName">The name to assign to the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> being registered.</param>
+            <param name="configureGatewayServer">The Gateway Server configuration.</param>
+            <param name="busStartupActions">A collection of actions to run after the bus starts up.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayServerBus(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.String,System.Func{System.IServiceProvider,Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer,Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer},System.Action{Rebus.Bus.IBus}[])">
+            <summary>
+            Registers a Gateway Server <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> with the supplied name.
+            </summary>
+            <param name="builder">The current builder.</param>
+            <param name="busName">The name to assign to the <see cref="T:Sitecore.Framework.Messaging.IMessageBus"/> being registered.</param>
+            <param name="configureGatewayServer">The Gateway Server configuration to be executed at the time the bus is first requested from the container.</param>
+            <param name="busStartupActions">A collection of actions to run after the bus starts up.</param>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayServerBuses(Sitecore.Framework.Messaging.IMessageServiceBuilder,Microsoft.Extensions.Configuration.IConfiguration,System.Action{Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices})">
+            <summary> 
+            Adds one or more named Rebus Gateway Server instances in the current service collection according to supplied Rebus configuration.
+            </summary> 
+            <param name="builder">The current message service builder.</param> 
+            <param name="configuration">The <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> that contains the Rebus configuration for one or more named Gateway Server buses.</param> 
+            <param name="rebusConfigServices">Allows for registration of configuration support for messaging vendor implementations in use (i.e. AddSqlServerConfigurators(), AddAzureConfigurators()).</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayServerBuses(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{System.IServiceProvider,Microsoft.Extensions.Configuration.IConfiguration},System.Action{Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices})">
+            <summary> 
+            Adds one or more named Rebus Gateway Server instances in the current service collection according to supplied Rebus configuration.
+            </summary> 
+            <param name="builder">The current message service builder.</param> 
+            <param name="configurationFactory">Provides the <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> that contains the Rebus configuration for one or more named Gateway Server buses.</param> 
+            <param name="rebusConfigServices">Allows for registration of configuration support for messaging vendor implementations in use (i.e. AddSqlServerConfigurators(), AddAzureConfigurators()).</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.MessageServiceBuilderGatewayExtensions.AddGatewayServerBus(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{System.IServiceProvider,Microsoft.Extensions.Configuration.IConfigurationSection},System.Action{Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices})">
+            <summary> 
+            Add a named Rebus Gateway Server instance in the current service collection according to supplied Rebus configuration.
+            </summary> 
+            <param name="builder">The current message service builder.</param> 
+            <param name="configurationFactory">Provides the <see cref="T:Microsoft.Extensions.Configuration.IConfigurationSection"/> that contains the Rebus configuration for one named Gateway Server buses.</param> 
+            <param name="rebusConfigServices">Allows for registration of configuration support for messaging vendor implementations in use (i.e. AddSqlServerConfigurators(), AddAzureConfigurators()).</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.ServiceProviderContainerAdapter">
+            <summary>
+            Implementation of <see cref="T:Rebus.Activation.IContainerAdapter"/> that is backed by a ServiceProvider
+            </summary>
+            <seealso cref="T:Rebus.Activation.IHandlerActivator" />
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.ServiceProviderContainerAdapter.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Framework.Messaging.Rebus.ServiceProviderContainerAdapter"/> class.
+            </summary>
+            <param name="provider"></param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageServiceBuilderExtensions.AddBus(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{Rebus.Config.RebusConfigurer,Rebus.Config.RebusConfigurer},System.Action{Rebus.Bus.IBus}[])">
+            <summary>
+            Registers a default Rebus instance in the current service collection.
+            </summary>
+            <param name="builder">The current message service builder.</param>
+            <param name="configureRebus">The configuration of the Rebus instance.</param>
+            <param name="busStartupActions">A collection of actions to run after the bus starts up.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageServiceBuilderExtensions.AddBus``1(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{Rebus.Config.RebusConfigurer,Rebus.Config.RebusConfigurer},System.Action{Rebus.Bus.IBus}[])">
+            <summary>
+            Registers a named Rebus instance in the current service collection.
+            </summary>
+            <typeparam name="TBusName">The type used to generate a unique name for the bus instance.</typeparam>
+            <param name="builder">The current message service builder.</param>
+            <param name="configureRebus">The configuration of the Rebus instance.</param>
+            <param name="busStartupActions">A collection of actions to run after the bus starts up.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageServiceBuilderExtensions.AddBus(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.String,System.Func{Rebus.Config.RebusConfigurer,Rebus.Config.RebusConfigurer},System.Action{Rebus.Bus.IBus}[])">
+            <summary>
+            Registers a named Rebus instance in the current service collection.
+            </summary>
+            <param name="builder">The current message service builder.</param>
+            <param name="busName">A unique name assigned to the bus instance.</param>
+            <param name="configureRebus">The configuration of the Rebus instance.</param>
+            <param name="busStartupActions">A collection of actions to run after the bus starts up.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageServiceBuilderExtensions.AddBus(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.String,System.Func{System.IServiceProvider,Rebus.Config.RebusConfigurer,Rebus.Config.RebusConfigurer},System.Action{Rebus.Bus.IBus}[])">
+            <summary>
+            Registers a named Rebus instance in the current service collection.
+            </summary>
+            <param name="builder">The current message service builder.</param>
+            <param name="busName">A unique name assigned to the bus instance.</param>
+            <param name="configureRebus">The configuration of the Rebus instance.</param>
+            <param name="busStartupActions">A collection of actions to run after the bus starts up.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageServiceBuilderExtensions.AddBuses(Sitecore.Framework.Messaging.IMessageServiceBuilder,Microsoft.Extensions.Configuration.IConfiguration,System.Action{Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices})">
+            <summary> 
+            Adds one or more named Rebus instances in the current service collection according to supplied Rebus configuration.
+            </summary> 
+            <param name="builder">The current message service builder.</param> 
+            <param name="configuration">The <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> that contains the Rebus configuration for one or more named buses.</param> 
+            <param name="rebusConfigServices">Allows for registration of configuration support for messaging vendor implementations in use (i.e. AddSqlServerConfigurators(), AddAzureConfigurators()).</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageServiceBuilderExtensions.AddBuses(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{Microsoft.Extensions.Configuration.IConfiguration},System.Action{Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices})">
+            <summary> 
+            Adds one or more named Rebus instances in the current service collection according to supplied Rebus configuration.
+            </summary> 
+            <param name="builder">The current message service builder.</param> 
+            <param name="configurationFactory">Provides the <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> that contains the Rebus configuration for one or more named buses.</param> 
+            <param name="rebusConfigServices">Allows for registration of configuration support for messaging vendor implementations in use (i.e. AddSqlServerConfigurators(), AddAzureConfigurators()).</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageServiceBuilderExtensions.AddBuses(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{System.IServiceProvider,Microsoft.Extensions.Configuration.IConfiguration},System.Action{Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices})">
+            <summary> 
+            Adds one or more named Rebus instances in the current service collection according to supplied Rebus configuration.
+            </summary> 
+            <param name="builder">The current message service builder.</param> 
+            <param name="configurationFactory">Provides the <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> that contains the Rebus configuration for one or more named buses.</param> 
+            <param name="rebusConfigServices">Allows for registration of configuration support for messaging vendor implementations in use (i.e. AddSqlServerConfigurators(), AddAzureConfigurators()).</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.MessageServiceBuilderExtensions.AddBus(Sitecore.Framework.Messaging.IMessageServiceBuilder,System.Func{System.IServiceProvider,Microsoft.Extensions.Configuration.IConfigurationSection},System.Action{Sitecore.Framework.Messaging.Rebus.Configuration.RebusConfigurationServices})">
+            <summary> 
+            Add a named Rebus instance in the current service collection according to supplied Rebus configuration.
+            </summary> 
+            <param name="builder">The current message service builder.</param> 
+            <param name="configurationFactory">Provides the <see cref="T:Microsoft.Extensions.Configuration.IConfigurationSection"/> that contains the Rebus configuration for a named bus.</param> 
+            <param name="rebusConfigServices">Allows for registration of configuration support for messaging vendor implementations in use (i.e. AddSqlServerConfigurators(), AddAzureConfigurators()).</param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+    </members>
+</doc>

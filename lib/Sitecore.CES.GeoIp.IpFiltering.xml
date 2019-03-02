@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.CES.GeoIp.IpFiltering</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.CES.GeoIp.IpFiltering.CsvFileIpRangesLoader">
+            <summary>
+            Defines the IP ranges loader from CSV file.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.IpFiltering.CsvFileIpRangesLoader.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.IpFiltering.CsvFileIpRangesLoader"/> class.
+            </summary>
+            <param name="filePath">The path to CSV-formatted file.</param>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.IpFiltering.Data.IpRange">
+            <summary>
+            Defines the ip range  between two IP addresses.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.IpFiltering.Data.IpRange.#ctor(System.Net.IPAddress,System.Net.IPAddress)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.IpFiltering.Data.IpRange"/> class.
+            </summary>
+            <param name="lowIp">The low IP address.</param>
+            <param name="highIp">The high IP address.</param>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.IpFiltering.Data.IpRange.IsIpInRange(System.Net.IPAddress)">
+            <summary>
+            Checks whether specified IP address is in IP range.
+            </summary>
+            <param name="ip">The IP address.</param>
+            <returns><c>true</c> - if specified IP address is in IP range</returns>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.IpFiltering.Diagnostics.CanBeNullAttribute">
+            <summary>
+            Defines the CanBeNull attribute.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.IpFiltering.IIpFilter.IsInFilterRange(System.Net.IPAddress)">
+            <summary>
+            Checks presence of an Ip address in defined Ip ranges.
+            </summary>
+            <param name="ip">The Ip address.</param>
+            <returns><c>true</c> - if specified Ip address is in filter ranges.</returns>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.IpFiltering.IIpRangesLoader.Load">
+            <summary>
+            Loads IP ranges.
+            </summary>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.IpFiltering.InlineCsvIpRangesLoader">
+            <summary>
+            Loads IP ranges from a CSV-formatted stream.
+            </summary>
+            <para>
+                Stream format:
+            <code>
+                header, header, ...
+                ip-range lo,ip-range hi[,description etc...]
+                ip-range lo,ip-range hi[,description etc...]
+                ip-range lo,ip-range hi[,description etc...]
+                ip-range lo,ip-range hi[,description etc...]
+            </code>
+            </para>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.IpFiltering.InlineCsvIpRangesLoader.#ctor(System.IO.TextReader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.IpFiltering.InlineCsvIpRangesLoader"/> class.
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="T:Sitecore.CES.GeoIp.IpFiltering.IpFilter">
+            <summary>
+            Defines the IP filter.
+            </summary>
+        </member>
+        <member name="M:Sitecore.CES.GeoIp.IpFiltering.IpFilter.#ctor(Sitecore.CES.GeoIp.IpFiltering.IIpRangesLoader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.CES.GeoIp.IpFiltering.IpFilter"/> class.
+            </summary>
+            <param name="ipRangesLoader">The Ip ranges loader.</param>
+        </member>
+    </members>
+</doc>

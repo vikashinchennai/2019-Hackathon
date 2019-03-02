@@ -1,0 +1,583 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Marketing.Automation.Activity</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Marketing.Automation.Activity.BaseActivity">
+            <summary>
+            An abstract base class for activities with logging.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.BaseActivity.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.Core.Activity.IActivity})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.BaseActivity"/>.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.BaseActivity.Logger">
+            <summary>
+            Gets the logger.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.BaseActivity.Services">
+            <summary>
+            Gets or sets the default set of services for the activity.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.BaseActivity.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns><see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessMove"/> if result status is successful.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.BaseActivity.GetContactFacet``1(Sitecore.XConnect.Contact)">
+            <summary>
+            Gets an existing <see cref="T:Sitecore.XConnect.Facet"/> on the <paramref name="contact"/> or creates it if it does not exist
+            </summary>
+            <typeparam name="T">A type of <see cref="T:Sitecore.XConnect.Facet"/></typeparam>
+            <returns><see cref="T:Sitecore.XConnect.Facet"/> of <typeparamref name="T"/></returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.BaseListener">
+            <summary>
+            Abstract class for activities which uses a delay or a "wait until" to evaluate if the contact should be moved.
+            The implementing classes should define either a delay, or "wait until".
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.BaseListener.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.Core.Activity.IActivity})">
+            <summary>
+            Create a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.BaseListener"/> class. 
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.BaseListener.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.Core.Activity.IActivity},System.String,System.String)">
+            <summary>
+            Create a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.BaseListener"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="truePathKey">The key of the path to take when the condition evaluates to true.</param>
+            <param name="falsePathKey">The key of the path to take when the condition evaluates to false.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.BaseListener.Name">
+            <summary>
+            Gets or sets the name of the listener
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.BaseListener.ListenerDelay">
+            <summary>
+            The listener delay
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.BaseListener.TruePathKey">
+            <summary>
+            Gets the key of the path to take when the <see cref="M:Sitecore.Marketing.Automation.Activity.BaseListener.ShouldMove(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)"/> evaluates to true.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.BaseListener.FalsePathKey">
+            <summary>
+            Gets the key of the path to take when the <see cref="M:Sitecore.Marketing.Automation.Activity.BaseListener.ShouldMove(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)"/> evaluates to false.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.BaseListener.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns><see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessMove"/> with <see cref="P:Sitecore.Marketing.Automation.Activity.BaseListener.TruePathKey"/> set if <see cref="M:Sitecore.Marketing.Automation.Activity.BaseListener.ShouldMove(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)"/> evaluates to <c>true</c>,
+            <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessMove"/> with <see cref="P:Sitecore.Marketing.Automation.Activity.BaseListener.FalsePathKey"/> if <see cref="P:Sitecore.Marketing.Automation.Models.ListenerDelay.Delay"/> or <see cref="P:Sitecore.Marketing.Automation.Models.ListenerDelay.WaitUntil"/> has passed,
+            <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessStay"/> if not</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.BaseListener.ShouldMove(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Determines whether the contact should be moved to the next activity.
+            </summary>
+            <param name="context">The context under which the assessment is done.</param>
+            <returns>True if the contact should be moved to the <see cref="P:Sitecore.Marketing.Automation.Activity.BaseListener.TruePathKey"/>, or false if the contact movement should be delegated to the configured delay or "wait until" parameter.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.CampaignListener">
+            <summary>
+            Implements a campaign listener activity which uses a delay or a "wait until" to determine if the contact should be moved
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.CampaignListener.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.CampaignListener})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.CampaignListener"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.CampaignListener.Campaigns">
+            <summary>
+            Gets or sets the list of goals IDs.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.CampaignListener.MatchAll">
+            <summary>
+            Gets or sets whether all campaigns must be matched
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.CampaignListener.AddContextInteraction(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext,System.Collections.ObjectModel.Collection{System.Guid})">
+            <summary>
+            Adds the interaction CampaignId to the list of campaigns identified in the context
+            </summary>
+            <param name="context">The <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext"/></param>
+            <param name="foundCampaigns">The list of campaigns identified in the context</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.CampaignListener.AddPreviousInteractions(System.Collections.ObjectModel.Collection{System.Guid})">
+            <summary>
+            Adds the CampaignIDs from previous interactions to the list of campaigns identified in the context
+            </summary>
+            <param name="foundCampaigns">The list of campaigns identified in the context</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.CampaignListener.ShouldMove(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.ChangeContactBehaviorProfileValue">
+            <summary>
+            Implements a change contact behavior profile value activity.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.ChangeContactBehaviorProfileValue.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.ChangeContactBehaviorProfileValue})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.ChangeContactBehaviorProfileValue"/>.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.ChangeContactBehaviorProfileValue.BehaviorProfileValues">
+            <summary>
+            Gets or sets the 'BehaviorProfileValues' property.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.ChangeContactBehaviorProfileValue.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns><see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessMove"/> if result status is successful.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.ChangeContactBehaviorProfileValue.UpdateContactBehaviorProfile(System.Collections.Generic.Dictionary{System.Guid,Sitecore.XConnect.Collection.Model.ProfileScore},System.Collections.Generic.IEnumerable{Sitecore.Marketing.Automation.Models.BehaviorProfileValue})">
+            <summary>
+            Updates the contact behavior profile.
+            </summary>
+            <param name="profileScores">The <see cref="T:Sitecore.XConnect.Collection.Model.ProfileScores"/>.</param>
+            <param name="behaviorProfileValues">The <see cref="T:System.Collections.Generic.IEnumerable`1"/>.</param>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.ChangeEngagementScore">
+            <summary>
+            Increases the contact's engagement value
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.ChangeEngagementScore.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.ChangeEngagementScore})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.ChangeEngagementScore"/>.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.ChangeEngagementScore.EngagementValue">
+            <summary>
+            Gets the engagement value.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.ChangeEngagementScore.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns><see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessMove"/> if result status is successful.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.Conditional">
+            <summary>
+            Implements an activity which uses a condition.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.Conditional.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.Conditional},Sitecore.XConnect.Segmentation.Conditions.ExpressionBuilder.IConditionExpressionBuilder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.Conditional"/> class
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="conditionExpressionBuilder">The condition expression builder used when evaluating conditions</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.Conditional.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.Conditional},System.String,System.String,Sitecore.XConnect.Segmentation.Conditions.ExpressionBuilder.IConditionExpressionBuilder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.Conditional"/> class
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="truePathKey">The key of the path to take when the condition evaluates to true.</param>
+            <param name="falsePathKey">The key of the path to take when the condition evaluates to false.</param>
+            <param name="conditionExpressionBuilder">The condition expression builder used when evaluating conditions</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.Conditional.Name">
+            <summary>
+            Gets or sets the name of the decision point
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.Conditional.Condition">
+            <summary>
+            Gets or sets the condition to evaluate.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.Conditional.TruePathKey">
+            <summary>
+            Gets the key of the path to take when the condition evaluates to true.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.Conditional.FalsePathKey">
+            <summary>
+            Gets the key of the path to take when the condition evaluates to false.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.Conditional.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns>The result for the invocation.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.CustomListener">
+            <summary>
+            Implements a listener activity which uses condition to determine if the contact should be moved
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.CustomListener.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.CustomListener},Sitecore.XConnect.Segmentation.Conditions.ExpressionBuilder.IConditionExpressionBuilder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.CustomListener"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="conditionExpressionBuilder">The condition expression builder used when evaluating conditions</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.CustomListener.Condition">
+            <summary>
+            Gets or sets the condition to evaluate.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.CustomListener.ShouldMove(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.DelayListener">
+            <summary>
+            Implements a delay activity which uses a delay or a "wait until" to determine if the contact should be moved
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.DelayListener.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.DelayListener})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.DelayListener"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.Extensions.RulesExtensions">
+            <summary>
+            Extension methods for working with Sitecore.Marketing.Rules
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.Extensions.RulesExtensions.Evaluates(Sitecore.Marketing.Rules.Rule[],Sitecore.Xdb.MarketingAutomation.Core.Activity.IActivityServices,Sitecore.XConnect.Segmentation.Conditions.ExpressionBuilder.IConditionExpressionBuilder,Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Evalutates the rules
+            </summary>
+            <param name="rules">The rules</param>
+            <param name="services">The activity service to run the evalutation</param>
+            <param name="conditionExpressionBuilder">The condition expression builder</param>
+            <param name="context">The contact processing context</param>
+            <remarks>The <paramref name="rules"/> are expected to have a single <see cref="T:Sitecore.Marketing.Rules.IRuleConditionNode"/>. 
+            If it is <c>null</c>, empty or have more nodes, an exception will be thrown.</remarks>
+            <returns><c>true</c> if the condition passes, <c>false</c> if it does not.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.GoalTriggered">
+            <summary>
+            Implements a listener activity which determines if the contact has triggered a goal
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.GoalTriggered.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.GoalTriggered})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.GoalTriggered"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.GoalTriggered.Goals">
+            <summary>
+            Gets or sets the list of goals IDs.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.GoalTriggered.MatchAll">
+            <summary>
+            Gets or sets whether to match all the selected <see cref="P:Sitecore.Marketing.Automation.Activity.GoalTriggered.Goals"/> or any one of them.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.GoalTriggered.ShouldMove(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.MoveToAnotherCampaign">
+            <summary>
+            Implements a move to another campaign activity.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.MoveToAnotherCampaign.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.MoveToAnotherCampaign})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.MoveToAnotherCampaign"/>.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.MoveToAnotherCampaign.CampaignId">
+            <summary>
+            Gets or sets the 'CampaignId' parameter.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.MoveToAnotherCampaign.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns><see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessMove"/> if result status is successful.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.OutcomeRegistered">
+            <summary>
+            Implements a listener activity which determines if the contact registers an outcome within a specified time period.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.OutcomeRegistered.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.OutcomeRegistered})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.OutcomeRegistered"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.OutcomeRegistered.Outcomes">
+            <summary>
+            Gets or sets the list of outcomes IDs.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.OutcomeRegistered.MatchAll">
+            <summary>
+            Gets or sets whether to match all the selected <see cref="P:Sitecore.Marketing.Automation.Activity.OutcomeRegistered.Outcomes"/> or any one of them.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.OutcomeRegistered.ShouldMove(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.PlanEntry">
+            <summary>
+            A plan entry activity which checks specific events, goals, outcomes, test operations and condition in the current interaction.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.PlanEntry.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.PlanEntry},Sitecore.XConnect.Segmentation.Conditions.ExpressionBuilder.IConditionExpressionBuilder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.PlanEntry"/> class
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="conditionExpressionBuilder">The condition expression builder used when evaluating conditions</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.PlanEntry.Condition">
+            <summary>
+            Gets or sets the condition to evaluate.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.PlanEntry.EventIds">
+            <summary>
+            Gets or sets the IDs of events which the contact must have to allow entry into the plan.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.PlanEntry.GoalIds">
+            <summary>
+            Gets or sets the IDs of goals which the contact must have to allow entry into the plan.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.PlanEntry.OutcomeIds">
+            <summary>
+            Gets or sets the IDs of outcomes which the contact must have to allow entry into the plan.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.PlanEntry.TestOperation">
+            <summary>
+            Gets values for the test operation against a collection of values.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.PlanEntry.UseCondition">
+            <summary>
+            Gets or sets a value indicating whether this instance is specified rules.
+            </summary>
+            <value>
+              <c>true</c> if this instance is specified rules; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.PlanEntry.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns>The result for the invocation.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.PlanEntry.CheckCollections(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Checks collections to determine entry
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns> Result of checking event, goal and outcome collections</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.PlanEntry.CheckCollection(System.Collections.Generic.IEnumerable{System.Guid},System.Collections.Generic.List{System.Guid})">
+            <summary>
+            Checks if interaction collection ids and input collection ids intersect
+            </summary>
+            <param name="interactionIds">Interaction collection ids</param>
+            <param name="expectedIds">Expected ids as configured on the activity</param>
+            <returns>If there are no expected ids or they intersect with interaction ids, returns <c>true</c>, else <c>false</c></returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.PlanExit">
+            <summary>
+            Implements the activity which exits an enrollment from a plan.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.PlanExit.Services">
+            <summary>
+            Gets or sets the default set of services for the activity.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.PlanExit.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns>The result for the invocation.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.ReturnToStart">
+            <summary>
+            Implements a return to the start of current campaign activity.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.ReturnToStart.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.ReturnToStart},Sitecore.Xdb.MarketingAutomation.Core.Locator.IPlanLocator,Sitecore.Xdb.MarketingAutomation.Core.Enrollment.IActivityEnrollmentProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.ReturnToStart"/>.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="planLocator">The plan locator.</param>
+            <param name="activityEnrollmentProvider">The activity enrollment provider.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.ReturnToStart.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns><see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessMove"/> if result status is successful.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.SubscribeToList">
+            <summary>
+            Implements a subscribe to list activity.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.SubscribeToList.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.SubscribeToList})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.SubscribeToList"/>.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.SubscribeToList.Lists">
+            <summary>
+            Gets or sets the list of subscription Id's.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.SubscribeToList.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns><see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessMove"/> if result status is successful.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.UnsubscribeFromList">
+            <summary>
+            Implements unsubscribe from list activity.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.UnsubscribeFromList.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.UnsubscribeFromList})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.UnsubscribeFromList"/>.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.UnsubscribeFromList.Lists">
+            <summary>
+            Gets or sets the list of contact list Id's to unsubscribe.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.UnsubscribeFromList.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns><see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessMove"/> if result status is successful.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.UnsubscribeFromList.TryRemoveFromList(Sitecore.XConnect.Collection.Model.ListSubscriptions,System.Guid,Sitecore.Xdb.MarketingAutomation.Core.Activity.Failure@)">
+            <summary>
+            Tries to remove the list from the subscriptions.
+            </summary>
+            <param name="listSubscriptions">The list subscriptions.</param>
+            <param name="listId">The list Id.</param>
+            <param name="failure">The failure.</param>
+            <returns><see langword="True"/> if the list was removed successfully.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.UnsubscribeFromList.UpdateContact(Sitecore.XConnect.Contact,Sitecore.XConnect.Collection.Model.ListSubscriptions)">
+            <summary>
+            Updates the <see cref="T:Sitecore.XConnect.Contact"/> with the <see cref="T:Sitecore.XConnect.Collection.Model.ListSubscriptions"/> facet.
+            </summary>
+            <param name="contact">The contact.</param>
+            <param name="listSubscriptions">The list subscriptions.</param>
+            <returns><see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessMove"/> if the facet has been set and submitted successfully.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.UpdateConsentSettings">
+            <summary>
+            Implements an update consent settings activity.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.UpdateConsentSettings.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.UpdateConsentSettings})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.UpdateConsentSettings"/>.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.UpdateConsentSettings.ConsentRevoked">
+            <summary>
+            Gets or sets the 'ConsentRevoked' flag for the <see cref="T:Sitecore.XConnect.Collection.Model.ConsentInformation"/>.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Activity.UpdateConsentSettings.DoNotMarket">
+            <summary>
+            Gets or sets the 'DoNotMarket' flag for the <see cref="T:Sitecore.XConnect.Collection.Model.ConsentInformation"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.UpdateConsentSettings.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns><see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessMove"/> if result status is successful.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.ValidateEmailAddress">
+            <summary>
+            Implements an activity for validating email address.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.ValidateEmailAddress.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.ValidateEmailAddress})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.ValidateEmailAddress"/>.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.ValidateEmailAddress.Invoke(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <summary>
+            Invokes the activity.
+            </summary>
+            <param name="context">The context to invoke the activity with.</param>
+            <returns><see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Activity.SuccessMove"/> if result status is successful.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Activity.VisitListener">
+            <summary>
+            Implements a listener which determines if the contact visits the site within a specified time period.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.VisitListener.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Marketing.Automation.Activity.VisitListener})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Activity.OutcomeRegistered"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Activity.VisitListener.ShouldMove(Sitecore.Xdb.MarketingAutomation.Core.Processing.Plan.IContactProcessingContext)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

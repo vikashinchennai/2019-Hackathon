@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Messaging.Rebus</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.IGatewayBus">
+            <summary>
+            Defines a bus that can be used to transfer messages between message queues efficiently.
+            </summary>
+            <remarks>
+            Currently, Gateways don't support:
+            - publish / subscribe
+            - oneway semantics
+            - Sagas
+            - Databus
+            - Timeout managers - so currently batch transports should support defer's natively.
+            - any transports apart from SqlServer, Azure, InMemory?
+            - external handlers
+            
+            But do support
+            - Defer
+            - producer / consumer
+            - Send and SendAsync
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.IGatewayBus.SendLocalRawBatch(System.Collections.Generic.IEnumerable{Rebus.Messages.TransportMessage})">
+            <summary>
+            Sends a batch of raw messages to the input queue of the bus.
+            </summary>
+            <param name="batch">A collection of raw messages.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.IGatewayBus.DeferLocalRawBatch(System.TimeSpan,System.Collections.Generic.IEnumerable{Rebus.Messages.TransportMessage})">
+            <summary>
+            Sends a batch of raw messages to be delivered at a later date to the input queue of the bus.
+            </summary>
+            <param name="delay">The time period into the future at which the messages can be consumed.</param>
+            <param name="batch">A collection of raw messages.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.ConfigureGatewayClient.With(Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSinkProvider)">
+            <summary>
+            The entry point to configure a Gateway Client bus.
+            </summary>
+            <param name="handlerActivator">The handler activator instance that provides implementations for handlers to process the raw batches exported from a Gateway Client bus.</param>
+            <returns>A configurer object to define the configuration of the client bus.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.ConfigureGatewayServer.With(Rebus.Activation.IHandlerActivator)">
+            <summary>
+            The entry point to configure a Gateway Server bus.
+            </summary>
+            <param name="handlerActivator">The handler activator instance that provides handler instances to process messages.</param>
+            <returns>A configurer object to define the configuration of the server bus.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer.Logging(System.Action{Rebus.Config.RebusLoggingConfigurer})">
+            <summary>
+            Configures how Rebus logs stuff that happens.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer.Transport(System.Action{Rebus.Config.StandardConfigurer{Sitecore.Framework.Messaging.Rebus.Gateway.IBatchTransport}})">
+            <summary>
+            Configures how Rebus sends/receives messages by allowing for choosing which implementation of <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.IBatchTransport"/> to use.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer.Routing(System.Action{Rebus.Config.StandardConfigurer{Rebus.Routing.IRouter}})">
+            <summary>
+            Configures how Rebus routes messages by allowing for choosing which implementation of <see cref="T:Rebus.Routing.IRouter"/> to use
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer.Serialization(System.Action{Rebus.Config.StandardConfigurer{Rebus.Serialization.ISerializer}})">
+            <summary>
+            Configures how Rebus serializes messages by allowing for choosing which implementation of <see cref="T:Rebus.Serialization.ISerializer"/> to use.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientConfigurer.Options(System.Action{Rebus.Config.OptionsConfigurer})">
+            <summary>
+            Configures additional options about how Rebus works.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer.Logging(System.Action{Rebus.Config.RebusLoggingConfigurer})">
+            <summary>
+            Configures how Rebus logs stuff that happens
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer.Transport(System.Action{Rebus.Config.StandardConfigurer{Sitecore.Framework.Messaging.Rebus.Gateway.IBatchTransport}})">
+            <summary>
+            Configures how Rebus sends/receives messages by allowing for choosing which implementation of <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.IBatchTransport"/> to use
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer.Routing(System.Action{Rebus.Config.StandardConfigurer{Rebus.Routing.IRouter}})">
+            <summary>
+            Configures how Rebus routes messages by allowing for choosing which implementation of <see cref="T:Rebus.Routing.IRouter"/> to use
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer.Serialization(System.Action{Rebus.Config.StandardConfigurer{Rebus.Serialization.ISerializer}})">
+            <summary>
+            Configures how Rebus serializes messages by allowing for choosing which implementation of <see cref="T:Rebus.Serialization.ISerializer"/> to use
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayServerConfigurer.Options(System.Action{Rebus.Config.OptionsConfigurer})">
+            <summary>
+            Configures additional options about how Rebus works
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSink">
+            <summary>
+            Defines the sink that processes batches of raw messages exported from a message queue.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSink.Process(System.Collections.Generic.IReadOnlyCollection{Rebus.Messages.TransportMessage},System.String)">
+            <summary>
+            Processes a collection of raw messages dequeued from a message queue.  Should throws an exception if the batch could not be processed
+            successfully.
+            </summary>
+            <param name="messages">A collection of messages to be processed.</param>
+            <param name="queueName">The name of the queue the raw messages originated from.</param>
+            <returns>A successful task if the batch of messages was processed successfully.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSinkProvider">
+            <summary>
+            Defines a provider that is responsible for yielding a <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSink"/> instance to process
+            raw message batches exported from a message queue.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Config.IRawBatchSinkProvider.GetRawBatchSink(Rebus.Transport.ITransactionContext)">
+            <summary>
+            Get the sink instance to use for the current <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.IGatewayBus"/>.
+            </summary>
+            <param name="context">The current context for the export operation.</param>
+            <returns>The configured implementation for the current bus.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.GatewayClientOptionsExtensions.GatewayClient(Rebus.Config.OptionsConfigurer,System.Int32)">
+            <summary>
+            Configures Gateway Client options for the current bus.
+            </summary>
+            <param name="configurer"></param>
+            <param name="exportBatchSize">The size of the messages batches that are received (or 'exported') on each attempt from the input queue using the bus' <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.IBatchTransport"/>.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.AlwaysDeferOnError">
+            <summary>
+            Causes a message batch deferral when any type of <see cref="T:System.Exception"/> is thrown.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.AlwaysDeferOnError`1">
+            <summary>
+            Causes a message batch deferral when a specified type of <see cref="T:System.Exception"/> is thrown.
+            </summary>
+            <typeparam name="TException">The type of <see cref="T:System.Exception"/> that when thrown, will yield a message batch deferral.</typeparam>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.DeferRawBatchStrategy">
+            <summary>
+            The default <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IDeferRawBatchStrategy"/> implementation that records the number
+            of times a message has been deferred inside a custom message header.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.DeferRawBatchStrategy.#ctor(Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IRawBatchDeferDetectionPredicate,Sitecore.Framework.Messaging.DeferStrategies.IDeferalScheduler)">
+            <summary>
+            Instantiates a new instance of the default <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IDeferRawBatchStrategy"/> implementation.
+            </summary>
+            <param name="detection">The <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IRawBatchDeferDetectionPredicate"/> to be used to decide if all messages in a batch should be defered when performing work.</param>
+            <param name="scheduler">The <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.IDeferalScheduler"/> to be used to calculate the time period all messages a batch should be deferred for.</param>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.DeferRawBatchStrategy`1">
+            <summary>
+            The default <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IDeferRawBatchStrategy"/> implementation that records the number
+            of times a message has been deferred inside a custom message header.
+            </summary>
+            <typeparam name="TDetection"></typeparam>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IDeferRawBatchStrategy">
+            <summary>
+            Defines a strategy that will defer the handling of all <see cref="T:Rebus.Messages.TransportMessage"/>s in
+            a batch, to a later point in time.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IDeferRawBatchStrategy.ExecuteAsync``1(Sitecore.Framework.Messaging.Rebus.Gateway.IGatewayBus,System.Collections.Generic.IReadOnlyCollection{Rebus.Messages.TransportMessage},System.Func{``0})">
+            <summary>
+            Executes synchronous work within a strategy that will defer the message batch
+            if the work encounters a state that indicates the messages in the batch should be
+            processed at a later time.
+            </summary>
+            <typeparam name="TResult">The type of the result of the work being performed.</typeparam>
+            <param name="bus">The current bus that is receiving the message.</param>
+            <param name="messages">The message being handled.</param>
+            <param name="work">The work to be performed according to the strategy.</param>
+            <returns>A result indicating if the work completed successfully or a deferral state was detected.
+            If an unexpected error occured, the underlying exception will be thrown.  If a deferral state
+            was detected, but the number of delivery attempts exceeds the permitted amount, a <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategyExceededException"/>
+            is thrown.</returns>
+            <exception cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategyExceededException"></exception>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IDeferRawBatchStrategy.ExecuteAsync``1(Sitecore.Framework.Messaging.Rebus.Gateway.IGatewayBus,System.Collections.Generic.IReadOnlyCollection{Rebus.Messages.TransportMessage},System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Executes synchronous work within a strategy that will defer the message batch
+            if the work encounters a state that indicates the messages in the batch should be
+            processed at a later time.
+            </summary>
+            <typeparam name="TResult">The type of the result of the work being performed.</typeparam>
+            <param name="bus">The current bus that is receiving the message.</param>
+            <param name="messages">The message being handled.</param>
+            <param name="work">The work to be performed according to the strategy.</param>
+            <returns>A result indicating if the work completed successfully or a deferral state was detected.
+            If an unexpected error occured, the underlying exception will be thrown.  If a deferral state
+            was detected, but the number of delivery attempts exceeds the permitted amount, a <see cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategyExceededException"/>
+            is thrown.</returns>
+            <exception cref="T:Sitecore.Framework.Messaging.DeferStrategies.DeferStrategyExceededException"></exception>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IDeferRawBatchStrategy`1">
+            <summary>
+            A marker interface to enable the identification of a <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IDeferRawBatchStrategy"/> that 
+            uses a particular detection predicate.
+            </summary>
+            <typeparam name="IRawBatchDeferDetectionPredicate">The type of detection predicate used by a <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IDeferRawBatchStrategy"/>.</typeparam>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IRawBatchDeferDetectionPredicate">
+            <summary>
+            Defines the detection of a state that indicates a workload processing a message batch
+            should be executed again at a later point in time. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IRawBatchDeferDetectionPredicate.ShouldDefer``1(``0)">
+            <summary>
+            Decides if the result of processing a message batch indicates that 
+            the batch should be deferred to be processed at a later point in time.
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="result"></param>
+            <returns>True if the result indicates a deferral should happen, false otherwise.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IRawBatchDeferDetectionPredicate.ShouldDefer(System.Exception)">
+            <summary>
+            Decides if the exception throw when processing a message batch indicates that 
+            the batch should be deferred to be processed at a later point in time.
+            </summary>
+            <param name="exception">The exception that is thrown when processing a batch.</param>
+            <returns>True if the exception indicates a deferral should happen, false otherwise.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.NeverDefer">
+            <summary>
+            An <see cref="T:Sitecore.Framework.Messaging.Rebus.Gateway.DeferStrategies.IRawBatchDeferDetectionPredicate"/> implementation that will never indicate a message
+            should be deferred for later delivery.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.Pipeline.ActivateRawBatchSinkStep">
+            <summary>
+            Incoming step that gets the configured batch sink, and prepares it's invocation.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.Pipeline.DispatchRawBatchStep">
+            <summary>
+            Incoming step that executes the configured sink function with the current message batch.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.Pipeline.IExportBatchPipeline">
+            <summary>
+            Defines the pipeline that exports batches of messages.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.Pipeline.IImportBatchPipeline">
+            <summary>
+            Defines the pipeline that imports batches of messages.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.Pipeline.SendImportBatchStep">
+            <summary>
+            Outgoing step that uses the current transport to send the <see cref="T:Rebus.Messages.TransportMessage"/>s
+            found in the context to the destination address specified by looking up
+            <see cref="T:Rebus.Pipeline.Send.DestinationAddresses"/> in the context.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Pipeline.SendImportBatchStep.#ctor(Sitecore.Framework.Messaging.Rebus.Gateway.IBatchTransport,Rebus.Logging.IRebusLoggerFactory)">
+            <summary>
+            Constructs the step, using the specified transport to send the messages
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.Pipeline.SendImportBatchStep.Process(Sitecore.Framework.Messaging.Rebus.Gateway.Pipeline.ImportBatchStepContext,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Sends the outgoing message using the configured <see cref="T:Rebus.Transport.ITransport"/>, sending to the <see cref="T:Rebus.Pipeline.Send.DestinationAddresses"/>
+            found in the <see cref="T:Rebus.Pipeline.OutgoingStepContext"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.IBatchTransport">
+            <summary>
+            Defines a transport that can send and receive batches of messages.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.IBatchTransport.SendBatch(System.String,System.Collections.Generic.IReadOnlyCollection{Rebus.Messages.TransportMessage},Rebus.Transport.ITransactionContext)">
+            <summary>
+            Sends a batch of raw messages to the specified message queue.
+            </summary>
+            <param name="destinationAddress">The address of the queue to which the messages are sent.</param>
+            <param name="messages">The messages to be sent.</param>
+            <param name="context">The current transaction context for the operation.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.IBatchTransport.ReceiveBatch(Rebus.Transport.ITransactionContext,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Receives a batch of raw messages from the current input message queue.
+            </summary>
+            <param name="context">The current transaction context for the operation.</param>
+            <param name="batchSize">The maximum size of the message batch to retrieve.</param>
+            <param name="cancellationToken">The cancellation token for the operation.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.Framework.Messaging.Rebus.Gateway.ThreadPoolWorkerFactory">
+            <summary>
+            Implementation of <see cref="T:Rebus.Workers.IWorkerFactory"/> that uses worker threads to do synchronous receive of messages, dispatching
+            received messages to the threadpool.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.ThreadPoolWorkerFactory.#ctor(Sitecore.Framework.Messaging.Rebus.Gateway.IBatchTransport,Rebus.Logging.IRebusLoggerFactory,Sitecore.Framework.Messaging.Rebus.Gateway.Pipeline.IExportBatchPipeline,Sitecore.Framework.Messaging.Rebus.Gateway.Pipeline.IPipelineEngine,Rebus.Config.Options,Sitecore.Framework.Messaging.Rebus.Gateway.Config.GatewayClientOptions,System.Func{Rebus.Bus.RebusBus},Rebus.Bus.BusLifetimeEvents,Rebus.Workers.ThreadPoolBased.ISyncBackoffStrategy)">
+            <summary>
+            Creates the worker factory
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.ThreadPoolWorkerFactory.CreateWorker(System.String)">
+            <summary>
+            Creates a new worker with the given <paramref name="workerName"/>
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.Messaging.Rebus.Gateway.ThreadPoolWorkerFactory.WaitForContinuationsToFinish">
+            <summary>
+            Blocks until all work has finished being done (i.e. waits for all message handling continuations to have been executed)
+            </summary>
+        </member>
+    </members>
+</doc>

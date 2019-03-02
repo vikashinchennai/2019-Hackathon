@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Marketing.Automation.ActivityDescriptors.Client</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.CampaignsController">
+            <summary>
+            Controller for campaign activities.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.CampaignsController.#ctor(Sitecore.Marketing.Automation.ActivityDescriptors.Data.ICampaignRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.CampaignsController"/> class.
+            </summary>
+            <param name="repository">The campaigns repository.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.CampaignsController.GetById(System.Guid,System.String)">
+            <summary>
+            Gets a campaign activity by Id.
+            </summary>
+            <param name="campaignId">The campaign activity Id.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The campaign activity and HTTP Status Code 200 if found; otherwise - 404.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.CampaignsController.GetAll(System.String)">
+            <summary>
+            Gets all campaign activities.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The campaign activities and HTTP Status Code 200.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.ContactListsController">
+            <summary>
+            Controller to get the contact lists.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.ContactListsController.#ctor(Sitecore.Marketing.Automation.ActivityDescriptors.Data.IContactListRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.ContactListsController"/>.
+            </summary>
+            <param name="repository">The contact lists repository.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.ContactListsController.GetById(System.Guid,System.String)">
+            <summary>
+            Gets a contact list by Id.
+            </summary>
+            <param name="contactListId">The contact list Id.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The contact list and HTTP Status Code 200 if found; otherwise - 404.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.ContactListsController.GetAll(System.String)">
+            <summary>
+            Gets all contact lists.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The contact lists and HTTP Status Code 200.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.EventsController">
+            <summary>
+            Controller to get events.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.EventsController.#ctor(Sitecore.Marketing.Automation.ActivityDescriptors.Data.IEventRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.EventsController"/> class.
+            </summary>
+            <param name="repository">The events repository.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.EventsController.GetById(System.Guid,System.String)">
+            <summary>
+            Gets an event by Id.
+            </summary>
+            <param name="eventId">The event Id.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The event and HTTP Status Code 200 if found; otherwise - 404.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.EventsController.GetAll(System.String)">
+            <summary>
+            Gets all events.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The events and HTTP Status Code 200.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.GoalsController">
+            <summary>
+            Controller to get goals.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.GoalsController.#ctor(Sitecore.Marketing.Automation.ActivityDescriptors.Data.IGoalRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.GoalsController"/> class.
+            </summary>
+            <param name="repository">The goals repository.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.GoalsController.GetById(System.Guid,System.String)">
+            <summary>
+            Gets a goal by Id.
+            </summary>
+            <param name="goalId">The goal Id.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The goal and HTTP Status Code 200 if found; otherwise - 404.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.GoalsController.GetAll(System.String)">
+            <summary>
+            Gets all goals.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The goals and HTTP Status Code 200.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.OutcomesController">
+            <summary>
+            Controller to get outcomes.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.OutcomesController.#ctor(Sitecore.Marketing.Automation.ActivityDescriptors.Data.IOutcomeRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.OutcomesController"/> class.
+            </summary>
+            <param name="repository">The outcomes repository.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.OutcomesController.GetById(System.Guid,System.String)">
+            <summary>
+            Gets an outcome by Id.
+            </summary>
+            <param name="outcomeId">The outcome Id.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The outcome and HTTP Status Code 200 if found; otherwise - 404.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.OutcomesController.GetAll(System.String)">
+            <summary>
+            Gets all outcomes.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The outcomes and HTTP Status Code 200.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.ProfilesController">
+            <summary>
+            Controller to get the profiles.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.ProfilesController.#ctor(Sitecore.Marketing.Automation.ActivityDescriptors.Data.IProfileRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.ProfilesController"/>.
+            </summary>
+            <param name="repository">The profiles repository.</param>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.ProfilesController.GetById(System.Guid,System.String)">
+            <summary>
+            Gets a profile by Id.
+            </summary>
+            <param name="profileId">The profile Id.</param>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The profile and HTTP Status Code 200 if found; otherwise - 404.</returns>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.Controllers.ProfilesController.GetAll(System.String)">
+            <summary>
+            Gets all profiles.
+            </summary>
+            <param name="cultureName">The name of the culture.</param>
+            <returns>The profiles and HTTP Status Code 200.</returns>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.ActivityDescriptors.Client.MarketingAutomationActivityDescriptorsClientServiceConfigurator">
+            <summary>
+            Class used to register the marketing automation services with the IoC container.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.ActivityDescriptors.Client.MarketingAutomationActivityDescriptorsClientServiceConfigurator.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds all marketing automation controllers and services.
+            </summary>
+            <param name="serviceCollection">The service collection to add to</param>
+        </member>
+    </members>
+</doc>

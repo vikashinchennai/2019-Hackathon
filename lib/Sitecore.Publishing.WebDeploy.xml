@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Publishing.WebDeploy</name>
+    </assembly>
+    <members>
+        <member name="P:Sitecore.Publishing.WebDeploy.DeploymentTaskRunner.Paths">
+            <summary>
+            Gets or sets the paths.
+            </summary>
+            <value>The paths.</value>
+        </member>
+        <member name="P:Sitecore.Publishing.WebDeploy.DeploymentTaskRunner.SourceSite">
+            <summary>
+            Gets or sets the source site.
+            </summary>
+            <value>The source site.</value>
+        </member>
+        <member name="P:Sitecore.Publishing.WebDeploy.DeploymentTaskRunner.SyncOptions">
+            <summary>
+            Gets or sets the sync options.
+            </summary>
+            <value>The sync options.</value>
+        </member>
+        <member name="P:Sitecore.Publishing.WebDeploy.DeploymentTaskRunner.TargetSite">
+            <summary>
+            Gets or sets the target site.
+            </summary>
+            <value>The target site.</value>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.DeploymentTaskRunner.Execute">
+            <summary>
+            Executes this instance.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Publishing.WebDeploy.Framework.DeploymentSiteBase">
+            <summary>
+            Defines the deployment site base class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.Framework.DeploymentSiteBase.GetFullName(System.String)">
+            <summary>
+            Gets the full name, decorating it with the deployment site parameters.
+            </summary>
+            <param name="folder">The folder.</param>
+            <returns>The full name.</returns>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.Framework.DeploymentSiteBase.GetOptions(System.String)">
+            <summary>
+            Gets the options.
+            </summary>
+            <param name="folder">The folder.</param>
+            <returns>The options.</returns>
+        </member>
+        <member name="P:Sitecore.Publishing.WebDeploy.Framework.DeploymentSiteBase.Decorators">
+            <summary>
+            Gets the decorators.
+            </summary>
+            <value>The decorators.</value>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.Framework.DeploymentSiteBase.GetBaseOptions">
+            <summary>
+            Gets the base options.
+            </summary>
+            <returns>The base options.</returns>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.Framework.DeploymentSiteBase.GetProviderOptions(System.String)">
+            <summary>
+            Gets the provider options.
+            </summary>
+            <param name="folder">The folder.</param>
+            <returns>The provider options.</returns>
+        </member>
+        <member name="T:Sitecore.Publishing.WebDeploy.Framework.IDeploymentSite">
+            <summary>
+            Defines the deployment site object interface
+            </summary>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.Framework.IDeploymentSite.GetFullName(System.String)">
+            <summary>
+            Gets the full name of the specified folder, decorating it with the site settings.
+            </summary>
+            <param name="folder">The folder.</param>
+            <returns>The full name.</returns>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.Framework.IDeploymentSite.GetOptions(System.String)">
+            <summary>
+            Gets the options.
+            </summary>
+            <param name="folder">The folder.</param>
+            <returns>The options.</returns>
+        </member>
+        <member name="P:Sitecore.Publishing.WebDeploy.Framework.IDeploymentSite.Decorators">
+            <summary>
+            Gets the decorators.
+            </summary>
+            <value>The decorators.</value>
+        </member>
+        <member name="P:Sitecore.Publishing.WebDeploy.PublishHandler.Synchronous">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Sitecore.Publishing.WebDeploy.PublishHandler"/> is synchronous.
+            </summary>
+            <value><c>true</c> if synchronous; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.PublishHandler.AddTask(Sitecore.Publishing.WebDeploy.Task)">
+            <summary>
+            Adds the task.
+            </summary>
+            <param name="task">The task.</param>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.PublishHandler.Run(Sitecore.Publishing.Publisher)">
+            <summary>
+            Runs with the specified publisher.
+            </summary>
+            <param name="publisher">The publisher.</param>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.PublishHandler.GetRunner(Sitecore.Publishing.WebDeploy.Task)">
+            <summary>
+            Gets the runner for specific task.
+            </summary>
+            <param name="task">The task.</param>
+            <returns>The runner.</returns>
+        </member>
+        <member name="T:Sitecore.Publishing.WebDeploy.Sites.FolderDeploymentSite">
+            <summary>
+            Defines the folder deployment site class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.Sites.FolderDeploymentSite.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Publishing.WebDeploy.Sites.FolderDeploymentSite"/> class.
+            </summary>
+            <param name="root">The root.</param>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.Sites.FolderDeploymentSite.GetFullName(System.String)">
+            <summary>
+            Gets the full name, decorating it with the deployment site parameters.
+            </summary>
+            <param name="folder">The folder.</param>
+            <returns>The full name.</returns>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.Sites.FolderDeploymentSite.GetProviderOptions(System.String)">
+            <summary>
+            Gets the provider options.
+            </summary>
+            <param name="folder">The folder.</param>
+            <returns>The provider options.</returns>
+        </member>
+        <member name="P:Sitecore.Publishing.WebDeploy.Task.RemoteRoot">
+            <summary>
+            Gets or sets the remote root.
+            </summary>
+            <value>The remote root.</value>
+        </member>
+        <member name="P:Sitecore.Publishing.WebDeploy.Task.LocalRoot">
+            <summary>
+            Gets or sets the local root for publishing operations.
+            </summary>
+            <value>The local root.</value>
+        </member>
+        <member name="P:Sitecore.Publishing.WebDeploy.Task.Paths">
+            <summary>
+            Gets the folders.
+            </summary>
+            <value>The folders.</value>
+        </member>
+        <member name="M:Sitecore.Publishing.WebDeploy.Task.AddPath(System.String)">
+            <summary>
+            Adds the folder.
+            </summary>
+            <param name="path">The path.</param>
+        </member>
+    </members>
+</doc>

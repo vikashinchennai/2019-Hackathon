@@ -1,0 +1,511 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Processing.Cursors.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Processing.Cursors.Abstractions.Constants">
+            <summary>
+                Represents a collection of constants used throughout the project.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize">
+            <summary>
+                The maximum size of <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Bookmark" /> property.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Cursors.Abstractions.Cursor">
+            <summary>
+                The representation of the cursor utilized during processing.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.Cursor.#ctor(System.Guid,System.Guid,System.DateTime,System.DateTime,System.Guid,Sitecore.Processing.Common.IAgentId,System.Single,System.Nullable{System.Int64},System.Byte[],System.Int64,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+                Creates instance of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> using specified parameters.
+            </summary>
+            <param name="id">The unique id of the cursor.</param>
+            <param name="taskId">The id of the task this cursor belongs to.</param>
+            <param name="created">The UTC date when cursor was created.</param>
+            <param name="accessed">The UTC date when the cursor was accessed last time.</param>
+            <param name="concurrencyToken">The token used to identify this particular version of the cursor data.</param>
+            <param name="owner">
+                The instance of <see cref="T:Sitecore.Processing.Common.IAgentId" />
+                that contains information about the agent holding the cursor.
+            </param>
+            <param name="priority">
+                The priority of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> from 0.0 to 1.0 (inclusive, the bigger value the higher
+                priority) which determines the order <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> candidates will be chosen for agent to work on.
+            </param>
+            <param name="size">The approximate total amount of items to consume in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.</param>
+            <param name="bookmark">
+                The bookmark, which represents the current position in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.
+                Value size is limited by <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" /> bytes.
+            </param>
+            <param name="consumed">The amount of visited work items.</param>
+            <param name="isDescending">
+                Indicates whether order of items in <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is Ascending (<c>false</c>) or
+                Descending (<c>true</c>).
+            </param>
+            <param name="isSplitSupported">
+                Indicates whether splitting of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> is supported.
+            </param>
+            <param name="isSplitRequested">
+                Indicates whether split of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is requested by the non-owner
+                agent.
+            </param>
+            <param name="isCompleted">Indicates whether the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is completed or not.</param>
+            <exception cref="T:System.ArgumentException">
+                Either <paramref name="created" /> or <paramref name="accessed" /> is non UTC dates.
+                <paramref name="bookmark" /> is bigger than <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" /> bytes.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="size" /> is not NULL and less or equal 0.
+                <paramref name="consumed" /> is less than 0.
+                <paramref name="priority" /> is not in range between 0.0 and 1.0
+                inclusive.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.Cursor.#ctor(System.Guid,System.Guid,System.DateTime,System.DateTime,System.Guid,System.String,System.Int32,System.Int32,System.Single,System.Nullable{System.Int64},System.Byte[],System.Int64,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+                Creates instance of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> using specified parameters.
+            </summary>
+            <param name="id">The unique id of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.</param>
+            <param name="taskId">The id of the task this cursor belongs to.</param>
+            <param name="created">The UTC date when cursor was created.</param>
+            <param name="accessed">The UTC date when the cursor was accessed last time.</param>
+            <param name="concurrencyToken">The token used to identify this particular version of the cursor data.</param>
+            <param name="computer">The computer name of the owner agent without domain name.</param>
+            <param name="process">The process ID of the owner agent.</param>
+            <param name="agent">The owner agent id.</param>
+            <param name="priority">
+                The priority of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> from 0.0 to 1.0 (inclusive, the bigger value the higher
+                priority) which determines the order <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> candidates will be chosen for agent to work on.
+            </param>
+            <param name="size">The approximate total amount of items to consume in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.</param>
+            <param name="bookmark">
+                The bookmark, which represents the current position in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.
+                Value size is limited by <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" /> bytes.
+            </param>
+            <param name="consumed">The amount of visited work items.</param>
+            <param name="isDescending">
+                Indicates whether order of items in <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is Ascending (<c>false</c>) or
+                Descending (<c>true</c>).
+            </param>
+            <param name="isSplitSupported">
+                Indicates whether splitting of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> is supported.
+            </param>
+            <param name="isSplitRequested">
+                Indicates whether split of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is requested by the non-owner
+                agent.
+            </param>
+            <param name="isCompleted">Indicates whether the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is completed or not.</param>
+            <exception cref="T:System.ArgumentException">
+                Either <paramref name="created" /> or <paramref name="accessed" /> is non UTC dates.
+                <paramref name="bookmark" /> is bigger than <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" /> bytes.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="size" /> is equal or less than 0.
+                <paramref name="consumed" /> is less than 0.
+                <paramref name="priority" /> is not in range between 0.0 and 1.0 inclusive.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.Cursor.#ctor(System.Guid,System.Guid,Sitecore.Processing.Common.IAgentId,System.Single,System.Nullable{System.Int64},System.Byte[],System.Int64,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+                Creates instance of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> using specified parameters.
+            </summary>
+            <param name="id">The unique id of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.</param>
+            <param name="taskId">The id of the task this cursor belongs to.</param>
+            <param name="owner">The owner agent <see cref="T:Sitecore.Processing.Common.IAgentId" /> this cursor belongs to.</param>
+            <param name="priority">
+                The priority of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> from 0.0 to 1.0 (inclusive, the bigger value the higher
+                priority) which determines the order <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> candidates will be chosen for agent to work on.
+            </param>
+            <param name="size">The approximate total amount of items to consume in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.</param>
+            <param name="bookmark">
+                The bookmark, which represents the current position in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.
+                Value size is limited by <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" /> bytes.
+            </param>
+            <param name="consumed">The amount of visited work items.</param>
+            <param name="isDescending">
+                Indicates whether order of items in <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is Ascending (<c>false</c>) or
+                Descending (<c>true</c>).
+            </param>
+            <param name="isSplitSupported">
+                Indicates whether splitting of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> is supported.
+            </param>
+            <param name="isSplitRequested">
+                Indicates whether split of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is requested by the non-owner
+                agent.
+            </param>
+            <param name="isCompleted">Indicates whether the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is completed or not.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="bookmark" /> is null.</exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="bookmark" /> is bigger than <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" /> bytes.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="size" /> is equal or less than 0.
+                <paramref name="consumed" /> is less than 0. <paramref name="priority" /> is not in range between 0.0 and 1.0
+                inclusive.
+            </exception>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.Cursor.#ctor(System.Guid,System.Guid,System.String,System.Int32,System.Int32,System.Single,System.Nullable{System.Int64},System.Byte[],System.Int64,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+                Creates instance of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> using specified parameters.
+            </summary>
+            <param name="id">The unique id of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.</param>
+            <param name="taskId">The id of the task this cursor belongs to.</param>
+            <param name="computer">The computer name of the owner agent without domain name.</param>
+            <param name="process">The process ID of the owner agent.</param>
+            <param name="agent">The owner agent id.</param>
+            <param name="priority">
+                The priority of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> from 0.0 to 1.0 (inclusive, the bigger value the higher
+                priority) which determines the order <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> candidates will be chosen for agent to work on.
+            </param>
+            <param name="size">The approximate total amount of items to consume in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.</param>
+            <param name="bookmark">
+                The bookmark, which represents the current position in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.
+                Value size is limited by <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" /> bytes.
+            </param>
+            <param name="consumed">The amount of visited work items.</param>
+            <param name="isDescending">
+                Indicates whether order of items in <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is Ascending (<c>false</c>) or
+                Descending (<c>true</c>).
+            </param>
+            <param name="isSplitSupported">
+                Indicates whether splitting of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> is supported.
+            </param>
+            <param name="isSplitRequested">
+                Indicates whether split of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is requested by the non-owner
+                agent.
+            </param>
+            <param name="isCompleted">Indicates whether the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is completed or not.</param>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="bookmark" /> is bigger than <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" /> bytes.
+            </exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="bookmark" /> is null.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="size" /> is equal or less than 0.
+                <paramref name="consumed" /> is less than 0. <paramref name="priority" /> is not in range between 0.0 and 1.0
+                inclusive.
+            </exception>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.Id">
+            <summary>
+                Gets the unique id of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.TaskId">
+            <summary>
+                Gets the id of the task this cursor belongs to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.Created">
+            <summary>
+                Gets the date when cursor was created.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.Accessed">
+            <summary>
+                Gets the date when the cursor was accessed last time.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.ConcurrencyToken">
+            <summary>
+                Gets the token used to identify this particular version of the cursor data.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.Owner">
+            <summary>
+                Gets the agent id.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.Priority">
+            <summary>
+                Gets the priority from 0.0 to 1.0 (inclusive, the bigger value the higher priority) which determines the order
+                <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> candidates will be chosen for agent to work on.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.Size">
+            <summary>
+                Gets the approximate total amount of items to work on in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.
+                Could be set to NULL if there is no information about number of items to work on.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.Bookmark">
+            <summary>
+                Gets the bookmark, which represents the current position in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.
+                Could be set to NULL during initialization of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" />.
+                Value size is limited by <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" /> bytes.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.Consumed">
+            <summary>
+                Gets the amount of consumed work items.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.IsDescending">
+            <summary>
+                Gets the value that indicates whether order of items is Ascending (<c>false</c>) or Descending (<c>true</c>).
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.IsSplitSupported">
+            <summary>
+                Gets the value that indicates whether split of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> is supported.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.IsSplitRequested">
+            <summary>
+                Gets the value that indicates whether split of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is requested by the non-owner agent or
+                not.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.Cursor.IsCompleted">
+            <summary>
+                Gets the value that indicates whether the <see cref="T:Sitecore.Processing.Cursors.Abstractions.Cursor" /> is completed or not.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Cursors.Abstractions.ICursor">
+            <summary>
+                The representation of the cursor utilized during processing.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Id">
+            <summary>
+                Gets the unique id of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.TaskId">
+            <summary>
+                Gets the id of the task this cursor belongs to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Created">
+            <summary>
+                Gets the date when cursor was created.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Accessed">
+            <summary>
+                Gets the date when the cursor was accessed last time.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.ConcurrencyToken">
+            <summary>
+                Gets the token used to identify this particular version of the cursor data.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Owner">
+            <summary>
+                Gets the agent id.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Priority">
+            <summary>
+                Gets the priority from 0.0 to 1.0 (inclusive, the bigger value the higher priority) which determines the order,
+                <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> candidates will be chosen for agent to work on.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Size">
+            <summary>
+                Gets the approximate total amount of items to work on in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.
+                Could be set to NULL if there is no information about number of items to work on.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Bookmark">
+            <summary>
+                Gets the bookmark, which represents the current position in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.
+                Could be set to NULL during initialization of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.
+                Value size is limited by <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" /> bytes.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Consumed">
+            <summary>
+                Gets the amount of consumed work items.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.IsDescending">
+            <summary>
+                Gets the value that indicates whether order of items is Ascending (<c>false</c>) or Descending (<c>true</c>).
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.IsSplitSupported">
+            <summary>
+                Gets the value that indicates whether split of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> is supported.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.IsSplitRequested">
+            <summary>
+                Gets the value that indicates whether split of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> is requested by the non-owner agent or
+                not.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursor.IsCompleted">
+            <summary>
+                Gets the value that indicates whether the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> is completed or not.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider">
+            <summary>
+                Provides a set of operations to manipulate instances of <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> and split them between worker
+                agents.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.TaskId">
+            <summary>
+                The unique identifier of the task associated with all the operations on <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instances.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.AddAsync(Sitecore.Processing.Cursors.Abstractions.ICursor)">
+            <summary>
+                Asynchronously adds new <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> to the data store.
+            </summary>
+            <param name="cursor">The <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> to add.</param>
+            <returns>Returns <see cref="T:System.Threading.Tasks.Task" /> representing asynchronous operation.</returns>
+            <remarks>
+                <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Created" />, <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Accessed" /> and <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.ConcurrencyToken" /> in
+                the <paramref name="cursor" /> ignored, set by the provider, and can differ from specified.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.TryAcquireCursorAsync(Sitecore.Processing.Common.IAgentId)">
+            <summary>
+                Asynchronously attempts to acquire available <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.
+            </summary>
+            <param name="agentId">An <see cref="T:Sitecore.Processing.Common.IAgentId" /> object that uniquely identifies the agent acquiring the cursor.</param>
+            <returns>
+                Returns <see cref="T:System.Threading.Tasks.Task`1" /> with the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instance if attempt succeeded.
+                Otherwise, returns <see cref="T:System.Threading.Tasks.Task`1" /> with <c>null</c>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.MarkCompletedAsync(System.Guid,System.Guid)">
+            <summary>
+                Asynchronously marks completed the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.
+            </summary>
+            <param name="cursorId">The <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Id" /> to complete.</param>
+            <param name="concurrencyToken">The <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.ConcurrencyToken" /> value to ensure the cursor data hasn't changed since reading it.</param>
+            <returns>Returns <see cref="T:System.Threading.Tasks.Task" /> representing asynchronous operation.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.UpdateProgressAsync(System.Guid,System.Guid,System.Byte[],System.Int64)">
+            <summary>
+                Asynchronously updates the progress of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.
+            </summary>
+            <param name="cursorId">The <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Id" /> to update.</param>
+            <param name="concurrencyToken">The <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.ConcurrencyToken" /> value to ensure the cursor data hasn't changed since reading it.</param>
+            <param name="updatedBookmark">
+                The updated bookmark with maximum size of <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" />
+                bytes, which represents the current position in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.
+            </param>
+            <param name="consumed">The updated amount of consumed work items.</param>
+            <returns>Returns <see cref="T:System.Threading.Tasks.Task" /> containing updated <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instance.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.UpdateSizeAsync(System.Guid,System.Guid,System.Byte[],System.Int64)">
+            <summary>
+                Asynchronously updates the size of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.
+            </summary>
+            <param name="cursorId">The <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Id" /> to update.</param>
+            <param name="updatedBookmark">
+                The updated bookmark with maximum size of <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" />
+                bytes, which represents the current position in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.
+            </param>
+            <param name="size">The size to be set for the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.</param>
+            <param name="concurrencyToken">The <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.ConcurrencyToken" /> value to ensure the cursor data hasn't changed since reading it.</param>
+            <returns>Returns <see cref="T:System.Threading.Tasks.Task" /> containing updated <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instance.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.UpdateSplitSupportedAsync(System.Guid,System.Guid,System.Boolean)">
+            <summary>
+                Asynchronously updates the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> to set whether splits are supported.
+            </summary>
+            <param name="cursorId">The <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Id" /> to update.</param>
+            <param name="concurrencyToken">The <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.ConcurrencyToken" /> value to ensure the cursor data hasn't changed since reading it.</param>
+            <param name="isSplitSupported">Indicates whether the cursor can be split.</param>
+            <returns>Returns <see cref="T:System.Threading.Tasks.Task" /> containing updated <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instance.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.SaveSplitAsync(System.Guid,System.Guid,System.Byte[],System.Single,System.Int64,System.Collections.Generic.IReadOnlyList{Sitecore.Processing.Cursors.Abstractions.ICursor})">
+            <summary>
+                Asynchronously saves the split of the cursor in the database
+            </summary>
+            <param name="originalCursorId">The <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Id" /> that was split.</param>
+            <param name="concurrencyToken">The <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.ConcurrencyToken" /> value to ensure the cursor data hasn't changed since reading it.</param>
+            <param name="updatedBookmark">
+                The updated bookmark with maximum size of <see cref="F:Sitecore.Processing.Cursors.Abstractions.Constants.CursorBookmarkMaxSize" /> bytes, which represents
+                the current position in the split
+                <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.
+            </param>
+            <param name="updatedPriority">The updated priority of the split <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.</param>
+            <param name="updatedSize">
+                The updated, approximate, total amount of items to work on in the split
+                <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />.
+            </param>
+            <param name="newCursors">The <see cref="T:System.Collections.Generic.IReadOnlyList`1" /> that contains new cursors, received after split.</param>
+            <returns>Returns <see cref="T:System.Threading.Tasks.Task" /> containing updated <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instance.</returns>
+            <remarks>
+                <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Created" />, <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Accessed" /> and <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.ConcurrencyToken" />
+                for each <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> in <paramref name="newCursors" /> are ignored,
+                set by the provider, and can differ from specified.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.TryRegisterSplitRequestAsync">
+            <summary>
+                Asynchronously makes attempt to register split request of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> in the data store.
+            </summary>
+            <returns>
+                Returns <see cref="T:System.Threading.Tasks.Task`1" /> containing <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instance with registered split if attempt
+                succeeded.
+                Otherwise, returns <see cref="T:System.Threading.Tasks.Task`1" /> with <c>null</c>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.DeleteByTaskAsync(System.Boolean)">
+            <summary>
+                Asynchronously deletes all the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instances.
+            </summary>
+            <param name="deleteCompletedOnly">
+                Indicates whether only completed cursors have to be removed (<c>true</c>) or not (
+                <c>false</c>).
+            </param>
+            <returns>Returns <see cref="T:System.Threading.Tasks.Task" /> representing asynchronous operation.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.GetCursorCountAsync">
+            <summary>
+                Asynchronously retrieves count of all the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instances.
+            </summary>
+            <returns>
+                Returns <see cref="T:System.Threading.Tasks.Task`1" /> with the <see cref="T:System.Int32" />, which represents amount of
+                <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instances in the data store.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.GetTotalNumberOfConsumedItemsAsync">
+            <summary>
+                Asynchronously retrieves amount of the consumed items throughout all the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instances.
+            </summary>
+            <returns>
+                Returns <see cref="T:System.Threading.Tasks.Task`1" /> with the <see cref="T:System.Int64" />, which represents amount of the processed
+                items throughout all the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instances in the data store.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider.AreAllCursorsCompletedAsync">
+            <summary>
+                Asynchronously checks whether all the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instances are completed (
+                <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.IsCompleted" /> is <c>true</c>).
+            </summary>
+            <returns>
+                Returns <see cref="T:System.Threading.Tasks.Task`1" /> with the <see cref="T:System.Boolean" />, which is <c>true</c> if all the
+                <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instances have <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.IsCompleted" /> is <c>true</c>.
+                Otherwise, returns <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Processing.Cursors.Abstractions.ICursorDataProviderFactory">
+            <summary>
+                Defines factory that is responsible for creation of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider" /> instances.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Cursors.Abstractions.ICursorDataProviderFactory.Create(System.Guid)">
+            <summary>
+                Creates an instance of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider" /> for specific task.
+            </summary>
+            <param name="taskId">The unique identifier of the task to create <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider" /> instance for.</param>
+            <returns>
+                The instance of the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider" /> that can manage <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" />
+                instances for task, specified in <paramref name="taskId" />
+            </returns>
+        </member>
+    </members>
+</doc>

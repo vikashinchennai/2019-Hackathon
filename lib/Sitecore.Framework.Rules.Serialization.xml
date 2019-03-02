@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.Rules.Serialization</name>
+    </assembly>
+    <members>
+        <member name="M:Sitecore.Framework.Rules.Serialization.EntityIdentifier.#ctor">
+            <summary>Only to be used by serialization tools.</summary>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.Serialization.MappedRuleEntityMetadata.#ctor">
+            <summary>Only to be used by serialization tools.</summary>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.Serialization.MappedRuleMetadata.#ctor">
+            <summary>Only to be used by serialization tools.</summary>
+        </member>
+        <member name="M:Sitecore.Framework.Rules.Serialization.RuleEntityPropertyMetadata`1.#ctor">
+            <summary>Only to be used by serialization tools.</summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,683 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Processing.Engine.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Batch`1">
+            <summary>
+                Represents a batch containing entities of type <typeparamref name="TEntity" />.
+            </summary>
+            <typeparam name="TEntity">The type of entities inside the batch.</typeparam>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.Batch`1.#ctor(System.Collections.Generic.IList{`0})">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Engine.Abstractions.Batch`1" />.
+            </summary>
+            <param name="list">The list of items to include in the batch.</param>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Buses.TaskStatusBus">
+            <summary>
+            Defines the task status bus for publisher.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.CountSplitOptions">
+            <summary>
+                Represents a split options where the new <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> will contain
+                approximately the specified number of entities.
+            </summary>
+            <seealso cref="T:Sitecore.Processing.Engine.Abstractions.SplitOptions" />
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.CountSplitOptions.#ctor(System.Int32)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Sitecore.Processing.Engine.Abstractions.CountSplitOptions" /> class.
+            </summary>
+            <param name="preferredCount">The preferred number of entities in the new enumerator.</param>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.CountSplitOptions.PreferredCount">
+            <summary>
+                Gets the preferred entity count for the split enumerator.
+            </summary>
+            <value>
+                The preferred count.
+            </value>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.DataSourceOptionsDictionary">
+            <summary>
+                Represents options passed to <see cref="T:Sitecore.Processing.Engine.Abstractions.IDataSource`1" />.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Engine.Abstractions.DataSourceOptionsDictionary.DataSourceTypeKey">
+            <summary>
+                The key to store in internal dictionary the assembly qualified .NET type name of the worker.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.DataSourceOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+                Initializes a new options collection by passing <see cref="T:System.Collections.Generic.Dictionary`2" />.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.DataSourceOptionsDictionary.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Engine.Abstractions.DataSourceOptionsDictionary"/> class.
+            </summary>
+            <param name="dataSourceType">Assembly qualified .NET type name of the data source to use the options with.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.DataSourceOptionsDictionary.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Engine.Abstractions.DataSourceOptionsDictionary"/> class.
+            </summary>
+            <param name="dataSourceType">Assembly qualified .NET type name of the data source to use the options with.</param>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.DataSourceOptionsDictionary.DataSourceType">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.DeferredWorkerOptionsDictionary">
+            <summary>
+                Represents options collection passed to <see cref="T:Sitecore.Processing.Engine.Abstractions.IDeferredWorker" />.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.DeferredWorkerOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+                Initializes a new options collection by passing <see cref="T:System.Collections.Generic.Dictionary`2" />.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.DeferredWorkerOptionsDictionary.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Engine.Abstractions.DeferredWorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="workerType">Assembly qualified .NET type name of the worker to use the options with.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.DeferredWorkerOptionsDictionary.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Engine.Abstractions.DeferredWorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="workerType">Assembly qualified .NET type name of the worker to use the options with.</param>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.DistributedWorkerOptionsDictionary">
+            <summary>
+                Represents options collection passed to <see cref="T:Sitecore.Processing.Engine.Abstractions.IDistributedWorker`1" />.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.DistributedWorkerOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+                Initializes a new options collection by passing <see cref="T:System.Collections.Generic.Dictionary`2" />.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.DistributedWorkerOptionsDictionary.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Engine.Abstractions.DistributedWorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="workerType">Assembly qualified .NET type name of the worker to use the options with.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.DistributedWorkerOptionsDictionary.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Engine.Abstractions.DistributedWorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="workerType">Assembly qualified .NET type name of the worker to use the options with.</param>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Extensions.ITaskManagerExtensions">
+            <summary>
+            Extension methods for the <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskManager"/> type.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.Extensions.ITaskManagerExtensions.RegisterDistributedTaskAsync(Sitecore.Processing.Engine.Abstractions.ITaskManager,Sitecore.Processing.Engine.Abstractions.IDataSourceOptionsCollection,Sitecore.Processing.Engine.Abstractions.IDistributedWorkerOptionsCollection,System.TimeSpan)">
+            <summary>
+                Registers new distributed task to be executed by <see cref="T:Sitecore.Processing.Engine.Abstractions.IAgent" />.
+            </summary>
+            <param name="taskManager">The <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskManager"/> to use to register the task.</param>
+            <param name="dataSourceOptions">Options collection passed to the datasource object during task execution.</param>
+            <param name="workerOptions">Options collection passed to the worker object during task execution.</param>
+            <param name="expiresAfter"><see cref="T:System.TimeSpan" /> after which the task will expire if processing of it fails.</param>
+            <returns>Asynchronous task that returns a <see cref="T:System.Guid" /> identifier after registering a processing engine task.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.Extensions.ITaskManagerExtensions.RegisterDeferredTaskAsync(Sitecore.Processing.Engine.Abstractions.ITaskManager,Sitecore.Processing.Engine.Abstractions.IDeferredWorkerOptionsCollection,System.TimeSpan)">
+            <summary>
+                Registers new deferred task to be executed by <see cref="T:Sitecore.Processing.Engine.Abstractions.IAgent" />.
+            </summary>
+            <param name="taskManager">The <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskManager"/> to use to register the task.</param>
+            <param name="workerOptions">Options collection passed to the worker object during task execution.</param>
+            <param name="expiresAfter"><see cref="T:System.TimeSpan" /> after which the task will expire if processing of it fails.</param>
+            <returns>Asynchronous task that returns a <see cref="T:System.Guid" /> identifier after registering a processing engine task.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Hosting.IHost">
+            <summary>
+                Represents a general purpose host for any process in the system.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.Hosting.IHost.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+                Asynchronously starts a process hosted by <see cref="T:Sitecore.Processing.Engine.Abstractions.Hosting.IHost" />.
+            </summary>
+            <param name="cancellationToken">A token to communicate cancellation request.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> that represents a status of asynchronous operation.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.Hosting.IHost.StopAsync(System.Threading.CancellationToken)">
+            <summary>
+                Asynchronously stops a process hosted by <see cref="T:Sitecore.Processing.Engine.Abstractions.Hosting.IHost" />.
+            </summary>
+            <param name="cancellationToken">A token to communicate cancellation request.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> that represents a status of asynchronous operation.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Hosting.IHostBuilder">
+            <summary>
+                Represents a type used to build an <see cref="T:Sitecore.Processing.Engine.Abstractions.Hosting.IHost" />.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.Hosting.IHostBuilder.Build(Sitecore.Processing.Engine.Abstractions.Hosting.IHostBuilderOptions)">
+            <summary>
+                Builds an <see cref="T:Sitecore.Processing.Engine.Abstractions.Hosting.IHost" /> using <paramref name="options" />.
+            </summary>
+            <param name="options">A set of options to influence build process.</param>
+            <returns>The fully functional <see cref="T:Sitecore.Processing.Engine.Abstractions.Hosting.IHost" /> instance.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Hosting.IHostBuilderOptions">
+            <summary>
+                Represents a set of options to configure <see cref="M:Sitecore.Processing.Engine.Abstractions.Hosting.IHostBuilder.Build(Sitecore.Processing.Engine.Abstractions.Hosting.IHostBuilderOptions)" /> process.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Hosting.IHostBuilderOptions.ConfigurationRootPath">
+            <summary>
+                Gets a path to the directory that is a root for configuration files.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.IAgent">
+            <summary>
+                Represents agent that is started asynchronously at the start of processing engine host when
+                <see cref="M:Sitecore.Processing.Engine.Abstractions.Hosting.IHost.StartAsync(System.Threading.CancellationToken)" /> method is called. The agent can run
+                in its own loop but it must respond to cancellation requested using <see cref="T:System.Threading.CancellationToken" />.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.IAgent.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+                Asynchronously executes agent, hosted within <see cref="T:Sitecore.Processing.Engine.Abstractions.Hosting.IHost" /> instance.
+            </summary>
+            <param name="token">
+                <see cref="T:System.Threading.CancellationToken" /> object passed to indicate cancellation from the caller.
+                <see cref="P:System.Threading.CancellationToken.IsCancellationRequested" /> property will be set to <c>true</c>
+                when executing agent should stop and return.
+            </param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> that represents a status of asynchronous operation.</returns>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.IAgent.AgentId">
+            <summary>
+                A compound key that uniquely identifies this agent.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1">
+            <summary>
+                Enumerates potentially large amounts of entities in batches.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.TotalCount">
+            <summary>
+                Gets the total number of entities in the set. This is an estimate if <see cref="P:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.IsCountEstimated" /> is <c>true</c>.
+            </summary>
+            <value>
+                The estimated entity count.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.IsCountEstimated">
+            <summary>
+                Gets a value indicating whether <see cref="P:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.TotalCount" /> is estimated.
+            </summary>
+            <value>
+                <c>true</c> if the count is estimated; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.IsSplitSupported">
+            <summary>
+                Boolean value indicates if split operation of enumerator is allowed.
+            </summary>
+            <value>
+                <c>true</c> if split operation is supported; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.GetBookmark">
+            <summary>
+                Gets a bookmark that can be persisted and used to retrieve an enumerator at same position as this enumerator at a
+                later point.
+            </summary>
+            <returns>Returns <see cref="T:System.Array"/> of <see cref="T:System.Byte"/> representing bookmark data.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.MoveNextAsync(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Advances this enumerator to the next batch of entities.
+                This will update the <see cref="P:System.Collections.Generic.IAsyncEnumerator`1.Current" /> property.
+            </summary>
+            <param name="batchSize">The preferred number of entities to read for each batch.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>
+                Returns <c>true</c> if enumerator moved <see cref="P:System.Collections.Generic.IAsyncEnumerator`1.Current" /> property to next batch;
+                otherwise, returns <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)">
+            <summary>
+                Splits off a new enumerator with the specified preference. After the operation this enumerator will contain the
+                entities given by the split preference, and the new enumerator the remaining entities. 
+                The estimated total count will be updated.
+            </summary>
+            <param name="splitOptions">The split options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>New <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> after performing split operation.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.ICursorBatchDataReader`1">
+            <summary>
+                Allows to retrieve <see cref="T:Sitecore.Processing.Engine.Abstractions.Batch`1" /> from <see cref="T:Sitecore.Processing.Engine.Abstractions.IDataSource`1" /> passing
+                <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Bookmark" /> to <see cref="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])" /> method.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.ICursorBatchDataReader`1.TryGetNextAsync(System.Threading.CancellationToken)">
+            <summary>
+                Asynchronously retrieves the next <see cref="T:Sitecore.Processing.Engine.Abstractions.Batch`1" /> with entities.
+            </summary>
+            <param name="cancellationToken">A token to communicate cancellation request.</param>
+            <returns>
+                Next <see cref="T:Sitecore.Processing.Engine.Abstractions.Batch`1" /> with entities if data is available. Otherwise, returns null.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.ICursorBatchDataReader`1.MarkProcessedAsync(System.Threading.CancellationToken)">
+            <summary>
+                Marks last batch retrieved by <see cref="M:Sitecore.Processing.Engine.Abstractions.ICursorBatchDataReader`1.TryGetNextAsync(System.Threading.CancellationToken)" /> as processed.
+            </summary>
+            <param name="cancellationToken">A token to communicate cancellation request.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> that represents a status of asynchronous operation.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.ICursorBatchDataReader`1.GetTotalCountAsync(System.Threading.CancellationToken)">
+            <summary>
+                Gets the total count of entities available to be read.
+            </summary>
+            <param name="cancellationToken">A token to communicate cancellation request.</param>
+            <returns>Total count of entities available to be read by the cursor if available. Otherwise, returns null.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.ICursorBatchDataReaderFactory">
+            <summary>
+                Allows to create instances of <see cref="T:Sitecore.Processing.Engine.Abstractions.ICursorBatchDataReader`1" />.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.ICursorBatchDataReaderFactory.Create``1(Sitecore.Processing.Common.IAgentId,Sitecore.Processing.Engine.Abstractions.IDataSource{``0},Sitecore.Processing.Cursors.Abstractions.ICursorDataProvider,System.Int32,System.Int64)">
+            <summary>
+                Creates an instance of <see cref="T:Sitecore.Processing.Engine.Abstractions.ICursorBatchDataReader`1" />.
+            </summary>
+            <param name="agentId">
+                The id of the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAgent" /> to use as an <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Owner" />.
+            </param>
+            <param name="dataSource">The <see cref="T:Sitecore.Processing.Engine.Abstractions.IDataSource`1" /> to read data from.</param>
+            <param name="cursorDataProvider">The provider to manipulate <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> instances.</param>
+            <param name="batchSize">
+                The preferred size of the <see cref="T:Sitecore.Processing.Engine.Abstractions.Batch`1" /> to
+                return from <see cref="M:Sitecore.Processing.Engine.Abstractions.ICursorBatchDataReader`1.TryGetNextAsync(System.Threading.CancellationToken)" />.
+            </param>
+            <param name="minAmountOfItemsToSplit">
+                The minimum amount of remaining items (<see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Size" /> - <see cref="P:Sitecore.Processing.Cursors.Abstractions.ICursor.Consumed" />)
+                in the <see cref="T:Sitecore.Processing.Cursors.Abstractions.ICursor" /> to allow
+                <see cref="M:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1.SplitAsync(Sitecore.Processing.Engine.Abstractions.SplitOptions,System.Threading.CancellationToken)" /> operation.
+            </param>
+            <returns>Created instance of <see cref="T:Sitecore.Processing.Engine.Abstractions.ICursorBatchDataReader`1" />.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.IDataSource`1">
+            <summary>
+                Represents data source responsible for returning an asynchronous enumerator for a batch of entities.
+            </summary>
+            <typeparam name="TEntity">The type of entity returned by the datasource implementation.</typeparam>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.IDataSource`1.CreateBatchEnumeratorAsync(System.Byte[])">
+            <summary>
+                Creates an asynchronous enumerator for returning batches of entities.
+            </summary>
+            <param name="bookmark">The initial bookmark to create the enumerator.</param>
+            <returns>
+                Returns <see cref="T:System.Threading.Tasks.Task`1" /> representing asynchronous operation with
+                <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> instance to enumerate entities.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.IDataSourceOptionsCollection">
+            <summary>
+                Represents options passed to <see cref="T:Sitecore.Processing.Engine.Abstractions.IDataSource`1" />.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.IDataSourceOptionsCollection.DataSourceType">
+            <summary>
+            Assembly qualified .NET type name of the data source to use the options with.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.IDeferredWorker">
+            <summary>
+                Represents worker that runs once after distributed workers have processed. <see cref="T:System.IDisposable" /> is used to
+                free resources after work is done.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.IDeferredWorker.RunAsync(System.Threading.CancellationToken)">
+            <summary>
+                Asynchronously executes the logic of deferred worker.
+            </summary>
+            <param name="token">Cancellation token that will indicate that request is canceled.</param>
+            <remarks>
+                Called by <see cref="T:Sitecore.Processing.Engine.Abstractions.IAgent" /> during processing of deferred action task.
+            </remarks>
+            <returns><see cref="T:System.Threading.Tasks.Task" /> object that represents state of asynchronous operation.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.IDeferredWorkerOptionsCollection">
+            <summary>
+                Represents options passed to <see cref="T:Sitecore.Processing.Engine.Abstractions.IDeferredWorker"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.IDistributedWorker`1">
+            <summary>
+                Represents worker that processes batches of entities. <see cref="T:System.IDisposable" /> is used to free resources after
+                all batches are processed.
+            </summary>
+            <typeparam name="TEntity">Type of entity for unit of work.</typeparam>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.IDistributedWorker`1.ProcessBatchAsync(System.Collections.Generic.IReadOnlyList{`0},System.Threading.CancellationToken)">
+            <summary>
+                Method invoked when worker implementation receives a batch of <typeparamref name="TEntity" /> type entities.
+            </summary>
+            <param name="batch">The batch of entities to process.</param>
+            <param name="token">Cancellation token that will indicate that request is canceled.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task" /> object that represents state of asynchronous operation.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.IDistributedWorkerOptionsCollection">
+            <summary>
+                Represents options passed to <see cref="T:Sitecore.Processing.Engine.Abstractions.IDistributedWorker`1"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.IOptionsCollection">
+            <summary>
+                Represents a collection of options that can be passed to an object or method.
+                Implements <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2" /> interface.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.ITaskExecutor">
+            <summary>
+                Represents entity that is responsible for execution of a task.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.ITaskExecutor.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+                Asynchronously executes task.
+            </summary>
+            <param name="token">
+                <see cref="T:System.Threading.CancellationToken" /> object passed to indicate cancellation from the caller.
+                <see cref="P:System.Threading.CancellationToken.IsCancellationRequested" /> property will be set to <c>true</c>
+                when executing agent should stop and return.
+            </param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task" /> that represents a status of asynchronous operation.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.ITaskExecutorResolver">
+            <summary>
+                Allows to resolve an <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskExecutor"/> for specific <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.ITaskExecutorResolver.ResolveTaskExecutor(System.IServiceProvider,Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData,Sitecore.Processing.Common.IAgentId)">
+            <summary>
+                Resolves an <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskExecutor"/> for a specific <paramref name="taskData"/>.
+            </summary>
+            <param name="provider">The provider that contains services required to create <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskExecutor"/>.</param>
+            <param name="taskData">The <see cref="T:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData"/> to create <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskExecutor"/> for.</param>
+            <param name="agentId">The id of the <see cref="T:Sitecore.Processing.Engine.Abstractions.IAgent"/> that requests <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskExecutor"/>.</param>
+            <returns>An <see cref="T:Sitecore.Processing.Engine.Abstractions.ITaskExecutor"/> for specific <paramref name="taskData"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.ITaskManager">
+            <summary>
+                Represents manager of the tasks that allows registration of new tasks for execution by Processing Engine.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.ITaskManager.RegisterDistributedTaskAsync(Sitecore.Processing.Engine.Abstractions.IDataSourceOptionsCollection,Sitecore.Processing.Engine.Abstractions.IDistributedWorkerOptionsCollection,System.Collections.Generic.IEnumerable{System.Guid},System.TimeSpan)">
+            <summary>
+                Registers new distributed task to be executed by <see cref="T:Sitecore.Processing.Engine.Abstractions.IAgent" />.
+            </summary>
+            <param name="dataSourceOptions">Options collection passed to the datasource object during task execution.</param>
+            <param name="workerOptions">Options collection passed to the worker object during task execution.</param>
+            <param name="prerequisiteTaskIds">The IDs of the tasks which are prerequisites to this task.</param>
+            <param name="expiresAfter"><see cref="T:System.TimeSpan" /> after which the task will expire if processing of it fails.</param>
+            <returns>Asynchronous task that returns a <see cref="T:System.Guid" /> identifier after registering a processing engine task.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.ITaskManager.RegisterDeferredTaskAsync(Sitecore.Processing.Engine.Abstractions.IDeferredWorkerOptionsCollection,System.Collections.Generic.IEnumerable{System.Guid},System.TimeSpan)">
+            <summary>
+                Registers new deferred task to be executed by <see cref="T:Sitecore.Processing.Engine.Abstractions.IAgent" />.
+            </summary>
+            <param name="workerOptions">Options collection passed to the worker object during task execution.</param>
+            <param name="prerequisiteTaskIds">The IDs of the tasks which are prerequisites to this task.</param>
+            <param name="expiresAfter"><see cref="T:System.TimeSpan" /> after which the task will expire if processing of it fails.</param>
+            <returns>Asynchronous task that returns a <see cref="T:System.Guid" /> identifier after registering a processing engine task.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.ITaskManager.GetTaskProgressAsync(System.Guid)">
+            <summary>
+            Gets the progress of a task given by its <see cref="P:Sitecore.Processing.Tasks.Abstractions.IProcessingTaskData.Id"/>.
+            </summary>
+            <param name="id">The Id of the task to get the progress for.</param>
+            <returns>A task yielding the progress of the processing task if the task exists, otherwise null.</returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.ITaskServicesFactory">
+            <summary>
+            Defines a factory used to instantiate task services, such as data sources and workers.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.ITaskServicesFactory.IsServiceRegistered(System.Type)">
+            <summary>
+            Checks if a service, given by its type, is registered in the factory.
+            </summary>
+            <param name="type">The type to be checked.</param>
+            <returns><c>True</c> if the service is registered, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.ITaskServicesFactory.CreateInstance``1(System.IServiceProvider,System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+                Creates a strongly typed instance of a task service with type defined in 
+                <paramref name="typeName"/> passing <paramref name="options"/> as a constructor parameter.
+            </summary>
+            <typeparam name="TCast">The type to cast the instantiated service to.</typeparam>
+            <param name="serviceProvider">The <see cref="T:System.IServiceProvider"/> to resolve additional services from.</param>
+            <param name="typeName">The name of the type to be created.</param>
+            <param name="options">An additional set of options used as a constructor parameter during object creation.</param>
+            <returns>
+                A new instance of the type given by <paramref name="typeName"/> and cast to <typeparamref name="TCast"/>.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.ITaskStatusNotifier">
+            <summary>
+            An interface which defines types that notify about task status.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.ITaskStatusNotifier.NotifyTaskStatusAsync(System.Guid,Sitecore.Processing.Tasks.Abstractions.ProcessingTaskStatus)">
+            <summary>
+            Sends the message with the current status.
+            </summary>
+            <param name="taskId">Id of the task.</param>
+            <param name="status">Current status of the task.</param>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.IWorkerOptionsCollection">
+            <summary>
+                Represents options passed to the worker.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.IWorkerOptionsCollection.WorkerType">
+            <summary>
+            Assembly qualified .NET type name of the worker to use the options with.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Messages.OperationStatusResponseMessage">
+            <summary>
+            An abstract base class used to send a response with the status of the requested operation.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.OperationStatusResponseMessage.RequestId">
+            <summary>
+            ID of the request message to send the response for.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.OperationStatusResponseMessage.Success">
+            <summary>
+            Indicates whether the requested operation succeeded.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.OperationStatusResponseMessage.ErrorMessage">
+            <summary>
+            Contains an error message in case the requested operation fails.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Messages.RegisterDeferredTask">
+            <summary>
+            Message for a deferred task to be created in the processing engine.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.RegisterDeferredTask.WorkerOptions">
+            <summary>
+            Options collection passed to the worker object during task execution.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Messages.RegisterDistributedTask">
+            <summary>
+            Message for a distributed task to be created in the processing engine.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.RegisterDistributedTask.DataSourceOptions">
+            <summary>
+            Options collection passed to the data source object during task execution.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.RegisterDistributedTask.WorkerOptions">
+            <summary>
+            Options collection passed to the worker object during task execution.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Messages.RegisterTask">
+            <summary>
+            An abstract base class used for task registration messages.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.Messages.RegisterTask.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Engine.Abstractions.Messages.RegisterTask" /> class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.RegisterTask.RequestId">
+            <summary>
+            ID of the request to map a response to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.RegisterTask.PrerequisiteTaskIds">
+            <summary>
+            The IDs of the tasks which are prerequisites to this task.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.RegisterTask.ExpiresAfter">
+            <summary>
+            <see cref="T:System.TimeSpan" /> after which the task will expire if processing of it fails.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Messages.TaskProgressRequest">
+            <summary>
+            Message requesting the progress for a task.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.Messages.TaskProgressRequest.#ctor">
+            <summary>
+            Create a new instance.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.TaskProgressRequest.RequestId">
+            <summary>
+            ID of the request to map a response to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.TaskProgressRequest.TaskId">
+            <summary>
+            The ID of the task to get the progress for.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Messages.TaskProgressResponse">
+            <summary>
+            Message that is used to respond to a task progress request.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.TaskProgressResponse.TaskProgress">
+            <summary>
+            Gets or sets the task progress.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Messages.TaskRegistrationStatus">
+            <summary>
+            Message that is used to report a status of the task registration request.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.TaskRegistrationStatus.TaskId">
+            <summary>
+            ID of the registered task.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.Messages.TaskStatus">
+            <summary>
+            Indicates a current task status.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.TaskStatus.TaskId">
+            <summary>
+            Gets or sets the Id of the task.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.Messages.TaskStatus.Status">
+            <summary>
+            Gets or sets status of the task.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.OptionsDictionary">
+            <summary>
+                Represents a dictionary of options that can be passed to an object or method.
+                Implements <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2" /> interface.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.OptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+                Initializes a new options dictionary by passing <see cref="T:System.Collections.Generic.Dictionary`2" />.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.SplitOptions">
+            <summary>
+                Represents options for how <see cref="T:Sitecore.Processing.Engine.Abstractions.IAsyncBatchEnumerator`1" /> should be split.
+                Depending on context this preference may not be honored.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Processing.Engine.Abstractions.WorkerOptionsDictionary">
+            <summary>
+            Represents options collection passed to worker.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Processing.Engine.Abstractions.WorkerOptionsDictionary.WorkerTypeKey">
+            <summary>
+                The key to store in internal dictionary the assembly qualified .NET type name of the worker.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.WorkerOptionsDictionary.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+                Initializes a new options collection by passing <see cref="T:System.Collections.Generic.Dictionary`2" />.
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.WorkerOptionsDictionary.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Engine.Abstractions.WorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="workerType">Assembly qualified .NET type name of the worker to use the options with.</param>
+        </member>
+        <member name="M:Sitecore.Processing.Engine.Abstractions.WorkerOptionsDictionary.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Processing.Engine.Abstractions.WorkerOptionsDictionary"/> class.
+            </summary>
+            <param name="workerType">Assembly qualified .NET type name of the worker to use the options with.</param>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.Dictionary`2" /> containing options.</param>
+        </member>
+        <member name="P:Sitecore.Processing.Engine.Abstractions.WorkerOptionsDictionary.WorkerType">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

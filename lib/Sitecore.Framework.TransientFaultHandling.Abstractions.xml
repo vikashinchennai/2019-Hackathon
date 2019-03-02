@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.TransientFaultHandling.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate">
+            <summary>
+            Determines whether the specified exception represents a transient failure that can be compensated by a retry.
+            </summary>
+            <param name="ex">The exception object to be verified.</param>
+            <returns>true if the specified exception is considered as transient; otherwise, false.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegateExtensions.Detect(Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate,Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate)">
+            <summary>
+            Combines the current predicate with another transient error detection predicate.
+            </summary>
+            <param name="curr">The first delegate to combine.</param>
+            <param name="next">The second delegate to combine.</param>
+            <returns>A delegate representing the two seed delegates combined.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegateExtensions.DetectError(Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate,System.Func{System.Exception,System.Boolean})">
+            <summary>
+            Combines the current predicate with a delegate implemented by the custom predicate supplied.
+            </summary>
+            <param name="curr">The delegate to combine.</param>
+            <param name="isTransientPredicate">The custom predicate implemenation.</param>
+            <returns>A delegate representing the two seed delegates combined.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegateExtensions.DetectNoError(Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate)">
+            <summary>
+            Combines the current predicate with a delegate that will never detect a transient error.
+            </summary>
+            <param name="curr">The delegate to combine.</param>
+            <returns>A delegate representing the two seed delegates combined.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegateExtensions.DetectEverythingAsError(Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate)">
+            <summary>
+            Combines the current predicate with a delegate that will always detect a transient error when it is invoked.
+            </summary>
+            <param name="curr">The delegate to combine.</param>
+            <returns>A delegate representing the two seed delegates combined.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.TransientError">
+            <summary>
+            Defines transient error detection predicates that can be chained together to define composite predicates.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.TransientError.DetectNoError">
+            <summary>
+            A transient error detection delegate that will never detect a transient error.
+            </summary>
+            <returns>A delegate implementing the predicate.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.TransientError.DetectEverythingAsError">
+            <summary>
+            A transient error detection delegate that will always detect a transient error when it is invoked.
+            </summary>
+            <returns>A delegate implementing the predicate.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.TransientError.DetectError(System.Func{System.Exception,System.Boolean})">
+            <summary>
+            A transient error detection delegate implemented by the custom predicate supplied.
+            </summary>
+            <param name="isTransientPredicate">The custom predicate implemenation.</param>
+            <returns>A delegate representing the custom predicate supplied.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.IRetryer">
+            <summary>
+            Defines the behaviour for strategies that perform retrying of work until it is either successful
+            or reaches a terminating failure state.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.IRetryer.Execute(System.Action)">
+            <summary>
+            Executes the work enscapsulated in the action.
+            </summary>
+            <param name="work"></param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.IRetryer.Execute``1(System.Func{``0})">
+            <summary>
+            Executes the work encapsulated in the action and returns the value from that work if completed
+            successfully.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="work"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.IRetryer.ExecuteAsync(System.Func{System.Threading.Tasks.Task},System.Threading.CancellationToken)">
+            <summary>
+            Executes the asynchronous work encapsulated by the function.
+            </summary>
+            <param name="work">The asynchronous work to execute.</param>
+            <param name="cancellationToken">The cancellation token to signal early termination.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.IRetryer.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken)">
+            <summary>
+            Executes the asynchronous work encapsulated by the function and returns the value
+            from that work if completed successfully.
+            </summary>
+            <typeparam name="T">The type of the result value.</typeparam>
+            <param name="work">The asynchronous work to execute.</param>
+            <param name="cancellationToken">The cancellation token to signal early termination.</param>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.IRetryerFactory">
+            <summary>
+            Defines the behaviour to creating an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.IRetryerFactory.Create">
+            <summary>
+            Creates a new <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/>.
+            </summary>
+            <returns>A new <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> instance.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry">
+            <summary>
+            Defines the behaviour responsible for managing the creation and access to a set of named <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> instances.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry.RetryerNames">
+            <summary>
+            Gets the names of all <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/>s that are registered.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry.IsRegistered(System.String)">
+            <summary>
+            Determines if there is an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> registered for the given name.
+            </summary>
+            <param name="name">The name of the retryer.</param>
+            <returns>Returns true if there is a <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> registered, false otherwise.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry.TryGet(System.String,Sitecore.Framework.TransientFaultHandling.IRetryer@)">
+            <summary>
+            Gets an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> registered with the specified name.
+            </summary>
+            <param name="name">The name of the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> to return.</param>
+            <param name="retryer">The retryer that is returned.</param>
+            <returns>True if a retryer was registered, false otherwise.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.NoRetryer">
+            <summary>
+            Defines an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> implementation that simply executes work and
+            performs no retries.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.NoRetryer.Value">
+            <summary>
+            The default instance of <see cref="T:Sitecore.Framework.TransientFaultHandling.NoRetryer"/>; it's thread-safe and stateless, so
+            can be shared across the application.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.NoRetryerFactory">
+            <summary>
+            Defines an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerFactory"/> that creates a <see cref="T:Sitecore.Framework.TransientFaultHandling.NoRetryer"/>.  Useful
+            mainly to be referenced by file configurations.
+            </summary>
+        </member>
+    </members>
+</doc>

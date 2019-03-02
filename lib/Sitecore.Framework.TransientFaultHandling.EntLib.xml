@@ -1,0 +1,431 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Framework.TransientFaultHandling.EntLib</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.EntLib.AsyncExecution">
+            <summary>
+                Provides a wrapper for a non-generic <see cref="T:System.Threading.Tasks.Task" /> and calls into the pipeline
+                to retry only the generic version of the <see cref="T:System.Threading.Tasks.Task" />.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.AsyncExecution.StartAsGenericTask(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Wraps the non-generic <see cref="T:System.Threading.Tasks.Task" /> into a generic
+                <see cref="T:System.Threading.Tasks.Task" />.
+            </summary>
+            <param name="taskAction">The task to wrap.</param>
+            <returns>
+                A <see cref="T:System.Threading.Tasks.Task" /> that wraps the non-generic
+                <see cref="T:System.Threading.Tasks.Task" />.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.EntLib.AsyncExecution`1">
+            <summary>
+            Handles the execution and retries of the user-initiated task.
+            </summary>
+            <typeparam name="TResult">The result type of the user-initiated task.</typeparam>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.ConfigBuilderExtensions.AddRetryer(Sitecore.Framework.TransientFaultHandling.ITransientFaultHandlingConfigBuilder,System.String,Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate,Sitecore.Framework.TransientFaultHandling.EntLib.RetryStrategy)">
+            <summary>
+            Registers an <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/>, with the specified name and custom
+            transient error delegate and retry strategy, in the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryerRegistry"/>.
+            </summary>
+            <param name="builder"></param>
+            <param name="name">The name associated with the <see cref="T:Sitecore.Framework.TransientFaultHandling.IRetryer"/> instance.</param>
+            <param name="errorDetection">The custom transient delegate.</param>
+            <param name="retry">The custom retry strategy.</param>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.EntLib.RetryDefaults.NoRetryStrategy">
+            <summary>
+            Defines a strategy that defines a retry should never be performed.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Framework.TransientFaultHandling.EntLib.RetryDefaults.NoRetryPolicy">
+            <summary>
+            Defines a policy that performs no retries, but invokes the action only once.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.EntLib.RetryingEventArgs">
+            <summary>
+                Contains information that is required for the
+                <see cref="E:Framework.TransientFaultHandling.RetryPolicy.Retrying" /> event.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryingEventArgs.#ctor(System.Int32,System.TimeSpan,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Framework.TransientFaultHandling.RetryingEventArgs" /> class.
+            </summary>
+            <param name="currentRetryCount">The current retry attempt count.</param>
+            <param name="delay">
+                The delay that indicates how long the current thread will be suspended before the next iteration is
+                invoked.
+            </param>
+            <param name="lastException">The exception that caused the retry conditions to occur.</param>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.EntLib.RetryingEventArgs.CurrentRetryCount">
+            <summary>
+                Gets the current retry count.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.EntLib.RetryingEventArgs.Delay">
+            <summary>
+                Gets the delay that indicates how long the current thread will be suspended before the next iteration is invoked.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.EntLib.RetryingEventArgs.LastException">
+            <summary>
+                Gets the exception that caused the retry conditions to occur.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.EntLib.RetryLimitExceededException">
+            <summary>
+                The special type of exception that provides managed exit from a retry loop. The user code can use this
+                exception to notify the retry policy that no further retry attempts are required.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryLimitExceededException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Framework.TransientFaultHandling.RetryLimitExceededException" />
+                class with a default error message.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryLimitExceededException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Framework.TransientFaultHandling.RetryLimitExceededException" />
+                class with a specified error message.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryLimitExceededException.#ctor(System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Framework.TransientFaultHandling.RetryLimitExceededException" />
+                class with a reference to the inner exception
+                that is the cause of this exception.
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryLimitExceededException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Framework.TransientFaultHandling.RetryLimitExceededException" />
+                class with a specified error message and inner exception.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy">
+            <summary>
+                Provides the base implementation of the retry mechanism for unreliable actions and transient conditions.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy.#ctor(Sitecore.Framework.TransientFaultHandling.IsTransientErrorDelegate,Sitecore.Framework.TransientFaultHandling.EntLib.RetryStrategy)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Framework.TransientFaultHandling.RetryPolicy" /> class with the
+                specified number of retry attempts and parameters defining the progressive delay between retries.
+            </summary>
+            <param name="errorDetectionStrategy">
+                The
+                <see cref="T:Framework.TransientFaultHandling.ITransientErrorDetectionStrategy" /> that is responsible for
+                detecting transient conditions.
+            </param>
+            <param name="retryStrategy">The strategy to use for this retry policy.</param>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy.RetryStrategy">
+            <summary>
+                Gets the retry strategy.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy.ErrorDetectionStrategy">
+            <summary>
+                Gets the instance of the error detection strategy.
+            </summary>
+        </member>
+        <member name="E:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy.Retrying">
+            <summary>
+                An instance of a callback delegate that will be invoked whenever a retry condition is encountered.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy.ExecuteAction(System.Action)">
+            <summary>
+                Repetitively executes the specified action while it satisfies the current retry policy.
+            </summary>
+            <param name="action">A delegate that represents the executable action that doesn't return any results.</param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy.ExecuteAction``1(System.Func{``0})">
+            <summary>
+                Repetitively executes the specified action while it satisfies the current retry policy.
+            </summary>
+            <typeparam name="TResult">The type of result expected from the executable action.</typeparam>
+            <param name="func">
+                A delegate that represents the executable action that returns the result of type
+                <typeparamref name="TResult" />.
+            </param>
+            <returns>The result from the action.</returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy.ExecuteAsync(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+                Repetitively executes the specified asynchronous task while it satisfies the current retry policy.
+            </summary>
+            <param name="taskAction">A function that returns a started task (also known as "hot" task).</param>
+            <returns>
+                A task that will run to completion if the original task completes successfully (either the
+                first time or after retrying transient failures). If the task fails with a non-transient error or
+                the retry limit is reached, the returned task will transition to a faulted state and the exception must be
+                observed.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy.ExecuteAsync(System.Func{System.Threading.Tasks.Task},System.Threading.CancellationToken)">
+            <summary>
+                Repetitively executes the specified asynchronous task while it satisfies the current retry policy.
+            </summary>
+            <param name="taskAction">A function that returns a started task (also known as "hot" task).</param>
+            <param name="cancellationToken">
+                The token used to cancel the retry operation. This token does not cancel the execution
+                of the asynchronous task.
+            </param>
+            <returns>
+                Returns a task that will run to completion if the original task completes successfully (either the
+                first time or after retrying transient failures). If the task fails with a non-transient error or
+                the retry limit is reached, the returned task will transition to a faulted state and the exception must be
+                observed.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+                Repeatedly executes the specified asynchronous task while it satisfies the current retry policy.
+            </summary>
+            <param name="taskFunc">A function that returns a started task (also known as "hot" task).</param>
+            <returns>
+                Returns a task that will run to completion if the original task completes successfully (either the
+                first time or after retrying transient failures). If the task fails with a non-transient error or
+                the retry limit is reached, the returned task will transition to a faulted state and the exception must be
+                observed.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}},System.Threading.CancellationToken)">
+            <summary>
+                Repeatedly executes the specified asynchronous task while it satisfies the current retry policy.
+            </summary>
+            <param name="taskFunc">A function that returns a started task (also known as "hot" task).</param>
+            <param name="cancellationToken">
+                The token used to cancel the retry operation. This token does not cancel the execution
+                of the asynchronous task.
+            </param>
+            <returns>
+                Returns a task that will run to completion if the original task completes successfully (either the
+                first time or after retrying transient failures). If the task fails with a non-transient error or
+                the retry limit is reached, the returned task will transition to a faulted state and the exception must be
+                observed.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryPolicy.OnRetrying(System.Int32,System.Exception,System.TimeSpan)">
+            <summary>
+                Notifies the subscribers whenever a retry condition is encountered.
+            </summary>
+            <param name="retryCount">The current retry attempt count.</param>
+            <param name="lastError">The exception that caused the retry conditions to occur.</param>
+            <param name="delay">
+                The delay that indicates how long the current thread will be suspended before the next iteration is
+                invoked.
+            </param>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.EntLib.ExponentialBackoff">
+            <summary>
+                A retry strategy with backoff parameters for calculating the exponential delay between retries.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.ExponentialBackoff.#ctor(System.String,System.Int32,System.TimeSpan,System.TimeSpan,System.TimeSpan,System.Boolean)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Framework.TransientFaultHandling.ExponentialBackoff" /> class with
+                the specified name, retry settings, and fast retry option.
+            </summary>
+            <param name="name">The name of the retry strategy.</param>
+            <param name="retryCount">The maximum number of retry attempts.</param>
+            <param name="minBackoff">The minimum backoff time</param>
+            <param name="maxBackoff">The maximum backoff time.</param>
+            <param name="deltaBackoff">
+                The value that will be used to calculate a random delta in the exponential delay between
+                retries.
+            </param>
+            <param name="firstFastRetry">
+                true to immediately retry in the first attempt; otherwise, false. The subsequent retries
+                will remain subject to the configured retry interval.
+            </param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.ExponentialBackoff.GetShouldRetry">
+            <summary>
+                Returns the corresponding ShouldRetry delegate.
+            </summary>
+            <returns>The ShouldRetry delegate.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.EntLib.FixedInterval">
+            <summary>
+                Represents a retry strategy with a specified number of retry attempts and a default, fixed time interval between
+                retries.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.FixedInterval.#ctor(System.String,System.Int32,System.TimeSpan,System.Boolean)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Framework.TransientFaultHandling.FixedInterval" /> class with the
+                specified number of retry attempts, time interval, retry strategy, and fast start option.
+            </summary>
+            <param name="name">The retry strategy name.</param>
+            <param name="retryCount">The number of retry attempts.</param>
+            <param name="retryInterval">The time interval between retries.</param>
+            <param name="firstFastRetry">
+                true to immediately retry in the first attempt; otherwise, false. The subsequent retries
+                will remain subject to the configured retry interval.
+            </param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.FixedInterval.GetShouldRetry">
+            <summary>
+                Returns the corresponding ShouldRetry delegate.
+            </summary>
+            <returns>The ShouldRetry delegate.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.EntLib.Incremental">
+            <summary>
+                A retry strategy with a specified number of retry attempts and an incremental time interval between retries.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.Incremental.#ctor(System.String,System.Int32,System.TimeSpan,System.TimeSpan,System.Boolean)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Framework.TransientFaultHandling.Incremental" /> class with the
+                specified number of retry attempts, time interval, retry strategy, and fast start option.
+            </summary>
+            <param name="name">The retry strategy name.</param>
+            <param name="retryCount">The number of retry attempts.</param>
+            <param name="initialInterval">The initial interval that will apply for the first retry.</param>
+            <param name="increment">
+                The incremental time value that will be used to calculate the progressive delay between
+                retries.
+            </param>
+            <param name="firstFastRetry">
+                true to immediately retry in the first attempt; otherwise, false. The subsequent retries
+                will remain subject to the configured retry interval.
+            </param>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.Incremental.GetShouldRetry">
+            <summary>
+                Returns the corresponding ShouldRetry delegate.
+            </summary>
+            <returns>The ShouldRetry delegate.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.EntLib.RetryStrategy">
+            <summary>
+                Represents a retry strategy that determines the number of retry attempts and the interval between retries.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryStrategy.#ctor(System.String,System.Boolean)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Framework.TransientFaultHandling.RetryStrategy" /> class.
+            </summary>
+            <param name="name">The name of the retry strategy.</param>
+            <param name="firstFastRetry">
+                true to immediately retry in the first attempt; otherwise, false. The subsequent retries
+                will remain subject to the configured retry interval.
+            </param>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.EntLib.RetryStrategy.FastFirstRetry">
+            <summary>
+                Gets or sets a value indicating whether the first retry attempt will be made immediately,
+                whereas subsequent retries will remain subject to the retry interval.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.EntLib.RetryStrategy.Name">
+            <summary>
+                Gets the name of the retry strategy.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Framework.TransientFaultHandling.EntLib.RetryStrategy.GetShouldRetry">
+            <summary>
+                Returns the corresponding ShouldRetry delegate.
+            </summary>
+            <returns>The ShouldRetry delegate.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.EntLib.ShouldRetry">
+            <summary>
+                Defines a callback delegate that will be invoked whenever a retry condition is encountered.
+            </summary>
+            <param name="retryCount">The current retry attempt count.</param>
+            <param name="lastException">The exception that caused the retry conditions to occur.</param>
+            <param name="delay">
+                The delay that indicates how long the current thread will be suspended before the next iteration is
+                invoked.
+            </param>
+            <returns><see langword="true" /> if a retry is allowed; otherwise, <see langword="false" />.</returns>
+        </member>
+        <member name="T:Sitecore.Framework.TransientFaultHandling.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.ArgumentCannotBeGreaterThanBaseline">
+            <summary>
+              Looks up a localized string similar to The specified argument {0} cannot be greater than its ceiling value of {1}..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.ArgumentCannotBeNegative">
+            <summary>
+              Looks up a localized string similar to The specified argument {0} cannot be initialized with a negative value..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.DefaultRetryStrategyMappingNotFound">
+            <summary>
+              Looks up a localized string similar to Default retry strategy for technology {0}, named &apos;{1}&apos;, is not defined..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.DefaultRetryStrategyNotFound">
+            <summary>
+              Looks up a localized string similar to Default retry strategy for technology {0} was not not defined, and there is no overall default strategy..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.ExceptionRetryManagerAlreadySet">
+            <summary>
+              Looks up a localized string similar to The RetryManager is already set..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.ExceptionRetryManagerNotSet">
+            <summary>
+              Looks up a localized string similar to The default RetryManager has not been set. Set it by invoking the RetryManager.SetDefault static method, or if you are using declarative configuration, you can invoke the RetryPolicyFactory.CreateDefault() method to automatically create the retry manager from the configuration file..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.RetryLimitExceeded">
+            <summary>
+              Looks up a localized string similar to The action has exceeded its defined retry limit..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.RetryStrategyNotFound">
+            <summary>
+              Looks up a localized string similar to The retry strategy with name &apos;{0}&apos; cannot be found..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.StringCannotBeEmpty">
+            <summary>
+              Looks up a localized string similar to The specified string argument {0} must not be empty..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.TaskCannotBeNull">
+            <summary>
+              Looks up a localized string similar to The specified argument &apos;{0}&apos; cannot return a null task when invoked..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Framework.TransientFaultHandling.Properties.Resources.TaskMustBeScheduled">
+            <summary>
+              Looks up a localized string similar to The specified argument &apos;{0}&apos; must return a scheduled task (also known as &quot;hot&quot; task) when invoked..
+            </summary>
+        </member>
+    </members>
+</doc>

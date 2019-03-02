@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Xdb.MarketingAutomation.ReportingClient</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient">
+            <summary>
+            An implementation of <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.IAutomationReportingClient"/> which uses the Web API client to make calls to the web API endpoint.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.EndpointConnectionStringName">
+            <summary>
+            The name of the connection string holding the URL for the endpoint to communicate with.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient" /> class.
+            </summary>
+            <param name="logger">The logger to write messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient},Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient" /> class.
+            </summary>
+            <param name="logger">The logger to write messages to.</param>
+            <param name="configuration">The configuration to load from.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.#ctor(System.Uri,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient" /> class.
+            </summary>
+            <param name="serviceBaseAddress">The address of the controller hosting the service.</param>
+            <param name="logger">The logger to write messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.#ctor(System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient"/> class.
+            </summary>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient"/> after creation.</param>
+            <param name="logger">The logger to write messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.#ctor(System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient"/> class.
+            </summary>
+            <param name="serviceBaseAddress">The address of the controller hosting the service.</param>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient"/> after creation.</param>
+            <param name="logger">The logger to write messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.#ctor(System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient"/> class.
+            </summary>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The logger to write messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.#ctor(System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient"/> class.
+            </summary>
+            <param name="serviceBaseAddress">The address of the controller hosting the service.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The logger to write messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.#ctor(System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient"/> class.
+            </summary>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient"/> after creation.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The logger to write messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.#ctor(System.Uri,System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientModifier},System.Collections.Generic.IEnumerable{Sitecore.Xdb.Common.Web.IHttpClientHandlerModifier},Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient"/> class.
+            </summary>
+            <param name="serviceBaseAddress">The address of the controller hosting the service.</param>
+            <param name="clientModifiers">An ordered list of classes which modify the <see cref="T:System.Net.Http.HttpClient"/> after creation.</param>
+            <param name="httpClientHandlerModifiers">An ordered list of classes which modify the handler after creation.</param>
+            <param name="logger">The logger to write messages to.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.Logger">
+            <summary>
+            The logger to write messages to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.ServiceAddressFromConnectionString">
+            <summary>
+            Gets the service URI from the default connection string.
+            </summary>
+            <returns>The URI for the service, or null if the connection string couldn't be found or couldn't be parsed.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.GetPlanStatisticsAsync(System.Collections.Generic.IEnumerable{System.Guid})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.GetPlanStatistics(System.Collections.Generic.IEnumerable{System.Guid})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.GetPlanReportAsync(System.Guid,System.DateTime,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.GetPlanReport(System.Guid,System.DateTime,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.AutomationReportingClient.EnsureRoutePrefixRemoved(System.Uri)">
+            <summary>
+            Ensures and removes, if needed, <see cref="F:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingRoutes.DefaultRoutePrefix"/> from <paramref name="baseUri"/>.
+            </summary>
+            <param name="baseUri">The base URI to remove <see cref="F:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingRoutes.DefaultRoutePrefix"/> from.</param>
+            <returns>The base URI without <see cref="F:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingRoutes.DefaultRoutePrefix"/>.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.IAutomationReportingClient">
+            <summary>
+            Defines a client which provides reporting operations into the engine.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.IAutomationReportingClient.GetPlanStatisticsAsync(System.Collections.Generic.IEnumerable{System.Guid})">
+            <summary>
+            Get the plan statistics for one or more plans.
+            </summary>
+            <param name="plans">The IDs of the plans to get the statistics for.</param>
+            <returns>The <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Reporting.PlanStatistics"/> for the plans which could be found.</returns>
+            <remarks>
+            If the <paramref name="plans"/> parameter is <c>null</c> or empty, gets the statistics for all plans.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.IAutomationReportingClient.GetPlanStatistics(System.Collections.Generic.IEnumerable{System.Guid})">
+            <summary>
+            Get the plan statistics for one or more plans.
+            </summary>
+            <param name="plans">The IDs of the plans to get the statistics for.</param>
+            <returns>The <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Reporting.PlanStatistics"/> for the plans which could be found.</returns>
+            <remarks>
+            If the <paramref name="plans"/> parameter is <c>null</c> or empty, gets the statistics for all plans.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.IAutomationReportingClient.GetPlanReportAsync(System.Guid,System.DateTime,System.DateTime)">
+            <summary>
+            Get the plan report for a given plan, filtering by date
+            </summary>
+            <param name="planDefinitionId">The ID of the plans to get the report for.</param>
+            <param name="startDate">The starting date to get the report for.</param>
+            <param name="endDate">The ending date to get the report for.</param>
+            <returns>The <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Reporting.PlanReport"/> for the period. If the plan cannot be found, returns <c>null</c>.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.IAutomationReportingClient.GetPlanReport(System.Guid,System.DateTime,System.DateTime)">
+            <summary>
+            Get the plan report for a given plan, filtering by date
+            </summary>
+            <param name="planDefinitionId">The ID of the plans to get the report for.</param>
+            <param name="startDate">The starting date to get the report for.</param>
+            <param name="endDate">The ending date to get the report for.</param>
+            <returns>The <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Reporting.PlanReport"/> for the period. If the plan cannot be found, returns <c>null</c>.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.NotConfiguredAutomationReportingClient">
+            <summary>
+            An implementation of <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.IAutomationReportingClient"/> which is not configured and does nothing.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.NotConfiguredAutomationReportingClient.#ctor(Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.ReportingClient.NotConfiguredAutomationReportingClient})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.NotConfiguredAutomationReportingClient"/> class.
+            </summary>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.NotConfiguredAutomationReportingClient.GetPlanReport(System.Guid,System.DateTime,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.NotConfiguredAutomationReportingClient.GetPlanReportAsync(System.Guid,System.DateTime,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.NotConfiguredAutomationReportingClient.GetPlanStatistics(System.Collections.Generic.IEnumerable{System.Guid})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.NotConfiguredAutomationReportingClient.GetPlanStatisticsAsync(System.Collections.Generic.IEnumerable{System.Guid})">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingQueryStringParameterKeys">
+            <summary>
+            Parameter keys used in the query string.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingQueryStringParameterKeys.PlanDefinitionId">
+            <summary>
+            The "planDefinitionId" key.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingQueryStringParameterKeys.Start">
+            <summary>
+            The "start" key.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingQueryStringParameterKeys.End">
+            <summary>
+            The "end" key.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingQueryStringParameterKeys.Plans">
+            <summary>
+            The "plans" key.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingRoutes">
+            <summary>
+            Provides the routes to the web API actions for reporting. Can be used by partners to implement their own <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.IAutomationReportingClient"/>.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingRoutes.DefaultRoutePrefix">
+            <summary>
+            The default route prefix for the Web API controllers.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingRoutes.#ctor(System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingRoutes"/> class.
+            </summary>
+            <param name="baseAddress">The base address to create the other Uris from.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingRoutes.GetPlanStatistics">
+            <summary>
+            The <see cref="T:System.Uri"/> to the GetPlanStatistics action on the ReportingController.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.ReportingRoutes.GetPlanReport">
+            <summary>
+            The <see cref="T:System.Uri"/> to the GetPlanReport action on the ReportingController.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.ReportingClient.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.Resources.AutomationReportingClientNotConfigured">
+            <summary>
+              Looks up a localized string similar to Automation reporting client is not configured..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.Resources.GetPlanReportNotComplete">
+            <summary>
+              Looks up a localized string similar to Get plan report did not complete successfully..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.ReportingClient.Resources.GetPlanStatisticsNotComplete">
+            <summary>
+              Looks up a localized string similar to Get plan statistics did not complete successfully..
+            </summary>
+        </member>
+    </members>
+</doc>

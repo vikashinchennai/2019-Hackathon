@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Xdb.ReferenceData.SqlServer.Xmgmt</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Xmgmt.Configuration.ServiceCollectionExtensions">
+            <summary>
+            Defines extensions to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Xmgmt.Configuration.ServiceCollectionExtensions.AddSqlServerReferenceDataProvider(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers the SqlServerReferenceDataProvider as the data provider for the reference data store.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Xmgmt.Configuration.SqlServerReferenceDataProviderConfigurator">
+            <summary>
+            Configurator for the SQL server reference data provider.
+            </summary>
+            <seealso cref="T:Sitecore.DependencyInjection.IServicesConfigurator" />
+        </member>
+        <member name="M:Sitecore.Xdb.ReferenceData.SqlServer.Xmgmt.Configuration.SqlServerReferenceDataProviderConfigurator.Configure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures service collection.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.ReferenceData.SqlServer.Xmgmt.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Xmgmt.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Xmgmt.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.ReferenceData.SqlServer.Xmgmt.Resources.CannotInstantiateObject">
+            <summary>
+              Looks up a localized string similar to Cannot instantiate object configured at {0}.
+            </summary>
+        </member>
+    </members>
+</doc>

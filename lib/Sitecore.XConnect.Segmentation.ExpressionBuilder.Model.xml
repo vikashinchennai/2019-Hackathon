@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.XConnect.Segmentation.ExpressionBuilder.Model</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.IPredicateDescriptor">
+            <summary>
+            Defines a mapping between an Identifier and a concrete type of predicate.
+            </summary>
+        </member>
+        <member name="P:Sitecore.XConnect.Segmentation.ExpressionBuilder.IPredicateDescriptor.Id">
+            <summary>
+            Gets the identifier of the predicate type.
+            </summary>
+        </member>
+        <member name="P:Sitecore.XConnect.Segmentation.ExpressionBuilder.IPredicateDescriptor.Type">
+            <summary>
+            Gets the concrete implementation type of the predicate.
+            </summary>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.IPredicateDescriptorLocator">
+            <summary>
+            Describes the service that provides access to a registry of <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.IPredicateDescriptor" />s, essentially
+            a mapping between an identifier and a concrete type.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.IPredicateDescriptorLocator.GetDescriptor(System.Guid)">
+            <summary>
+            Gets a <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.IPredicateDescriptor"/> registered for a given Id.
+            </summary>
+            <param name="id">The Id of the descriptor.</param>
+            <returns>The resolved descriptor if found, otherwise throws an exception.</returns>
+            <exception cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException"></exception>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException">
+            <summary>
+            Represents errors that occur when registering and resolving <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.IPredicateDescriptor"/>s.
+            See <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.IPredicateDescriptorLocator"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException"/>.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException"/>.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The (optional) exception that is the cause of the current exception.</param>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException.#ctor(System.Guid,System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException"/>.
+            </summary>
+            <param name="descriptorId">The identifier that was in scope when the error occurred.</param>
+            <param name="message">The error message that explains the reason for the exception.</param>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException.#ctor(System.Guid,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException"/>.
+            </summary>
+            <param name="descriptorId">The identifier that was in scope when the error occurred.</param>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The (optional) exception that is the cause of the current exception.</param>
+        </member>
+        <member name="P:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException.DescriptorId">
+            <summary>
+            Gets the identifier that was in scope when the error occurred.
+            </summary>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.IPredicateFactory">
+            <summary>
+            Describes the ability to create an object of a type represented by an identifier, and bind
+            property values supplied in a string dictionary as strongly typed values.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.IPredicateFactory.Create(System.Guid,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+            Creates an object of a type that will mapped to from an identifier, and sets any public properties
+            on the new object according to the name/value pairs provided.
+            </summary>
+            <param name="descriptorId">The identifier of a concrete type.</param>
+            <param name="properties">The names &amp; values of properties to set on the object.  The values will be converted to concrete types.</param>
+            <returns></returns>
+            <exception cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException">Failed to resolve descriptor Id.</exception>
+            <exception cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.PropertyBindingException">Failed to bind properties to object.</exception>
+            <exception cref="T:System.ArgumentException">Failed to instantiate object instance.</exception>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.IPropertyBinder">
+            <summary>
+            Describes the binding (and conversion) of named string values to strongly typed values
+            set on properties of an object. 
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.IPropertyBinder.Bind(System.Object,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+            Sets the supplied property values as strongly typed values to properties on the supplied object.
+            </summary>
+            <param name="instance">The object on which to bind the property values.</param>
+            <param name="properties">The name/string value pairs to bind to the object.</param>
+            <exception cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.PropertyBindingException">When all properties values provided could not be successfully bound to properties on the object.</exception>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.PredicateFactoryExtensions.Create``1(Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.IPredicateFactory,System.Guid,System.Collections.Generic.IReadOnlyDictionary{System.String,System.String})">
+            <summary>
+            Creates an object of a type that will mapped to from an identifier, and sets any public properties
+            on the new object according to the name/value pairs provided.
+            </summary>
+            <typeparam name="T">The required type of the predicate that will be created.</typeparam>
+            <param name="predicateFactory">The predicate factory used to create the object.</param>
+            <param name="descriptorId">The identifer of a concrete type.</param>
+            <param name="properties">The names &amp; values of properties to set on the object.  The values will be converted to concrete types.</param>
+            <returns></returns>
+            <exception cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateDescriptorException">Failed to resolve descriptor Id.</exception>
+            <exception cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.PropertyBindingException">Failed to bind properties to object.</exception>
+            <exception cref="T:System.ArgumentException">Failed to instantiate object instance.</exception>
+            <exception cref="T:System.InvalidCastException">Object created could not be cast to the required type.</exception>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.PropertyBindingException">
+            <summary>
+            Represents errors that occur when binding string property values to strongly
+            typed values on an object. See <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.IPropertyBinder"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.PropertyBindingException.#ctor(System.Type,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.PropertyBindingException"/>.
+            </summary>
+            <param name="bindingTarget">Type of object that properties were being bound to when the error occurred.</param>
+            <param name="propertyName">The name of the property that was being bound to when the error occurred.</param>
+            <param name="sourceValue">The input value of the property for which the error occurred.</param>
+            <param name="message">The error message describing the detail of the error.</param>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.PropertyBindingException.#ctor(System.Type,System.String,System.String,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of <see cref="T:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.PropertyBindingException"/>.
+            </summary>
+            <param name="bindingTarget">Type of object that properties were being bound to when the error occurred.</param>
+            <param name="propertyName">The name of the property that was being bound to when the error occurred.</param>
+            <param name="sourceValue">The input value of the property for which the error occurred.</param>
+            <param name="message">The error message describing the detail of the error.</param>
+            <param name="innerException"></param>
+        </member>
+        <member name="P:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.PropertyBindingException.BindingTarget">
+            <summary>
+            Gets the type of object that properties were being bound to when the error occured.
+            </summary>
+        </member>
+        <member name="P:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.PropertyBindingException.PropertyName">
+            <summary>
+            Gets the name of the property that was being bound to when the error occurred.
+            </summary>
+        </member>
+        <member name="P:Sitecore.XConnect.Segmentation.ExpressionBuilder.PredicateFactory.PropertyBindingException.SourceValue">
+            <summary>
+            Gets the input value of the property for which the error occurred.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.ExpressionBuilder.TreeConverter.TreeConverter`2.Convert(`0)">
+            <param name="treeRoot">The treeRoot could be null, which is allowed, and gives the converters the oppurtunity to interpret.</param>
+            <remarks>The treeRoot could be null, which is allowed, and gives the converters the oppurtunity to interpret.</remarks>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

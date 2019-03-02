@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Marketing.Automation.Models</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Marketing.Automation.Models.BehaviorProfileValue">
+            <summary>
+            Implements the behavior profile value model.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Marketing.Automation.Models.BehaviorProfileValue.#ctor(System.Guid,System.Collections.Generic.IDictionary{System.Guid,System.Double})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Marketing.Automation.Models.BehaviorProfileValue"/>.
+            </summary>
+            <param name="profileId">The profile Id.</param>
+            <param name="keyValues">The key-values.</param>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.BehaviorProfileValue.ProfileId">
+            <summary>
+            Gets or sets the behavior profile Id.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.BehaviorProfileValue.KeyValues">
+            <summary>
+            Gets the behavior profile key-values. 
+            </summary>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Models.Constants">
+            <summary>
+            Constants used by Marketing Automation
+            </summary>
+        </member>
+        <member name="F:Sitecore.Marketing.Automation.Models.Constants.EngagementScoreChangeEventDefinitionId">
+            <summary>
+            The event definition id for the "Marketing Automation engagement score change"-event
+            </summary>
+        </member>
+        <member name="F:Sitecore.Marketing.Automation.Models.Constants.ProfileScoreChangeEventDefinitionId">
+            <summary>
+            The event definition id for the "Marketing Automation profile score change"-event
+            </summary>
+        </member>
+        <member name="F:Sitecore.Marketing.Automation.Models.Constants.SystemChannelId">
+            <summary>
+            The id for the "System"-channel
+            </summary>
+        </member>
+        <member name="F:Sitecore.Marketing.Automation.Models.Constants.UserAgent">
+            <summary>
+            User agent used when registering interactins
+            </summary>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Models.ListenerDelay">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.ListenerDelay.Delay">
+            <summary>
+            The delay added to the enrollment entry date before moving
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.ListenerDelay.WaitUntil">
+            <summary>
+            The time to wait to before moving
+            </summary>
+        </member>
+        <member name="T:Sitecore.Marketing.Automation.Models.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.EngagementScoreCouldNotBeUpdatedForTheContact">
+            <summary>
+              Looks up a localized string similar to The engagement score could not be updated for the contact with id &apos;{0}&apos;&apos;.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.EngagementScoreUpdated">
+            <summary>
+              Looks up a localized string similar to The engagement score has been updated for the contact with id &apos;{0}&apos;&apos;.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheActivityPropertyHasNotBeenSetPattern">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; property has not been set.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheContactHasBeenEnrolledIntoPlan">
+            <summary>
+              Looks up a localized string similar to The contact with Id &apos;{0}&apos; has been successfully enrolled into the entry activity of a plan with Id &apos;{1}&apos;..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheContactHasNotBeenEnrolledIntoPlan">
+            <summary>
+              Looks up a localized string similar to The contact with Id &apos;{0}&apos; has not been enrolled into the entry activity of a plan with Id &apos;{1}&apos;.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheContactPropertyHasNotBeenSet">
+            <summary>
+              Looks up a localized string similar to The &apos;Contact&apos; property has not been set.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheEmailAddressListFacetHasNotBeenSetSuccessfully">
+            <summary>
+              Looks up a localized string similar to The &apos;EmailAddressListFacet&apos; has not been set successfully.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheEnrollmentCompletedSuccessfully">
+            <summary>
+              Looks up a localized string similar to The enrollment of activity with Id = &apos;{0}&apos; to target activity with Id = &apos;{1}&apos; has been completed successfully!.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheEnrollmentHasNotCompletedCorrectly">
+            <summary>
+              Looks up a localized string similar to The enrollment of activity with Id = &apos;{0}&apos; to target activity with Id = &apos;{1}&apos; hasn&apos;t been completed correctly!.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheFacetDoesNotExistPattern">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; facet does not exist.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheFacetHasBeenSetAndSubmittedSuccessfullyPattern">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; facet has been set and submitted successfully.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheFacetHasNotBeenSetAndSubmittedSuccessfullyPattern">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; facet has not been set and submitted successfully.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheFacetInformationAlreadyExistsPattern">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; facet information already exists.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheFacetInformationNotFoundPattern">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; facet information was not found.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheListWasNotFoundPattern">
+            <summary>
+              Looks up a localized string similar to The list &apos;{0}&apos; was not found.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.TheListWasNotRemovedSuccessfullyPattern">
+            <summary>
+              Looks up a localized string similar to The list &apos;{0}&apos; was not removed successfully.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.ThePlanDoesNotExists">
+            <summary>
+              Looks up a localized string similar to The plan with Id = &apos;{0}&apos; could not be found.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.ThePreferredEmailPropertyHasNotBeenSet">
+            <summary>
+              Looks up a localized string similar to The &apos;PreferredEmail&apos; property has not been set.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Marketing.Automation.Models.Resources.UnexpectedTestOperation">
+            <summary>
+              Looks up a localized string similar to Unexpected &apos;TestOperation&apos;.
+            </summary>
+        </member>
+    </members>
+</doc>

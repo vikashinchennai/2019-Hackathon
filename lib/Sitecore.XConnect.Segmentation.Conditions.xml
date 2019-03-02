@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.XConnect.Segmentation.Conditions</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.XConnect.Segmentation.Conditions.ExpressionBuilder.IConditionExpressionBuilder">
+            <summary>
+            Represents the ability to create a <see cref="T:Sitecore.Framework.Rules.ICondition"/> tree represented 
+            by a <see cref="T:Sitecore.Marketing.Rules.IRuleConditionNode"/> tree.
+            </summary>
+        </member>
+        <member name="M:Sitecore.XConnect.Segmentation.Conditions.ExpressionBuilder.IConditionExpressionBuilder.BuildCondition(Sitecore.Marketing.Rules.IRuleConditionNode)">
+            <summary>
+            Creates a <see cref="T:Sitecore.Framework.Rules.ICondition"/> tree from the supplied <see cref="T:Sitecore.Marketing.Rules.IRuleConditionNode"/> tree.
+            </summary>
+            <param name="ruleExpression">The node describing the query factory tree to create.</param>
+            <returns>A new query factory tree.</returns>
+        </member>
+    </members>
+</doc>

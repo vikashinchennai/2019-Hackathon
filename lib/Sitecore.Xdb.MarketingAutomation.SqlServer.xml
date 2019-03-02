@@ -1,0 +1,1962 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sitecore.Xdb.MarketingAutomation.SqlServer</name>
+    </assembly>
+    <members>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ConnectionStringResolver">
+            <summary>
+            Provides method to resolve the connection string.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.ConnectionStringResolver.ResolveConnectionString(System.String)">
+            <summary>
+            Resolves the connection string.
+            </summary>
+            <param name="connectionStringOrName">The connection string or a name of the connection string used to connect to the SQL server.</param>
+            <returns>The connection string.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.EnrollCommand`1">
+            <summary>
+            Executes the Enroll command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.EnrollCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="connectionString">The string used to open a connection to the SQL server.</param>
+            <param name="logger">The logger to log informational messages to.</param>
+            <param name="tvpConverter">The <see cref= "T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter" /> used to convert model objects to TVPs.</param>
+            <param name="objectSerializer">A serializer used to serialize and deserialize objects.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code if transient fault happens.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.EnrollCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.EnrollCommand`1.EnrollmentFormas">
+            <summary>
+            The enrollments to enroll.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.EnrollCommand`1.ObjectSerializer">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.EnrollCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.EnrollCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.EnrollCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.EnrollCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetActivityEnrollmentsCommand`1">
+            <summary>
+            An abstract command, which returns <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Collections.IActivityEnrollmentCollection"/>.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetActivityEnrollmentsCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="connectionString">The string used to open a connection to the SQL server.</param>
+            <param name="logger">The logger to log informational messages to.</param>
+            <param name="tvpConverter">The <see cref= "T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter" /> used to convert model objects to TVPs.</param>
+            <param name="objectSerializer">A serializer used to serialize and deserialize objects.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code if transient fault happens.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetActivityEnrollmentsCommand`1.ObjectSerializer">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetActivityEnrollmentsCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetActivityEnrollmentsCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetCommand`1">
+            <summary>
+            Executes the Get command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="connectionString">The string used to open a connection to the SQL server.</param>
+            <param name="logger">The logger to log informational messages to.</param>
+            <param name="tvpConverter">The <see cref= "T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter" /> used to convert model objects to TVPs.</param>
+            <param name="objectSerializer">A serializer used to serialize and deserialize objects.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code if transient fault happens.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetCommand`1.EnrollmentKeys">
+            <summary>
+            The keys for the enrollments to retrieve.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetForContactCommand`1">
+            <summary>
+            Executes the GetForContact command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetForContactCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="connectionString">The string used to open a connection to the SQL server.</param>
+            <param name="logger">The logger to log informational messages to.</param>
+            <param name="tvpConverter">The <see cref= "T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter" /> used to convert model objects to TVPs.</param>
+            <param name="objectSerializer">A serializer used to serialize and deserialize objects.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code if transient fault happens.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetForContactCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetForContactCommand`1.ContactId">
+            <summary>
+            The ID of the contact to get the enrollments for.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetForContactCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetForContactCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanReportCommand`1">
+            <summary>
+            Executes the GetPlanReport command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanReportCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanReportCommand`1.PlanDefinitionId">
+            <summary>
+            The ID of the plan to get the report for.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanReportCommand`1.StartDate">
+            <summary>
+            The start date to filter the current counts from.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanReportCommand`1.EndDate">
+            <summary>
+            The end date to filter the current counts to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanReportCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanReportCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanReportCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanReportCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanStatisticsCommand`1">
+            <summary>
+            Executes the GetPlanStatistics command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanStatisticsCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanStatisticsCommand`1.PlanDefinitionIds">
+            <summary>
+            The IDs of the plans to get the enrollment count for.
+            </summary>
+            <remarks>
+            If the PlanDefinitionIds property is empty, get the counts for all plans.
+            </remarks>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanStatisticsCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanStatisticsCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanStatisticsCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetPlanStatisticsCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetTimedOutCommand`1">
+            <summary>
+            Executes the GetTimedOut command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetTimedOutCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="connectionString">The string used to open a connection to the SQL server.</param>
+            <param name="logger">The logger to log informational messages to.</param>
+            <param name="tvpConverter">The <see cref= "T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter" /> used to convert model objects to TVPs.</param>
+            <param name="objectSerializer">A serializer used to serialize and deserialize objects.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code if transient fault happens.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetTimedOutCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetTimedOutCommand`1.Date">
+            <summary>
+            The date and time the operation is occurring. Used to determine what has timed out.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetTimedOutCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.GetTimedOutCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.IncrementActivityAttemptsCommand`1">
+            <summary>
+            Executes the IncrementActivityAttempts command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.IncrementActivityAttemptsCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.IncrementActivityAttemptsCommand`1.EnrollmentKeys">
+            <summary>
+            The keys of the enrollments to increment the attempt count for.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.IncrementActivityAttemptsCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.IncrementActivityAttemptsCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.IncrementActivityAttemptsCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.IncrementActivityAttemptsCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.MergeContactsCommand`1">
+            <summary>
+            Executes the MergeContacts command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.MergeContactsCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.MergeContactsCommand`1.ContactMerges">
+            <summary>
+            The contacts to update.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.MergeContactsCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.MergeContactsCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.MergeContactsCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.MergeContactsCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.RemoveCommand`1">
+            <summary>
+            Executes the Remove command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.RemoveCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.RemoveCommand`1.PlanEnrollmentFilters">
+            <summary>
+            The filters to remove the enrollments for.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.RemoveCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.RemoveCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.RemoveCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.RemoveCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetCustomValuesCommand`1">
+            <summary>
+            Executes the SetCustomValues command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetCustomValuesCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="connectionString">The string used to open a connection to the SQL server.</param>
+            <param name="logger">The logger to log informational messages to.</param>
+            <param name="tvpConverter">The <see cref= "T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter" /> used to convert model objects to TVPs.</param>
+            <param name="objectSerializer">A serializer used to serialize and deserialize objects.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code if transient fault happens.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetCustomValuesCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetCustomValuesCommand`1.EnrollmentCustomValues">
+            <summary>
+            The custom values to set.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetCustomValuesCommand`1.ObjectSerializer">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetCustomValuesCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetCustomValuesCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetCustomValuesCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetCustomValuesCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetTimeoutCommand`1">
+            <summary>
+            Executes the SetTimeout command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetTimeoutCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetTimeoutCommand`1.EnrollmentTimeouts">
+            <summary>
+            The timeouts to set.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetTimeoutCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetTimeoutCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetTimeoutCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.SetTimeoutCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.StallCommand`1">
+            <summary>
+            Executes the Stall command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.StallCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.StallCommand`1.EnrollmentKeys">
+            <summary>
+            The keys of the enrollments to stall.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.StallCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.StallCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.StallCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.StallCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.TransitionCommand`1">
+            <summary>
+            Executes the Transition command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.TransitionCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="connectionString">The string used to open a connection to the SQL server.</param>
+            <param name="logger">The logger to log informational messages to.</param>
+            <param name="tvpConverter">The <see cref= "T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter" /> used to convert model objects to TVPs.</param>
+            <param name="objectSerializer">A serializer used to serialize and deserialize objects.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.TransitionCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.TransitionCommand`1.EnrollmentTransitions">
+            <summary>
+            The transitions to make.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.TransitionCommand`1.ObjectSerializer">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.TransitionCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.TransitionCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.TransitionCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Commands.TransitionCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentAttemptsResultBatchParser">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResult"/>s from an <see cref="T:System.Data.IDataReader"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentAttemptsResultBatchParser.#ctor(System.Data.Common.DbDataReader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentAttemptsResultBatchParser"/> class.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentAttemptsResultBatchParser.DataReader">
+            <summary>
+            Gets the <see cref="T:System.Data.Common.DbDataReader"/> to read the record data from.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentAttemptsResultBatchParser.ParseBatchAsync">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResult"/> from the reader.
+            </summary>
+            <returns>The properly parsed records.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentBatchParser`1">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollment"/>s from an <see cref="T:System.Data.IDataReader"/>.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentBatchParser`1.#ctor(System.Data.Common.DbDataReader,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentBatchParser`1"/> class.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+            <param name="logger">The logger to log messages to.</param>
+            <param name="objectSerializer">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentBatchParser`1.#ctor(System.Data.Common.DbDataReader,Microsoft.Extensions.Logging.ILogger{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentBatchParser`1"/> class.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentBatchParser`1.DataReader">
+            <summary>
+            Gets the <see cref="T:System.Data.Common.DbDataReader"/> to read the record data from.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentBatchParser`1.Logger">
+            <summary>
+            Gets the logger to log messages to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentBatchParser`1.ObjectSerializer">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentBatchParser`1.ParseBatchAsync">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollment"/> from the reader.
+            </summary>
+            <returns>The properly parsed records.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentKeyBatchParser">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey"/>s from an <see cref="T:System.Data.IDataReader"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentKeyBatchParser.#ctor(System.Data.Common.DbDataReader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentKeyBatchParser"/> class.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader"/> to read the record data from.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentKeyBatchParser.DataReader">
+            <summary>
+            Gets the <see cref="T:System.Data.Common.DbDataReader"/> to read the record data from.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentKeyBatchParser.ParseBatchAsync">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey"/> from the reader.
+            </summary>
+            <returns>The properly parsed records.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentKeyResultBatchParser">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResult"/>s from an <see cref="T:System.Data.IDataReader"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentKeyResultBatchParser.#ctor(System.Data.Common.DbDataReader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentKeyResultBatchParser"/> class.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentKeyResultBatchParser.DataReader">
+            <summary>
+            Gets the <see cref="T:System.Data.Common.DbDataReader"/> to read the record data from.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentKeyResultBatchParser.ParseBatchAsync">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResult"/> from the reader.
+            </summary>
+            <returns>The properly parsed records.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentResultBatchParser`1">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResult"/>s from an <see cref="T:System.Data.IDataReader"/>.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentResultBatchParser`1.#ctor(System.Data.Common.DbDataReader,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentResultBatchParser`1"/> class.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+            <param name="logger">The logger to log messages to.</param>
+            <param name="objectSerializer">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentResultBatchParser`1.#ctor(System.Data.Common.DbDataReader,Microsoft.Extensions.Logging.ILogger{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentResultBatchParser`1"/> class.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentResultBatchParser`1.DataReader">
+            <summary>
+            Gets the <see cref="T:System.Data.Common.DbDataReader"/> to read the record data from.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentResultBatchParser`1.Logger">
+            <summary>
+            Gets the logger to log messages to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentResultBatchParser`1.ObjectSerializer">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentResultBatchParser`1.ParseBatchAsync">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResult"/> from the reader.
+            </summary>
+            <returns>The properly parsed records.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentTransitionResultBatchParser`1">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResult"/>s from an <see cref="T:System.Data.IDataReader"/>.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentTransitionResultBatchParser`1.#ctor(System.Data.Common.DbDataReader,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentTransitionResultBatchParser`1"/> class.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+            <param name="logger">The logger to log messages to.</param>
+            <param name="objectSerializer">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentTransitionResultBatchParser`1.#ctor(System.Data.Common.DbDataReader,Microsoft.Extensions.Logging.ILogger{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentTransitionResultBatchParser`1"/> class.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentTransitionResultBatchParser`1.DataReader">
+            <summary>
+            Gets the <see cref="T:System.Data.Common.DbDataReader"/> to read the record data from.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentTransitionResultBatchParser`1.Logger">
+            <summary>
+            Gets the logger to log messages to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentTransitionResultBatchParser`1.ObjectSerializer">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.ActivityEnrollmentTransitionResultBatchParser`1.ParseBatchAsync">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResult"/> from the reader.
+            </summary>
+            <returns>The properly parsed records.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.DataRecordExtensions">
+            <summary>
+            Extensions to <see cref="T:System.Data.IDataRecord"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.DataRecordExtensions.ParseResult(System.Data.IDataRecord)">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.Result"/> from <see cref="T:System.Data.IDataRecord"/>
+            </summary>
+            <param name="dataRecord">The data record to parse from.</param>
+            <returns>The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.Result"/>.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.DataRecordExtensions.ParseActivityEnrollmentKey(System.Data.IDataRecord)">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey"/> from <see cref="T:System.Data.IDataRecord"/>.
+            </summary>
+            <param name="dataRecord">The <see cref="T:System.Data.IDataRecord"/> to parse from.</param>
+            <returns>The <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey"/>.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.DataRecordExtensions.ParseActivityEnrollmentKeyResult(System.Data.IDataRecord)">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResult"/> from <see cref="T:System.Data.IDataRecord"/>.
+            </summary>
+            <param name="dataRecord">The <see cref="T:System.Data.IDataRecord"/> to parse from.</param>
+            <returns>The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResult"/>.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.DataRecordExtensions.ParseActivityEnrollment(System.Data.IDataRecord,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer)">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollment"/> from <see cref="T:System.Data.IDataRecord"/>.
+            </summary>
+            <param name="dataRecord">The data record to parse from.</param>
+            <param name="objectSerializer">The object serializer that is used to (de)serialize objects.</param>
+            <returns>The <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollment"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">Unable to deserialize CustomValues for activity enrollment.</exception>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.DataRecordExtensions.ParseActivityEnrollment(System.Data.IDataRecord,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollment"/> from <see cref="T:System.Data.IDataRecord"/>.
+            </summary>
+            <param name="dataRecord">The data record to parse from.</param>
+            <param name="objectSerializer">The object serializer that is used to (de)serialize objects.</param>
+            <param name="logger">The logger to log messages to.</param>
+            <returns>The <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollment"/>. Returns <c>null</c> and writes to log when errors occurred.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.PlanReportBatchParser">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Reporting.PlanReport"/>s from an <see cref="T:System.Data.IDataReader"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.PlanReportBatchParser.#ctor(System.Data.Common.DbDataReader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.PlanReportBatchParser"/> class.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.PlanReportBatchParser.DataReader">
+            <summary>
+            Gets the <see cref="T:System.Data.Common.DbDataReader"/> to read the record data from.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.PlanReportBatchParser.ParseBatchAsync(System.Guid)">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Reporting.PlanReport"/> from the reader.
+            </summary>
+            <returns>The properly parsed records.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.PlanStatisticsBatchParser">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Reporting.PlanStatistics"/>s from an <see cref="T:System.Data.IDataReader"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.PlanStatisticsBatchParser.#ctor(System.Data.Common.DbDataReader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.PlanStatisticsBatchParser"/> class.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.PlanStatisticsBatchParser.DataReader">
+            <summary>
+            Gets the <see cref="T:System.Data.Common.DbDataReader"/> to read the record data from.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Parsers.PlanStatisticsBatchParser.ParseBatchAsync">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Reporting.PlanStatistics"/> from the reader.
+            </summary>
+            <returns>The properly parsed records.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResult">
+            <summary>
+            Holds <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentAttempts"/> in the result.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResult.#ctor(Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey,Sitecore.Xdb.MarketingAutomation.Core.Pool.Results.StatusCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResult"/> class.
+            </summary>
+            <param name="enrollmentKey">The enrollment key the result is for.</param>
+            <param name="statusCode">The status code of the result.</param>
+            <param name="systemMessage">A message holding information about the result.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResult.#ctor(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentAttempts,Sitecore.Xdb.MarketingAutomation.Core.Pool.Results.StatusCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResult"/> class.
+            </summary>
+            <param name="data">The data the result is for.</param>
+            <param name="statusCode">The status code of the result.</param>
+            <param name="systemMessage">A message holding information about the result.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResultCollection">
+            <summary>
+            Collection of <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResult"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResultCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResultCollection"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResultCollection.#ctor(Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.IActivityEnrollmentAttemptsResultCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResultCollection"/> class.
+            </summary>
+            <param name="collection">The collection to copy the contents from.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResult">
+            <summary>
+            Holds <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey"/> in the result.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResult.#ctor(Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey,Sitecore.Xdb.MarketingAutomation.Core.Pool.Results.StatusCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResult"/> class.
+            </summary>
+            <param name="data">The activity enrollment key the result is for.</param>
+            <param name="statusCode">The status code of the result.</param>
+            <param name="systemMessage">A message holding information about the result.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResultCollection">
+            <summary>
+            Collection of <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResult"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResultCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResultCollection"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResultCollection.#ctor(Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.IActivityEnrollmentKeyResultCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResultCollection"/> class.
+            </summary>
+            <param name="collection">The collection to copy the contents from.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResult">
+            <summary>
+            Holds <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollment"/> in the result.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResult.#ctor(Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey,Sitecore.Xdb.MarketingAutomation.Core.Pool.Results.StatusCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResult"/> class.
+            </summary>
+            <param name="activityEnrollmentKey">The key of the activity enrollment the result is for.</param>
+            <param name="statusCode">The status code.</param>
+            <param name="systemMessage">The system message.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResult.#ctor(Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollment,Sitecore.Xdb.MarketingAutomation.Core.Pool.Results.StatusCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResult"/> class.
+            </summary>
+            <param name="data">The activity enrollment the result is for.</param>
+            <param name="statusCode">The status code of the result.</param>
+            <param name="systemMessage">A message holding information about the result.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResultCollection">
+            <summary>
+            Collection of <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResult"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResultCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResultCollection"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResultCollection.#ctor(Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.IActivityEnrollmentResultCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResultCollection"/> class.
+            </summary>
+            <param name="collection">The collection to copy the contents from.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResult">
+            <summary>
+            Holds result of activity enrollment transition.
+            </summary>
+            <seealso cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.DataResult`1" />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResult.#ctor(Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey,System.Guid,Sitecore.Xdb.MarketingAutomation.Core.Pool.Results.StatusCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResult"/> class.
+            </summary>
+            <param name="activityEnrollmentKey">The key of the activity enrollment the result is for.</param>
+            <param name="targetActivityId">The ID of the activity to transition to.</param>
+            <param name="statusCode">The status code.</param>
+            <param name="systemMessage">The system message.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResult.#ctor(Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollment,System.Guid,Sitecore.Xdb.MarketingAutomation.Core.Pool.Results.StatusCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResult" /> class.
+            </summary>
+            <param name="data">The activity enrollment the result is for.</param>
+            <param name="targetActivityId">The ID of the activity to transition to.</param>
+            <param name="statusCode">The status code of the result.</param>
+            <param name="systemMessage">A message holding information about the result.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResult.TargetActivityId">
+            <summary>
+            The ID of the activity to transition to.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResultCollection">
+            <summary>
+            Collection of <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResult"/>.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResultCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResultCollection"/> class.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResultCollection.#ctor(Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.IActivityEnrollmentTransitionResultCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResultCollection"/> class.
+            </summary>
+            <param name="collection">The collection to copy the contents from.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.DataResult`1">
+            <summary>
+            Holds result of data processing.
+            </summary>
+            <typeparam name="T">The type of the data.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.DataResult`1.#ctor(`0,Sitecore.Xdb.MarketingAutomation.Core.Pool.Results.StatusCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.DataResult`1"/> class.
+            </summary>
+            <param name="data">The data the result is for.</param>
+            <param name="statusCode">The status code of the result.</param>
+            <param name="systemMessage">A message holding information about the result.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.DataResult`1.Data">
+            <summary>
+            The data the result is for.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.IActivityEnrollmentAttemptsResultCollection">
+            <summary>
+            Defines a collection of <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentAttemptsResult"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.IActivityEnrollmentKeyResultCollection">
+            <summary>
+            Defines a collection of <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentKeyResult"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.IActivityEnrollmentResultCollection">
+            <summary>
+            Defines a collection of <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentResult"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.IActivityEnrollmentTransitionResultCollection">
+            <summary>
+            Defines a collection of <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.ActivityEnrollmentTransitionResult"/>.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.Result">
+            <summary>
+            Holds a result.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.Result.#ctor(Sitecore.Xdb.MarketingAutomation.Core.Pool.Results.StatusCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.Result"/> class.
+            </summary>
+            <param name="statusCode">The status code of the result.</param>
+            <param name="systemMessage">A message holding information about the result.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.Result.StatusCode">
+            <summary>
+            The status code of the result.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.Result.Success">
+            <summary>
+            Gets a value indicating whether the result is successful.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.Results.Result.SystemMessage">
+            <summary>
+            A message holding information about the result.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider">
+            <summary>
+            An activity enrollment provider implementation which works against SQL server.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="configuration">The configuration to use for this object.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="tvpConverter">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.</param>
+            <param name="objectSerializer">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to serialize and deserialize objects.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="connectionStringOrName">The connection string or a name of the connection string used to connect to the SQL server.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="tvpConverter">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.</param>
+            <param name="objectSerializer">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to serialize and deserialize <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.EventData"/>.</param>
+            <param name="retryManager"></param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider},Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="configuration">The configuration to use for this object.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1" /> instance to log messages to.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider},Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="connectionStringOrName">The connection string or a name of the connection string used to connect to the SQL server.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider},Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="configuration">The configuration to use for this object.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="objectSerializer">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to serialize and deserialize objects.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider},Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="connectionStringOrName">The connection string or a name of the connection string used to connect to the SQL server.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="objectSerializer">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to serialize and deserialize objects.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="configuration">The configuration to use for this object.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="tvpConverter">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="connectionStringOrName">The connection string or a name of the connection string used to connect to the SQL server.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="tvpConverter">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.ConnectionString">
+            <summary>
+            Gets the string used to open a connection to the SQL server.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.Logger">
+            <summary>
+            Gets the <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.TvpConverter">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.RetryManager">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.Sql.Common.IRetryManager"/> for transient faults support.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.ObjectSerializer">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to serialize and deserialize objects.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.GetEnrollmentsAsync(System.Guid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.GetEnrollmentsAsync(Sitecore.Xdb.MarketingAutomation.Core.Collections.IActivityEnrollmentKeyCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.TransitionAsync(Sitecore.Xdb.MarketingAutomation.Core.Collections.IActivityEnrollmentTransitionCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.EnrollAsync(Sitecore.Xdb.MarketingAutomation.Core.Collections.IActivityEnrollmentFormaCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.RemoveAsync(Sitecore.Xdb.MarketingAutomation.Core.Collections.IPlanEnrollmentFilterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.StallAsync(Sitecore.Xdb.MarketingAutomation.Core.Collections.IActivityEnrollmentKeyCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.IncrementActivityAttemptsAsync(Sitecore.Xdb.MarketingAutomation.Core.Collections.IActivityEnrollmentKeyCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.SetTimeoutAsync(Sitecore.Xdb.MarketingAutomation.Core.Collections.IActivityEnrollmentTimeoutCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.SetCustomValuesAsync(Sitecore.Xdb.MarketingAutomation.Core.Collections.IActivityEnrollmentCustomValuesCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.MergeContactsAsync(Sitecore.Xdb.MarketingAutomation.Core.Collections.IContactMergeCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.GetExpiredActivitiesAsync(System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.GetPlanStatisticsAsync(System.Collections.Generic.IEnumerable{System.Guid})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.GetPlanReportAsync(System.Guid,System.DateTime,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Enrollment.SqlServerActivityEnrollmentProvider.Dispose(System.Boolean)">
+            <summary>
+            Perform cleanup before destroying this instance.
+            </summary>
+            <param name="disposing">Determines if managed resources should be disposed.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter">
+            <summary>
+            Defines a type which performs conversion of model types to TVPs.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter.ToWorkItemsTable(Sitecore.Xdb.MarketingAutomation.Core.Pool.WorkItem)">
+            <summary>
+            Converts fields of a <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.WorkItem" /> to a <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="workItem"> The work item to convert.</param>
+            <returns>
+            The <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter.ToWorkItemAttemptsTable(Sitecore.Xdb.MarketingAutomation.Core.Pool.WorkItem)">
+            <summary>
+            Converts fields of a <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.WorkItem" /> to a<see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="workItem"> The work item to convert.</param>
+            <returns>
+            The <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter.ToIdsTable(System.Guid)">
+            <summary>
+            Converts <paramref name="id"/> to a <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="id" > The ID to convert.</param>
+            <returns>
+            The <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter.ToActivityEnrollmentKeysTable(Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey)">
+            <summary>
+            Converts fields of a <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey" /> to a <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="enrollmentKey">The activity enrollment key to convert.</param>
+            <returns>
+            The<see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter.ToActivityEnrollmentTransitionsTable(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentTransition)">
+            <summary>
+            Converts fields of a <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentTransition" /> to a <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="enrollmentTransition">The activity enrollment transition to convert.</param>
+            <returns>
+            The <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter.ToPlanEnrollmentFilterTable(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.PlanEnrollmentFilter)">
+            <summary>
+            Converts fields of a <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Enrollment.PlanEnrollmentFilter" /> to a <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="filter">The plan enrollment filter to convert.</param>
+            <returns>
+            The <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter.ToActivityEnrollmentTimeoutsTable(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentTimeout)">
+            <summary>
+            Converts fields of a <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentTimeout" /> to a <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="enrollmentTimeout"> The activity enrollment timeout to convert.</param>
+            <returns>
+            The <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter.ToActivityEnrollmentCustomValuesTable(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentCustomValues)">
+            <summary>
+            Converts fields of a <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentCustomValues" /> to a <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="enrollmentCustomValues">The activity enrollment custom values to convert.</param>
+            <returns>
+            The <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter.ToActivityEnrollmentFormaTable(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentForma)">
+            <summary>
+            Converts fields of a <see cref= "T:Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentForma" /> to a <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="enrollmentForma">The activity enrollment forma to convert.</param>
+            <returns>
+            The <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter.ToContactMergesTable(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ContactMerge)">
+            <summary>
+            Converts fields of a <see cref= "T:Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ContactMerge" /> to a <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> for use as a table valued parameter.
+            </summary>
+            <param name="contactMerge">The <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ContactMerge"/> to convert.</param>
+            <returns>
+            The <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord" /> ready for use.
+            </returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.AddCommand`1">
+            <summary>
+            Executes the Add command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.AddCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.AddCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.AddCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckinCommand`1">
+            <summary>
+            Executes the Checkin command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckinCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckinCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckinCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1">
+            <summary>
+            Executes the Checkout command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="connectionString">The string used to open a connection to the SQL server.</param>
+            <param name="logger">The logger to log informational messages to.</param>
+            <param name="tvpConverter">The <see cref= "T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter" /> used to convert model objects to TVPs.</param>
+            <param name="objectSerializer">A serializer used to serialize and deserialize objects.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code if transient fault happens.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1.Head">
+            <summary>
+            Gets or sets the size of the head used during checkout.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1.Size">
+            <summary>
+            Gets or sets the size of the batch of work item to checkout.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1.TimeoutSeconds">
+            <summary>
+            Gets or sets the number of seconds to set the timeout on each checked out work item.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1.MinimumPriority">
+            <summary>
+            Gets or sets the minimum priority of work item to checkout.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1.WorkerId">
+            <summary>
+            Gets or sets the ID of the worker requesting the checkout.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1.ObjectSerializer">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.CheckoutCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.PurgeContactsCommand`1">
+            <summary>
+            Executes the PurgeContacts command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.PurgeContactsCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.PurgeContactsCommand`1.ContactIds">
+            <summary>
+            The IDs of the contacts to remove the work items for.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.PurgeContactsCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.PurgeContactsCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.PurgeContactsCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.PurgeContactsCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.ReleaseLeaseCommand`1">
+            <summary>
+            Executes the ReleaseLease command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.ReleaseLeaseCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.ReleaseLeaseCommand`1.ContactId">
+            <summary>
+            Gets or sets the ID of the contact to take the lease for.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.ReleaseLeaseCommand`1.WorkerId">
+            <summary>
+            Gets or sets the ID of the worker to take the lease with.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.ReleaseLeaseCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.ReleaseLeaseCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.ReleaseLeaseCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.ReleaseLeaseCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.SetTimeoutCommand`1">
+            <summary>
+            Executes the SetTimeout command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.SetTimeoutCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.SetTimeoutCommand`1.TimeoutSeconds">
+            <summary>
+            The number of seconds to reschedule each work item into the future.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.SetTimeoutCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.SetTimeoutCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.SqlServerWorkItemsCommand`1">
+            <summary>
+            An abstract command, which accepts <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.Collections.IWorkItemCollection"/> as an input parameter and returns <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.Results.WorkItemBatchResult"/>.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.SqlServerWorkItemsCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.SqlServerWorkItemsCommand`1.WorkItems">
+            <summary>
+            Gets or sets the work items to process.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.SqlServerWorkItemsCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.SqlServerWorkItemsCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.StallCommand`1">
+            <summary>
+            Executes the Stall command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.StallCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.StallCommand`1.WorkItemIds">
+            <summary>
+            Gets the IDs of the work items to stall.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.StallCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.StallCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.StallCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.StallCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.TakeLeaseCommand`1">
+            <summary>
+            Executes the TakeLease command.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.TakeLeaseCommand`1.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.TakeLeaseCommand`1.ContactId">
+            <summary>
+            Gets or sets the ID of the contact to take the lease for.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.TakeLeaseCommand`1.WorkerId">
+            <summary>
+            Gets or sets the ID of the worker to take the lease with.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.TakeLeaseCommand`1.TimeoutSeconds">
+            <summary>
+            Gets or sets the number of seconds to set the timeout on the lease.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.TakeLeaseCommand`1.StoredProcedureName">
+            <inheritdoc />
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.TakeLeaseCommand`1.FailureValue">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.TakeLeaseCommand`1.SetParameters(System.Data.IDataParameterCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Commands.TakeLeaseCommand`1.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <inheritdoc />
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Parsers.WorkItemBatchParser`1">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.WorkItem"/>s from an <see cref="T:System.Data.IDataReader"/>.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Parsers.WorkItemBatchParser`1.#ctor(System.Data.Common.DbDataReader,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+            <param name="logger">The logger to log messages to.</param>
+            <param name="objectSerializer">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Parsers.WorkItemBatchParser`1.#ctor(System.Data.Common.DbDataReader,Microsoft.Extensions.Logging.ILogger{`0})">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+            <param name="logger">The logger to log messages to.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Parsers.WorkItemBatchParser`1.DataReader">
+            <summary>
+            Gets the <see cref="T:System.Data.Common.DbDataReader"/> to read the record data from.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Parsers.WorkItemBatchParser`1.Logger">
+            <summary>
+            Gets the logger to log messages to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Parsers.WorkItemBatchParser`1.ObjectSerializer">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to deserialize object data.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Parsers.WorkItemBatchParser`1.ParseBatchAsync">
+            <summary>
+            Parses work item results from the reader.
+            </summary>
+            <returns>The properly parsed records.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Parsers.WorkItemBatchParser`1.ConvertExecutionData(System.Byte[],System.String)">
+            <summary>
+            Convert the <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.ExecutionData"/> data back to an instance.
+            </summary>
+            <param name="data">The byte data to convert.</param>
+            <param name="typeName">The name of the .net type to convert the data to.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Parsers.WorkItemBatchResultParser">
+            <summary>
+            Parses <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.Results.WorkItemResult"/>s from an <see cref="T:System.Data.IDataReader"/>ю
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Parsers.WorkItemBatchResultParser.#ctor(System.Data.Common.DbDataReader)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="dataReader">The <see cref="T:System.Data.Common.DbDataReader" /> to read the record data from.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Parsers.WorkItemBatchResultParser.DataReader">
+            <summary>
+            Gets the <see cref="T:System.Data.Common.DbDataReader"/> to read the record data from.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.Parsers.WorkItemBatchResultParser.ParseBatchAsync">
+            <summary>
+            Parses work item results from the reader.
+            </summary>
+            <returns>The properly parsed records.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool">
+            <summary>
+            An automation pool implementation which works against SQL server.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="configuration">The configuration to use for this object.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="tvpConverter">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.</param>
+            <param name="objectSerializer">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to serialize and deserialize <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.EventData"/>.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="connectionStringOrName">The connection string or a name of the connection string used to connect to the SQL server.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="tvpConverter">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.</param>
+            <param name="objectSerializer">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to serialize and deserialize <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.EventData"/>.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool},Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="configuration">The configuration to use for this object.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1" /> instance to log messages to.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool},Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="connectionStringOrName">The connection string or a name of the connection string used to connect to the SQL server.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool},Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="configuration">The configuration to use for this object.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="objectSerializer">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to serialize and deserialize <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.EventData"/>.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool},Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="connectionStringOrName">The connection string or a name of the connection string used to connect to the SQL server.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="objectSerializer">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to serialize and deserialize <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.EventData"/>.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="configuration">The configuration to use for this object.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="tvpConverter">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Create a new instance.
+            </summary>
+            <param name="connectionStringOrName">The connection string or a name of the connection string used to connect to the SQL server.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.</param>
+            <param name="tvpConverter">The <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> to handle transient faults.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.ConnectionString">
+            <summary>
+            Gets the string used to open a connection to the SQL server.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.Logger">
+            <summary>
+            Gets the <see cref="T:Microsoft.Extensions.Logging.ILogger`1"/> instance to log messages to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.TvpConverter">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter"/> to use to convert model objects to TVPs.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.ObjectSerializer">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> used to serialize and deserialize <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Pool.EventData"/>.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.RetryManager">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.Sql.Common.IRetryManager"/> for transient faults support.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.AddAsync(Sitecore.Xdb.MarketingAutomation.Core.Pool.Collections.IWorkItemCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.CheckoutAsync(System.Int16,System.Int16,System.Int16,System.Byte,System.Guid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.SetTimeoutAsync(Sitecore.Xdb.MarketingAutomation.Core.Pool.Collections.IWorkItemCollection,System.Int16)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.CheckInAsync(Sitecore.Xdb.MarketingAutomation.Core.Pool.Collections.IWorkItemCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.PurgeContactsAsync(System.Collections.Generic.IEnumerable{System.Guid})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.TakeLeaseAsync(System.Guid,System.Guid,System.Int16)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.ReleaseLeaseAsync(System.Guid,System.Guid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.StallAsync(System.Collections.Generic.ICollection{System.Guid})">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.Dispose">
+            <summary>
+            Perform cleanup before destroying this instance.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Pool.SqlServerAutomationPool.Dispose(System.Boolean)">
+            <summary>
+            Perform cleanup before destroying this instance.
+            </summary>
+            <param name="disposing">Determines if managed resources should be disposed.</param>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.FailedToCreateActivityEnrollment">
+            <summary>
+              Looks up a localized string similar to Failed to create activity enrollment {0}. Status code: {1} ({2}). Error message: {3}.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.FailedToIncrementActivityAttempts">
+            <summary>
+              Looks up a localized string similar to Failed to increment activity attempts {0}. Status code: {1} ({2}). Error message: {3}.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.FailedToLocateExecutionDataType">
+            <summary>
+              Looks up a localized string similar to Failed to locate ExecutionData type &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.FailedToMakeTransitionToActivity">
+            <summary>
+              Looks up a localized string similar to Failed to make transition to the activity &apos;{0}&apos;. {1}. Status code: {2} ({3}). Error message: {4}.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.FailedToParseActivityEnrollment">
+            <summary>
+              Looks up a localized string similar to Failed to parse activity enrollment..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.FailedToSetActivityCustomValues">
+            <summary>
+              Looks up a localized string similar to Failed to set activity custom values {0}. Status code: {1} ({2}). Error message: {3}.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.FailedToSetActivityTimeout">
+            <summary>
+              Looks up a localized string similar to Failed to set activity timeout {0}. Status code: {1} ({2}). Error message: {3}.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.FailedToStallActivityEnrollment">
+            <summary>
+              Looks up a localized string similar to Failed to stall activity enrollment {0}. Status code: {1} ({2}). Error message: {3}.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.SQLCommunicationError">
+            <summary>
+              Looks up a localized string similar to An error occurred while communicating with the SQL Server.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.SQLDeadlockOccurred">
+            <summary>
+              Looks up a localized string similar to The transaction was deadlocked on lock resources and was chosen as the deadlock victim. The transaction will be rerun..
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.UnableToDeserializeCustomValues">
+            <summary>
+              Looks up a localized string similar to Unable to deserialize CustomValues for activity enrollment {0}.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.UnableToDeserializeExecutionData">
+            <summary>
+              Looks up a localized string similar to Unable to deserialize ExecutionData for work item &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Resources.UnknownConnectionString">
+            <summary>
+              Looks up a localized string similar to Unable to find connection string with name &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.DefaultObjectSerializer">
+            <summary>
+            An <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer"/> which serializes using JSON.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.DefaultObjectSerializer.Encoding">
+            <summary>
+            Gets the encoding used to convert between strings and bytes.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.DefaultObjectSerializer.JsonSerializerSettings">
+            <summary>
+            Gets the settings to use during serialization / deserialization of data.
+            </summary>
+            <remarks>
+            This property will be removed as it only supports types in the core <see cref="T:Sitecore.XConnect.Collection.Model.CollectionModel"/>.
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.DefaultObjectSerializer.Serialize``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.DefaultObjectSerializer.Deserialize``1(System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.DefaultObjectSerializer.Deserialize(System.Byte[],System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.DefaultObjectSerializer.#ctor(Sitecore.XConnect.Schema.XdbModel)">
+            <summary>
+            Creates a new instance that supports types in the specified model.
+            </summary>
+            <param name="model">The <see cref="T:Sitecore.XConnect.Schema.XdbModel"/> with all the supported types.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.DefaultObjectSerializer.#ctor">
+            <summary>
+            Creates a new instance that only supports types defined in the core <see cref="T:Sitecore.XConnect.Collection.Model.CollectionModel"/>.
+            </summary>
+            <remarks>
+            Note: this constructor overload does not support custom models, use the other overloads instead. 
+            </remarks>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.DefaultObjectSerializer.CreateJsonSerializerSettings(Sitecore.XConnect.Schema.XdbModel)">
+            <summary>
+            Create an instance of <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/> that works with the xConnect model passed in the <paramref name="xdbModel"/> parameter.
+            </summary>
+            <param name="xdbModel">The xConnect model that will be serialized or deserialized.</param>
+            <returns>An instance of <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/> which has been configured to work with the provided model.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer">
+            <summary>
+            Defines a serializer used to serialize and deserialize objects.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer.Serialize``1(``0)">
+            <summary>
+            Serialize the object to a <c>byte[]</c>.
+            </summary>
+            <typeparam name="T">The type of the object.</typeparam>
+            <param name="data">The data to serialize.</param>
+            <returns>The serialized data, or <c>null</c> if an issue occurred.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer.Deserialize``1(System.Byte[])">
+            <summary>
+            Deserialize an instance of an object from a <c>byte[]</c>.
+            </summary>
+            <typeparam name="T">The type of the target object.</typeparam>
+            <param name="data">The byte data to deserialize.</param>
+            <returns>The deserialized object instance, or <c>null</c> if an issue occurred.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer.Deserialize(System.Byte[],System.Type)">
+            <summary>
+            Deserialize an instance of an object from a <c>byte[]</c>.
+            </summary>
+            <param name="data">The byte data to deserialize.</param>
+            <param name="type">The type of the target object.</param>
+            <returns>The deserialized object instance, or <c>null</c> if an issue occurred.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerCommand`2">
+            <summary>
+            A command which executes against SQL server.
+            </summary>
+            <typeparam name="TLogger">The type of the logger.</typeparam>
+            <typeparam name="TReturn">The type of the return data from the command execution.</typeparam>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerCommand`2.#ctor(System.String,Microsoft.Extensions.Logging.ILogger{`0},Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter,Sitecore.Xdb.Sql.Common.IRetryManager)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="connectionString">The string used to open a connection to the SQL server.</param>
+            <param name="logger">The logger to log informational messages to.</param>
+            <param name="tvpConverter">The <see cref= "T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter" /> used to convert model objects to TVPs.</param>
+            <param name="retryManager">The <see cref= "T:Sitecore.Xdb.Sql.Common.IRetryManager" /> used to retry block of code if transient fault happens.</param>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerCommand`2.ConnectionString">
+            <summary>
+            Gets the string used to open a connection to the SQL server.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerCommand`2.Logger">
+            <summary>
+            Gets the logger to log informational messages to.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerCommand`2.TvpConverter">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.ITvpConverter"/> used to convert model objects to TVPs.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerCommand`2.RetryManager">
+            <summary>
+            Gets the <see cref="T:Sitecore.Xdb.Sql.Common.IRetryManager"/> used to retry block of code.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerCommand`2.StoredProcedureName">
+            <summary>
+            Gets the name of the stored procedure to execute.
+            </summary>
+        </member>
+        <member name="P:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerCommand`2.FailureValue">
+            <summary>
+            The value to return when a failure occurs.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerCommand`2.ExecuteAsync">
+            <summary>
+            Execute the command asynchronously.
+            </summary>
+            <returns>The output from the command execution.</returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerCommand`2.SetParameters(System.Data.IDataParameterCollection)">
+            <summary>
+            Sets parameters into the parameter collection.
+            </summary>
+            <param name="parameters"> The parameter collection to set the parameters into.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerCommand`2.ExecuteAndProcessResultsAsync(System.Data.Common.DbCommand)">
+            <summary>
+            Executes the command and processes the results.
+            </summary>
+            <param name="command">The command to execute.</param>
+            <returns>The processed results from the command execution.</returns>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerProviderConfigurationReader">
+            <summary>
+            Provides methods to read the configuration for a SQL Server provider.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerProviderConfigurationReader.ConnectionStringOrNameOptionName">
+            <summary>
+            The option name to read the ConnectionStringOrName property from.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.SqlServerProviderConfigurationReader.ExtractConnectionStringOrName(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Extracts the connection string or name from the configuration.
+            </summary>
+            <param name="configuration">The configuration to extract from.</param>
+            <returns>The extracted connection string configuration value.</returns>
+            <remarks>Will throw exceptions if the configuration section cannot be found.</remarks>
+        </member>
+        <member name="T:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter">
+            <summary>
+            A converter which converts from model types to TVPs.
+            </summary>
+        </member>
+        <member name="F:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter._serializer">
+            <summary>
+            A serializer used to serialize and deserialize objects.
+            </summary>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.#ctor(Sitecore.Xdb.MarketingAutomation.SqlServer.Serialization.IObjectSerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter"/> class.
+            </summary>
+            <param name="serializer">A serializer used to serialize and deserialize objects.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.ToWorkItemsTable(Sitecore.Xdb.MarketingAutomation.Core.Pool.WorkItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.ToWorkItemAttemptsTable(Sitecore.Xdb.MarketingAutomation.Core.Pool.WorkItem)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.ToIdsTable(System.Guid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.ToActivityEnrollmentKeysTable(Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.ToActivityEnrollmentTransitionsTable(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentTransition)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.ToPlanEnrollmentFilterTable(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.PlanEnrollmentFilter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.ToActivityEnrollmentTimeoutsTable(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentTimeout)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.ToActivityEnrollmentCustomValuesTable(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentCustomValues)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.ToActivityEnrollmentFormaTable(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ActivityEnrollmentForma)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.ToContactMergesTable(Sitecore.Xdb.MarketingAutomation.Core.Enrollment.ContactMerge)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.BuildActivityEnrollmentKeyMetaData">
+            <summary>
+            Builds list of <see cref="T:Microsoft.SqlServer.Server.SqlMetaData"/> of <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey"/> to pass in <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord"/>.
+            </summary>
+            <returns>The list of <see cref="T:Microsoft.SqlServer.Server.SqlMetaData"/></returns>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.SetDataRecordValues(Microsoft.SqlServer.Server.SqlDataRecord,Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey,System.Int32)">
+            <summary>
+            Sets the <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Processing.ActivityEnrollmentKey"/> values to <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord"/>.
+            </summary>
+            <param name="sqlDataRecord">The SQL data record to set the values to.</param>
+            <param name="enrollmentKey">The enrollment key to take the values from.</param>
+            <param name="startOrdinal">The ordinal to start set values from.</param>
+        </member>
+        <member name="M:Sitecore.Xdb.MarketingAutomation.SqlServer.TvpConverter.SetDataRecordValue(Microsoft.SqlServer.Server.SqlDataRecord,Sitecore.Xdb.MarketingAutomation.Core.Collections.ICustomValuesDictionary,System.Int32)">
+            <summary>
+            Sets the <see cref="T:Sitecore.Xdb.MarketingAutomation.Core.Collections.ICustomValuesDictionary"/> values to <see cref="T:Microsoft.SqlServer.Server.SqlDataRecord"/>.
+            </summary>
+            <param name="sqlDataRecord">The SQL data record to set the values to.</param>
+            <param name="customValues">The custom values to pass.</param>
+            <param name="ordinal">The ordinal to set values at.</param>
+        </member>
+    </members>
+</doc>
