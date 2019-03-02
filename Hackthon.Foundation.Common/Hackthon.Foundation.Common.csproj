@@ -133,6 +133,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContentGenerator\ContentExtractorRequest.cs" />
     <Compile Include="Pipelines\ValidateSEO.cs" />
     <Compile Include="Models\SeoReport\ValidationErrors.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

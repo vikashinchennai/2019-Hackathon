@@ -45,10 +45,10 @@ namespace Hackthon.Feature.SEOAnalyzer.Controllers
                 UrlString urlString = new UrlString("/");
                 var token = Sitecore.Context.User.GetId().ToString();
                 var username = Sitecore.Context.GetUserName();
-                request.IsSecureConnection
-                    url = "https://";
-                else
-                    url = "http://";
+                //  request.IsSecureConnection
+                url = "https://";
+                //  else
+                url = "http://";
 
                 urlString["sc_itemid"] = str;
                 urlString["sc_mode"] = "preview";
@@ -71,24 +71,25 @@ namespace Hackthon.Feature.SEOAnalyzer.Controllers
 
 
         public void ProcessMethod(string url)
+        {
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
+            request.Method = "GET";
+            String test = String.Empty;
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
-                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
-                request.Method = "GET";
-                String test = String.Empty;
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                {
-                    Stream dataStream = response.GetResponseStream();
-                    StreamReader reader = new StreamReader(dataStream);
-                    test = reader.ReadToEnd();
-                    reader.Close();
-                    dataStream.Close();
-                }
-
+                Stream dataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(dataStream);
+                test = reader.ReadToEnd();
+                reader.Close();
+                dataStream.Close();
             }
 
+        }
 
 
 
 
 
-        } 
+
+    }
+}

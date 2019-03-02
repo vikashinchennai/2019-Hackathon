@@ -138,8 +138,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewController.cs" />
     <Compile Include="Controllers\SEOController.cs" />
-    <Compile Include="ExtensionMethods\UserDetails.cs" />
-    <Compile Include="ExtensionMethods\UserLoginCheck.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -15,9 +15,9 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using Hackthon.Foundation.Common;
 
-namespace Hackthon.Feature.GenerateContent.Controllers
+namespace GenerateContent.Controllers
 {
-    public class SeoReportBuilder
+    public class SeoGenerateContent
     {
 
         public void process()
